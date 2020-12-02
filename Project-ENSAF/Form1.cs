@@ -26,5 +26,10 @@ namespace Project_ENSAF
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine( "fere");
+        }
     }
 }
