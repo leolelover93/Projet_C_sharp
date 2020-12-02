@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
@@ -36,10 +37,13 @@
             this.GestionProduits = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.produit_cardUC1 = new Project_ENSAF.produit_cardUC();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -126,13 +130,18 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "TEST PUSH";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // produit_cardUC1
             // 
             this.produit_cardUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(228)))), ((int)(((byte)(207)))));
-            this.produit_cardUC1.Location = new System.Drawing.Point(55, 64);
+            this.produit_cardUC1.Location = new System.Drawing.Point(73, 91);
             this.produit_cardUC1.Name = "produit_cardUC1";
             this.produit_cardUC1.Size = new System.Drawing.Size(188, 236);
             this.produit_cardUC1.TabIndex = 4;
+            this.produit_cardUC1.Load += new System.EventHandler(this.produit_cardUC1_Load);
             // 
             // Form1
             // 
@@ -150,6 +159,7 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,6 +175,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
         private produit_cardUC produit_cardUC1;
     }
 }

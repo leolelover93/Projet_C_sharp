@@ -32,5 +32,10 @@ namespace Project_ENSAF
         {
             Console.WriteLine( "fere");
         }
+
+        private void produit_cardUC1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

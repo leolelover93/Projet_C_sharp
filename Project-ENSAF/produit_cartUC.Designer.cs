@@ -45,9 +45,9 @@
             this.lblProdName.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProdName.Location = new System.Drawing.Point(-1, 143);
             this.lblProdName.Name = "lblProdName";
-            this.lblProdName.Size = new System.Drawing.Size(142, 23);
+            this.lblProdName.Size = new System.Drawing.Size(119, 23);
             this.lblProdName.TabIndex = 0;
-            this.lblProdName.Text = "product name";
+            this.lblProdName.Text = "Test Update";
             this.lblProdName.Click += new System.EventHandler(this.label1_Click);
             // 
             // prodImg
