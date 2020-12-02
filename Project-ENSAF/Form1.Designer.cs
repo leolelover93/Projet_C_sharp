@@ -1,6 +1,6 @@
 ﻿namespace Project_ENSAF
 {
-    partial class Form1
+    partial class Form1:System.Windows.Forms.Form
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -34,9 +34,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.GestionProduits = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.produit_cardUC1 = new Project_ENSAF.produit_cardUC();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -104,15 +107,32 @@
             this.GestionProduits.UseVisualStyleBackColor = true;
             this.GestionProduits.Click += new System.EventHandler(this.button1_Click);
             // 
+            // panel3
+            // 
+            this.panel3.AutoSize = true;
+            this.panel3.Controls.Add(this.produit_cardUC1);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Location = new System.Drawing.Point(201, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(665, 499);
+            this.panel3.TabIndex = 1;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(494, 188);
+            this.label1.Location = new System.Drawing.Point(306, 185);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 13);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 3;
             this.label1.Text = "TEST PUSH";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // produit_cardUC1
+            // 
+            this.produit_cardUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(228)))), ((int)(((byte)(207)))));
+            this.produit_cardUC1.Location = new System.Drawing.Point(55, 64);
+            this.produit_cardUC1.Name = "produit_cardUC1";
+            this.produit_cardUC1.Size = new System.Drawing.Size(188, 236);
+            this.produit_cardUC1.TabIndex = 4;
             // 
             // Form1
             // 
@@ -120,15 +140,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(866, 499);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,7 +163,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
+        private produit_cardUC produit_cardUC1;
     }
 }
 

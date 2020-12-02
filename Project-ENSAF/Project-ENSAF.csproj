@@ -55,10 +55,28 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="nv_produitUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="nv_produitUC.Designer.cs">
+      <DependentUpon>nv_produitUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="produit_cartUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="produit_cartUC.Designer.cs">
+      <DependentUpon>produit_cartUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nv_produitUC.resx">
+      <DependentUpon>nv_produitUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="produit_cartUC.resx">
+      <DependentUpon>produit_cartUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
