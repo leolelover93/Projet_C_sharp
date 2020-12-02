@@ -17,9 +17,20 @@ namespace Project_ENSAF
             InitializeComponent();
         //www.youtube.com/watch?v=LJKkJI-gE38
         }
-
+        Button btn;
+        produit_cardUC produitUI;
         private void Form1_Load(object sender, EventArgs e)
         {
+             for (int i = 0; i < 8; i++)
+             {
+                /*  btn = new Button();
+                  btn.Text = "Button " + i.ToString(); 
+                  flowLayoutPanel1.Controls.Add(btn);*/
+                produitUI = new produit_cardUC();
+                this.flowLayoutPanel1.Controls.Add(produitUI);
+
+
+             }
 
         }
 
@@ -34,6 +45,11 @@ namespace Project_ENSAF
         }
 
         private void produit_cardUC1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
         {
 
         }
