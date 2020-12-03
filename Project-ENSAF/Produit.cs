@@ -23,7 +23,7 @@ namespace Project_ENSAF
         }
     
         public int codeProduit { get; set; }
-        public Nullable<int> idFournisseur { get; set; }
+        public int idFournisseur { get; set; }
         public string libelle { get; set; }
         public decimal prixAchat { get; set; }
         public decimal prixVente { get; set; }

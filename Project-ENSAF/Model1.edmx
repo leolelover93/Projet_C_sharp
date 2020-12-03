@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="NCommande" />
           </Key>
-          <Property Name="NCommande" Type="int" Nullable="false" />
+          <Property Name="NCommande" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="quantite" Type="int" Nullable="false" />
           <Property Name="dateDemande" Type="datetime" Nullable="false" />
           <Property Name="dateArrive" Type="datetime" Nullable="false" />
@@ -22,7 +22,7 @@
           <Key>
             <PropertyRef Name="idFournisseur" />
           </Key>
-          <Property Name="idFournisseur" Type="int" Nullable="false" />
+          <Property Name="idFournisseur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nomFournisseur" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="prenomFournisseur" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="adressFournisseur" Type="varchar" MaxLength="50" />
@@ -32,15 +32,15 @@
           <Key>
             <PropertyRef Name="codeMagazin" />
           </Key>
-          <Property Name="codeMagazin" Type="int" Nullable="false" />
-          <Property Name="nomMagazin" Type="varbinary" MaxLength="50" Nullable="false" />
+          <Property Name="codeMagazin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomMagazin" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Produit">
           <Key>
             <PropertyRef Name="codeProduit" />
           </Key>
-          <Property Name="codeProduit" Type="int" Nullable="false" />
-          <Property Name="idFournisseur" Type="int" />
+          <Property Name="codeProduit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFournisseur" Type="int" Nullable="false" />
           <Property Name="libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="prixAchat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="prixVente" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -51,7 +51,7 @@
           <Key>
             <PropertyRef Name="codeStock" />
           </Key>
-          <Property Name="codeStock" Type="int" Nullable="false" />
+          <Property Name="codeStock" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="codeProduit" Type="int" Nullable="false" />
           <Property Name="codeMagazin" Type="int" Nullable="false" />
           <Property Name="quantite" Type="int" Nullable="false" />
@@ -70,7 +70,7 @@
           <Key>
             <PropertyRef Name="idFacture" />
           </Key>
-          <Property Name="idFacture" Type="int" Nullable="false" />
+          <Property Name="idFacture" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="codeProduit" Type="int" Nullable="false" />
           <Property Name="codeMagazin" Type="int" Nullable="false" />
           <Property Name="quantiteVendu" Type="int" Nullable="false" />
@@ -113,7 +113,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Produit_Fournisseur">
-          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="0..1" />
+          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
           <End Role="Produit" Type="Self.Produit" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fournisseur">
@@ -222,7 +222,7 @@
           <Key>
             <PropertyRef Name="NCommande" />
           </Key>
-          <Property Name="NCommande" Type="Int32" Nullable="false" />
+          <Property Name="NCommande" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="quantite" Type="Int32" Nullable="false" />
           <Property Name="dateDemande" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dateArrive" Type="DateTime" Nullable="false" Precision="3" />
@@ -238,7 +238,7 @@
           <Key>
             <PropertyRef Name="idFournisseur" />
           </Key>
-          <Property Name="idFournisseur" Type="Int32" Nullable="false" />
+          <Property Name="idFournisseur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomFournisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="prenomFournisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="adressFournisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -250,8 +250,8 @@
           <Key>
             <PropertyRef Name="codeMagazin" />
           </Key>
-          <Property Name="codeMagazin" Type="Int32" Nullable="false" />
-          <Property Name="nomMagazin" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+          <Property Name="codeMagazin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomMagazin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Commandes" Relationship="Self.FK_Commande_Magazin" FromRole="Magazin" ToRole="Commande" />
           <NavigationProperty Name="Stock_Magazin" Relationship="Self.FK_Stock_Magazin_Stock_Magazin" FromRole="Magazin" ToRole="Stock_Magazin" />
           <NavigationProperty Name="Vente_magazin" Relationship="Self.FK_Vente_magazin_Vente_magazin" FromRole="Magazin" ToRole="Vente_magazin" />
@@ -260,8 +260,8 @@
           <Key>
             <PropertyRef Name="codeProduit" />
           </Key>
-          <Property Name="codeProduit" Type="Int32" Nullable="false" />
-          <Property Name="idFournisseur" Type="Int32" />
+          <Property Name="codeProduit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFournisseur" Type="Int32" Nullable="false" />
           <Property Name="libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="prixAchat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="prixVente" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
@@ -276,7 +276,7 @@
           <Key>
             <PropertyRef Name="codeStock" />
           </Key>
-          <Property Name="codeStock" Type="Int32" Nullable="false" />
+          <Property Name="codeStock" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="codeProduit" Type="Int32" Nullable="false" />
           <Property Name="codeMagazin" Type="Int32" Nullable="false" />
           <Property Name="quantite" Type="Int32" Nullable="false" />
@@ -297,7 +297,7 @@
           <Key>
             <PropertyRef Name="idFacture" />
           </Key>
-          <Property Name="idFacture" Type="Int32" Nullable="false" />
+          <Property Name="idFacture" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="codeProduit" Type="Int32" Nullable="false" />
           <Property Name="codeMagazin" Type="Int32" Nullable="false" />
           <Property Name="quantiteVendu" Type="Int32" Nullable="false" />
@@ -342,7 +342,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Produit_Fournisseur">
-          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="0..1" />
+          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
           <End Role="Produit" Type="Self.Produit" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fournisseur">
@@ -401,7 +401,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="projetEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="dbContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Commandes" EntityType="Self.Commande" />
           <EntitySet Name="Fournisseurs" EntityType="Self.Fournisseur" />
           <EntitySet Name="Magazins" EntityType="Self.Magazin" />
@@ -447,7 +447,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="projetModelStoreContainer" CdmEntityContainer="projetEntities1">
+        <EntityContainerMapping StorageEntityContainer="projetModelStoreContainer" CdmEntityContainer="dbContext">
           <EntitySetMapping Name="Commandes">
             <EntityTypeMapping TypeName="projetModel.Commande">
               <MappingFragment StoreEntitySet="Commande">

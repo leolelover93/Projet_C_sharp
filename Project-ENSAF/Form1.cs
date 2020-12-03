@@ -27,7 +27,7 @@ namespace Project_ENSAF
                   btn.Text = "Button " + i.ToString(); 
                   flowLayoutPanel1.Controls.Add(btn);*/
                 produitUI = new produit_cardUC();
-                this.flowLayoutPanel1.Controls.Add(produitUI);
+           //     this.flowLayoutPanel1.Controls.Add(produitUI);
 
 
              }
@@ -43,11 +43,7 @@ namespace Project_ENSAF
         {
             Console.WriteLine( "fere");
         }
-
-        private void produit_cardUC1_Load(object sender, EventArgs e)
-        {
-
-        }
+ 
 
         private void label1_Click_1(object sender, EventArgs e)
         {
@@ -56,7 +52,7 @@ namespace Project_ENSAF
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            var context = new projetEntities1();
+      var context = new dbContext();
             var four = new Fournisseur()
             {
                 adressFournisseur = "dede",
@@ -66,8 +62,16 @@ namespace Project_ENSAF
 
 
             };
-            context.Fournisseurs.Add(four);
-            context.SaveChanges();
+            try
+            {
+                context.Fournisseurs.Add(four);
+                context.SaveChanges();
+                MessageBox.Show("success");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("error" + err.Message);
+            }      /**/
         }
     }
 }

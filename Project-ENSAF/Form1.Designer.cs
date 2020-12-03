@@ -35,8 +35,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.GestionProduits = new System.Windows.Forms.Button();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.produit_cardUC1 = new Project_ENSAF.produit_cardUC();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel(); 
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
@@ -123,16 +122,7 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(790, 499);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
-            // produit_cardUC1
-            // 
-            this.produit_cardUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(228)))), ((int)(((byte)(207)))));
-            this.produit_cardUC1.Location = new System.Drawing.Point(55, 64);
-            this.produit_cardUC1.MaximumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC1.MinimumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC1.Name = "produit_cardUC1";
-            this.produit_cardUC1.Size = new System.Drawing.Size(172, 218);
-            this.produit_cardUC1.TabIndex = 4;
-            // 
+    
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -159,8 +149,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private produit_cardUC produit_cardUC1;
+        private System.Windows.Forms.Button button1; 
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }

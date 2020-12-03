@@ -22,7 +22,7 @@ namespace Project_ENSAF
         }
     
         public int codeMagazin { get; set; }
-        public byte[] nomMagazin { get; set; }
+        public string nomMagazin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Commande> Commandes { get; set; }

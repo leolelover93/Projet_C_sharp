@@ -13,10 +13,10 @@ namespace Project_ENSAF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class projetEntities1 : DbContext
+    public partial class dbContext : DbContext
     {
-        public projetEntities1()
-            : base("name=projetEntities1")
+        public dbContext()
+            : base("name=dbContext")
         {
         }
     
