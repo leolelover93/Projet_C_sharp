@@ -60,7 +60,7 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Location = new System.Drawing.Point(29, 91);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(169, 101);
+            this.panel2.Size = new System.Drawing.Size(169, 145);
             this.panel2.TabIndex = 1;
             // 
             // button3
@@ -92,6 +92,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // GestionProduits
             // 

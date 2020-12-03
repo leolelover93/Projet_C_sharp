@@ -53,5 +53,21 @@ namespace Project_ENSAF
         {
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            var context = new projetEntities1();
+            var four = new Fournisseur()
+            {
+                adressFournisseur = "dede",
+                nomFournisseur = "kdjnez",
+                prenomFournisseur = "hamadi dasswass",
+                telFournisseur = "0202020",
+
+
+            };
+            context.Fournisseurs.Add(four);
+            context.SaveChanges();
+        }
     }
 }
