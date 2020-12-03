@@ -45,7 +45,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProdName.AutoSize = true;
             this.lblProdName.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProdName.Location = new System.Drawing.Point(-1, 119);
+            this.lblProdName.Location = new System.Drawing.Point(-1, 117);
             this.lblProdName.Name = "lblProdName";
             this.lblProdName.Size = new System.Drawing.Size(56, 23);
             this.lblProdName.TabIndex = 0;

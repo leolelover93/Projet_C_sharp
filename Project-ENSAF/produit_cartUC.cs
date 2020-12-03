@@ -33,7 +33,7 @@ namespace Project_ENSAF
             currentProd.dateExpiration = p.dateExpiration;
             currentProd.img = p.img;
             currentProd.description = p.description;
-            this.lblPrix.Text =" p.prixVente.ToString()";
+            this.lblPrix.Text =" sssssssssssssssssssssssssssp.prixVente.ToString()";
             this.lblProdName.Text = p.libelle;
             this.lblProdDescri.Text = p.description;
             this.prodImg.Image = Image.FromStream( new MemoryStream(p.img));/**/
