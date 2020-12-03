@@ -37,8 +37,10 @@
             this.checkedLinePanel = new System.Windows.Forms.Panel();
             this.BtnGestionProduits = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.produit_cardUC1 = new Project_ENSAF.produit_cardUC();
             this.panel1.SuspendLayout();
             this.LogoPanel.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -145,11 +147,22 @@
             // 
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
+            this.flowLayoutPanel1.Controls.Add(this.produit_cardUC1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(201, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(790, 499);
             this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // produit_cardUC1
+            // 
+            this.produit_cardUC1.BackColor = System.Drawing.Color.White;
+            this.produit_cardUC1.Location = new System.Drawing.Point(3, 3);
+            this.produit_cardUC1.MaximumSize = new System.Drawing.Size(172, 218);
+            this.produit_cardUC1.MinimumSize = new System.Drawing.Size(172, 218);
+            this.produit_cardUC1.Name = "produit_cardUC1";
+            this.produit_cardUC1.Size = new System.Drawing.Size(172, 218);
+            this.produit_cardUC1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -166,6 +179,7 @@
             this.panel1.ResumeLayout(false);
             this.LogoPanel.ResumeLayout(false);
             this.LogoPanel.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -180,6 +194,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel LogoPanel;
         private System.Windows.Forms.Label lblLogo;
+        private produit_cardUC produit_cardUC1;
     }
 }
 
