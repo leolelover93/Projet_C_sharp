@@ -45,7 +45,7 @@
           <Property Name="prixAchat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="prixVente" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="dateExpiration" Type="datetime" Nullable="false" />
-          <Property Name="image" Type="image" />
+          <Property Name="img" Type="image" />
           <Property Name="description" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Stock_Magazin">
@@ -266,12 +266,12 @@
           <Property Name="prixAchat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="prixVente" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="dateExpiration" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Commandes" Relationship="Self.FK_Commande_Produit" FromRole="Produit" ToRole="Commande" />
           <NavigationProperty Name="Fournisseur" Relationship="Self.FK_Produit_Fournisseur" FromRole="Produit" ToRole="Fournisseur" />
           <NavigationProperty Name="Stock_Magazin" Relationship="Self.FK_Stock_Magazin_Produit" FromRole="Produit" ToRole="Stock_Magazin" />
           <NavigationProperty Name="Vente_magazin" Relationship="Self.FK_Vente_magazin_Produit" FromRole="Produit" ToRole="Vente_magazin" />
           <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Stock_Magazin">
           <Key>
@@ -485,6 +485,7 @@
           <EntitySetMapping Name="Produits">
             <EntityTypeMapping TypeName="projetModel.Produit">
               <MappingFragment StoreEntitySet="Produit">
+                <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="codeProduit" ColumnName="codeProduit" />
                 <ScalarProperty Name="idFournisseur" ColumnName="idFournisseur" />
@@ -492,7 +493,6 @@
                 <ScalarProperty Name="prixAchat" ColumnName="prixAchat" />
                 <ScalarProperty Name="prixVente" ColumnName="prixVente" />
                 <ScalarProperty Name="dateExpiration" ColumnName="dateExpiration" />
-                <ScalarProperty Name="image" ColumnName="image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

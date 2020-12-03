@@ -15,7 +15,10 @@ namespace Project_ENSAF
         public Form1()
         {
             InitializeComponent();
-        //www.youtube.com/watch?v=LJKkJI-gE38
+            checkedLinePanel.Height = GestionProduits.Height;
+            checkedLinePanel.Top = GestionProduits.Top;
+
+            //www.youtube.com/watch?v=LJKkJI-gE38
         }
         Button btn;
         produit_cardUC produitUI;
@@ -36,19 +39,12 @@ namespace Project_ENSAF
 
         private void button1_Click(object sender, EventArgs e)
         {
+            checkedLinePanel.Height = (sender as Button).Height;
+            checkedLinePanel.Top = (sender as Button).Top;
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine( "fere");
-        }
- 
 
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -74,14 +70,19 @@ namespace Project_ENSAF
             }     */
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+    
+
+
+        private void GestionProduits_MouseEnter(object sender, EventArgs e)
         {
+            (sender as Button).BackColor = Color.FromArgb(13, 72, 114);
+        }
+
+        private void GestionProduits_MouseLeave(object sender, EventArgs e)
+        {
+            (sender as Button).BackColor = Color.FromArgb(0, 53, 92);
 
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

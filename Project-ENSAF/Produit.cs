@@ -28,8 +28,8 @@ namespace Project_ENSAF
         public decimal prixAchat { get; set; }
         public decimal prixVente { get; set; }
         public System.DateTime dateExpiration { get; set; }
-        public byte[] image { get; set; }
         public string description { get; set; }
+        public byte[] img { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Commande> Commandes { get; set; }

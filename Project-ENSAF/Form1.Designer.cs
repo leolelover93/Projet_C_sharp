@@ -30,17 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.checkedLinePanel = new System.Windows.Forms.Panel();
             this.GestionProduits = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(92)))));
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.checkedLinePanel);
             this.panel1.Controls.Add(this.GestionProduits);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -49,16 +52,13 @@
             this.panel1.Size = new System.Drawing.Size(201, 499);
             this.panel1.TabIndex = 0;
             // 
-            // pictureBox1
+            // checkedLinePanel
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 120);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(36, 28);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.checkedLinePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.checkedLinePanel.Location = new System.Drawing.Point(3, 116);
+            this.checkedLinePanel.Name = "checkedLinePanel";
+            this.checkedLinePanel.Size = new System.Drawing.Size(6, 49);
+            this.checkedLinePanel.TabIndex = 1;
             // 
             // GestionProduits
             // 
@@ -66,14 +66,18 @@
             this.GestionProduits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GestionProduits.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GestionProduits.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.GestionProduits.Location = new System.Drawing.Point(42, 109);
+            this.GestionProduits.Image = ((System.Drawing.Image)(resources.GetObject("GestionProduits.Image")));
+            this.GestionProduits.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.GestionProduits.Location = new System.Drawing.Point(6, 116);
             this.GestionProduits.Name = "GestionProduits";
-            this.GestionProduits.Size = new System.Drawing.Size(159, 51);
+            this.GestionProduits.Size = new System.Drawing.Size(195, 51);
             this.GestionProduits.TabIndex = 0;
             this.GestionProduits.Text = "Gestion Produits";
-            this.GestionProduits.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.GestionProduits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.GestionProduits.UseVisualStyleBackColor = true;
             this.GestionProduits.Click += new System.EventHandler(this.button1_Click);
+            this.GestionProduits.MouseEnter += new System.EventHandler(this.GestionProduits_MouseEnter);
+            this.GestionProduits.MouseLeave += new System.EventHandler(this.GestionProduits_MouseLeave);
             // 
             // flowLayoutPanel1
             // 
@@ -84,7 +88,46 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(790, 499);
             this.flowLayoutPanel1.TabIndex = 1;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(12, 171);
+            this.button1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(191, 51);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Gestion Produits";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseEnter += new System.EventHandler(this.GestionProduits_MouseEnter);
+            this.button1.MouseLeave += new System.EventHandler(this.GestionProduits_MouseLeave);
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(12, 228);
+            this.button2.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(191, 51);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Gestion Produits";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button1_Click);
+            this.button2.MouseEnter += new System.EventHandler(this.GestionProduits_MouseEnter);
+            this.button2.MouseLeave += new System.EventHandler(this.GestionProduits_MouseLeave);
             // 
             // Form1
             // 
@@ -99,7 +142,6 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -109,7 +151,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button GestionProduits;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.PictureBox pictureBox1; 
+        private System.Windows.Forms.Panel checkedLinePanel;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
