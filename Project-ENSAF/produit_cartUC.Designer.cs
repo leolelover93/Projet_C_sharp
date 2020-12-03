@@ -56,11 +56,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.prodImg.Image = ((System.Drawing.Image)(resources.GetObject("prodImg.Image")));
-            this.prodImg.InitialImage = ((System.Drawing.Image)(resources.GetObject("prodImg.InitialImage")));
+            this.prodImg.InitialImage = null;
             this.prodImg.Location = new System.Drawing.Point(3, -1);
             this.prodImg.Name = "prodImg";
             this.prodImg.Size = new System.Drawing.Size(166, 117);
-            this.prodImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.prodImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.prodImg.TabIndex = 1;
             this.prodImg.TabStop = false;
             // 
@@ -112,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(228)))), ((int)(((byte)(207)))));
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblProdDescri);
