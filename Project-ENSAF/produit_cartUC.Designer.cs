@@ -98,7 +98,6 @@
             // 
             // lblPrix
             // 
-             
             this.lblPrix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPrix.AutoSize = true;
@@ -156,6 +155,7 @@
             this.Controls.Add(this.lblProdDescri);
             this.Controls.Add(this.prodImg);
             this.Controls.Add(this.lblProdName);
+            this.Enabled = false;
             this.MaximumSize = new System.Drawing.Size(172, 218);
             this.MinimumSize = new System.Drawing.Size(172, 218);
             this.Name = "produit_cardUC";
