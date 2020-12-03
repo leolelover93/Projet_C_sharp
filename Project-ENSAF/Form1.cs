@@ -52,7 +52,7 @@ namespace Project_ENSAF
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-      var context = new dbContext();
+     /* var context = new dbContext();
             var four = new Fournisseur()
             {
                 adressFournisseur = "dede",
@@ -71,7 +71,7 @@ namespace Project_ENSAF
             catch (Exception err)
             {
                 MessageBox.Show("error" + err.Message);
-            }      /**/
+            }     */
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

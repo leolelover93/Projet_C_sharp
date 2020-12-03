@@ -32,12 +32,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.GestionProduits = new System.Windows.Forms.Button();
-            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.metroProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -78,11 +75,6 @@
             this.GestionProduits.UseVisualStyleBackColor = true;
             this.GestionProduits.Click += new System.EventHandler(this.button1_Click);
             // 
-            // fileSystemWatcher1
-            // 
-            this.fileSystemWatcher1.EnableRaisingEvents = true;
-            this.fileSystemWatcher1.SynchronizingObject = this;
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
@@ -93,12 +85,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(790, 499);
             this.flowLayoutPanel1.TabIndex = 1;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
-            // 
-            // metroProgressBar1
-            // 
-            this.metroProgressBar1.Location = new System.Drawing.Point(0, 0);
-            this.metroProgressBar1.Name = "metroProgressBar1";
-            this.metroProgressBar1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -114,7 +100,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -123,10 +108,8 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button GestionProduits;
-        private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private MetroFramework.Controls.MetroProgressBar metroProgressBar1;
+        private System.Windows.Forms.PictureBox pictureBox1; 
     }
 }
 
