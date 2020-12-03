@@ -73,5 +73,10 @@ namespace Project_ENSAF
                 MessageBox.Show("error" + err.Message);
             }      /**/
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

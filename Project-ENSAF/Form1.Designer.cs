@@ -45,6 +45,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.GestionProduits);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(201, 499);
@@ -54,11 +55,11 @@
             // 
             this.GestionProduits.FlatAppearance.BorderSize = 0;
             this.GestionProduits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GestionProduits.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GestionProduits.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GestionProduits.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.GestionProduits.Location = new System.Drawing.Point(37, 107);
+            this.GestionProduits.Location = new System.Drawing.Point(42, 109);
             this.GestionProduits.Name = "GestionProduits";
-            this.GestionProduits.Size = new System.Drawing.Size(164, 51);
+            this.GestionProduits.Size = new System.Drawing.Size(159, 51);
             this.GestionProduits.TabIndex = 0;
             this.GestionProduits.Text = "Gestion Produits";
             this.GestionProduits.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -83,12 +84,13 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 120);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 120);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 27);
+            this.pictureBox1.Size = new System.Drawing.Size(36, 28);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Form1
             // 
