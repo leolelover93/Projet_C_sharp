@@ -12,38 +12,40 @@ namespace Project_ENSAF
 {
     public partial class Form1 : Form
     {
+        Button previousBtn;
         public Form1()
         {
             InitializeComponent();
-            checkedLinePanel.Height = GestionProduits.Height;
-            checkedLinePanel.Top = GestionProduits.Top;
+            checkedLinePanel.Height = BtnGestionProduits.Height;
+            checkedLinePanel.Top = BtnGestionProduits.Top;
+            
             //www.youtube.com/watch?v=LJKkJI-gE38
-            panel4tyle.SendToBack();
         }
         Button btn;
         produit_cardUC produitUI;
         private void Form1_Load(object sender, EventArgs e)
         {
-             for (int i = 0; i < 8; i++)
+            previousBtn = BtnGestionProduits;
+            BtnGestionProduits.BackColor = Color.FromArgb(13, 72, 114);
+            for (int i = 0; i < 8; i++)
              {
                 /*  btn = new Button();
                   btn.Text = "Button " + i.ToString(); 
                   flowLayoutPanel1.Controls.Add(btn);*/
-                /*produitUI = new produit_cardUC();
-             this.flowLayoutPanel1.Controls.Add(produitUI);*/
-
+                produitUI = new produit_cardUC();
+                 this.flowLayoutPanel1.Controls.Add(produitUI);
 
              }
 
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
+           previousBtn.BackColor = Color.FromArgb(0, 53, 92);
+            previousBtn = (sender as Button);
             checkedLinePanel.Height = (sender as Button).Height;
-          //  checkedLinePanel.Padding =new Padding(0,100,0,100);
             checkedLinePanel.Top = (sender as Button).Top;
-
-            panel4tyle.Location = new Point(checkedLinePanel.Left+7,checkedLinePanel.Top+1 );
+            (sender as Button).BackColor = Color.FromArgb(13, 72, 114);
+            
 
         }
 
@@ -76,16 +78,7 @@ namespace Project_ENSAF
     
 
 
-        private void GestionProduits_MouseEnter(object sender, EventArgs e)
-        {
-            (sender as Button).BackColor = Color.FromArgb(13, 72, 114);
-        }
 
-        private void GestionProduits_MouseLeave(object sender, EventArgs e)
-        {
-            (sender as Button).BackColor = Color.FromArgb(0, 53, 92);
-
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {

@@ -20,7 +20,7 @@ namespace Project_ENSAF
         public System.DateTime dateExpiration { get; set; }
         public byte[] image { get; set; }
         public string description { get; set; }
-        public produit_cardUC(Produit p)
+        public produit_cardUC()
         {
            /* codeProduit = p.codeProduit;
             idFournisseur = p.idFournisseur;

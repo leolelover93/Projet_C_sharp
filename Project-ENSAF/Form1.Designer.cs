@@ -33,20 +33,22 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.checkedLinePanel = new System.Windows.Forms.Panel();
-            this.GestionProduits = new System.Windows.Forms.Button();
+            this.BtnGestionProduits = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel4tyle = new System.Windows.Forms.Panel();
+            this.LogoPanel = new System.Windows.Forms.Panel();
+            this.lblLogo = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.LogoPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(92)))));
+            this.panel1.Controls.Add(this.LogoPanel);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.checkedLinePanel);
-            this.panel1.Controls.Add(this.GestionProduits);
-            this.panel1.Controls.Add(this.panel4tyle);
+            this.panel1.Controls.Add(this.BtnGestionProduits);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -62,17 +64,15 @@
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(12, 228);
+            this.button2.Location = new System.Drawing.Point(6, 230);
             this.button2.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(191, 51);
-            this.button2.TabIndex = 3;
+            this.button2.Size = new System.Drawing.Size(195, 51);
+            this.button2.TabIndex = 2;
             this.button2.Text = "Gestion Produits";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button1_Click);
-            this.button2.MouseEnter += new System.EventHandler(this.GestionProduits_MouseEnter);
-            this.button2.MouseLeave += new System.EventHandler(this.GestionProduits_MouseLeave);
             // 
             // button1
             // 
@@ -82,44 +82,40 @@
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(12, 171);
+            this.button1.Location = new System.Drawing.Point(6, 173);
             this.button1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(191, 51);
-            this.button1.TabIndex = 2;
+            this.button1.Size = new System.Drawing.Size(195, 51);
+            this.button1.TabIndex = 1;
             this.button1.Text = "Gestion Produits";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseEnter += new System.EventHandler(this.GestionProduits_MouseEnter);
-            this.button1.MouseLeave += new System.EventHandler(this.GestionProduits_MouseLeave);
             // 
             // checkedLinePanel
             // 
             this.checkedLinePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.checkedLinePanel.Location = new System.Drawing.Point(3, 116);
+            this.checkedLinePanel.Location = new System.Drawing.Point(0, 116);
             this.checkedLinePanel.Name = "checkedLinePanel";
             this.checkedLinePanel.Size = new System.Drawing.Size(6, 49);
             this.checkedLinePanel.TabIndex = 1;
             // 
-            // GestionProduits
+            // BtnGestionProduits
             // 
-            this.GestionProduits.FlatAppearance.BorderSize = 0;
-            this.GestionProduits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GestionProduits.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GestionProduits.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.GestionProduits.Image = ((System.Drawing.Image)(resources.GetObject("GestionProduits.Image")));
-            this.GestionProduits.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.GestionProduits.Location = new System.Drawing.Point(6, 116);
-            this.GestionProduits.Name = "GestionProduits";
-            this.GestionProduits.Size = new System.Drawing.Size(195, 51);
-            this.GestionProduits.TabIndex = 0;
-            this.GestionProduits.Text = "Gestion Produits";
-            this.GestionProduits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.GestionProduits.UseVisualStyleBackColor = true;
-            this.GestionProduits.Click += new System.EventHandler(this.button1_Click);
-            this.GestionProduits.MouseEnter += new System.EventHandler(this.GestionProduits_MouseEnter);
-            this.GestionProduits.MouseLeave += new System.EventHandler(this.GestionProduits_MouseLeave);
+            this.BtnGestionProduits.FlatAppearance.BorderSize = 0;
+            this.BtnGestionProduits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGestionProduits.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnGestionProduits.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BtnGestionProduits.Image = ((System.Drawing.Image)(resources.GetObject("BtnGestionProduits.Image")));
+            this.BtnGestionProduits.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnGestionProduits.Location = new System.Drawing.Point(6, 116);
+            this.BtnGestionProduits.Name = "BtnGestionProduits";
+            this.BtnGestionProduits.Size = new System.Drawing.Size(195, 51);
+            this.BtnGestionProduits.TabIndex = 0;
+            this.BtnGestionProduits.Text = "Gestion Produits";
+            this.BtnGestionProduits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnGestionProduits.UseVisualStyleBackColor = true;
+            this.BtnGestionProduits.Click += new System.EventHandler(this.button1_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -131,13 +127,29 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(790, 499);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
-            // panel4tyle
+            // LogoPanel
             // 
-            this.panel4tyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.panel4tyle.Location = new System.Drawing.Point(12, 285);
-            this.panel4tyle.Name = "panel4tyle";
-            this.panel4tyle.Size = new System.Drawing.Size(196, 52);
-            this.panel4tyle.TabIndex = 4;
+            this.LogoPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.LogoPanel.Controls.Add(this.lblLogo);
+            this.LogoPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.LogoPanel.Location = new System.Drawing.Point(0, 0);
+            this.LogoPanel.Name = "LogoPanel";
+            this.LogoPanel.Size = new System.Drawing.Size(201, 55);
+            this.LogoPanel.TabIndex = 0;
+            // 
+            // lblLogo
+            // 
+            this.lblLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblLogo.AutoSize = true;
+            this.lblLogo.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblLogo.Location = new System.Drawing.Point(44, 9);
+            this.lblLogo.Name = "lblLogo";
+            this.lblLogo.Size = new System.Drawing.Size(112, 28);
+            this.lblLogo.TabIndex = 0;
+            this.lblLogo.Text = "SUPREME";
             // 
             // Form1
             // 
@@ -152,6 +164,8 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
+            this.LogoPanel.ResumeLayout(false);
+            this.LogoPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -159,12 +173,13 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button GestionProduits;
+        private System.Windows.Forms.Button BtnGestionProduits;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel checkedLinePanel;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel4tyle;
+        private System.Windows.Forms.Panel LogoPanel;
+        private System.Windows.Forms.Label lblLogo;
     }
 }
 
