@@ -35,22 +35,14 @@
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.metroProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
-            this.produit_cardUC1 = new Project_ENSAF.produit_cardUC();
-            this.produit_cardUC2 = new Project_ENSAF.produit_cardUC();
-            this.produit_cardUC3 = new Project_ENSAF.produit_cardUC();
-            this.produit_cardUC4 = new Project_ENSAF.produit_cardUC();
-            this.produit_cardUC5 = new Project_ENSAF.produit_cardUC();
-            this.produit_cardUC6 = new Project_ENSAF.produit_cardUC();
-            this.produit_cardUC7 = new Project_ENSAF.produit_cardUC();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(72)))), ((int)(((byte)(103)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(92)))));
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.GestionProduits);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -95,13 +87,6 @@
             // 
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.flowLayoutPanel1.Controls.Add(this.produit_cardUC1);
-            this.flowLayoutPanel1.Controls.Add(this.produit_cardUC2);
-            this.flowLayoutPanel1.Controls.Add(this.produit_cardUC3);
-            this.flowLayoutPanel1.Controls.Add(this.produit_cardUC4);
-            this.flowLayoutPanel1.Controls.Add(this.produit_cardUC5);
-            this.flowLayoutPanel1.Controls.Add(this.produit_cardUC6);
-            this.flowLayoutPanel1.Controls.Add(this.produit_cardUC7);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(201, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -114,76 +99,6 @@
             this.metroProgressBar1.Location = new System.Drawing.Point(0, 0);
             this.metroProgressBar1.Name = "metroProgressBar1";
             this.metroProgressBar1.TabIndex = 0;
-            // 
-            // produit_cardUC1
-            // 
-            this.produit_cardUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.produit_cardUC1.Location = new System.Drawing.Point(3, 3);
-            this.produit_cardUC1.MaximumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC1.MinimumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC1.Name = "produit_cardUC1";
-            this.produit_cardUC1.Size = new System.Drawing.Size(172, 218);
-            this.produit_cardUC1.TabIndex = 0;
-            // 
-            // produit_cardUC2
-            // 
-            this.produit_cardUC2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.produit_cardUC2.Location = new System.Drawing.Point(181, 3);
-            this.produit_cardUC2.MaximumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC2.MinimumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC2.Name = "produit_cardUC2";
-            this.produit_cardUC2.Size = new System.Drawing.Size(172, 218);
-            this.produit_cardUC2.TabIndex = 1;
-            // 
-            // produit_cardUC3
-            // 
-            this.produit_cardUC3.BackColor = System.Drawing.Color.White;
-            this.produit_cardUC3.Location = new System.Drawing.Point(359, 3);
-            this.produit_cardUC3.MaximumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC3.MinimumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC3.Name = "produit_cardUC3";
-            this.produit_cardUC3.Size = new System.Drawing.Size(172, 218);
-            this.produit_cardUC3.TabIndex = 2;
-            // 
-            // produit_cardUC4
-            // 
-            this.produit_cardUC4.BackColor = System.Drawing.Color.White;
-            this.produit_cardUC4.Location = new System.Drawing.Point(537, 3);
-            this.produit_cardUC4.MaximumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC4.MinimumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC4.Name = "produit_cardUC4";
-            this.produit_cardUC4.Size = new System.Drawing.Size(172, 218);
-            this.produit_cardUC4.TabIndex = 3;
-            // 
-            // produit_cardUC5
-            // 
-            this.produit_cardUC5.BackColor = System.Drawing.Color.White;
-            this.produit_cardUC5.Location = new System.Drawing.Point(3, 227);
-            this.produit_cardUC5.MaximumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC5.MinimumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC5.Name = "produit_cardUC5";
-            this.produit_cardUC5.Size = new System.Drawing.Size(172, 218);
-            this.produit_cardUC5.TabIndex = 4;
-            // 
-            // produit_cardUC6
-            // 
-            this.produit_cardUC6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(228)))), ((int)(((byte)(207)))));
-            this.produit_cardUC6.Location = new System.Drawing.Point(181, 227);
-            this.produit_cardUC6.MaximumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC6.MinimumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC6.Name = "produit_cardUC6";
-            this.produit_cardUC6.Size = new System.Drawing.Size(172, 218);
-            this.produit_cardUC6.TabIndex = 5;
-            // 
-            // produit_cardUC7
-            // 
-            this.produit_cardUC7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(228)))), ((int)(((byte)(207)))));
-            this.produit_cardUC7.Location = new System.Drawing.Point(359, 227);
-            this.produit_cardUC7.MaximumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC7.MinimumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC7.Name = "produit_cardUC7";
-            this.produit_cardUC7.Size = new System.Drawing.Size(172, 218);
-            this.produit_cardUC7.TabIndex = 6;
             // 
             // Form1
             // 
@@ -200,7 +115,6 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -212,14 +126,7 @@
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private produit_cardUC produit_cardUC1;
-        private produit_cardUC produit_cardUC2;
         private MetroFramework.Controls.MetroProgressBar metroProgressBar1;
-        private produit_cardUC produit_cardUC3;
-        private produit_cardUC produit_cardUC4;
-        private produit_cardUC produit_cardUC5;
-        private produit_cardUC produit_cardUC6;
-        private produit_cardUC produit_cardUC7;
     }
 }
 

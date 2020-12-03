@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="projetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="projetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Commande">
           <Key>
             <PropertyRef Name="NCommande" />
@@ -46,6 +46,7 @@
           <Property Name="prixVente" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="dateExpiration" Type="datetime" Nullable="false" />
           <Property Name="image" Type="image" />
+          <Property Name="description" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Stock_Magazin">
           <Key>
@@ -213,8 +214,7 @@
             <End Role="Vente_magazin" EntitySet="Vente_magazin" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="projetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -271,6 +271,7 @@
           <NavigationProperty Name="Fournisseur" Relationship="Self.FK_Produit_Fournisseur" FromRole="Produit" ToRole="Fournisseur" />
           <NavigationProperty Name="Stock_Magazin" Relationship="Self.FK_Stock_Magazin_Produit" FromRole="Produit" ToRole="Stock_Magazin" />
           <NavigationProperty Name="Vente_magazin" Relationship="Self.FK_Vente_magazin_Produit" FromRole="Produit" ToRole="Vente_magazin" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Stock_Magazin">
           <Key>
@@ -484,6 +485,7 @@
           <EntitySetMapping Name="Produits">
             <EntityTypeMapping TypeName="projetModel.Produit">
               <MappingFragment StoreEntitySet="Produit">
+                <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="codeProduit" ColumnName="codeProduit" />
                 <ScalarProperty Name="idFournisseur" ColumnName="idFournisseur" />
                 <ScalarProperty Name="libelle" ColumnName="libelle" />
