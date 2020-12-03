@@ -29,8 +29,8 @@ namespace Project_ENSAF
                 /*  btn = new Button();
                   btn.Text = "Button " + i.ToString(); 
                   flowLayoutPanel1.Controls.Add(btn);*/
-                produitUI = new produit_cardUC();
-             this.flowLayoutPanel1.Controls.Add(produitUI);
+                /*produitUI = new produit_cardUC();
+             this.flowLayoutPanel1.Controls.Add(produitUI);*/
 
 
              }
