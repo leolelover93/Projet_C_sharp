@@ -17,8 +17,8 @@ namespace Project_ENSAF
             InitializeComponent();
             checkedLinePanel.Height = GestionProduits.Height;
             checkedLinePanel.Top = GestionProduits.Top;
-
             //www.youtube.com/watch?v=LJKkJI-gE38
+            panel4tyle.SendToBack();
         }
         Button btn;
         produit_cardUC produitUI;
@@ -40,7 +40,10 @@ namespace Project_ENSAF
         private void button1_Click(object sender, EventArgs e)
         {
             checkedLinePanel.Height = (sender as Button).Height;
+          //  checkedLinePanel.Padding =new Padding(0,100,0,100);
             checkedLinePanel.Top = (sender as Button).Top;
+
+            panel4tyle.Location = new Point(checkedLinePanel.Left+7,checkedLinePanel.Top+1 );
 
         }
 
@@ -84,5 +87,9 @@ namespace Project_ENSAF
 
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+             
+        }
     }
 }

@@ -30,11 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.checkedLinePanel = new System.Windows.Forms.Panel();
             this.GestionProduits = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.panel4tyle = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,12 +46,53 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.checkedLinePanel);
             this.panel1.Controls.Add(this.GestionProduits);
+            this.panel1.Controls.Add(this.panel4tyle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(201, 499);
             this.panel1.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(12, 228);
+            this.button2.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(191, 51);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Gestion Produits";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button1_Click);
+            this.button2.MouseEnter += new System.EventHandler(this.GestionProduits_MouseEnter);
+            this.button2.MouseLeave += new System.EventHandler(this.GestionProduits_MouseLeave);
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(12, 171);
+            this.button1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(191, 51);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Gestion Produits";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseEnter += new System.EventHandler(this.GestionProduits_MouseEnter);
+            this.button1.MouseLeave += new System.EventHandler(this.GestionProduits_MouseLeave);
             // 
             // checkedLinePanel
             // 
@@ -89,45 +131,13 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(790, 499);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
-            // button1
+            // panel4tyle
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(12, 171);
-            this.button1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(191, 51);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Gestion Produits";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseEnter += new System.EventHandler(this.GestionProduits_MouseEnter);
-            this.button1.MouseLeave += new System.EventHandler(this.GestionProduits_MouseLeave);
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(12, 228);
-            this.button2.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(191, 51);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Gestion Produits";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button1_Click);
-            this.button2.MouseEnter += new System.EventHandler(this.GestionProduits_MouseEnter);
-            this.button2.MouseLeave += new System.EventHandler(this.GestionProduits_MouseLeave);
+            this.panel4tyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
+            this.panel4tyle.Location = new System.Drawing.Point(12, 285);
+            this.panel4tyle.Name = "panel4tyle";
+            this.panel4tyle.Size = new System.Drawing.Size(196, 52);
+            this.panel4tyle.TabIndex = 4;
             // 
             // Form1
             // 
@@ -154,6 +164,7 @@
         private System.Windows.Forms.Panel checkedLinePanel;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel4tyle;
     }
 }
 
