@@ -38,7 +38,6 @@
             this.BtnGestionProduits = new System.Windows.Forms.Button();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.panelGestionProduit = new System.Windows.Forms.Panel();
-            this.panelGestionVentes = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -48,6 +47,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnAjouterProduit = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelGestionVentes = new System.Windows.Forms.Panel();
             this.flowLayoutPanelVente = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnViderPanger = new System.Windows.Forms.Button();
@@ -58,10 +58,10 @@
             this.LogoPanel.SuspendLayout();
             this.panelContainer.SuspendLayout();
             this.panelGestionProduit.SuspendLayout();
-            this.panelGestionVentes.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelSearchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelGestionVentes.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -188,17 +188,6 @@
             this.panelGestionProduit.Size = new System.Drawing.Size(790, 499);
             this.panelGestionProduit.TabIndex = 0;
             // 
-            // panelGestionVentes
-            // 
-            this.panelGestionVentes.BackColor = System.Drawing.Color.Chocolate;
-            this.panelGestionVentes.Controls.Add(this.flowLayoutPanelVente);
-            this.panelGestionVentes.Controls.Add(this.panel2);
-            this.panelGestionVentes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGestionVentes.Location = new System.Drawing.Point(0, 0);
-            this.panelGestionVentes.Name = "panelGestionVentes";
-            this.panelGestionVentes.Size = new System.Drawing.Size(790, 499);
-            this.panelGestionVentes.TabIndex = 1;
-            // 
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.MintCream;
@@ -319,6 +308,17 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 451);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
+            // panelGestionVentes
+            // 
+            this.panelGestionVentes.BackColor = System.Drawing.Color.Chocolate;
+            this.panelGestionVentes.Controls.Add(this.flowLayoutPanelVente);
+            this.panelGestionVentes.Controls.Add(this.panel2);
+            this.panelGestionVentes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelGestionVentes.Location = new System.Drawing.Point(0, 0);
+            this.panelGestionVentes.Name = "panelGestionVentes";
+            this.panelGestionVentes.Size = new System.Drawing.Size(790, 499);
+            this.panelGestionVentes.TabIndex = 1;
+            // 
             // flowLayoutPanelVente
             // 
             this.flowLayoutPanelVente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
@@ -418,12 +418,12 @@
             this.LogoPanel.PerformLayout();
             this.panelContainer.ResumeLayout(false);
             this.panelGestionProduit.ResumeLayout(false);
-            this.panelGestionVentes.ResumeLayout(false);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelSearchBox.ResumeLayout(false);
             this.panelSearchBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelGestionVentes.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

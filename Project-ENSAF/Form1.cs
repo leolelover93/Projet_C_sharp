@@ -33,7 +33,7 @@ namespace Project_ENSAF
             {
                 libelle = "danone2",
                 dateExpiration = DateTime.Now,
-                prixAchat = (decimal)1.5,
+                prixAchat = (decimal)1,
                 prixVente = (decimal)2,
                 description = "danone banane",
                 idFournisseur = 1,
