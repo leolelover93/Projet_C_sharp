@@ -5,6 +5,7 @@
     using System.IO;
     using System.Drawing;
 
+    using System.Windows.Forms;
     partial class produit_cardUC
     {
         /// <summary> 
@@ -120,7 +121,7 @@
             // btnEdit
             // 
             this.btnEdit.BackColor = System.Drawing.Color.White;
-            this.btnEdit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEdit.BackgroundImage")));
+            this.btnEdit.BackgroundImage = Properties.Resources.edit;
             this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEdit.FlatAppearance.BorderSize = 0;
@@ -137,7 +138,7 @@
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.White;
-            this.btnDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDelete.BackgroundImage")));
+            this.btnDelete.BackgroundImage =Properties.Resources.delete;
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.FlatAppearance.BorderSize = 0;
