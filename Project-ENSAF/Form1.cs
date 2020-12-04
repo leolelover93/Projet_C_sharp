@@ -1,52 +1,47 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
+
 namespace Project_ENSAF
 {
     public partial class Form1 : Form
     {
-        Button previousBtn;
+        Button previousBtn,prvBtnFilter;
         public Form1()
         {
             InitializeComponent();
             checkedLinePanel.Height = BtnGestionProduits.Height;
             checkedLinePanel.Top = BtnGestionProduits.Top;
-
+            
             //www.youtube.com/watch?v=LJKkJI-gE38
         }
-        Button btn;
         produit_cardUC produitUI;
         private void Form1_Load(object sender, EventArgs e)
         {
+            prvBtnFilter = btnViewALL;
+            btnViewALL.BackColor = Color.FromArgb(72, 152, 207);
+            btnViewALL.ForeColor = Color.White; 
             previousBtn = BtnGestionProduits;
-            BtnGestionProduits.BackColor = Color.FromArgb(13, 72, 114);
-            
-                /*  btn = new Button();
-                  btn.Text = "Button " + i.ToString(); 
-                  flowLayoutPanel1.Controls.Add(btn);*/
-                var db = new dbContext();
 
-            byte[] buffer = File.ReadAllBytes(@"C:\Users\said.leader\source\repos\Project-ENSAF\Project-ENSAF\Project-ENSAF\asset\icon\shipping.png");
-            Produit p = new Produit()
-            {
-                libelle = "danone2",
-                dateExpiration = DateTime.Now,
-                prixAchat = (decimal)1.5,
-                prixVente = (decimal)2,
-                description = "danone banane",
-                idFournisseur = 1,
-                img = buffer
-            };
-            //db.Produits.Find(1);
-            produitUI = new produit_cardUC();
-                this.flowLayoutPanel1.Controls.Add(produitUI);
- 
+            BtnGestionProduits.BackColor = Color.FromArgb(13, 72, 114);
+            for (int i = 0; i < 50; i++)
+             {
+              
+                produitUI = new produit_cardUC();
+                 this.flowLayoutPanel1.Controls.Add(produitUI);
+
+             }
 
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            previousBtn.BackColor = Color.FromArgb(0, 53, 92);
+           previousBtn.BackColor = Color.FromArgb(0, 53, 92);
             previousBtn = (sender as Button);
             checkedLinePanel.Height = (sender as Button).Height;
             checkedLinePanel.Top = (sender as Button).Top;
@@ -57,36 +52,27 @@ namespace Project_ENSAF
 
 
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-          /*  var context = new dbContext();
-                    var four = new Fournisseur()
-                   {
-                       adressFournisseur = "dede",
-                       nomFournisseur = "kdjnez",
-                       prenomFournisseur = "hamadi dasswass",
-                       telFournisseur = "0202020",
-
-
-                   };
-                   try
-                   {
-                       context.Fournisseurs.Add(four);
-                       context.SaveChanges();
-                       MessageBox.Show("success");
-                   }
-                   catch (Exception err)
-                   {
-                       MessageBox.Show("error" + err.Message);
-                   }     */
-        }
-
-
-
-
-
 
         private void button3_Click(object sender, EventArgs e)
+        {
+             
+        }
+
+        private void filter_style_click(object sender, EventArgs e)
+        {
+            prvBtnFilter.BackColor = Color.White;
+            prvBtnFilter.ForeColor = Color.FromArgb(72, 152, 207);
+            prvBtnFilter = (sender as Button); 
+            prvBtnFilter.BackColor = Color.FromArgb(72, 152, 207);
+            prvBtnFilter.ForeColor = Color.White;
+        }
+
+        private void panelHeader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
