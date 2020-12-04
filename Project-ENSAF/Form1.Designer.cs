@@ -38,15 +38,15 @@
             this.BtnGestionProduits = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelHeader = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.btnViewALL = new System.Windows.Forms.Button();
             this.panelSearchBox = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnAjouterProduit = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.btnViewALL = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             this.panelHeader.SuspendLayout();
@@ -163,7 +163,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(201, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 80, 0, 0);
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 80, 0, 200);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(790, 499);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
@@ -182,6 +182,48 @@
             this.panelHeader.Size = new System.Drawing.Size(790, 55);
             this.panelHeader.TabIndex = 2;
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.White;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.button5.Location = new System.Drawing.Point(435, 16);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(100, 29);
+            this.button5.TabIndex = 3;
+            this.button5.Text = "Non-Disponible";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.filter_style_click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.White;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.button4.Location = new System.Drawing.Point(356, 16);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(73, 29);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Disponible";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.filter_style_click);
+            // 
+            // btnViewALL
+            // 
+            this.btnViewALL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.btnViewALL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewALL.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.btnViewALL.ForeColor = System.Drawing.Color.White;
+            this.btnViewALL.Location = new System.Drawing.Point(275, 16);
+            this.btnViewALL.Name = "btnViewALL";
+            this.btnViewALL.Size = new System.Drawing.Size(75, 29);
+            this.btnViewALL.TabIndex = 0;
+            this.btnViewALL.Text = "All";
+            this.btnViewALL.UseVisualStyleBackColor = false;
+            this.btnViewALL.Click += new System.EventHandler(this.filter_style_click);
+            // 
             // panelSearchBox
             // 
             this.panelSearchBox.Controls.Add(this.pictureBox1);
@@ -195,9 +237,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(198, 14);
+            this.pictureBox1.Location = new System.Drawing.Point(208, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 18);
+            this.pictureBox1.Size = new System.Drawing.Size(23, 18);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -230,48 +272,6 @@
             this.btnAjouterProduit.TabIndex = 0;
             this.btnAjouterProduit.Text = "+ Ajouter Prdouit";
             this.btnAjouterProduit.UseVisualStyleBackColor = false;
-            // 
-            // btnViewALL
-            // 
-            this.btnViewALL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.btnViewALL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewALL.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.btnViewALL.ForeColor = System.Drawing.Color.White;
-            this.btnViewALL.Location = new System.Drawing.Point(275, 16);
-            this.btnViewALL.Name = "btnViewALL";
-            this.btnViewALL.Size = new System.Drawing.Size(75, 29);
-            this.btnViewALL.TabIndex = 0;
-            this.btnViewALL.Text = "All";
-            this.btnViewALL.UseVisualStyleBackColor = false;
-            this.btnViewALL.Click += new System.EventHandler(this.filter_style_click);
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.button4.Location = new System.Drawing.Point(356, 16);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(73, 29);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Disponible";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.filter_style_click);
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.button5.Location = new System.Drawing.Point(435, 16);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 29);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Non-Disponible";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.filter_style_click);
             // 
             // Form1
             // 

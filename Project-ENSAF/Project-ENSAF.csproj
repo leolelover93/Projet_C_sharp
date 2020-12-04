@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="asset\icon\Search_icon.png" />
+    <Content Include="asset\icon\Search_icon2.png" />
     <Content Include="asset\icon\shipping.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

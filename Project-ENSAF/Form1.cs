@@ -22,15 +22,10 @@ namespace Project_ENSAF
             btnViewALL.BackColor = Color.FromArgb(72, 152, 207);
             btnViewALL.ForeColor = Color.White; 
             previousBtn = BtnGestionProduits;
-
             BtnGestionProduits.BackColor = Color.FromArgb(13, 72, 114);
             
-                /*  btn = new Button();
-                  btn.Text = "Button " + i.ToString(); 
-                  flowLayoutPanel1.Controls.Add(btn);*/
-                var db = new dbContext();
-
-            byte[] buffer = File.ReadAllBytes(@"C:\Users\said.leader\source\repos\Project-ENSAF\Project-ENSAF\Project-ENSAF\asset\icon\shipping.png");
+            var db = new dbContext();
+            byte[] buffer = File.ReadAllBytes(@"C:\Users\TokenPc\source\repos\Project-ENSAF\Project-ENSAF\Project-ENSAF\asset\icon\delete.png");
             Produit p = new Produit()
             {
                 libelle = "danone2",
@@ -41,17 +36,18 @@ namespace Project_ENSAF
                 idFournisseur = 1,
                 img = buffer
             };
+
             //db.Produits.Find(1);
-            produitUI = new produit_cardUC();
+            produitUI = new produit_cardUC(p);
                 this.flowLayoutPanel1.Controls.Add(produitUI);
  
-            for (int i = 0; i < 50; i++)
+        /*    for (int i = 0; i < 50; i++)
              {
               
                 produitUI = new produit_cardUC();
                  this.flowLayoutPanel1.Controls.Add(produitUI);
 
-             }
+             }*/
 
         }
         private void button1_Click(object sender, EventArgs e)
