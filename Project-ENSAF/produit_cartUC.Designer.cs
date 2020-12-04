@@ -4,6 +4,7 @@
     using System.ComponentModel;
     using System.IO;
     using System.Drawing;
+    using System.Windows.Forms;
 
     partial class produit_cardUC
     {
@@ -26,7 +27,14 @@
         }
 
         #region Component Designer generated code
-         
+        public void fct()
+        {
+
+            this.lblProdName.Text ="Said";
+
+            MessageBox.Show("changed: " + this.lblProdName.Text);
+
+        }
         private void InitializeComponent(Produit p)
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(produit_cardUC));
@@ -57,12 +65,12 @@
             this.prodImg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.prodImg.Image = Image.FromStream(new MemoryStream(p.img));
+            this.prodImg.Image = p.img!=null? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
             this.prodImg.InitialImage = null;
             this.prodImg.Location = new System.Drawing.Point(3, -1);
             this.prodImg.Name = "prodImg";
             this.prodImg.Size = new System.Drawing.Size(166, 117);
-            this.prodImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.prodImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.prodImg.TabIndex = 1;
             this.prodImg.TabStop = false;
             // 

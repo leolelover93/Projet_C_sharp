@@ -86,12 +86,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="nv_produitUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="nv_produitUC.Designer.cs">
-      <DependentUpon>nv_produitUC.cs</DependentUpon>
-    </Compile>
     <Compile Include="Produit.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -115,9 +109,6 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="nv_produitUC.resx">
-      <DependentUpon>nv_produitUC.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="produit_cartUC.resx">
       <DependentUpon>produit_cartUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +120,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -155,9 +147,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\loading-product.png" />
+    <None Include="asset\icon\delete.png" />
+    <None Include="asset\icon\edit.png" />
     <Content Include="asset\icon\Search_icon.png" />
     <Content Include="asset\icon\Search_icon2.png" />
     <Content Include="asset\icon\shipping.png" />
+    <Content Include="asset\icon\sweets.jpg" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -168,6 +164,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\item-05.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

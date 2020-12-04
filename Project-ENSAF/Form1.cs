@@ -12,10 +12,15 @@ namespace Project_ENSAF
             InitializeComponent();
             checkedLinePanel.Height = BtnGestionProduits.Height;
             checkedLinePanel.Top = BtnGestionProduits.Top;
-
+            produit_cardUC produitUI;
+            var db = new dbContext();
+            Produit p = db.Produits.Find(4);
+            foreach (var produit in db.Produits)
+            {
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit));
+            }
             //www.youtube.com/watch?v=LJKkJI-gE38
         }
-        produit_cardUC produitUI;
         private void Form1_Load(object sender, EventArgs e)
         {
             prvBtnFilter = btnViewALL;
@@ -23,26 +28,13 @@ namespace Project_ENSAF
             btnViewALL.ForeColor = Color.White; 
             previousBtn = BtnGestionProduits;
             BtnGestionProduits.BackColor = Color.FromArgb(13, 72, 114);
-            
-            var db = new dbContext();
-            byte[] buffer = File.ReadAllBytes(@"F:\user\desktop\Project-ENSAF backup\Project-ENSAF\Project-ENSAF\asset\icon\delete.png");
-            Produit p = new Produit()
-            {
-                libelle = "danone2",
-                dateExpiration = DateTime.Now,
-                prixAchat = (decimal)1.5,
-                prixVente = (decimal)2,
-                description = "danone banane",
-                idFournisseur = 1,
-                img = buffer
-            };
 
-            //db.Produits.Find(1);
-            produitUI = new produit_cardUC(p);
+           
+           // produitUI = new produit_cardUC(p);
 /*            p.libelle = "refresh";
             produitUI = new produit_cardUC(p);*/
 
-            this.flowLayoutPanel1.Controls.Add(produitUI);
+           // this.flowLayoutPanel1.Controls.Add(produitUI);
  
        /*  for (int i = 0; i < 50; i++)
              {
@@ -79,6 +71,16 @@ namespace Project_ENSAF
             prvBtnFilter = (sender as Button); 
             prvBtnFilter.BackColor = Color.FromArgb(72, 152, 207);
             prvBtnFilter.ForeColor = Color.White;
+        }
+
+        private void backgroundWorker2_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

@@ -9,7 +9,7 @@ namespace Project_ENSAF
         Produit currentProd=new Produit();
         public produit_cardUC()
         {
-            byte[] buffer = File.ReadAllBytes(@"C:\Users\said.leader\source\repos\Project-ENSAF\Project-ENSAF\Project-ENSAF\asset\icon\shipping.png");
+            byte[] buffer = (byte[])new ImageConverter().ConvertTo(Properties.Resources.sweets, typeof(byte[]));
             Produit p = new Produit()
             {
                 libelle = "danone2",
@@ -38,7 +38,7 @@ namespace Project_ENSAF
             /*  this.Lblprix = p.prixVente.ToString(); 
              this.LblProdDescri = p.description;*/
             //   this.prodImg.Image = Image.FromStream( new MemoryStream(p.img));/**/ 
-
+            this.currentProd = p; 
             InitializeComponent(p);
         } 
          
@@ -56,25 +56,29 @@ namespace Project_ENSAF
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-                try
-                {
+            //this.fct();
+             try
+             {
 
                 var db = new dbContext();
-                db.Produits.Remove(this.currentProd);
-                    db.SaveChanges();
-                    MessageBox.Show("product deleted");
+                Produit p = db.Produits.Find(currentProd.codeProduit);
+                db.Produits.Remove(p); 
+                db.SaveChanges();
+                this.Dispose();
+                MessageBox.Show("product deleted");
 
-                }
-                catch (Exception excep)
-                {
-                    MessageBox.Show("Error! cant delete product :" + excep.Message);
-                }
+             }
+             catch (Exception excep)
+             {
+                MessageBox.Show("Error! cant delete product :" + excep.Message);
+             }  /* */
         } 
         private void btnEdit_Click(object sender, EventArgs e)
         { 
             try
             {
-                byte[] buffer = File.ReadAllBytes(@"C:\Users\said.leader\source\repos\Project-ENSAF\Project-ENSAF\Project-ENSAF\asset\icon\shipping.png");
+
+                byte[] buffer = (byte[])new ImageConverter().ConvertTo(Properties.Resources.sweets, typeof(byte[]));
                 Produit p = new Produit()
                 {
                     libelle = "danone2",
@@ -87,8 +91,9 @@ namespace Project_ENSAF
                 };
                 var db = new dbContext();
                 db.Produits.Add(p);
+                this.Parent.Refresh();
                 db.SaveChanges();
-
+                
                 MessageBox.Show("product insertion successed:");
             }
             catch (Exception exce)
