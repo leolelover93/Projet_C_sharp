@@ -40,9 +40,9 @@ namespace Project_ENSAF
              {
               
                 produitUI = new produit_cardUC();
-                 this.flowLayoutPanel1.Controls.Add(produitUI);
+                this.flowLayoutPanel1.Controls.Add(produitUI);
 
-             }*/
+            }*/
 
         }
         private void button1_Click(object sender, EventArgs e)
