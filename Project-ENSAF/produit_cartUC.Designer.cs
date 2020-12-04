@@ -29,7 +29,7 @@
             this.prodImg = new System.Windows.Forms.PictureBox();
             this.lblProdDescri = new System.Windows.Forms.Label();
             this.btnReadMore = new System.Windows.Forms.Button();
-            this.lblPrix = new System.Windows.Forms.Label();
+            this.lblprix = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.prodImg)).BeginInit();
@@ -92,9 +92,9 @@
             this.btnReadMore.Text = "Read more";
             this.btnReadMore.UseVisualStyleBackColor = false;
             // 
-            // lblPrix
+            // lblprix
             // 
-            this.lblPrix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblprix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPrix.AutoSize = true;
             this.lblPrix.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -146,7 +146,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.lblPrix);
+            this.Controls.Add(this.lblprix);
             this.Controls.Add(this.btnReadMore);
             this.Controls.Add(this.lblProdDescri);
             this.Controls.Add(this.prodImg);
@@ -155,6 +155,7 @@
             this.MinimumSize = new System.Drawing.Size(172, 218);
             this.Name = "produit_cardUC";
             this.Size = new System.Drawing.Size(172, 218);
+            this.Load += new System.EventHandler(this.produit_cardUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.prodImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -167,7 +168,7 @@
         private System.Windows.Forms.PictureBox prodImg;
         private System.Windows.Forms.Label lblProdDescri;
         private System.Windows.Forms.Button btnReadMore;
-        private System.Windows.Forms.Label lblPrix;
+        private System.Windows.Forms.Label lblprix;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
     }

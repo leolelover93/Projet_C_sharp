@@ -6,7 +6,7 @@ namespace Project_ENSAF
 {
     public partial class Form1 : Form
     {
-        Button previousBtn;
+        Button previousBtn,prvBtnFilter;
         public Form1()
         {
             InitializeComponent();
@@ -15,19 +15,17 @@ namespace Project_ENSAF
 
             //www.youtube.com/watch?v=LJKkJI-gE38
         }
-        Button btn;
         produit_cardUC produitUI;
         private void Form1_Load(object sender, EventArgs e)
         {
+            prvBtnFilter = btnViewALL;
+            btnViewALL.BackColor = Color.FromArgb(72, 152, 207);
+            btnViewALL.ForeColor = Color.White; 
             previousBtn = BtnGestionProduits;
             BtnGestionProduits.BackColor = Color.FromArgb(13, 72, 114);
             
-                /*  btn = new Button();
-                  btn.Text = "Button " + i.ToString(); 
-                  flowLayoutPanel1.Controls.Add(btn);*/
-                var db = new dbContext();
-
-            byte[] buffer = File.ReadAllBytes(@"C:\Users\said.leader\source\repos\Project-ENSAF\Project-ENSAF\Project-ENSAF\asset\icon\shipping.png");
+            var db = new dbContext();
+            byte[] buffer = File.ReadAllBytes(@"C:\Users\TokenPc\source\repos\Project-ENSAF\Project-ENSAF\Project-ENSAF\asset\icon\delete.png");
             Produit p = new Produit()
             {
                 libelle = "danone2",
@@ -38,10 +36,18 @@ namespace Project_ENSAF
                 idFournisseur = 1,
                 img = buffer
             };
+
             //db.Produits.Find(1);
-            produitUI = new produit_cardUC();
+            produitUI = new produit_cardUC(p);
                 this.flowLayoutPanel1.Controls.Add(produitUI);
  
+        /*    for (int i = 0; i < 50; i++)
+             {
+              
+                produitUI = new produit_cardUC();
+                 this.flowLayoutPanel1.Controls.Add(produitUI);
+
+             }*/
 
         }
         private void button1_Click(object sender, EventArgs e)
@@ -57,36 +63,22 @@ namespace Project_ENSAF
 
 
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-          /*  var context = new dbContext();
-                    var four = new Fournisseur()
-                   {
-                       adressFournisseur = "dede",
-                       nomFournisseur = "kdjnez",
-                       prenomFournisseur = "hamadi dasswass",
-                       telFournisseur = "0202020",
-
-
-                   };
-                   try
-                   {
-                       context.Fournisseurs.Add(four);
-                       context.SaveChanges();
-                       MessageBox.Show("success");
-                   }
-                   catch (Exception err)
-                   {
-                       MessageBox.Show("error" + err.Message);
-                   }     */
-        }
-
-
-
-
-
 
         private void button3_Click(object sender, EventArgs e)
+        {
+             
+        }
+
+        private void filter_style_click(object sender, EventArgs e)
+        {
+            prvBtnFilter.BackColor = Color.White;
+            prvBtnFilter.ForeColor = Color.FromArgb(72, 152, 207);
+            prvBtnFilter = (sender as Button); 
+            prvBtnFilter.BackColor = Color.FromArgb(72, 152, 207);
+            prvBtnFilter.ForeColor = Color.White;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

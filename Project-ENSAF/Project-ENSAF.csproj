@@ -155,6 +155,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="asset\icon\Search_icon.png" />
+    <Content Include="asset\icon\Search_icon2.png" />
     <Content Include="asset\icon\shipping.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

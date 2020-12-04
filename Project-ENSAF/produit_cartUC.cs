@@ -24,7 +24,8 @@ namespace Project_ENSAF
         }
         public produit_cardUC(Produit p)
         {
-            MessageBox.Show( p.prixVente.ToString());
+            System.Type a = p.GetType(); 
+            MessageBox.Show(a.ToString());
             currentProd.codeProduit = p.codeProduit;
             currentProd.idFournisseur = p.idFournisseur;
             currentProd.libelle = p.libelle;
@@ -33,8 +34,8 @@ namespace Project_ENSAF
             currentProd.dateExpiration = p.dateExpiration;
             currentProd.img = p.img;
             currentProd.description = p.description;
-            this.lblPrix.Text =" p.prixVente.ToString()";
             this.lblProdName.Text = p.libelle;
+            this.lblprix.Text = "Hard Coded"; 
             this.lblProdDescri.Text = p.description;
             this.prodImg.Image = Image.FromStream( new MemoryStream(p.img));/**/
             InitializeComponent();
@@ -96,6 +97,11 @@ namespace Project_ENSAF
             {
                 MessageBox.Show("Error! cant insert product :" + exce.Message);
             }
+        }
+
+        private void produit_cardUC_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
