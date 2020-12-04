@@ -155,12 +155,10 @@
             this.Controls.Add(this.lblProdDescri);
             this.Controls.Add(this.prodImg);
             this.Controls.Add(this.lblProdName);
-            this.Enabled = false;
             this.MaximumSize = new System.Drawing.Size(172, 218);
             this.MinimumSize = new System.Drawing.Size(172, 218);
             this.Name = "produit_cardUC";
             this.Size = new System.Drawing.Size(172, 218);
-            this.Load += new System.EventHandler(this.produit_cardUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.prodImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

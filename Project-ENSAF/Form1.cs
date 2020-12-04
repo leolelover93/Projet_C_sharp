@@ -23,31 +23,31 @@ namespace Project_ENSAF
             btnViewALL.ForeColor = Color.White; 
             previousBtn = BtnGestionProduits;
             BtnGestionProduits.BackColor = Color.FromArgb(13, 72, 114);
-            
-            var db = new dbContext();
-            byte[] buffer = File.ReadAllBytes(@"C:\Users\TokenPc\source\repos\Project-ENSAF\Project-ENSAF\Project-ENSAF\asset\icon\delete.png");
-            Produit p = new Produit()
-            {
-                libelle = "danone2",
-                dateExpiration = DateTime.Now,
-                prixAchat = (decimal)1.5,
-                prixVente = (decimal)2,
-                description = "danone banane",
-                idFournisseur = 1,
-                img = buffer
-            };
 
-            //db.Produits.Find(1);
-            produitUI = new produit_cardUC(p);
-                this.flowLayoutPanel1.Controls.Add(produitUI);
- 
-        /*    for (int i = 0; i < 50; i++)
+             var db = new dbContext();
+             byte[] buffer = File.ReadAllBytes(@"C:\Users\TokenPc\source\repos\Project-ENSAF\Project-ENSAF\Project-ENSAF\asset\icon\delete.png");
+             Produit p = new Produit()
              {
-              
-                produitUI = new produit_cardUC();
+                 libelle = "danone2",
+                 dateExpiration = DateTime.Now,
+                 prixAchat = (decimal)1.5,
+                 prixVente = (decimal)2,
+                 description = "danone banane",
+                 idFournisseur = 1,
+                 img = buffer
+             };
+
+             //db.Produits.Find(1);
+             produitUI = new produit_cardUC(p);
                  this.flowLayoutPanel1.Controls.Add(produitUI);
 
-             }*/
+         /*   for (int i = 0; i < 50; i++)
+            {
+
+                produitUI = new produit_cardUC();
+                this.flowLayoutPanel1.Controls.Add(produitUI);
+
+            }*/
 
         }
         private void button1_Click(object sender, EventArgs e)
