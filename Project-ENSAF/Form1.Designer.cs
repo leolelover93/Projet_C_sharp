@@ -47,13 +47,11 @@
             this.btnAjouterProduit = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.produit_cardUC1 = new Project_ENSAF.produit_cardUC();
             this.panel1.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelSearchBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -161,7 +159,6 @@
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flowLayoutPanel1.Controls.Add(this.produit_cardUC1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(201, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
@@ -276,16 +273,6 @@
             this.btnAjouterProduit.Text = "+ Ajouter Prdouit";
             this.btnAjouterProduit.UseVisualStyleBackColor = false;
             // 
-            // produit_cardUC1
-            // 
-            this.produit_cardUC1.BackColor = System.Drawing.Color.White;
-            this.produit_cardUC1.Location = new System.Drawing.Point(3, 3);
-            this.produit_cardUC1.MaximumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC1.MinimumSize = new System.Drawing.Size(172, 218);
-            this.produit_cardUC1.Name = "produit_cardUC1";
-            this.produit_cardUC1.Size = new System.Drawing.Size(172, 218);
-            this.produit_cardUC1.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,7 +294,6 @@
             this.panelSearchBox.ResumeLayout(false);
             this.panelSearchBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -332,7 +318,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnViewALL;
-        private produit_cardUC produit_cardUC1;
     }
 }
 

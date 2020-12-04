@@ -1,5 +1,10 @@
 ﻿namespace Project_ENSAF
-{
+{ 
+    using System;
+    using System.ComponentModel;
+    using System.IO;
+    using System.Drawing;
+
     partial class produit_cardUC
     {
         /// <summary> 
@@ -22,7 +27,7 @@
 
         #region Component Designer generated code
          
-        private void InitializeComponent()
+        private void InitializeComponent(Produit p)
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(produit_cardUC));
             this.lblProdName = new System.Windows.Forms.Label();
@@ -45,14 +50,14 @@
             this.lblProdName.Name = "lblProdName";
             this.lblProdName.Size = new System.Drawing.Size(56, 23);
             this.lblProdName.TabIndex = 0;
-            this.lblProdName.Text = "Bimo";
+            this.lblProdName.Text = p.libelle;
             // 
             // prodImg
             // 
             this.prodImg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.prodImg.Image = ((System.Drawing.Image)(resources.GetObject("prodImg.Image")));
+            this.prodImg.Image = Image.FromStream(new MemoryStream(p.img));
             this.prodImg.InitialImage = null;
             this.prodImg.Location = new System.Drawing.Point(3, -1);
             this.prodImg.Name = "prodImg";
@@ -74,7 +79,7 @@
             this.lblProdDescri.Name = "lblProdDescri";
             this.lblProdDescri.Size = new System.Drawing.Size(177, 40);
             this.lblProdDescri.TabIndex = 2;
-            this.lblProdDescri.Text = "this is product description. it gives the products caracteristics ...";
+            this.lblProdDescri.Text =p.description;
             // 
             // btnReadMore
             // 
@@ -96,14 +101,14 @@
             // 
             this.lblprix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPrix.AutoSize = true;
-            this.lblPrix.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrix.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
-            this.lblPrix.Location = new System.Drawing.Point(-1, 189);
-            this.lblPrix.Name = "lblPrix";
-            this.lblPrix.Size = new System.Drawing.Size(43, 23);
-            this.lblPrix.TabIndex = 4;
-            this.lblPrix.Text = "$12";
+            this.lblprix.AutoSize = true;
+            this.lblprix.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblprix.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
+            this.lblprix.Location = new System.Drawing.Point(-1, 189);
+            this.lblprix.Name = "lblPrix";
+            this.lblprix.Size = new System.Drawing.Size(43, 23);
+            this.lblprix.TabIndex = 4;
+            this.lblprix.Text = p.prixVente.ToString()+"DH";
             // 
             // btnEdit
             // 
@@ -163,13 +168,48 @@
         }
 
         #endregion
+       /* [Browsable(true)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [Bindable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public override string Text
+        {
+            get { return base.Text; }
+            set { base.Text = value; }
+        }*/
+        public System.Windows.Forms.Label lblProdName { get; set; }
+      /*  public string LblProdName
+        {
+            get { return lblProdName.Text; }
+            set { this.lblProdName.Text = value; }
+        }*/
+        public System.Windows.Forms.PictureBox prodImg;
+        public System.Windows.Forms.Label lblProdDescri;
+      /*  public string LblProdDescri
+        {
+            get { return lblProdName.Text; }
+            set { this.lblProdName.Text = value; }
+        }*/
+        public System.Windows.Forms.Button btnReadMore;
+        public System.Windows.Forms.Label lblprix;
+        /*  public string Lblprix
+          {
+              get { return lblProdName.Text; }
+              set { this.lblProdName.Text = value; }
+          }*/
+        public System.Windows.Forms.Button btnEdit;
+        public System.Windows.Forms.Button btnDelete;
+      
+/*
 
-        private System.Windows.Forms.Label lblProdName;
-        private System.Windows.Forms.PictureBox prodImg;
-        private System.Windows.Forms.Label lblProdDescri;
-        private System.Windows.Forms.Button btnReadMore;
-        private System.Windows.Forms.Label lblprix;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnDelete;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Browsable(true), Description("The Image Index for the button"), DefaultValue(0)]
+        [System.ComponentModel.TypeConverter(typeof(System.Windows.Forms.ImageIndexConverter))]
+        public int ImageIndex
+        {
+            get { return btnPick.ImageIndex; }
+            set { btnPick.ImageIndex = value; }
+        }*/
+
     }
 }
