@@ -45,7 +45,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProdName.AutoSize = true;
             this.lblProdName.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProdName.Location = new System.Drawing.Point(-1, 119);
+            this.lblProdName.Location = new System.Drawing.Point(-1, 118);
             this.lblProdName.Name = "lblProdName";
             this.lblProdName.Size = new System.Drawing.Size(56, 23);
             this.lblProdName.TabIndex = 0;
@@ -73,7 +73,7 @@
             this.lblProdDescri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblProdDescri.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProdDescri.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblProdDescri.Location = new System.Drawing.Point(0, 148);
+            this.lblProdDescri.Location = new System.Drawing.Point(0, 144);
             this.lblProdDescri.MaximumSize = new System.Drawing.Size(190, 40);
             this.lblProdDescri.Name = "lblProdDescri";
             this.lblProdDescri.Size = new System.Drawing.Size(177, 40);
@@ -89,7 +89,7 @@
             this.btnReadMore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReadMore.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReadMore.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnReadMore.Location = new System.Drawing.Point(84, 186);
+            this.btnReadMore.Location = new System.Drawing.Point(84, 185);
             this.btnReadMore.Name = "btnReadMore";
             this.btnReadMore.Size = new System.Drawing.Size(82, 27);
             this.btnReadMore.TabIndex = 3;
@@ -98,13 +98,12 @@
             // 
             // lblPrix
             // 
-             
             this.lblPrix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPrix.AutoSize = true;
             this.lblPrix.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrix.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
-            this.lblPrix.Location = new System.Drawing.Point(-1, 190);
+            this.lblPrix.Location = new System.Drawing.Point(-1, 189);
             this.lblPrix.Name = "lblPrix";
             this.lblPrix.Size = new System.Drawing.Size(43, 23);
             this.lblPrix.TabIndex = 4;
@@ -118,7 +117,7 @@
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Location = new System.Drawing.Point(124, 119);
+            this.btnEdit.Location = new System.Drawing.Point(123, 119);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(18, 20);
             this.btnEdit.TabIndex = 7;
@@ -135,7 +134,7 @@
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(146, 119);
+            this.btnDelete.Location = new System.Drawing.Point(147, 119);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(20, 18);
             this.btnDelete.TabIndex = 8;
