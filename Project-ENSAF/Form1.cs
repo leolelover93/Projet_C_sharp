@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using System.Collections.Generic;
 namespace Project_ENSAF
 {
     public partial class Form1 : Form
@@ -18,14 +19,16 @@ namespace Project_ENSAF
         produit_cardUC produitUI;
         private void Form1_Load(object sender, EventArgs e)
         {
-            prvBtnFilter = btnViewALL;
-            btnViewALL.BackColor = Color.FromArgb(72, 152, 207);
-            btnViewALL.ForeColor = Color.White; 
+            panelGestionVentes.Visible = false;
+            prvBtnFilter = btnViewAll;
+            btnViewAll.BackColor = Color.FromArgb(72, 152, 207);
+            btnViewAll.ForeColor = Color.White;
             previousBtn = BtnGestionProduits;
             BtnGestionProduits.BackColor = Color.FromArgb(13, 72, 114);
+     
             
             var db = new dbContext();
-            byte[] buffer = File.ReadAllBytes(@"F:\user\desktop\Project-ENSAF backup\Project-ENSAF\Project-ENSAF\asset\icon\delete.png");
+            byte[] buffer = File.ReadAllBytes(@"C:\Users\TokenPc\source\repos\Project-ENSAF\Project-ENSAF\Project-ENSAF\asset\icon\shipping.png");
             Produit p = new Produit()
             {
                 libelle = "danone2",
@@ -42,7 +45,7 @@ namespace Project_ENSAF
 /*            p.libelle = "refresh";
             produitUI = new produit_cardUC(p);*/
 
-            this.flowLayoutPanel1.Controls.Add(produitUI);
+          //  this.flowLayoutPanel1.Controls.Add(prodVent);
  
        /*  for (int i = 0; i < 50; i++)
              {
@@ -53,8 +56,20 @@ namespace Project_ENSAF
             }*/
 
         }
+       
         private void button1_Click(object sender, EventArgs e)
         {
+            if((sender as Button).Text == "Gestion Produits")
+            {
+                panelGestionProduit.Visible = true;
+                panelGestionVentes.Visible = false; 
+            }
+            if ((sender as Button).Text == "Gestion Ventes")
+            {
+                panelGestionProduit.Visible = false;
+                panelGestionVentes.Visible = true;
+            }
+
             previousBtn.BackColor = Color.FromArgb(0, 53, 92);
             previousBtn = (sender as Button);
             checkedLinePanel.Height = (sender as Button).Height;
@@ -64,7 +79,14 @@ namespace Project_ENSAF
 
         }
 
-
+        private void filter_style_click(object sender, EventArgs e)
+        {
+            prvBtnFilter.BackColor = Color.White;
+            prvBtnFilter.ForeColor = Color.FromArgb(72, 152, 207);
+            prvBtnFilter = (sender as Button);
+            prvBtnFilter.BackColor = Color.FromArgb(72, 152, 207);
+            prvBtnFilter.ForeColor = Color.White;
+        }
 
 
         private void button3_Click(object sender, EventArgs e)
@@ -72,18 +94,13 @@ namespace Project_ENSAF
              
         }
 
-        private void filter_style_click(object sender, EventArgs e)
-        {
-            prvBtnFilter.BackColor = Color.White;
-            prvBtnFilter.ForeColor = Color.FromArgb(72, 152, 207);
-            prvBtnFilter = (sender as Button); 
-            prvBtnFilter.BackColor = Color.FromArgb(72, 152, 207);
-            prvBtnFilter.ForeColor = Color.White;
-        }
+       
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
+
+    
     }
 }
