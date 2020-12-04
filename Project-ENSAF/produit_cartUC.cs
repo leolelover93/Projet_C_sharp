@@ -24,20 +24,7 @@ namespace Project_ENSAF
         }
         public produit_cardUC(Produit p)
         {
-            System.Type a = p.GetType();
-            // MessageBox.Show(a.ToString());
-            /*  currentProd.codeProduit = p.codeProduit;
-              currentProd.idFournisseur = p.idFournisseur;
-              currentProd.libelle = p.libelle;
-              currentProd.prixAchat = p.prixAchat;
-              currentProd.prixVente = p.prixVente;
-              currentProd.dateExpiration = p.dateExpiration;
-              currentProd.img = p.img;
-              currentProd.description = p.description;
-             this.lblProdName.Text = p.libelle;*/
-            /*  this.Lblprix = p.prixVente.ToString(); 
-             this.LblProdDescri = p.description;*/
-            //   this.prodImg.Image = Image.FromStream( new MemoryStream(p.img));/**/ 
+            System.Type a = p.GetType(); 
             this.currentProd = p; 
             InitializeComponent(p);
         } 
@@ -104,6 +91,11 @@ namespace Project_ENSAF
 
         private void produit_cardUC_Load(object sender, EventArgs e)
         { 
+
+        }
+
+        private void produit_cardUC_Load_1(object sender, EventArgs e)
+        {
 
         }
     }

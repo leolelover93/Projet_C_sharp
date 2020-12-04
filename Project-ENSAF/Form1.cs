@@ -18,8 +18,7 @@ namespace Project_ENSAF
             foreach (var produit in db.Produits)
             {
                 this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit));
-            }
-            //www.youtube.com/watch?v=LJKkJI-gE38
+            } 
         }
         private void Form1_Load(object sender, EventArgs e)
         {
