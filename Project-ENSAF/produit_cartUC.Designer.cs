@@ -32,8 +32,10 @@
             this.lblProdName = new System.Windows.Forms.Label();
             this.prodImg = new System.Windows.Forms.PictureBox();
             this.lblProdDescri = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnReadMore = new System.Windows.Forms.Button();
+            this.lblPrix = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.prodImg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,12 +45,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProdName.AutoSize = true;
             this.lblProdName.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProdName.Location = new System.Drawing.Point(-1, 119);
+            this.lblProdName.Location = new System.Drawing.Point(-1, 118);
             this.lblProdName.Name = "lblProdName";
             this.lblProdName.Size = new System.Drawing.Size(56, 23);
             this.lblProdName.TabIndex = 0;
             this.lblProdName.Text = "Bimo";
-            this.lblProdName.Click += new System.EventHandler(this.label1_Click);
             // 
             // prodImg
             // 
@@ -79,45 +80,82 @@
             this.lblProdDescri.TabIndex = 2;
             this.lblProdDescri.Text = "this is product description. it gives the products caracteristics ...";
             // 
-            // button1
+            // btnReadMore
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(117)))), ((int)(((byte)(216)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkCyan;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(84, 186);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 27);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Read more";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnReadMore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReadMore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(117)))), ((int)(((byte)(216)))));
+            this.btnReadMore.FlatAppearance.BorderColor = System.Drawing.Color.DarkCyan;
+            this.btnReadMore.FlatAppearance.BorderSize = 0;
+            this.btnReadMore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReadMore.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReadMore.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnReadMore.Location = new System.Drawing.Point(84, 186);
+            this.btnReadMore.Name = "btnReadMore";
+            this.btnReadMore.Size = new System.Drawing.Size(82, 27);
+            this.btnReadMore.TabIndex = 3;
+            this.btnReadMore.Text = "Read more";
+            this.btnReadMore.UseVisualStyleBackColor = false;
             // 
-            // label1
+            // lblPrix
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblPrix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
-            this.label1.Location = new System.Drawing.Point(-1, 190);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 23);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "$12";
+            this.lblPrix.AutoSize = true;
+            this.lblPrix.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrix.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
+            this.lblPrix.Location = new System.Drawing.Point(-1, 190);
+            this.lblPrix.Name = "lblPrix";
+            this.lblPrix.Size = new System.Drawing.Size(43, 23);
+            this.lblPrix.TabIndex = 4;
+            this.lblPrix.Text = "$12";
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.Color.White;
+            this.btnEdit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEdit.BackgroundImage")));
+            this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Location = new System.Drawing.Point(124, 119);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(18, 20);
+            this.btnEdit.TabIndex = 7;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.btnEdit.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button2_MouseDown);
+            this.btnEdit.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button2_MouseUp);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.White;
+            this.btnDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDelete.BackgroundImage")));
+            this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Location = new System.Drawing.Point(146, 119);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(20, 18);
+            this.btnDelete.TabIndex = 8;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button2_MouseDown);
+            this.btnDelete.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button2_MouseUp);
             // 
             // produit_cardUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.lblPrix);
+            this.Controls.Add(this.btnReadMore);
             this.Controls.Add(this.lblProdDescri);
             this.Controls.Add(this.prodImg);
             this.Controls.Add(this.lblProdName);
+            this.Enabled = false;
             this.MaximumSize = new System.Drawing.Size(172, 218);
             this.MinimumSize = new System.Drawing.Size(172, 218);
             this.Name = "produit_cardUC";
@@ -133,7 +171,9 @@
         private System.Windows.Forms.Label lblProdName;
         private System.Windows.Forms.PictureBox prodImg;
         private System.Windows.Forms.Label lblProdDescri;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnReadMore;
+        private System.Windows.Forms.Label lblPrix;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
