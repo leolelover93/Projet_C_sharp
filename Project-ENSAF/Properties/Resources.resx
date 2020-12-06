@@ -139,6 +139,9 @@
   <data name="shipping" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\asset\icon\shipping.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="sidiAlimg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sidiAlimg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="sweets" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\asset\icon\sweets.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

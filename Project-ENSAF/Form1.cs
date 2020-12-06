@@ -102,16 +102,17 @@ namespace Project_ENSAF
         }
 
         private void filter_style_click(object sender, EventArgs e)
+        { 
+                prvBtnFilter.BackColor = Color.White;
+                prvBtnFilter.ForeColor = Color.FromArgb(72, 152, 207);
+                prvBtnFilter = (sender as Button);
+                prvBtnFilter.BackColor = Color.FromArgb(72, 152, 207);
+                prvBtnFilter.ForeColor = Color.White; 
+        } 
+        private void button3_Click(object sender, EventArgs e)
         {
-            prvBtnFilter.BackColor = Color.White;
-            prvBtnFilter.ForeColor = Color.FromArgb(72, 152, 207);
-            prvBtnFilter = (sender as Button);
-            prvBtnFilter.BackColor = Color.FromArgb(72, 152, 207);
-            prvBtnFilter.ForeColor = Color.White;
+             
         }
-
-
-  
 
         private void textBoxSearchProduitVentes_TextChanged(object sender, EventArgs e)
         {
@@ -140,6 +141,59 @@ namespace Project_ENSAF
                 a.Controls.Add(new ElementPagnierVentes(prod, "12", "2311"));
             }
         }
+         
+        public void flowLayoutPanel1_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            var db = new dbContext();
+            //Produit p = db.Produits.Find(4);
+            foreach (var produit in db.Produits)
+            {
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit));
+            } 
+        }
+
+        private void btnViewAll_Click(object sender, EventArgs e)
+        {
+            filter_style_click( sender,  e);  
+            produitVentes = db.Produits.ToList<Produit>();
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var produit in produitVentes)
+            {
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit));
+            }  
+        }
+
+        private void btnDisponible_Click(object sender, EventArgs e)
+        { 
+            filter_style_click(sender, e);
+            produitVentes = db.Produits
+                   .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) > 0)
+                   .ToList<Produit>();
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var produit in produitVentes)
+            {
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit));
+            }
+        }
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNonDisponible_Click(object sender, EventArgs e)
+        {
+            filter_style_click(sender, e);
+            produitVentes = db.Produits
+                  .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) < 0)
+                  .ToList<Produit>();
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var produit in produitVentes)
+            {
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit));
+            }
+        } 
 
         private bool GetProductWithTableID(Produit p)
         {

@@ -133,6 +133,16 @@ namespace Project_ENSAF.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sidiAlimg {
+            get {
+                object obj = ResourceManager.GetObject("sidiAlimg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sweets {
             get {
                 object obj = ResourceManager.GetObject("sweets", resourceCulture);
