@@ -60,7 +60,7 @@
             this.lblProdName.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProdName.Location = new System.Drawing.Point(-1, 118);
             this.lblProdName.Name = "lblProdName";
-            this.lblProdName.Size = new System.Drawing.Size(85, 23);
+            this.lblProdName.Size = new System.Drawing.Size(90, 23);
             this.lblProdName.TabIndex = 1;
             this.lblProdName.Text = p.libelle;
             // 
@@ -77,8 +77,9 @@
             this.btnReadMore.Name = "btnReadMore";
             this.btnReadMore.Size = new System.Drawing.Size(82, 27);
             this.btnReadMore.TabIndex = 3;
-            this.btnReadMore.Text = "Read more";
+            this.btnReadMore.Text = "Ajouter Produit";
             this.btnReadMore.UseVisualStyleBackColor = false;
+            this.btnReadMore.Click += new System.EventHandler(this.btnReadMore_Click);
             // 
             // lblprix
             // 
@@ -95,8 +96,8 @@
             // 
             // lblProdDescri
             // 
-            this.lblProdDescri.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblProdDescri.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProdDescri.AutoSize = true;
             this.lblProdDescri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblProdDescri.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -104,7 +105,7 @@
             this.lblProdDescri.Location = new System.Drawing.Point(0, 144);
             this.lblProdDescri.MaximumSize = new System.Drawing.Size(190, 40);
             this.lblProdDescri.Name = "lblProdDescri";
-            this.lblProdDescri.Size = new System.Drawing.Size(177, 40);
+            this.lblProdDescri.Size = new System.Drawing.Size(86, 17);
             this.lblProdDescri.TabIndex = 2;
             this.lblProdDescri.Text = p.description;
             // 

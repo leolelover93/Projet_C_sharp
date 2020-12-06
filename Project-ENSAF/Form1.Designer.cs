@@ -38,7 +38,6 @@
             this.BtnGestionProduits = new System.Windows.Forms.Button();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.panelGestionVentes = new System.Windows.Forms.Panel();
-            this.flowLayoutPanelVente = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -47,6 +46,8 @@
             this.btnAjouterAuPagnier = new System.Windows.Forms.Button();
             this.labelBasket = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanelVente = new System.Windows.Forms.FlowLayoutPanel();
+            this.listBoxItemProduct = new System.Windows.Forms.ListBox();
             this.panelGestionProduit = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
@@ -185,26 +186,14 @@
             // panelGestionVentes
             // 
             this.panelGestionVentes.BackColor = System.Drawing.Color.Chocolate;
-            this.panelGestionVentes.Controls.Add(this.flowLayoutPanelVente);
             this.panelGestionVentes.Controls.Add(this.panel2);
+            this.panelGestionVentes.Controls.Add(this.flowLayoutPanelVente);
+            this.panelGestionVentes.Controls.Add(this.listBoxItemProduct);
             this.panelGestionVentes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGestionVentes.Location = new System.Drawing.Point(0, 0);
             this.panelGestionVentes.Name = "panelGestionVentes";
             this.panelGestionVentes.Size = new System.Drawing.Size(790, 499);
             this.panelGestionVentes.TabIndex = 1;
-            // 
-            // flowLayoutPanelVente
-            // 
-            this.flowLayoutPanelVente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelVente.AutoScroll = true;
-            this.flowLayoutPanelVente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.flowLayoutPanelVente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanelVente.Location = new System.Drawing.Point(0, 58);
-            this.flowLayoutPanelVente.Name = "flowLayoutPanelVente";
-            this.flowLayoutPanelVente.Size = new System.Drawing.Size(790, 441);
-            this.flowLayoutPanelVente.TabIndex = 3;
             // 
             // panel2
             // 
@@ -287,6 +276,7 @@
             this.btnAjouterAuPagnier.TabIndex = 2;
             this.btnAjouterAuPagnier.Text = " Nouveau pagnier";
             this.btnAjouterAuPagnier.UseVisualStyleBackColor = false;
+            this.btnAjouterAuPagnier.Click += new System.EventHandler(this.btnAjouterAuPagnier_Click);
             // 
             // labelBasket
             // 
@@ -314,6 +304,31 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // flowLayoutPanelVente
+            // 
+            this.flowLayoutPanelVente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelVente.AutoScroll = true;
+            this.flowLayoutPanelVente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
+            this.flowLayoutPanelVente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanelVente.Location = new System.Drawing.Point(0, 58);
+            this.flowLayoutPanelVente.Name = "flowLayoutPanelVente";
+            this.flowLayoutPanelVente.Size = new System.Drawing.Size(790, 441);
+            this.flowLayoutPanelVente.TabIndex = 3;
+            // 
+            // listBoxItemProduct
+            // 
+            this.listBoxItemProduct.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxItemProduct.FormattingEnabled = true;
+            this.listBoxItemProduct.Location = new System.Drawing.Point(44, 6);
+            this.listBoxItemProduct.Name = "listBoxItemProduct";
+            this.listBoxItemProduct.Size = new System.Drawing.Size(72, 39);
+            this.listBoxItemProduct.TabIndex = 5;
+            this.listBoxItemProduct.Visible = false;
+            this.listBoxItemProduct.DataSourceChanged += new System.EventHandler(this.listBoxItemProduct_DataSourceChanged);
             // 
             // panelGestionProduit
             // 
@@ -509,6 +524,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.TextBox textBoxSearchProduitVentes;
+        private System.Windows.Forms.ListBox listBoxItemProduct;
     }
 }
 

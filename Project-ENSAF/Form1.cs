@@ -9,7 +9,9 @@ namespace Project_ENSAF
     public partial class Form1 : Form
     {
         Button previousBtn,prvBtnFilter;
-        List<Produit> produitVentes = new List<Produit>(); 
+        FormPagnierVentes a;
+        List<Produit> produitVentes = new List<Produit>();
+        List<Produit> listeProduitsPagnier = new List<Produit>();
         dbContext db;
         public Form1()
         {
@@ -22,12 +24,13 @@ namespace Project_ENSAF
             {
                 this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit));
             }
-
+            
           
             
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+
             panelGestionVentes.Visible = false;
             prvBtnFilter = btnViewAll;
             btnViewAll.BackColor = Color.FromArgb(72, 152, 207);
@@ -108,10 +111,7 @@ namespace Project_ENSAF
         }
 
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-             
-        }
+  
 
         private void textBoxSearchProduitVentes_TextChanged(object sender, EventArgs e)
         {
@@ -124,11 +124,44 @@ namespace Project_ENSAF
                 flowLayoutPanelVente.Controls.Add(new produit_Vente(prd));  
             }
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+       
+        private void btnAjouterAuPagnier_Click(object sender, EventArgs e)
         {
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
         }
+
+        private void listBoxItemProduct_DataSourceChanged(object sender, EventArgs e)
+        {
+
+           var produits =   produitVentes.Where(p => GetProductWithTableID(p));
+            foreach(var prod in produits)
+            {
+                a.Controls.Add(new ElementPagnierVentes(prod, "12", "2311"));
+            }
+        }
+
+        private bool GetProductWithTableID(Produit p)
+        {
+            foreach(var idItem  in listBoxItemProduct.Items)
+            {
+                if(p.codeProduit == int.Parse(idItem.ToString())){
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            a = new FormPagnierVentes();
+            a.Show(); 
+        }
+
+      
 
     
     }

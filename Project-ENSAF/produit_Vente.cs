@@ -10,11 +10,25 @@ using System.Windows.Forms;
 
 namespace Project_ENSAF
 {
+
     public partial class produit_Vente : UserControl
     {
+        private int idProduit; 
         public produit_Vente(Produit p)
         {
+            this.idProduit = p.codeProduit; 
             InitializeComponent(p);
+        }
+
+        public void getTheControl()
+        {
+            
+        }
+        private void btnReadMore_Click(object sender, EventArgs e)
+        {
+           Control[] tabElment =  this.Parent.Parent.Controls.Find("listBoxItemProduct", true);
+           ListBox listeBox = (ListBox) tabElment[0];
+            listeBox.Items.Add(this.idProduit); 
         }
     }
 }
