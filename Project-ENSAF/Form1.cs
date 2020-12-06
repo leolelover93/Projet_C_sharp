@@ -15,7 +15,7 @@ namespace Project_ENSAF
             checkedLinePanel.Height = BtnGestionProduits.Height;
             checkedLinePanel.Top = BtnGestionProduits.Top;
             var db = new dbContext();
-            Produit p = db.Produits.Find(4);
+             //Produit p = db.Produits.Find(4);
             foreach (var produit in db.Produits)
             {
                 this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit));
