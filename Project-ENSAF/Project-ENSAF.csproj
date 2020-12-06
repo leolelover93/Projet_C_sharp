@@ -95,6 +95,12 @@
     <Compile Include="produit_cartUC.Designer.cs">
       <DependentUpon>produit_cartUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="produit_Vente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="produit_Vente.Designer.cs">
+      <DependentUpon>produit_Vente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stock_Magazin.cs">
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="produit_cartUC.resx">
       <DependentUpon>produit_cartUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="produit_Vente.resx">
+      <DependentUpon>produit_Vente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
