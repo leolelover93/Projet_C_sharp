@@ -56,6 +56,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.BtnGestionProduits = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            listBoxItemProduct = new System.Windows.Forms.ListBox();
+            this.flowLayoutPanelVente = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             this.panelContainer.SuspendLayout();
@@ -129,7 +131,7 @@
             // 
             // panelGestionVentes
             // 
-            this.panelGestionVentes.BackColor = System.Drawing.Color.Chocolate;
+        this.panelGestionVentes.BackColor = System.Drawing.Color.Chocolate;
             this.panelGestionVentes.Controls.Add(this.panel2);
             this.panelGestionVentes.Controls.Add(this.flowLayoutPanelVente);
             this.panelGestionVentes.Controls.Add(this.listBoxItemProduct);
@@ -137,7 +139,7 @@
             this.panelGestionVentes.Location = new System.Drawing.Point(0, 0);
             this.panelGestionVentes.Name = "panelGestionVentes";
             this.panelGestionVentes.Size = new System.Drawing.Size(750, 499);
-            this.panelGestionVentes.TabIndex = 1;
+            this.panelGestionVentes.TabIndex = 1;    /**/
             // 
             // panel2
             // 
@@ -240,7 +242,7 @@
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // flowLayoutPanelVente
-            // 
+        // 
             this.flowLayoutPanelVente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -251,10 +253,10 @@
             this.flowLayoutPanelVente.Name = "flowLayoutPanelVente";
             this.flowLayoutPanelVente.Size = new System.Drawing.Size(790, 441);
             this.flowLayoutPanelVente.TabIndex = 3;
-            // 
+            /*  */  // 
             // listBoxItemProduct
             // 
-            this.listBoxItemProduct.BorderStyle = System.Windows.Forms.BorderStyle.None;
+         /* */  this.listBoxItemProduct.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBoxItemProduct.FormattingEnabled = true;
             this.listBoxItemProduct.Location = new System.Drawing.Point(44, 6);
             this.listBoxItemProduct.Name = "listBoxItemProduct";
