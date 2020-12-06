@@ -63,14 +63,14 @@ namespace Project_ENSAF
             try
             {
 
-                byte[] buffer = (byte[])new ImageConverter().ConvertTo(Properties.Resources.sweets, typeof(byte[]));
+                byte[] buffer = (byte[])new ImageConverter().ConvertTo(Properties.Resources.sidiAlimg, typeof(byte[]));
                 Produit p = new Produit()
                 {
-                    libelle = "danone2",
-                    dateExpiration = DateTime.Now,
-                    prixAchat = (decimal)1.5,
-                    prixVente = (decimal)2,
-                    description = "danone banane",
+                    libelle = "Sidi Ali 2L",
+                    dateExpiration = DateTime.Parse("12-05-2020"),
+                    prixAchat = (decimal)3,
+                    prixVente = (decimal)4.5,
+                    description = "Eau minirale Sidi Ali 2L",
                     idFournisseur = 1,
                     img = buffer
                 };
