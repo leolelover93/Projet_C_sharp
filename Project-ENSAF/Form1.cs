@@ -14,7 +14,7 @@ namespace Project_ENSAF
             InitializeComponent();
             checkedLinePanel.Height = BtnGestionProduits.Height;
             checkedLinePanel.Top = BtnGestionProduits.Top;
-            var db = new dbContext();
+            var db = new dbContext(); 
              //Produit p = db.Produits.Find(4);
             foreach (var produit in db.Produits)
             {
@@ -72,7 +72,29 @@ namespace Project_ENSAF
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            
+        }
+         
+        public void flowLayoutPanel1_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            var db = new dbContext();
+            //Produit p = db.Produits.Find(4);
+            foreach (var produit in db.Produits)
+            {
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit));
+            } 
+        }
+         
 
+        public void fetchProdsFromDB()
+        {
+            var db = new dbContext();
+            //Produit p = db.Produits.Find(4);
+            foreach (var produit in db.Produits)
+            {
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit));
+            }
         }
 
     

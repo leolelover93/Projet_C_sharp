@@ -20,16 +20,14 @@ namespace Project_ENSAF
                 idFournisseur = 1,
                 img = buffer
             };
+
             InitializeComponent(p); 
         }
         public produit_cardUC(Produit p)
-        {
-            System.Type a = p.GetType(); 
+        { 
             this.currentProd = p; 
-            InitializeComponent(p);
-        } 
-         
-
+            InitializeComponent(p); 
+        }  
         private void button2_MouseDown(object sender, MouseEventArgs e)
         {
             (sender as Button).BackColor = System.Drawing.Color.Silver;
@@ -52,13 +50,13 @@ namespace Project_ENSAF
                 db.Produits.Remove(p); 
                 db.SaveChanges();
                 this.Dispose();
-                MessageBox.Show("product deleted");
+               // MessageBox.Show("product deleted");
 
              }
              catch (Exception excep)
              {
                 MessageBox.Show("Error! cant delete product :" + excep.Message);
-             }  /* */
+             }  
         } 
         private void btnEdit_Click(object sender, EventArgs e)
         { 
@@ -77,18 +75,16 @@ namespace Project_ENSAF
                     img = buffer
                 };
                 var db = new dbContext();
-                db.Produits.Add(p);
-                this.Parent.Refresh();
+                db.Produits.Add(p); 
                 db.SaveChanges();
-                
+
                 MessageBox.Show("product insertion successed:");
             }
             catch (Exception exce)
             {
                 MessageBox.Show("Error! cant insert product :" + exce.Message);
             }
-        }
-
+        } 
         private void produit_cardUC_Load(object sender, EventArgs e)
         { 
 
