@@ -32,10 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.LogoPanel = new System.Windows.Forms.Panel();
             this.lblLogo = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.checkedLinePanel = new System.Windows.Forms.Panel();
-            this.BtnGestionProduits = new System.Windows.Forms.Button();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.panelGestionVentes = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -55,21 +52,12 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnAjouterProduit = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panelGestionVentes = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBoxSearchProduitVentes = new System.Windows.Forms.TextBox();
-            this.btnViderPanger = new System.Windows.Forms.Button();
-            this.btnAjouterAuPagnier = new System.Windows.Forms.Button();
-            this.labelBasket = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.BtnGestionProduits = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.flowLayoutPanelVente = new System.Windows.Forms.FlowLayoutPanel();
-            this.listBoxItemProduct = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             this.panelContainer.SuspendLayout();
@@ -221,7 +209,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.pictureBox3);
+           // this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Controls.Add(this.textBoxSearchProduitVentes);
             this.panel3.Location = new System.Drawing.Point(23, 8);
             this.panel3.Name = "panel3";
@@ -606,16 +594,6 @@
             this.flowLayoutPanelVente.Size = new System.Drawing.Size(750, 444);
             this.flowLayoutPanelVente.TabIndex = 3;
             // 
-            // listBoxItemProduct
-            // 
-            this.listBoxItemProduct.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxItemProduct.FormattingEnabled = true;
-            this.listBoxItemProduct.Location = new System.Drawing.Point(44, 6);
-            this.listBoxItemProduct.Name = "listBoxItemProduct";
-            this.listBoxItemProduct.Size = new System.Drawing.Size(72, 39);
-            this.listBoxItemProduct.TabIndex = 5;
-            this.listBoxItemProduct.Visible = false;
-            this.listBoxItemProduct.DataSourceChanged += new System.EventHandler(this.listBoxItemProduct_DataSourceChanged);
             // 
             // Form1
             // 
