@@ -18,15 +18,11 @@ namespace Project_ENSAF
             InitializeComponent();
             checkedLinePanel.Height = BtnGestionProduits.Height;
             checkedLinePanel.Top = BtnGestionProduits.Top;
-             db = new dbContext();
-            //  Produit p = db.Produits.Find(4);
+             db = new dbContext(); 
             foreach (var produit in db.Produits)
             {
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit));
-            }
-            
-          
-            
+                 this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit));
+            } 
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -118,7 +114,7 @@ namespace Project_ENSAF
         {
             string produitArech = textBoxSearchProduitVentes.Text;
             Console.WriteLine(produitArech);
-            List<Produit> ToRender  =  produitVentes.Where(p => p.libelle.Contains(produitArech)).ToList();
+            List<Produit> ToRender  =  produitVentes.Where(p => p.libelle.ToLower().Contains(produitArech.ToLower())).ToList();
             if (ToRender.Count > 0) flowLayoutPanelVente.Controls.Clear();
             foreach(var prd in ToRender)
             {
@@ -157,6 +153,23 @@ namespace Project_ENSAF
         {
             filter_style_click( sender,  e);  
             produitVentes = db.Produits.ToList<Produit>();
+            var group = db.Produits
+                   .GroupBy(p => p.libelle)
+                   .Select(g => new { libelle = g.Key, count = g.Count() });
+            var query = (from p in db.Produits
+                         group p by new { p.libelle, } into grp
+                         select new
+                         {
+                             libelle = grp.Key.libelle,
+                             cout = grp.Count(),
+                             first=grp.FirstOrDefault(),
+                             grop=grp.ToList<Produit>()
+                         }); ;
+            foreach (var item in query)
+            { 
+                    Console.WriteLine("-->"+ item.first.libelle+ " : "+item.cout+" "+item.grop[0].libelle); 
+            }
+
             flowLayoutPanel1.Controls.Clear();
             foreach (var produit in produitVentes)
             {
@@ -178,8 +191,16 @@ namespace Project_ENSAF
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
-        {
-
+        { 
+            string cle = tbSearch.Text;
+            Console.WriteLine("\ncle: "+cle); 
+            List<Produit> prodTrouves = produitVentes.Where(p => p.libelle.ToLower().IndexOf(cle)!=-1)
+                                                   .ToList();
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var prd in prodTrouves)
+            {   
+                flowLayoutPanel1.Controls.Add(new produit_cardUC(prd));
+            } 
         }
 
         private void btnNonDisponible_Click(object sender, EventArgs e)
@@ -209,6 +230,20 @@ namespace Project_ENSAF
             }
             return false;
         }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            string produitArech = textBoxSearchProduitVentes.Text;
+            Console.WriteLine(produitArech);
+            List<Produit> ToRender = produitVentes.Where(p => p.libelle.Contains(produitArech)).ToList();
+            if (ToRender.Count > 0) flowLayoutPanel1.Controls.Clear();
+            foreach (var prd in ToRender)
+            {
+                Console.WriteLine(prd.libelle);
+                flowLayoutPanel1.Controls.Add(new produit_Vente(prd));
+            }
+        }
+
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             a = new FormPagnierVentes();
