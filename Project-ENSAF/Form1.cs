@@ -16,10 +16,12 @@ namespace Project_ENSAF
             checkedLinePanel.Top = BtnGestionProduits.Top;
             var db = new dbContext();
              //Produit p = db.Produits.Find(4);
+             /*
             foreach (var produit in db.Produits)
             {
                 this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit));
             }  
+            */
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -43,6 +45,7 @@ namespace Project_ENSAF
                 panelGestionProduit.Visible = false;
                 panelGestionVentes.Visible = true;
             }
+            
 
             previousBtn.BackColor = Color.FromArgb(0, 53, 92);
             previousBtn = (sender as Button);
@@ -68,7 +71,27 @@ namespace Project_ENSAF
              
         }
 
-       
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            Ajouter_Fournisseur f2 = new Ajouter_Fournisseur();
+            f2.Show();
+            
+        }
+
+        private void LogoPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {

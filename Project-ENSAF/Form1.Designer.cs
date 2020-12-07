@@ -54,6 +54,7 @@
             this.btnAjouterAuPagnier = new System.Windows.Forms.Button();
             this.labelBasket = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             this.panelContainer.SuspendLayout();
@@ -69,6 +70,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(92)))));
+            this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.LogoPanel);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
@@ -90,6 +92,7 @@
             this.LogoPanel.Name = "LogoPanel";
             this.LogoPanel.Size = new System.Drawing.Size(201, 55);
             this.LogoPanel.TabIndex = 0;
+            this.LogoPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LogoPanel_Paint);
             // 
             // lblLogo
             // 
@@ -118,7 +121,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(195, 51);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Gestion Ventes";
+            this.button2.Text = "Gestion Vente";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button1_Click);
@@ -300,6 +303,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
+            this.flowLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 48);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -307,6 +311,7 @@
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10, 10, 0, 10);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 451);
             this.flowLayoutPanel1.TabIndex = 6;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // panelGestionVentes
             // 
@@ -401,6 +406,20 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(92)))));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.button3.Location = new System.Drawing.Point(0, 287);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(219, 59);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Gestion Fournisseur";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -458,6 +477,7 @@
         private System.Windows.Forms.Button btnAjouterAuPagnier;
         private System.Windows.Forms.Label labelBasket;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button3;
     }
 }
 
