@@ -14,8 +14,8 @@ namespace Project_ENSAF
     {
         public FormPagnierVentes()
         {
-            ElementPagnierVentes a = new ElementPagnierVentes();
-            this.Controls.Add(a);
+         //   ElementPagnierVentes a = new ElementPagnierVentes();
+          //  this.Controls.Add(a);
             InitializeComponent();
         }
 

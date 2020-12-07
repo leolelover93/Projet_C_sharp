@@ -13,18 +13,10 @@ namespace Project_ENSAF
 {
     public partial class ElementPagnierVentes : UserControl
     {
+       
         public ElementPagnierVentes()
         {
-            InitializeComponent();
-        }
-        public ElementPagnierVentes(Produit p ,string quantite,string prixtotal)
-        {
-            this.Title = p.libelle;
-            this.Icon = Image.FromStream(new MemoryStream(p.img));
-            this.Description = p.description;
-            this.QuntiteProduit = quantite;
-            this.PrixUnit = p.prixVente.ToString() + "DH";
-            this.PrixTotal = prixtotal; 
+         
             InitializeComponent();
         }
 

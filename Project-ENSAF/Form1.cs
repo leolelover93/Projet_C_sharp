@@ -10,6 +10,7 @@ namespace Project_ENSAF
     {
         Button previousBtn,prvBtnFilter;
         FormPagnierVentes a;
+        FlowLayoutPanel flowLayout;
         List<Produit> produitVentes = new List<Produit>();
         List<Produit> listeProduitsPagnier = new List<Produit>();
         dbContext db;
@@ -89,8 +90,11 @@ namespace Project_ENSAF
                     }
 
                 }
-              
-               
+                a = new FormPagnierVentes();
+                flowLayout = (FlowLayoutPanel)a.Controls[0];
+
+
+
             }
 
             previousBtn.BackColor = Color.FromArgb(0, 53, 92);
@@ -134,30 +138,44 @@ namespace Project_ENSAF
         private void listBoxItemProduct_DataSourceChanged(object sender, EventArgs e)
         {
 
-           var produits =   produitVentes.Where(p => GetProductWithTableID(p));
-            foreach(var prod in produits)
-            {
-                a.Controls.Add(new ElementPagnierVentes(prod, "12", "2311"));
-            }
+
         }
 
-        private bool GetProductWithTableID(Produit p)
+
+        private void btnViderPanger_Click(object sender, EventArgs e)
         {
-            foreach(var idItem  in listBoxItemProduct.Items)
-            {
-                if(p.codeProduit == int.Parse(idItem.ToString())){
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            return false;
+            
+           
+            
         }
+
+        private void listBoxItemProduct_Resize(object sender, EventArgs e)
+        {
+            
+            
+     
+
+        }
+
+        private void listBoxItemProduct_TextChanged(object sender, EventArgs e)
+        {
+            listeProduitsPagnier.Add(produitVentes.Where(pa => pa.codeProduit == int.Parse(listBoxItemProduct.Text)).ToList()[0]);
+
+            Produit p = listeProduitsPagnier[listeProduitsPagnier.Count - 1];
+                ElementPagnierVentes elmnt = new ElementPagnierVentes();
+                elmnt.Title = p.libelle;
+                elmnt.Icon = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
+                elmnt.Description = p.description;
+                elmnt.QuntiteProduit = "56";
+                elmnt.PrixUnit = p.prixVente.ToString() + "DH";
+                elmnt.PrixTotal = "2121";
+                flowLayout.Controls.Add(elmnt);
+                Console.WriteLine("titre produit : " + p.libelle);
+            
+        }
+
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            a = new FormPagnierVentes();
             a.Show(); 
         }
 

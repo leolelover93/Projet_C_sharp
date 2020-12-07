@@ -47,7 +47,7 @@
             this.labelBasket = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanelVente = new System.Windows.Forms.FlowLayoutPanel();
-            this.listBoxItemProduct = new System.Windows.Forms.ListBox();
+            this.listBoxItemProduct = new System.Windows.Forms.Label();
             this.panelGestionProduit = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
@@ -258,6 +258,7 @@
             this.btnViderPanger.TabIndex = 3;
             this.btnViderPanger.Text = "Vider le pagnier";
             this.btnViderPanger.UseVisualStyleBackColor = false;
+            this.btnViderPanger.Click += new System.EventHandler(this.btnViderPanger_Click);
             // 
             // btnAjouterAuPagnier
             // 
@@ -321,14 +322,13 @@
             // 
             // listBoxItemProduct
             // 
-            this.listBoxItemProduct.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxItemProduct.FormattingEnabled = true;
             this.listBoxItemProduct.Location = new System.Drawing.Point(44, 6);
             this.listBoxItemProduct.Name = "listBoxItemProduct";
             this.listBoxItemProduct.Size = new System.Drawing.Size(72, 39);
             this.listBoxItemProduct.TabIndex = 5;
             this.listBoxItemProduct.Visible = false;
-            this.listBoxItemProduct.DataSourceChanged += new System.EventHandler(this.listBoxItemProduct_DataSourceChanged);
+            this.listBoxItemProduct.TextChanged += new System.EventHandler(this.listBoxItemProduct_TextChanged);
+            this.listBoxItemProduct.Resize += new System.EventHandler(this.listBoxItemProduct_Resize);
             // 
             // panelGestionProduit
             // 
@@ -524,7 +524,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.TextBox textBoxSearchProduitVentes;
-        private System.Windows.Forms.ListBox listBoxItemProduct;
+        private System.Windows.Forms.Label listBoxItemProduct;
     }
 }
 

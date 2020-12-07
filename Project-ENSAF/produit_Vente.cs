@@ -27,8 +27,9 @@ namespace Project_ENSAF
         private void btnReadMore_Click(object sender, EventArgs e)
         {
            Control[] tabElment =  this.Parent.Parent.Controls.Find("listBoxItemProduct", true);
-           ListBox listeBox = (ListBox) tabElment[0];
-            listeBox.Items.Add(this.idProduit); 
+           Label label = (Label) tabElment[0];
+            //Just to fire the resize event
+            label.Text = (this.idProduit.ToString()); 
         }
     }
 }
