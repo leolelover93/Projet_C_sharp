@@ -57,7 +57,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.BtnGestionProduits = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            listBoxItemProduct = new System.Windows.Forms.ListBox();
             this.flowLayoutPanelVente = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.LogoPanel.SuspendLayout();
