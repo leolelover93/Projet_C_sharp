@@ -35,7 +35,7 @@
             MessageBox.Show("changed: " + this.lblProdName.Text);
 
         }
-        private void InitializeComponent(Produit p)
+        private void InitializeComponent(Produit p,int nbProds)
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(produit_cardUC));
             this.lblProdName = new System.Windows.Forms.Label();
@@ -45,6 +45,7 @@
             this.lblprix = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.lblnbProduits = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.prodImg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,11 +84,11 @@
             this.lblProdDescri.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProdDescri.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.lblProdDescri.Location = new System.Drawing.Point(0, 144);
-            this.lblProdDescri.MaximumSize = new System.Drawing.Size(190, 40);
+            this.lblProdDescri.MaximumSize = new System.Drawing.Size(190, 20);
             this.lblProdDescri.Name = "lblProdDescri";
             this.lblProdDescri.Size = new System.Drawing.Size(177, 40);
             this.lblProdDescri.TabIndex = 2;
-            this.lblProdDescri.Text =p.description;
+            this.lblProdDescri.Text =p.description; 
             // 
             // btnReadMore
             // 
@@ -151,6 +152,18 @@
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             this.btnDelete.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button2_MouseDown);
             this.btnDelete.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button2_MouseUp);
+
+
+            this.lblnbProduits.AutoSize = true;
+            this.lblnbProduits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblnbProduits.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnbProduits.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.lblnbProduits.Location = new System.Drawing.Point(0, 164);
+            this.lblnbProduits.MaximumSize = new System.Drawing.Size(190, 20);
+            this.lblnbProduits.Name = "lblProdDescri";
+            this.lblnbProduits.Size = new System.Drawing.Size(177, 70);
+            this.lblnbProduits.TabIndex = 2;
+            this.lblnbProduits.Text ="Nombre: "+ nbProds.ToString(); 
             // 
             // produit_cardUC
             // 
@@ -164,6 +177,7 @@
             this.Controls.Add(this.lblProdDescri);
             this.Controls.Add(this.prodImg);
             this.Controls.Add(this.lblProdName);
+            this.Controls.Add(this.lblnbProduits);
             this.MaximumSize = new System.Drawing.Size(172, 218);
             this.MinimumSize = new System.Drawing.Size(172, 218);
             this.Name = "produit_cardUC";
@@ -179,6 +193,7 @@
         public System.Windows.Forms.Button btnReadMore;
         public System.Windows.Forms.Label lblprix; 
         public System.Windows.Forms.Button btnEdit;
-        public System.Windows.Forms.Button btnDelete;  
+        public System.Windows.Forms.Button btnDelete;
+        public System.Windows.Forms.Label lblnbProduits;
     }
 }

@@ -21,12 +21,12 @@ namespace Project_ENSAF
                 img = buffer
             };
 
-            InitializeComponent(p); 
+            InitializeComponent(p,1); 
         }
-        public produit_cardUC(Produit p)
+        public produit_cardUC(Produit p,int nbProds=1)
         { 
             this.currentProd = p; 
-            InitializeComponent(p); 
+            InitializeComponent(p,nbProds); 
         }  
         private void button2_MouseDown(object sender, MouseEventArgs e)
         {
