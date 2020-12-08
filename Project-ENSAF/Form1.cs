@@ -19,7 +19,8 @@ namespace Project_ENSAF
             InitializeComponent();
             checkedLinePanel.Height = BtnGestionProduits.Height;
             checkedLinePanel.Top = BtnGestionProduits.Top;
-             db = new dbContext();
+            db = new dbContext();
+            produitVentes = db.Produits.ToList<Produit>();
             var query = (from p in db.Produits
                          group p by new { p.libelle, } into grp
                          select new
@@ -83,24 +84,17 @@ namespace Project_ENSAF
             {
 
                 panelGestionProduit.Visible = false;
-                panelGestionVentes.Visible = true;
-                if(flowLayoutPanelVente.Controls.Count == 0)
+                panelGestionVentes.Visible = true; 
+                produitVentes = db.Produits
+                .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) > 0)
+                .ToList<Produit>();
+                flowLayoutPanelVente.Controls.Clear();
+                foreach (var prd in produitVentes)
                 {
-                    produitVentes = db.Produits
-                    .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) > 0)
-                    .ToList<Produit>();
-                    foreach (var prd in produitVentes)
-                    {
-                        this.flowLayoutPanelVente.Controls.Add(new produit_Vente(prd));
-
-                    }
-
-                }
+                    this.flowLayoutPanelVente.Controls.Add(new produit_Vente(prd)); 
+                } 
                 a = new FormPagnierVentes();
-                flowLayout = (FlowLayoutPanel)a.Controls[0];
-
-
-
+                flowLayout = (FlowLayoutPanel)a.Controls[0]; 
             }
 
             previousBtn.BackColor = Color.FromArgb(0, 53, 92);
@@ -129,7 +123,7 @@ namespace Project_ENSAF
             string produitArech = textBoxSearchProduitVentes.Text;
             Console.WriteLine(produitArech);
             List<Produit> ToRender  =  produitVentes.Where(p => p.libelle.ToLower().Contains(produitArech.ToLower())).ToList();
-            if (ToRender.Count > 0) flowLayoutPanelVente.Controls.Clear();
+            flowLayoutPanelVente.Controls.Clear();
             foreach(var prd in ToRender)
             {
                 flowLayoutPanelVente.Controls.Add(new produit_Vente(prd));  
@@ -200,8 +194,7 @@ namespace Project_ENSAF
             string cle = tbSearch.Text;
             Console.WriteLine("\ncle: "+cle); 
             List<Produit> prodTrouves = produitVentes.Where(p => p.libelle.ToLower().IndexOf(cle)!=-1)
-                                                   .ToList();
-
+                                                   .ToList(); 
             var query = (from p in prodTrouves
                          group p by new { p.libelle, } into grp
                          select new
@@ -286,6 +279,10 @@ namespace Project_ENSAF
                 Console.WriteLine(prd.libelle);
                 flowLayoutPanel1.Controls.Add(new produit_Vente(prd));
             }
+        }
+
+        private void produit_cardUC1_Load(object sender, EventArgs e)
+        {
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

@@ -430,6 +430,7 @@
             this.tbSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbSearch.Font = new System.Drawing.Font("Calibri", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbSearch.Location = new System.Drawing.Point(9, 9);
+            this.tbSearch.MinimumSize = new System.Drawing.Size(0, 26);
             this.tbSearch.Multiline = true;
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(216, 26);
@@ -520,7 +521,7 @@
         private System.Windows.Forms.Panel panelSearchBox;
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Button btnAjouterProduit;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        public System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelVente;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnViderPanger;

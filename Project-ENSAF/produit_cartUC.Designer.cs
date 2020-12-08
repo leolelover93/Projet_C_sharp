@@ -105,6 +105,7 @@
             this.btnReadMore.TabIndex = 3;
             this.btnReadMore.Text = "Read more";
             this.btnReadMore.UseVisualStyleBackColor = false;
+            this.btnReadMore.Click += new System.EventHandler(this.btnReadMore_click);
             // 
             // lblprix
             // 
@@ -163,7 +164,7 @@
             this.lblnbProduits.Name = "lblProdDescri";
             this.lblnbProduits.Size = new System.Drawing.Size(177, 70);
             this.lblnbProduits.TabIndex = 2;
-            this.lblnbProduits.Text ="Nombre: "+ nbProds.ToString(); 
+            this.lblnbProduits.Text ="Stock: "+ nbProds.ToString(); 
             // 
             // produit_cardUC
             // 
@@ -180,8 +181,7 @@
             this.Controls.Add(this.lblnbProduits);
             this.MaximumSize = new System.Drawing.Size(172, 218);
             this.MinimumSize = new System.Drawing.Size(172, 218);
-            this.Name = "produit_cardUC";
-            this.Load += new System.EventHandler(this.produit_cardUC_Load_1);
+            this.Name = "produit_cardUC"; 
             this.ResumeLayout(false);
 
         }

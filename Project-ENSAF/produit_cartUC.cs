@@ -44,7 +44,7 @@ namespace Project_ENSAF
             //this.fct();
              try
              {
-
+                
                 var db = new dbContext();
                 Produit p = db.Produits.Find(currentProd.codeProduit);
                 db.Produits.Remove(p); 
@@ -84,15 +84,12 @@ namespace Project_ENSAF
             {
                 MessageBox.Show("Error! cant insert product :" + exce.Message);
             }
-        } 
-        private void produit_cardUC_Load(object sender, EventArgs e)
-        { 
-
         }
-
-        private void produit_cardUC_Load_1(object sender, EventArgs e)
+        private void btnReadMore_click(object sender, EventArgs e)
         {
 
+
         }
+
     }
 }
