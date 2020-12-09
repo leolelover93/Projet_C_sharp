@@ -37,14 +37,6 @@
             this.checkedLinePanel = new System.Windows.Forms.Panel();
             this.BtnGestionProduits = new System.Windows.Forms.Button();
             this.panelContainer = new System.Windows.Forms.Panel();
-            this.panelGestionVentes = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel(); 
-            this.btnViderPanger = new System.Windows.Forms.Button();
-            this.btnAjouterAuPagnier = new System.Windows.Forms.Button();
-            this.labelBasket = new System.Windows.Forms.Label(); 
-            this.flowLayoutPanelVente = new System.Windows.Forms.FlowLayoutPanel();
-            this.listBoxItemProduct = new System.Windows.Forms.Label();
             this.panelGestionProduit = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.btnNonDisponible = new System.Windows.Forms.Button();
@@ -55,20 +47,27 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnAjouterProduit = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panelGestionVentes = new System.Windows.Forms.Panel();  
+            this.panelGestionVentes = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.textBoxSearchProduitVentes = new System.Windows.Forms.TextBox();
             this.buttonSearchPV = new System.Windows.Forms.Button();
-            this.textBoxSearchProduitVentes = new System.Windows.Forms.TextBox();  
-            this.pictureBoxBasket = new System.Windows.Forms.PictureBox();  
+            this.btnViderPanger = new System.Windows.Forms.Button();
+            this.btnAjouterAuPagnier = new System.Windows.Forms.Button();
+            this.labelBasket = new System.Windows.Forms.Label();
+            this.pictureBoxBasket = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanelVente = new System.Windows.Forms.FlowLayoutPanel();
+            this.listBoxItemProduct = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             this.panelContainer.SuspendLayout();
-            this.panelGestionVentes.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasket)).BeginInit(); 
             this.panelGestionProduit.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelSearchBox.SuspendLayout();
+            this.panelGestionVentes.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasket)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -181,129 +180,6 @@
             this.panelContainer.Name = "panelContainer";
             this.panelContainer.Size = new System.Drawing.Size(750, 499);
             this.panelContainer.TabIndex = 1;
-            // 
-            // panelGestionVentes
-            // 
-            this.panelGestionVentes.BackColor = System.Drawing.Color.Chocolate;
-            this.panelGestionVentes.Controls.Add(this.panel2);
-            this.panelGestionVentes.Controls.Add(this.flowLayoutPanelVente);
-            this.panelGestionVentes.Controls.Add(this.listBoxItemProduct);
-            this.panelGestionVentes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGestionVentes.Location = new System.Drawing.Point(0, 0);
-            this.panelGestionVentes.Name = "panelGestionVentes";
-            this.panelGestionVentes.Size = new System.Drawing.Size(750, 499);
-            this.panelGestionVentes.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.btnViderPanger);
-            this.panel2.Controls.Add(this.btnAjouterAuPagnier);
-            this.panel2.Controls.Add(this.labelBasket); 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(750, 55);
-            this.panel2.TabIndex = 2;
-            // 
-            // panel3
-            //  
-            this.panel3.Controls.Add(this.textBoxSearchProduitVentes);
-            this.panel3.Location = new System.Drawing.Point(0, 7);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(246, 45);
-            this.panel3.TabIndex = 4;
-            // 
-            // textBoxSearchProduitVentes
-            // 
-            this.textBoxSearchProduitVentes.BackColor = System.Drawing.Color.White;
-            this.textBoxSearchProduitVentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxSearchProduitVentes.Font = new System.Drawing.Font("Calibri", 12.25F);
-            this.textBoxSearchProduitVentes.Location = new System.Drawing.Point(9, 9);
-            this.textBoxSearchProduitVentes.Multiline = true;
-            this.textBoxSearchProduitVentes.Name = "textBoxSearchProduitVentes";
-            this.textBoxSearchProduitVentes.Size = new System.Drawing.Size(216, 26);
-            this.textBoxSearchProduitVentes.TabIndex = 2;
-            this.textBoxSearchProduitVentes.Text = "Cherhcer Produit";
-            this.textBoxSearchProduitVentes.TextChanged += new System.EventHandler(this.textBoxSearchProduitVentes_TextChanged);
-            //  
-            // btnViderPanger
-            // 
-            this.btnViderPanger.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnViderPanger.AutoSize = true;
-            this.btnViderPanger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.btnViderPanger.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnViderPanger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViderPanger.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.btnViderPanger.ForeColor = System.Drawing.Color.White;
-            this.btnViderPanger.Location = new System.Drawing.Point(498, 9);
-            this.btnViderPanger.Margin = new System.Windows.Forms.Padding(0);
-            this.btnViderPanger.Name = "btnViderPanger";
-            this.btnViderPanger.Size = new System.Drawing.Size(160, 39);
-            this.btnViderPanger.TabIndex = 3;
-            this.btnViderPanger.Text = "Vider le pagnier";
-            this.btnViderPanger.UseVisualStyleBackColor = false;
-            this.btnViderPanger.Click += new System.EventHandler(this.btnViderPanger_Click);
-            // 
-            // btnAjouterAuPagnier
-            // 
-            this.btnAjouterAuPagnier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAjouterAuPagnier.AutoSize = true;
-            this.btnAjouterAuPagnier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.btnAjouterAuPagnier.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnAjouterAuPagnier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAjouterAuPagnier.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.btnAjouterAuPagnier.ForeColor = System.Drawing.Color.White;
-            this.btnAjouterAuPagnier.Location = new System.Drawing.Point(331, 9);
-            this.btnAjouterAuPagnier.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAjouterAuPagnier.Name = "btnAjouterAuPagnier";
-            this.btnAjouterAuPagnier.Size = new System.Drawing.Size(164, 39);
-            this.btnAjouterAuPagnier.TabIndex = 2;
-            this.btnAjouterAuPagnier.Text = " Nouveau pagnier";
-            this.btnAjouterAuPagnier.UseVisualStyleBackColor = false;
-            this.btnAjouterAuPagnier.Click += new System.EventHandler(this.btnAjouterAuPagnier_Click);
-            // 
-            // labelBasket
-            // 
-            this.labelBasket.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelBasket.AutoSize = true;
-            this.labelBasket.BackColor = System.Drawing.Color.Transparent;
-            this.labelBasket.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBasket.ForeColor = System.Drawing.Color.Red;
-            this.labelBasket.Location = new System.Drawing.Point(701, 9);
-            this.labelBasket.MaximumSize = new System.Drawing.Size(0, 13);
-            this.labelBasket.Name = "labelBasket";
-            this.labelBasket.Size = new System.Drawing.Size(13, 13);
-            this.labelBasket.TabIndex = 1;
-            this.labelBasket.Text = "0";
-            // 
-            // pictureBox2 
-            // flowLayoutPanelVente
-            // 
-            this.flowLayoutPanelVente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelVente.AutoScroll = true;
-            this.flowLayoutPanelVente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanelVente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.flowLayoutPanelVente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanelVente.Location = new System.Drawing.Point(0, 55);
-            this.flowLayoutPanelVente.Name = "flowLayoutPanelVente";
-            this.flowLayoutPanelVente.Size = new System.Drawing.Size(750, 444);
-            this.flowLayoutPanelVente.TabIndex = 3;
-            // 
-            // listBoxItemProduct
-            // 
-            this.listBoxItemProduct.Location = new System.Drawing.Point(44, 6);
-            this.listBoxItemProduct.Name = "listBoxItemProduct";
-            this.listBoxItemProduct.Size = new System.Drawing.Size(72, 39);
-            this.listBoxItemProduct.TabIndex = 5;
-            this.listBoxItemProduct.Visible = false;
-            this.listBoxItemProduct.TextChanged += new System.EventHandler(this.listBoxItemProduct_TextChanged); 
             // 
             // panelGestionProduit
             // 
@@ -428,6 +304,7 @@
             this.btnAjouterProduit.TabIndex = 0;
             this.btnAjouterProduit.Text = " Ajouter Prdouit";
             this.btnAjouterProduit.UseVisualStyleBackColor = false;
+            this.btnAjouterProduit.Click += new System.EventHandler(this.btnAjouterProduit_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -477,19 +354,6 @@
             this.panel3.Size = new System.Drawing.Size(246, 45);
             this.panel3.TabIndex = 4;
             // 
-            // buttonSearchPV
-            // 
-            this.buttonSearchPV.BackColor = System.Drawing.Color.White;
-            this.buttonSearchPV.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSearchPV.BackgroundImage")));
-            this.buttonSearchPV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSearchPV.FlatAppearance.BorderSize = 0;
-            this.buttonSearchPV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchPV.Location = new System.Drawing.Point(200, 12);
-            this.buttonSearchPV.Name = "buttonSearchPV";
-            this.buttonSearchPV.Size = new System.Drawing.Size(24, 20);
-            this.buttonSearchPV.TabIndex = 4;
-            this.buttonSearchPV.UseVisualStyleBackColor = false;
-            // 
             // textBoxSearchProduitVentes
             // 
             this.textBoxSearchProduitVentes.BackColor = System.Drawing.Color.White;
@@ -502,6 +366,19 @@
             this.textBoxSearchProduitVentes.TabIndex = 2;
             this.textBoxSearchProduitVentes.Text = "Cherhcer Produit";
             this.textBoxSearchProduitVentes.TextChanged += new System.EventHandler(this.textBoxSearchProduitVentes_TextChanged);
+            // 
+            // buttonSearchPV
+            // 
+            this.buttonSearchPV.BackColor = System.Drawing.Color.White;
+            this.buttonSearchPV.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSearchPV.BackgroundImage")));
+            this.buttonSearchPV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSearchPV.FlatAppearance.BorderSize = 0;
+            this.buttonSearchPV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchPV.Location = new System.Drawing.Point(200, 12);
+            this.buttonSearchPV.Name = "buttonSearchPV";
+            this.buttonSearchPV.Size = new System.Drawing.Size(24, 20);
+            this.buttonSearchPV.TabIndex = 4;
+            this.buttonSearchPV.UseVisualStyleBackColor = false;
             // 
             // btnViderPanger
             // 
@@ -609,16 +486,16 @@
             this.LogoPanel.ResumeLayout(false);
             this.LogoPanel.PerformLayout();
             this.panelContainer.ResumeLayout(false);
-            this.panelGestionVentes.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout(); 
             this.panelGestionProduit.ResumeLayout(false);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelSearchBox.ResumeLayout(false);
             this.panelSearchBox.PerformLayout();
+            this.panelGestionVentes.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasket)).EndInit();
             this.ResumeLayout(false);
 

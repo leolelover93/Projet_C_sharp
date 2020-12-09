@@ -262,7 +262,7 @@ namespace Project_ENSAF
 
         private void listBoxItemProduct_TextChanged(object sender, EventArgs e)
         {
-            if(listBoxItemProduct.Text != "")
+           /* if(listBoxItemProduct.Text != "")
             {
                 this.pictureBoxBasket.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
                 Produit p = produitVentes.Where(pa => pa.codeProduit == int.Parse(listBoxItemProduct.Text.Split(' ')[0])).ToList()[0];
@@ -273,7 +273,7 @@ namespace Project_ENSAF
                 elmnt.Description = p.description;
                 elmnt.Quantite = int.Parse(listBoxItemProduct.Text.Split(' ')[1]);
                 elmnt.QuntiteProduit = listBoxItemProduct.Text.Split(' ')[1];
-                elmnt.PrixUnit = p.prixVente;
+                elmnt.PrixUnit = p.prixVente.ToString();
                 elmnt.PrixTotal = p.prixVente * int.Parse(listBoxItemProduct.Text.Split(' ')[1]) + "";
                 foreach (Control item in flowLayoutPagnierProduitVentes.Controls)
                 {
@@ -290,7 +290,7 @@ namespace Project_ENSAF
                 flowLayoutPagnierProduitVentes.Controls.Add(elmnt);
                 listBoxItemProduct.Text = "";
                 
-            }
+            }*/
 
 
         }
@@ -327,6 +327,12 @@ namespace Project_ENSAF
                 MessageBox.Show("Le pagnier est vide !");
             }
 
+        }
+
+        private void btnAjouterProduit_Click(object sender, EventArgs e)
+        {
+            Form_Ajouter_Produit formajout = new Form_Ajouter_Produit();
+            formajout.Show();
         }
 
         private void handel_AfterCloseForm(object sender, EventArgs e)

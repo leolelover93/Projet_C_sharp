@@ -253,7 +253,8 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
+            this.PerformLayout(); 
+          //  this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 
         }
 
