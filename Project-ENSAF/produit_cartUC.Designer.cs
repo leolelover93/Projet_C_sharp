@@ -71,7 +71,7 @@
             this.prodImg.Location = new System.Drawing.Point(3, -1);
             this.prodImg.Name = "prodImg";
             this.prodImg.Size = new System.Drawing.Size(166, 117);
-            this.prodImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.prodImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.prodImg.TabIndex = 1;
             this.prodImg.TabStop = false;
             // 

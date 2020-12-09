@@ -1,20 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System; 
+using System.Windows.Forms; 
+using System.Collections.Generic; 
 
 namespace Project_ENSAF
 {
     public partial class FormProdDescri : Form
     {
-        public FormProdDescri()
+      /*  public FormProdDescri( )
         {
             InitializeComponent();
+        }*/
+        
+        public FormProdDescri(List<Produit> stock)
+        {
+            InitializeComponent(stock);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
