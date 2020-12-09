@@ -30,8 +30,9 @@ namespace Project_ENSAF
         private Image _icon;
         private string _quntiteProduit;
         private Color _iconBack;
-        private string prixUnit;
+        private decimal prixUnit;
         private string prixToatal;
+        private int qunatite;
 
 
 
@@ -46,10 +47,18 @@ namespace Project_ENSAF
         }
 
         [Category("Custom Props")]
-        public string PrixUnit
+        public int Quantite
+        {
+            get { return qunatite; }
+            set { qunatite = value; numericUpDownQunatite.Value = value; }
+        }
+
+
+        [Category("Custom Props")]
+        public decimal PrixUnit
         {
             get { return prixUnit; }
-            set { prixUnit = value; labelPrixUnite.Text = value; }
+            set { prixUnit = value; labelPrixUnite.Text = (value.ToString() +"DH"); }
         }
 
         [Category("Custom Props")]
@@ -88,10 +97,23 @@ namespace Project_ENSAF
             set { _iconBack = value; panelIconBackground.BackColor = value; }
         }
 
+
+
+
         #endregion
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            FlowLayoutPanel floawLayout = (FlowLayoutPanel) this.Parent.Parent.Controls[1];
+            floawLayout.Controls.Remove(this);
+        }
 
-
-
+        private void numericUpDownQunatite_ValueChanged(object sender, EventArgs e)
+        {
+            decimal Qpr = numericUpDownQunatite.Value;
+          //decimal prix = decimal.Parse(this.PrixTotal.ToString());
+            labelNbProduit.Text = numericUpDownQunatite.Value + "";
+            labelPrixTotal.Text =  prixUnit*Qpr +"";
+        }
     }
 }

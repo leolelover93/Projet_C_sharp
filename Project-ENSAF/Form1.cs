@@ -10,7 +10,8 @@ namespace Project_ENSAF
     {
         Button previousBtn,prvBtnFilter;
         FormPagnierVentes a;
-        FlowLayoutPanel flowLayout;
+        int nbProduitInBasket = 0; 
+        FlowLayoutPanel flowLayoutPagnierProduitVentes;
         List<Produit> produitVentes = new List<Produit>();
         List<Produit> listeProduitsPagnier = new List<Produit>();
         dbContext db;
@@ -24,6 +25,7 @@ namespace Project_ENSAF
             {
                  this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit));
             } 
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -33,35 +35,35 @@ namespace Project_ENSAF
             btnViewAll.BackColor = Color.FromArgb(72, 152, 207);
             btnViewAll.ForeColor = Color.White;
             previousBtn = BtnGestionProduits;
-            BtnGestionProduits.BackColor = Color.FromArgb(13, 72, 114); 
+            BtnGestionProduits.BackColor = Color.FromArgb(13, 72, 114);
             //Ajout d'un produit dans la base
-           /*   try
-            {
+            /*   try
+             {
 
-                byte[] buffer = (byte[])new ImageConverter().ConvertTo(Properties.Resources.sweets, typeof(byte[]));
-                Produit p = new Produit()
-                {
-                    libelle = "danone2",
-                    dateExpiration = DateTime.Now,
-                    prixAchat = (decimal)1.5,
-                    prixVente = (decimal)2,
-                    description = "danone banane",
-                    idFournisseur = 1,
-                    img = buffer
-                };
-                var db = new dbContext();
-                db.Produits.Add(p);
-                this.Parent.Refresh();
-                db.SaveChanges();
-                
-                MessageBox.Show("product insertion successed:");
-            }
-            catch (Exception exce)
-            {
-                MessageBox.Show("Error! cant insert product :" + exce.Message);
-            }*/
+                 byte[] buffer = (byte[])new ImageConverter().ConvertTo(Properties.Resources.sweets, typeof(byte[]));
+                 Produit p = new Produit()
+                 {
+                     libelle = "danone2",
+                     dateExpiration = DateTime.Now,
+                     prixAchat = (decimal)1.5,
+                     prixVente = (decimal)2,
+                     description = "danone banane",
+                     idFournisseur = 1,
+                     img = buffer
+                 };
+                 var db = new dbContext();
+                 db.Produits.Add(p);
+                 this.Parent.Refresh();
+                 db.SaveChanges();
+
+                 MessageBox.Show("product insertion successed:");
+             }
+             catch (Exception exce)
+             {
+                 MessageBox.Show("Error! cant insert product :" + exce.Message);
+             }*/
         }
-       
+
         private void button1_Click(object sender, EventArgs e)
         {
             if((sender as Button).Text == "Gestion Produits")
@@ -82,12 +84,18 @@ namespace Project_ENSAF
                     foreach (var prd in produitVentes)
                     {
                         this.flowLayoutPanelVente.Controls.Add(new produit_Vente(prd));
-
                     }
 
+
                 }
-                a = new FormPagnierVentes();
-                flowLayout = (FlowLayoutPanel)a.Controls[0];
+                if (a == null)
+                {
+                    a = new FormPagnierVentes();
+                    flowLayoutPagnierProduitVentes = (FlowLayoutPanel)a.Controls[1];
+                    a.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.handel_AfterCloseForm);
+
+                }
+                
 
 
 
@@ -117,7 +125,6 @@ namespace Project_ENSAF
         private void textBoxSearchProduitVentes_TextChanged(object sender, EventArgs e)
         {
             string produitArech = textBoxSearchProduitVentes.Text;
-            Console.WriteLine(produitArech);
             List<Produit> ToRender  =  produitVentes.Where(p => p.libelle.ToLower().Contains(produitArech.ToLower())).ToList();
             if (ToRender.Count > 0) flowLayoutPanelVente.Controls.Clear();
             foreach(var prd in ToRender)
@@ -128,15 +135,13 @@ namespace Project_ENSAF
        
         private void btnAjouterAuPagnier_Click(object sender, EventArgs e)
         {
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+
+            this.pictureBoxBasket.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+         
 
         }
 
-        private void listBoxItemProduct_DataSourceChanged(object sender, EventArgs e)
-        {
-
-
-        }
+      
          
         public void flowLayoutPanel1_Click(object sender, EventArgs e)
         {
@@ -219,37 +224,54 @@ namespace Project_ENSAF
 
         private void btnViderPanger_Click(object sender, EventArgs e)
         {
-            
-           
-            
+            labelBasket.Text = "0";
+            nbProduitInBasket = 0; 
+            this.pictureBoxBasket.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            flowLayoutPagnierProduitVentes.Controls.Clear();
+            Control[] a = flowLayoutPagnierProduitVentes.Parent.Controls[0].Controls.Find("labelTFNb", true);
+            Label labelPrixTotal = (Label)a[0];
+            labelPrixTotal.Text = "0";
         }
 
-        private void listBoxItemProduct_Resize(object sender, EventArgs e)
-        {
-            
-            
      
-
-        }
 
         private void listBoxItemProduct_TextChanged(object sender, EventArgs e)
         {
-            listeProduitsPagnier.Add(produitVentes.Where(pa => pa.codeProduit == int.Parse(listBoxItemProduct.Text)).ToList()[0]);
-
-            Produit p = listeProduitsPagnier[listeProduitsPagnier.Count - 1];
+            if(listBoxItemProduct.Text != "")
+            {
+                this.pictureBoxBasket.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+                Produit p = produitVentes.Where(pa => pa.codeProduit == int.Parse(listBoxItemProduct.Text.Split(' ')[0])).ToList()[0];
+                labelBasket.Text = ++nbProduitInBasket + "";
                 ElementPagnierVentes elmnt = new ElementPagnierVentes();
                 elmnt.Title = p.libelle;
                 elmnt.Icon = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
                 elmnt.Description = p.description;
-                elmnt.QuntiteProduit = "56";
-                elmnt.PrixUnit = p.prixVente.ToString() + "DH";
-                elmnt.PrixTotal = "2121";
-                flowLayout.Controls.Add(elmnt);
-                Console.WriteLine("titre produit : " + p.libelle);
-            
+                elmnt.Quantite = int.Parse(listBoxItemProduct.Text.Split(' ')[1]);
+                elmnt.QuntiteProduit = listBoxItemProduct.Text.Split(' ')[1];
+                elmnt.PrixUnit = p.prixVente;
+                elmnt.PrixTotal = p.prixVente * int.Parse(listBoxItemProduct.Text.Split(' ')[1]) + "";
+                foreach (Control item in flowLayoutPagnierProduitVentes.Controls)
+                {
+                    ElementPagnierVentes epv = (ElementPagnierVentes)item;
+                    if (epv.Title == elmnt.Title)
+                    {
+                        epv.Quantite = int.Parse(listBoxItemProduct.Text.Split(' ')[1]);
+                        labelBasket.Text = --nbProduitInBasket + "";
+
+                        return;
+                    }
+
+                }
+                flowLayoutPagnierProduitVentes.Controls.Add(elmnt);
+                listBoxItemProduct.Text = "";
+                
+            }
+
+
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
+
+        private void buttonSearchGP_Click_1(object sender, EventArgs e)
         {
             string produitArech = textBoxSearchProduitVentes.Text;
             Console.WriteLine(produitArech);
@@ -257,18 +279,34 @@ namespace Project_ENSAF
             if (ToRender.Count > 0) flowLayoutPanel1.Controls.Clear();
             foreach (var prd in ToRender)
             {
-                Console.WriteLine(prd.libelle);
                 flowLayoutPanel1.Controls.Add(new produit_Vente(prd));
             }
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void pictureBoxBasket_Click(object sender, EventArgs e)
         {
-            a.Show(); 
+            if (Object.Equals(a,null))
+            {
+                a = new FormPagnierVentes();
+                flowLayoutPagnierProduitVentes = (FlowLayoutPanel)a.Controls[0];
+            }
+            if(!Object.Equals(a, null) && flowLayoutPagnierProduitVentes.Controls.Count > 0)
+            {
+                a.Show(); 
+            }else
+            {
+                MessageBox.Show("Le pagnier est vide !");
+            }
+
         }
 
-      
+        private void handel_AfterCloseForm(object sender, EventArgs e)
+        {
+            labelBasket.Text  = flowLayoutPagnierProduitVentes.Controls.Count + "";
+            nbProduitInBasket = flowLayoutPagnierProduitVentes.Controls.Count;
+        }
+           
 
-    
+
     }
 }

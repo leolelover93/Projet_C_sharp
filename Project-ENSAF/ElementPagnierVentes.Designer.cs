@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ElementPagnierVentes));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.numericUpDownQunatite = new System.Windows.Forms.NumericUpDown();
             this.labelPrixTotal = new System.Windows.Forms.Label();
             this.labelT = new System.Windows.Forms.Label();
             this.labelPrixUnite = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@
             this.labelDescription = new System.Windows.Forms.Label();
             this.labelProduit = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQunatite)).BeginInit();
             this.panelIconBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -50,6 +52,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.numericUpDownQunatite);
             this.panel1.Controls.Add(this.labelPrixTotal);
             this.panel1.Controls.Add(this.labelT);
             this.panel1.Controls.Add(this.labelPrixUnite);
@@ -63,14 +66,32 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(432, 115);
+            this.panel1.Size = new System.Drawing.Size(511, 121);
             this.panel1.TabIndex = 0;
+            // 
+            // numericUpDownQunatite
+            // 
+            this.numericUpDownQunatite.Location = new System.Drawing.Point(383, 67);
+            this.numericUpDownQunatite.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownQunatite.Name = "numericUpDownQunatite";
+            this.numericUpDownQunatite.Size = new System.Drawing.Size(60, 20);
+            this.numericUpDownQunatite.TabIndex = 11;
+            this.numericUpDownQunatite.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownQunatite.ValueChanged += new System.EventHandler(this.numericUpDownQunatite_ValueChanged);
             // 
             // labelPrixTotal
             // 
             this.labelPrixTotal.AutoSize = true;
             this.labelPrixTotal.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.labelPrixTotal.Location = new System.Drawing.Point(337, 78);
+            this.labelPrixTotal.Location = new System.Drawing.Point(437, 90);
             this.labelPrixTotal.Name = "labelPrixTotal";
             this.labelPrixTotal.Size = new System.Drawing.Size(47, 17);
             this.labelPrixTotal.TabIndex = 10;
@@ -80,7 +101,7 @@
             // 
             this.labelT.AutoSize = true;
             this.labelT.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.labelT.Location = new System.Drawing.Point(280, 78);
+            this.labelT.Location = new System.Drawing.Point(380, 90);
             this.labelT.Name = "labelT";
             this.labelT.Size = new System.Drawing.Size(51, 17);
             this.labelT.TabIndex = 9;
@@ -113,7 +134,7 @@
             this.panelIconBackground.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelIconBackground.Location = new System.Drawing.Point(0, 0);
             this.panelIconBackground.Name = "panelIconBackground";
-            this.panelIconBackground.Size = new System.Drawing.Size(114, 115);
+            this.panelIconBackground.Size = new System.Drawing.Size(114, 121);
             this.panelIconBackground.TabIndex = 6;
             // 
             // icon
@@ -121,9 +142,9 @@
             this.icon.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.icon.Location = new System.Drawing.Point(3, 7);
+            this.icon.Location = new System.Drawing.Point(3, 3);
             this.icon.Name = "icon";
-            this.icon.Size = new System.Drawing.Size(108, 105);
+            this.icon.Size = new System.Drawing.Size(108, 115);
             this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.icon.TabIndex = 0;
             this.icon.TabStop = false;
@@ -153,13 +174,15 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(402, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(481, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(27, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(27, 38);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // labelDescription
             // 
@@ -169,7 +192,7 @@
             this.labelDescription.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDescription.Location = new System.Drawing.Point(120, 35);
             this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(154, 49);
+            this.labelDescription.Size = new System.Drawing.Size(233, 35);
             this.labelDescription.TabIndex = 2;
             this.labelDescription.Text = "label1";
             // 
@@ -193,9 +216,10 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel1);
             this.Name = "ElementPagnierVentes";
-            this.Size = new System.Drawing.Size(432, 115);
+            this.Size = new System.Drawing.Size(511, 121);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQunatite)).EndInit();
             this.panelIconBackground.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -217,5 +241,6 @@
         private System.Windows.Forms.Label labelT;
         private System.Windows.Forms.Label labelPrixUnite;
         private System.Windows.Forms.Label labelP;
+        private System.Windows.Forms.NumericUpDown numericUpDownQunatite;
     }
 }

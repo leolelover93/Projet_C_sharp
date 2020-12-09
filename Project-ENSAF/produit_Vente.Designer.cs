@@ -35,7 +35,9 @@
             this.btnReadMore = new System.Windows.Forms.Button();
             this.lblprix = new System.Windows.Forms.Label();
             this.lblProdDescri = new System.Windows.Forms.Label();
+            this.numericUpDownQauntite = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.prodImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQauntite)).BeginInit();
             this.SuspendLayout();
             // 
             // prodImg
@@ -60,7 +62,7 @@
             this.lblProdName.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProdName.Location = new System.Drawing.Point(-1, 118);
             this.lblProdName.Name = "lblProdName";
-            this.lblProdName.Size = new System.Drawing.Size(90, 23);
+            this.lblProdName.Size = new System.Drawing.Size(85, 23);
             this.lblProdName.TabIndex = 1;
             this.lblProdName.Text = p.libelle;
             // 
@@ -90,7 +92,7 @@
             this.lblprix.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
             this.lblprix.Location = new System.Drawing.Point(-1, 189);
             this.lblprix.Name = "lblprix";
-            this.lblprix.Size = new System.Drawing.Size(233, 23);
+            this.lblprix.Size = new System.Drawing.Size(36, 23);
             this.lblprix.TabIndex = 4;
             this.lblprix.Text = p.prixVente.ToString()+"DH";
             // 
@@ -109,11 +111,29 @@
             this.lblProdDescri.TabIndex = 2;
             this.lblProdDescri.Text = p.description;
             // 
+            // numericUpDownQauntite
+            // 
+            this.numericUpDownQauntite.Location = new System.Drawing.Point(3, 164);
+            this.numericUpDownQauntite.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownQauntite.Name = "numericUpDownQauntite";
+            this.numericUpDownQauntite.Size = new System.Drawing.Size(47, 20);
+            this.numericUpDownQauntite.TabIndex = 5;
+            this.numericUpDownQauntite.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // produit_Vente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.numericUpDownQauntite);
             this.Controls.Add(this.lblProdDescri);
             this.Controls.Add(this.lblprix);
             this.Controls.Add(this.btnReadMore);
@@ -122,6 +142,7 @@
             this.Name = "produit_Vente";
             this.Size = new System.Drawing.Size(172, 218);
             ((System.ComponentModel.ISupportInitialize)(this.prodImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQauntite)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,5 +155,6 @@
         private System.Windows.Forms.Button btnReadMore;
         private System.Windows.Forms.Label lblprix;
         private System.Windows.Forms.Label lblProdDescri;
+        private System.Windows.Forms.NumericUpDown numericUpDownQauntite;
     }
 }

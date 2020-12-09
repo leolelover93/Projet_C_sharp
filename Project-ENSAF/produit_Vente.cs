@@ -22,14 +22,16 @@ namespace Project_ENSAF
 
         public void getTheControl()
         {
-            
+            //  this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
         }
         private void btnReadMore_Click(object sender, EventArgs e)
         {
            Control[] tabElment =  this.Parent.Parent.Controls.Find("listBoxItemProduct", true);
-           Label label = (Label) tabElment[0];
-            //Just to fire the resize event
-            label.Text = (this.idProduit.ToString()); 
+            Label label = (Label) tabElment[0];
+            //Just to fire the event of the hidden text in form1
+          if (label.Text == (this.idProduit.ToString() + " " + numericUpDownQauntite.Value)) label.Text = "";
+            label.Text = (this.idProduit.ToString()+" "+numericUpDownQauntite.Value);
+
         }
     }
 }
