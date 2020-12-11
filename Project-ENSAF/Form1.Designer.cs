@@ -50,8 +50,8 @@
             this.panelGestionVentes = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonSearchPV = new System.Windows.Forms.Button();
             this.textBoxSearchProduitVentes = new System.Windows.Forms.TextBox();
+            this.buttonSearchPV = new System.Windows.Forms.Button();
             this.btnViderPanger = new System.Windows.Forms.Button();
             this.btnAjouterAuPagnier = new System.Windows.Forms.Button();
             this.labelBasket = new System.Windows.Forms.Label();
@@ -304,6 +304,7 @@
             this.btnAjouterProduit.TabIndex = 0;
             this.btnAjouterProduit.Text = " Ajouter Prdouit";
             this.btnAjouterProduit.UseVisualStyleBackColor = false;
+            this.btnAjouterProduit.Click += new System.EventHandler(this.btnAjouterProduit_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -355,6 +356,18 @@
             this.panel3.Size = new System.Drawing.Size(246, 45);
             this.panel3.TabIndex = 4;
             // 
+            // textBoxSearchProduitVentes
+            // 
+            this.textBoxSearchProduitVentes.BackColor = System.Drawing.Color.White;
+            this.textBoxSearchProduitVentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxSearchProduitVentes.Font = new System.Drawing.Font("Calibri", 12.25F);
+            this.textBoxSearchProduitVentes.Location = new System.Drawing.Point(9, 9);
+            this.textBoxSearchProduitVentes.Multiline = true;
+            this.textBoxSearchProduitVentes.Name = "textBoxSearchProduitVentes";
+            this.textBoxSearchProduitVentes.Size = new System.Drawing.Size(216, 26);
+            this.textBoxSearchProduitVentes.TabIndex = 2;
+            this.textBoxSearchProduitVentes.TextChanged += new System.EventHandler(this.textBoxSearchProduitVentes_TextChanged);
+            // 
             // buttonSearchPV
             // 
             this.buttonSearchPV.BackColor = System.Drawing.Color.White;
@@ -367,18 +380,6 @@
             this.buttonSearchPV.Size = new System.Drawing.Size(24, 20);
             this.buttonSearchPV.TabIndex = 4;
             this.buttonSearchPV.UseVisualStyleBackColor = false;
-            // 
-            // textBoxSearchProduitVentes
-            // 
-            this.textBoxSearchProduitVentes.BackColor = System.Drawing.Color.White;
-            this.textBoxSearchProduitVentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxSearchProduitVentes.Font = new System.Drawing.Font("Calibri", 12.25F);
-            this.textBoxSearchProduitVentes.Location = new System.Drawing.Point(9, 9);
-            this.textBoxSearchProduitVentes.Multiline = true;
-            this.textBoxSearchProduitVentes.Name = "textBoxSearchProduitVentes";
-            this.textBoxSearchProduitVentes.Size = new System.Drawing.Size(216, 26);
-            this.textBoxSearchProduitVentes.TabIndex = 2;
-            this.textBoxSearchProduitVentes.TextChanged += new System.EventHandler(this.textBoxSearchProduitVentes_TextChanged);
             // 
             // btnViderPanger
             // 
