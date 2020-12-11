@@ -126,11 +126,7 @@ namespace Project_ENSAF
                 prvBtnFilter = (sender as Button);
                 prvBtnFilter.BackColor = Color.FromArgb(72, 152, 207);
                 prvBtnFilter.ForeColor = Color.White; 
-        } 
-        private void button3_Click(object sender, EventArgs e)
-        {
-             
-        }
+        }  
 
         private void textBoxSearchProduitVentes_TextChanged(object sender, EventArgs e)
         {
@@ -144,23 +140,12 @@ namespace Project_ENSAF
         }
        
         private void btnAjouterAuPagnier_Click(object sender, EventArgs e)
+        { 
+            this.pictureBoxBasket.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D; 
+        }   
+        public void btnViewAll_Click(object sender, EventArgs e)
         {
-
-            this.pictureBoxBasket.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         
-
-        }
-
-      
-         
-        public void flowLayoutPanel1_Click(object sender, EventArgs e)
-        {
-         
-        }
-
-        private void btnViewAll_Click(object sender, EventArgs e)
-        {
-            filter_style_click( sender,  e);  
+            if (sender !=null) filter_style_click( sender,  e);  
             produitVentes = db.Produits.ToList<Produit>(); 
             var query = (from p in db.Produits
                          group p by new { p.libelle, } into grp
@@ -331,17 +316,14 @@ namespace Project_ENSAF
 
         private void btnAjouterProduit_Click(object sender, EventArgs e)
         {
-            Form_Ajouter_Produit formajout = new Form_Ajouter_Produit();
+            Form_Ajouter_Produit formajout = new Form_Ajouter_Produit( this);
             formajout.Show();
-        }
+        } 
 
         private void handel_AfterCloseForm(object sender, EventArgs e)
         {
             labelBasket.Text  = flowLayoutPagnierProduitVentes.Controls.Count + "";
             nbProduitInBasket = flowLayoutPagnierProduitVentes.Controls.Count;
-        }
-           
-
-
+        } 
     }
 }

@@ -1,15 +1,19 @@
 ﻿using System; 
 using System.Windows.Forms; 
 using System.Data.SqlClient;
-using System.IO;
+using System.IO; 
+using System.Linq;
 
 namespace Project_ENSAF
 {
     public partial class Form_Ajouter_Produit : Form
-    { 
-        string imgLocation = "";
-        public Form_Ajouter_Produit()
+    {
+        Form1 formParent;
+        string imgLocation = ""; 
+        Fournisseur fournisseur = new Fournisseur();
+        public Form_Ajouter_Produit( Form1 formParent)
         {
+            this.formParent = formParent;
             InitializeComponent();
         }
         /*public Form_Ajouter_Produit(string s)
@@ -31,28 +35,45 @@ namespace Project_ENSAF
 
         private void Ajouter_Click(object sender, EventArgs e)
         {
-            byte[] images = null;
-            FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
-            BinaryReader brs = new BinaryReader(stream);
-            images = brs.ReadBytes((int)stream.Length);
-
-            var db = new dbContext(); 
-           /* Produit p=new Produit()
+            byte[] image = null;
+            try
             {
-                idFournisseur= int.Parse(ID_Fournisseur.Text),
-                libelle = Libelle.Text,
-                dateExpiration= Date_Expiration.Text,
-
+                FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+                BinaryReader brs = new BinaryReader(stream);
+                image = brs.ReadBytes((int)stream.Length);
             }
-            db.Produits.Add();*/
-           /* connection.Open();
-            string sqlQuery = "Insert into Produit1(codeProduit,idFournisseur,libelle,prixAchat,prixVente,dateExpiration,image)
-                            VALUES ('" + Code_Produit.Text + "','" + ID_Fournisseur.Text + "','" + Libelle.Text + "','" + Prix_Achat.Text + "','" + Prix_Vente.Text + "','" + Date_Expiration.Text + "',@images)";
-            cmd = new SqlCommand(sqlQuery, connection);
-            cmd.Parameters.Add(new SqlParameter("@images", images));
-            int N = cmd.ExecuteNonQuery();
-            connection.Close();*/
-           // MessageBox.Show(N.ToString() + "vous avez ajouter le produit");
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error! please choose a valid image : " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
+            var db = new dbContext();
+            if (tbLibelle.Text.Length > 1 && tbDescription.Text.Length > 1 && tb_Prix_Achat.Text.Length > 0 && tb_Prix_Vente.Text.Length > 0 && image != null&& fournisseur.nomFournisseur!=null)
+            {
+                Produit p = new Produit()
+                {
+                    idFournisseur = fournisseur.idFournisseur,
+                    libelle = tbLibelle.Text,
+                    prixAchat = Convert.ToDecimal(tb_Prix_Achat.Text),
+                    prixVente = Convert.ToDecimal(tb_Prix_Vente.Text),
+                    dateExpiration = dateExpirePick.Value,
+                    description = tbDescription.Text,
+                    img = image,
+                };
+                try
+                { 
+                    db.Produits.Add(p);
+                    db.SaveChanges(); 
+                    MessageBox.Show("Produit crée avec succès!" , "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                    this.Close();
+                    formParent.btnViewAll_Click(null, null);
+                }
+                catch (Exception exc)
+                { 
+                    MessageBox.Show("Error! " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else MessageBox.Show("Veuillez remplir tous les champs demandés", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
 
@@ -61,14 +82,19 @@ namespace Project_ENSAF
             this.Close();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form_Ajouter_Produit_Load(object sender, EventArgs e)
         {
+            var db = new dbContext();
+            foreach (var item in db.Fournisseurs)
+            {
+                this.comboFornisseur.Items.Add(item.prenomFournisseur + " " + item.nomFournisseur);
+            }
+        }
 
+        private void comboFornisseur_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var db = new dbContext();
+            fournisseur = db.Fournisseurs.ToArray<Fournisseur>()[comboFornisseur.SelectedIndex];
         }
     }
 }
