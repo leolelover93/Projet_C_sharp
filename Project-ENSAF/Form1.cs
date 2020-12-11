@@ -150,9 +150,9 @@ namespace Project_ENSAF
                 this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], this, item.cout)); 
             } 
         }
-        private void btnDisponible_Click(object sender, EventArgs e)
+        public void btnDisponible_Click(object sender, EventArgs e)
         { 
-            filter_style_click(sender, e);
+            if (sender != null) filter_style_click(sender, e); 
             produitVentes = db.Produits
                    .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) > 0)
                    .ToList<Produit>();
@@ -192,9 +192,9 @@ namespace Project_ENSAF
                 this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], this, item.cout));
             }
         } 
-        private void btnNonDisponible_Click(object sender, EventArgs e)
+        public void btnNonDisponible_Click(object sender, EventArgs e)
         {
-            filter_style_click(sender, e);
+            if (sender != null) filter_style_click(sender, e);
             //get expired products from db
             produitVentes = db.Produits
                   .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) < 0)

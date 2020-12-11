@@ -65,7 +65,7 @@ namespace Project_ENSAF
                     } 
                     if (tbLibelle.Text.Length > 1 && tbDescription.Text.Length > 1 && tb_Prix_Achat.Text.Length > 0 && tb_Prix_Vente.Text.Length > 0 && prodImg != null && fournisseur.nomFournisseur != null)
                     {
-                        if (db.Produits.Where(p => p.libelle.Equals(tbLibelle.Text)).Count() > 0)
+                        if (false /*db.Produits.Where(p => p.libelle.Equals(tbLibelle.Text)).Count() > 0*/)
                         {
                             MessageBox.Show("Produit existe déja!", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }else {
@@ -83,17 +83,23 @@ namespace Project_ENSAF
                                 try
                                 { 
                                     db.Produits.Add(p);
-                                    Stock_Magazin stock = new Stock_Magazin()
-                                    { 
-                                        codeProduit = p.codeProduit,
-                                        codeMagazin = 1,
-                                        quantite = Convert.ToInt32(tbQuantite.Text),
-                                    };
-                                    db.Stock_Magazin.Add(stock);
+                                    db.SaveChanges();
+                                    var pr = db.Produits.Where(prod => prod.libelle.Equals(p.libelle)).FirstOrDefault<Produit>();
+                                    var ss= db.Stock_Magazin.Where(st => st.codeProduit.Equals(pr.codeProduit)).FirstOrDefault<Stock_Magazin>();
+                                    if (db.Stock_Magazin.Where(st => st.codeProduit.Equals(pr.codeProduit)).Count() > 0)
+                                    {  
+                                        ss.quantite += Convert.ToInt32(tbQuantite.Text);
+                                    }else { 
+                                        Stock_Magazin stock = new Stock_Magazin();
+                                        stock.codeProduit = p.codeProduit;
+                                        stock.codeMagazin = 1;
+                                        stock.quantite = Convert.ToInt32(tbQuantite.Text);
+                                        db.Stock_Magazin.Add(stock);
+                                    }
                                     db.SaveChanges();
                                     MessageBox.Show("Produit crée avec succès!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     this.Close();
-                                    formParent.btnViewAll_Click(null, null); 
+                                    formParent.btnViewAll_Click(null, null);  
                                 }
                                 catch (Exception exc)
                                 {
@@ -104,7 +110,7 @@ namespace Project_ENSAF
                     else MessageBox.Show("Veuillez remplir tous les champs demandés", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
-            {
+            {        
                     var q = db.Produits.Where(p => p.libelle.Equals(prod2Edit.libelle));
                     foreach (var item in q)
                     {
@@ -112,14 +118,16 @@ namespace Project_ENSAF
                         item.libelle = tbLibelle.Text;
                         item.prixAchat = prix_Achat;
                         item.prixVente = prix_Vente;
-                        item.dateExpiration = dateExpirePick.Value;
+                        //item.dateExpiration = dateExpirePick.Value;
                         item.description = tbDescription.Text;
                         item.img = prodImg;
                     } 
                     try
                     {  
                         db.SaveChanges();
-                        //MessageBox.Show("Produit crée avec succès!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);  
+                    //MessageBox.Show("Produit crée avec succès!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                        formParent.btnNonDisponible_Click(null, null);
+                        formParent.btnDisponible_Click(null, null);
                         formParent.btnViewAll_Click(null, null); 
                         this.Close(); 
                     }

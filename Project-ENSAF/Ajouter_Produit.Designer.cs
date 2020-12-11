@@ -315,8 +315,9 @@
             tb_Prix_Achat.Text = p.prixAchat.ToString();
             tb_Prix_Vente.Text = p.prixVente.ToString();
             tbDescription.Text = p.description;
-            dateExpirePick.Value = p.dateExpiration; 
+          //  dateExpirePick.Value = p.dateExpiration; 
             tbQuantite.Enabled = false;
+            dateExpirePick.Enabled = false;
             isNewProd = false;
             try
             {
@@ -341,8 +342,7 @@
         private System.Windows.Forms.Button Annuler;
         private System.Windows.Forms.Button Ajouter;
         private System.Windows.Forms.Button Parcourir;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.PictureBox pictureBox1; 
         private System.Windows.Forms.DateTimePicker dateExpirePick;
         private System.Windows.Forms.TextBox tbQuantite;
         private System.Windows.Forms.Label lblQuantite;
