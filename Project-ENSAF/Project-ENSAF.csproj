@@ -218,6 +218,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\camera.png" />
+    <None Include="Resources\file-upload-icon-camera.png" />
     <None Include="Resources\cross.png" />
     <None Include="Resources\cross_Icon.png" />
     <None Include="Resources\sidiAlimg.jpg" />

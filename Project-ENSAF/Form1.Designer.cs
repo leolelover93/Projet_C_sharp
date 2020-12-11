@@ -50,8 +50,8 @@
             this.panelGestionVentes = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBoxSearchProduitVentes = new System.Windows.Forms.TextBox();
             this.buttonSearchPV = new System.Windows.Forms.Button();
+            this.textBoxSearchProduitVentes = new System.Windows.Forms.TextBox();
             this.btnViderPanger = new System.Windows.Forms.Button();
             this.btnAjouterAuPagnier = new System.Windows.Forms.Button();
             this.labelBasket = new System.Windows.Forms.Label();
@@ -123,7 +123,8 @@
             this.button2.Size = new System.Drawing.Size(195, 51);
             this.button2.TabIndex = 2;
             this.button2.Text = "Gestion Ventes";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -141,7 +142,8 @@
             this.button1.Size = new System.Drawing.Size(195, 51);
             this.button1.TabIndex = 1;
             this.button1.Text = "Gestion Produits ";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -167,6 +169,7 @@
             this.BtnGestionProduits.TabIndex = 0;
             this.BtnGestionProduits.Text = "Gestion Produits";
             this.BtnGestionProduits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnGestionProduits.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnGestionProduits.UseVisualStyleBackColor = true;
             this.BtnGestionProduits.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -354,19 +357,6 @@
             this.panel3.Size = new System.Drawing.Size(246, 45);
             this.panel3.TabIndex = 4;
             // 
-            // textBoxSearchProduitVentes
-            // 
-            this.textBoxSearchProduitVentes.BackColor = System.Drawing.Color.White;
-            this.textBoxSearchProduitVentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxSearchProduitVentes.Font = new System.Drawing.Font("Calibri", 12.25F);
-            this.textBoxSearchProduitVentes.Location = new System.Drawing.Point(9, 9);
-            this.textBoxSearchProduitVentes.Multiline = true;
-            this.textBoxSearchProduitVentes.Name = "textBoxSearchProduitVentes";
-            this.textBoxSearchProduitVentes.Size = new System.Drawing.Size(216, 26);
-            this.textBoxSearchProduitVentes.TabIndex = 2;
-            this.textBoxSearchProduitVentes.Text = "Cherhcer Produit";
-            this.textBoxSearchProduitVentes.TextChanged += new System.EventHandler(this.textBoxSearchProduitVentes_TextChanged);
-            // 
             // buttonSearchPV
             // 
             this.buttonSearchPV.BackColor = System.Drawing.Color.White;
@@ -379,6 +369,19 @@
             this.buttonSearchPV.Size = new System.Drawing.Size(24, 20);
             this.buttonSearchPV.TabIndex = 4;
             this.buttonSearchPV.UseVisualStyleBackColor = false;
+            // 
+            // textBoxSearchProduitVentes
+            // 
+            this.textBoxSearchProduitVentes.BackColor = System.Drawing.Color.White;
+            this.textBoxSearchProduitVentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxSearchProduitVentes.Font = new System.Drawing.Font("Calibri", 12.25F);
+            this.textBoxSearchProduitVentes.Location = new System.Drawing.Point(9, 9);
+            this.textBoxSearchProduitVentes.Multiline = true;
+            this.textBoxSearchProduitVentes.Name = "textBoxSearchProduitVentes";
+            this.textBoxSearchProduitVentes.Size = new System.Drawing.Size(216, 26);
+            this.textBoxSearchProduitVentes.TabIndex = 2;
+            this.textBoxSearchProduitVentes.Text = "Cherhcer Produit";
+            this.textBoxSearchProduitVentes.TextChanged += new System.EventHandler(this.textBoxSearchProduitVentes_TextChanged);
             // 
             // btnViderPanger
             // 

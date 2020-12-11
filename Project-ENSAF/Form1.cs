@@ -331,7 +331,7 @@ namespace Project_ENSAF
 
         private void btnAjouterProduit_Click(object sender, EventArgs e)
         {
-            Form_Ajouter_Produit formajout = new Form_Ajouter_Produit("saa");
+            Form_Ajouter_Produit formajout = new Form_Ajouter_Produit();
             formajout.Show();
         }
 
