@@ -11,15 +11,20 @@ namespace Project_ENSAF
         Form1 formParent;
         string imgLocation = ""; 
         Fournisseur fournisseur = new Fournisseur();
+        byte[] prodImg = null;
+        bool isNewProd = true;
+        Produit prod2Edit;
         public Form_Ajouter_Produit( Form1 formParent)
         {
             this.formParent = formParent;
             InitializeComponent();
         }
-        /*public Form_Ajouter_Produit(string s)
+        public Form_Ajouter_Produit(Produit p, Form1 formParent)
         {
-            InitializeComponent(s);
-        } */
+            prod2Edit = p;
+            this.formParent = formParent;
+            InitializeComponent(p);
+        } 
 
         private void Parcourir_Click(object sender, EventArgs e)
         {
@@ -35,45 +40,94 @@ namespace Project_ENSAF
 
         private void Ajouter_Click(object sender, EventArgs e)
         {
-            byte[] image = null;
+            var db = new dbContext(); 
+            Decimal prix_Achat = 0, prix_Vente = 0; 
             try
-            {
-                FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
-                BinaryReader brs = new BinaryReader(stream);
-                image = brs.ReadBytes((int)stream.Length);
+            { 
+                prix_Achat = Convert.ToDecimal(tb_Prix_Achat.Text);
+                prix_Vente = Convert.ToDecimal(tb_Prix_Vente.Text);
             }
-            catch (Exception exc)
+            catch (Exception)
             {
-                MessageBox.Show("Error! please choose a valid image : " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            
-            var db = new dbContext();
-            if (tbLibelle.Text.Length > 1 && tbDescription.Text.Length > 1 && tb_Prix_Achat.Text.Length > 0 && tb_Prix_Vente.Text.Length > 0 && image != null&& fournisseur.nomFournisseur!=null)
+                MessageBox.Show("Le prix doit être un nombre decimal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            } 
+            if (isNewProd)
             {
-                Produit p = new Produit()
-                {
-                    idFournisseur = fournisseur.idFournisseur,
-                    libelle = tbLibelle.Text,
-                    prixAchat = Convert.ToDecimal(tb_Prix_Achat.Text),
-                    prixVente = Convert.ToDecimal(tb_Prix_Vente.Text),
-                    dateExpiration = dateExpirePick.Value,
-                    description = tbDescription.Text,
-                    img = image,
-                };
-                try
-                { 
-                    db.Produits.Add(p);
-                    db.SaveChanges(); 
-                    MessageBox.Show("Produit crée avec succès!" , "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); 
-                    this.Close();
-                    formParent.btnViewAll_Click(null, null);
-                }
-                catch (Exception exc)
-                { 
-                    MessageBox.Show("Error! " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                    try
+                    {
+                        FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+                        BinaryReader brs = new BinaryReader(stream);
+                        prodImg = brs.ReadBytes((int)stream.Length);
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show("Error! please choose a valid image : " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    } 
+                    if (tbLibelle.Text.Length > 1 && tbDescription.Text.Length > 1 && tb_Prix_Achat.Text.Length > 0 && tb_Prix_Vente.Text.Length > 0 && prodImg != null && fournisseur.nomFournisseur != null)
+                    {
+                        if (db.Produits.Where(p => p.libelle.Equals(tbLibelle.Text)).Count() > 0)
+                        {
+                            MessageBox.Show("Produit existe déja!", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }else {
+                                Produit p = new Produit()
+                                {
+                                    idFournisseur = fournisseur.idFournisseur,
+                                    libelle = tbLibelle.Text,
+
+                                    prixAchat = prix_Achat,
+                                    prixVente = prix_Vente,
+                                    dateExpiration = dateExpirePick.Value,
+                                    description = tbDescription.Text,
+                                    img = prodImg,
+                                };
+                                try
+                                { 
+                                    db.Produits.Add(p);
+                                    Stock_Magazin stock = new Stock_Magazin()
+                                    { 
+                                        codeProduit = p.codeProduit,
+                                        codeMagazin = 1,
+                                        quantite = Convert.ToInt32(tbQuantite.Text),
+                                    };
+                                    db.Stock_Magazin.Add(stock);
+                                    db.SaveChanges();
+                                    MessageBox.Show("Produit crée avec succès!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    this.Close();
+                                    formParent.btnViewAll_Click(null, null); 
+                                }
+                                catch (Exception exc)
+                                {
+                                    MessageBox.Show("Error! " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                        } 
+                    }
+                    else MessageBox.Show("Veuillez remplir tous les champs demandés", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else MessageBox.Show("Veuillez remplir tous les champs demandés", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+            {
+                    var q = db.Produits.Where(p => p.libelle.Equals(prod2Edit.libelle));
+                    foreach (var item in q)
+                    {
+                        item.idFournisseur = fournisseur.idFournisseur;
+                        item.libelle = tbLibelle.Text;
+                        item.prixAchat = prix_Achat;
+                        item.prixVente = prix_Vente;
+                        item.dateExpiration = dateExpirePick.Value;
+                        item.description = tbDescription.Text;
+                        item.img = prodImg;
+                    } 
+                    try
+                    {  
+                        db.SaveChanges();
+                        //MessageBox.Show("Produit crée avec succès!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);  
+                        formParent.btnViewAll_Click(null, null); 
+                        this.Close(); 
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show("Error! " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+            }
 
         }
 

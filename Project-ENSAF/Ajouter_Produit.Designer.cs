@@ -1,5 +1,9 @@
 ﻿namespace Project_ENSAF
 {
+    using System;
+    using System.Windows.Forms;
+    using System.IO;
+    using System.Drawing;  
     partial class Form_Ajouter_Produit
     {
         /// <summary>
@@ -160,7 +164,7 @@
             this.Ajouter.Name = "Ajouter";
             this.Ajouter.Size = new System.Drawing.Size(94, 32);
             this.Ajouter.TabIndex = 16;
-            this.Ajouter.Text = "Ajouter";
+            this.Ajouter.Text = "Valider";
             this.Ajouter.UseVisualStyleBackColor = false;
             this.Ajouter.Click += new System.EventHandler(this.Ajouter_Click);
             // 
@@ -304,10 +308,26 @@
             this.PerformLayout();
 
         }
-       /*  private void InitializeComponent(string d)
+        private void InitializeComponent(Produit p)
         {
-            InitializeComponent(); 
-        }*/
+            InitializeComponent();
+            tbLibelle.Text = p.libelle;
+            tb_Prix_Achat.Text = p.prixAchat.ToString();
+            tb_Prix_Vente.Text = p.prixVente.ToString();
+            tbDescription.Text = p.description;
+            dateExpirePick.Value = p.dateExpiration; 
+            tbQuantite.Enabled = false;
+            isNewProd = false;
+            try
+            {
+                prodImg = p.img;
+                pictureBox1.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product; 
+            }
+            catch (System.Exception exc)
+            {
+                MessageBox.Show("error! product has no img" + exc.Message);
+            }
+           }
 
         #endregion
         private System.Windows.Forms.Label Titre;
