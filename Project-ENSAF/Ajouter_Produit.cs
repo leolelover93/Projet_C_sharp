@@ -11,6 +11,10 @@ namespace Project_ENSAF
         {
             InitializeComponent();
         }
+        public Form_Ajouter_Produit(string s)
+        {
+            InitializeComponent(s);
+        }
 
         SqlConnection connection = new SqlConnection("Data Source=DESKTOP-IPJGLMH;Initial Catalog=C:/USERS/ACER/DOWNLOADS/DB-PROJET-CS/PROJET.MDF;Integrated Security=True");
         string imgLocation = "";
