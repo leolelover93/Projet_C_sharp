@@ -79,7 +79,7 @@ namespace Project_ENSAF
             if((sender as Button).Text == "Gestion Produits")
             {
                 panelGestionProduit.Visible = true;
-                panelGestionVentes.Visible = false; 
+                panelGestionVentes.Visible = false;
             }
             if ((sender as Button).Text == "Gestion Ventes")
             {
