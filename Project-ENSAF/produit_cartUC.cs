@@ -9,19 +9,8 @@ namespace Project_ENSAF
         Produit currentProd=new Produit();
         Form1 formParent;
         public produit_cardUC()
-        {
-            byte[] buffer = (byte[])new ImageConverter().ConvertTo(Properties.Resources.sweets, typeof(byte[]));
-            Produit p = new Produit()
-            {
-                libelle = "danone2",
-                dateExpiration = DateTime.Now,
-                prixAchat = (decimal)1.5,
-                prixVente = (decimal)2,
-                description = "danone banane",
-                idFournisseur = 1,
-                img = buffer
-            }; 
-            InitializeComponent(p,1); 
+        { 
+            InitializeComponent(); 
         }
         public produit_cardUC(Produit p,Form1 formParent, int nbProds = 1)
         { 
