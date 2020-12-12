@@ -152,8 +152,9 @@ namespace Project_ENSAF
         }
         public void btnDisponible_Click(object sender, EventArgs e)
         { 
-            if (sender != null) filter_style_click(sender, e); 
-            produitVentes = db.Produits
+            if (sender != null) filter_style_click(sender, e);
+            var dbase = new dbContext();
+            produitVentes = dbase.Produits
                    .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) > 0)
                    .ToList<Produit>();
             var query = (from p in produitVentes
@@ -167,7 +168,7 @@ namespace Project_ENSAF
                          });
             flowLayoutPanel1.Controls.Clear();
             foreach (var item in query)
-            {
+            { 
                 this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], this, item.cout));
             } 
         } 
@@ -196,7 +197,9 @@ namespace Project_ENSAF
         {
             if (sender != null) filter_style_click(sender, e);
             //get expired products from db
-            produitVentes = db.Produits
+
+            var dbase = new dbContext();
+            produitVentes = dbase.Produits
                   .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) < 0)
                   .ToList<Produit>();
             //group expired products by 'libelle'

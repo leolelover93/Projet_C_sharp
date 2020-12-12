@@ -53,7 +53,7 @@ namespace Project_ENSAF
         {
             var db = new dbContext();
             var stock = db.Produits.Where(p => p.libelle == currentProd.libelle).ToList<Produit>();  
-            FormProdDescri prodDescri = new FormProdDescri(stock);
+            FormProdDescri prodDescri = new FormProdDescri(stock, formParent);
             prodDescri.Show();
         }
 

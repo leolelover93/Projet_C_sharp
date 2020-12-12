@@ -49,6 +49,7 @@
             this.Libelle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateExpiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -69,20 +70,19 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            /* this.dataGridView1.EnableHeadersVisualStyles = false;
-             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(241, 241, 241);*/
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Libelle,
             this.stock,
-            this.dateExpiration}); 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(179, 217, 255);
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dateExpiration,
+            /*this.Action*/});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(217)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView1.Location = new System.Drawing.Point(12, 281);
             this.dataGridView1.Name = "dataGridView1";
@@ -194,7 +194,7 @@
             this.Libelle.HeaderText = "Libellé";
             this.Libelle.Name = "Libelle";
             this.Libelle.ReadOnly = true;
-            this.Libelle.Width = 248;
+            this.Libelle.Width = 150;
             // 
             // stock
             // 
@@ -208,7 +208,12 @@
             this.dateExpiration.HeaderText = "Date d\'expiration";
             this.dateExpiration.Name = "dateExpiration";
             this.dateExpiration.ReadOnly = true;
-            this.dateExpiration.Width = 200;
+            this.dateExpiration.Width = 148;
+            //
+            this.Action.HeaderText = "Action";
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            this.Action.Width = 150;
             // 
             // FormProdDescri
             // 
@@ -231,31 +236,40 @@
             this.PerformLayout();
             //  this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
         }
-        private void InitializeComponent(System.Collections.Generic.List<Produit> stock)
+        private void initCompo(System.Collections.Generic.List<Produit> stock)
         {
-            InitializeComponent();
-            var items = (from p in stock
-                                   group p by new { p.dateExpiration } into grp
-                                   select new
-                                   { 
-                                       cout = grp.Count(),
-                                       first = grp.FirstOrDefault(),
-                                       grop = grp.ToList<Produit>()
-                                   }).ToArray();
-            int i = 0;
-            //  dataGridView1.Rows.Clear();
+            InitializeComponent(); 
             DataGridViewButtonColumn deletebtn = new DataGridViewButtonColumn();
-            deletebtn.Name = "uninstall_column";
-            deletebtn.Text = "Uninstall";
+            deletebtn.Name = "supprimer";
+            deletebtn.Text = "Supprimer";
+            deletebtn.HeaderText = "Action";
+            deletebtn.Width = 120;
+            deletebtn.UseColumnTextForButtonValue = true;
+            deletebtn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            deletebtn.FlatStyle = FlatStyle.Flat;
+            //deletebtn.DefaultCellStyle.BackColor = Color.DarkRed;
+            deletebtn.DefaultCellStyle.ForeColor = Color.WhiteSmoke;
+            dataGridView1.CellClick += dataGridView1_deleteClick;
+            dataGridView1.Columns.Insert(3, deletebtn); 
+            var items = (from p in stock
+                         group p by new { p.dateExpiration } into grp
+                         select new
+                         {
+                             cout = grp.Count(),
+                             first = grp.FirstOrDefault(),
+                             grop = grp.ToList<Produit>()
+                         }).ToArray();
+            int i = 0;
             foreach (var item in items)
             {
                 dataGridView1.Rows.Add();
                 Console.WriteLine("------" +item.first.libelle);
                 dataGridView1.Rows[i].Cells[0].Value =item.first.libelle;
                 dataGridView1.Rows[i].Cells[1].Value = item.cout;
-                dataGridView1.Rows[i].Cells[2].Value =item.grop[0].dateExpiration.ToShortDateString(); 
-                if (item.grop[0].dateExpiration.CompareTo(DateTime.Now) <0) dataGridView1.Columns.Insert(2, deletebtn);//dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 153, 153); 
+                dataGridView1.Rows[i].Cells[2].Value =item.grop[0].dateExpiration.ToShortDateString();
+                if (item.grop[0].dateExpiration.CompareTo(DateTime.Now) < 0) dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 153, 153); 
                 else dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(152, 230, 152);
+
                 i++;
             }
             i = 0;     
@@ -265,8 +279,7 @@
             this.label1.Text =stock.First<Produit>().libelle; 
             this.pictureBox1.BackgroundImage = stock.First<Produit>().img != null ? Image.FromStream(new MemoryStream(stock.First<Produit>().img)) 
                                                                                    : Properties.Resources.loading_product;
-        }
-
+        } 
         #endregion
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label7;
@@ -281,5 +294,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Libelle;
         private System.Windows.Forms.DataGridViewTextBoxColumn stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateExpiration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Action;
     }
 }
