@@ -308,7 +308,7 @@
             this.PerformLayout();
 
         }
-        private void InitializeComponent(Produit p)
+        private void initCompo(Produit p)
         {
             InitializeComponent();
             tbLibelle.Text = p.libelle;

@@ -175,7 +175,7 @@ namespace Project_ENSAF
         private void tbSearch_TextChanged(object sender, EventArgs e)
         { 
             string cle = tbSearch.Text;
-            Console.WriteLine("\ncle: "+cle); 
+            Console.WriteLine("\ncle: "+cle);  
             List<Produit> prodTrouves = produitVentes.Where(p => p.libelle.ToLower().IndexOf(cle.ToLower()) !=-1)
                                                    .ToList(); 
             var query = (from p in prodTrouves

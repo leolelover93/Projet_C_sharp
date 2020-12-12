@@ -35,9 +35,9 @@ namespace Project_ENSAF
                     db.Produits.Remove(pr);
                     db.SaveChangesAsync();
                     dataGridView1.Rows[e.RowIndex].Visible = false;
-                    formParent.btnNonDisponible_Click(null, null);
+                    /*formParent.btnNonDisponible_Click(null, null);
                     formParent.btnDisponible_Click(null, null);
-                    formParent.btnViewAll_Click(null, null);
+                    formParent.btnViewAll_Click(null, null);*/
                     DialogResult res= MessageBox.Show("Stock supprimé!","Supprimé",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     
                 }
@@ -47,6 +47,14 @@ namespace Project_ENSAF
                 }
 
             }
+        }
+
+        private void FormProdDescri_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            formParent.btnNonDisponible_Click(null, null);
+            formParent.btnDisponible_Click(null, null);
+            formParent.btnViewAll_Click(null, null);
         }
     }
 }

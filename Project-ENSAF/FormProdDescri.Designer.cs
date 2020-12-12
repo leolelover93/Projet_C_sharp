@@ -35,8 +35,10 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Libelle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateExpiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -46,9 +48,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Libelle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateExpiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -62,26 +61,18 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Libelle,
-            this.stock,
-            this.dateExpiration,
-            /*this.Action*/});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(217)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Libelle,
+            this.stock,
+            this.dateExpiration});
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView1.Location = new System.Drawing.Point(12, 281);
@@ -89,6 +80,27 @@
             this.dataGridView1.Size = new System.Drawing.Size(639, 159);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Libelle
+            // 
+            this.Libelle.HeaderText = "Libellé";
+            this.Libelle.Name = "Libelle";
+            this.Libelle.ReadOnly = true;
+            this.Libelle.Width = 150;
+            // 
+            // stock
+            // 
+            this.stock.HeaderText = "Stock";
+            this.stock.Name = "stock";
+            this.stock.ReadOnly = true;
+            this.stock.Width = 150;
+            // 
+            // dateExpiration
+            // 
+            this.dateExpiration.HeaderText = "Date d\'expiration";
+            this.dateExpiration.Name = "dateExpiration";
+            this.dateExpiration.ReadOnly = true;
+            this.dateExpiration.Width = 148;
             // 
             // label7
             // 
@@ -139,7 +151,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.label4.Location = new System.Drawing.Point(3, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 19);
+            this.label4.Size = new System.Drawing.Size(97, 19);
             this.label4.TabIndex = 2;
             this.label4.Text = "Prix d\'achat : ";
             // 
@@ -150,7 +162,7 @@
             this.label3.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.label3.Location = new System.Drawing.Point(3, 35);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(153, 19);
+            this.label3.Size = new System.Drawing.Size(105, 19);
             this.label3.TabIndex = 1;
             this.label3.Text = "Prix de vente : ";
             // 
@@ -163,7 +175,7 @@
             this.label2.Location = new System.Drawing.Point(4, 64);
             this.label2.MinimumSize = new System.Drawing.Size(0, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 40);
+            this.label2.Size = new System.Drawing.Size(91, 40);
             this.label2.TabIndex = 0;
             this.label2.Text = "Description: ";
             // 
@@ -174,14 +186,14 @@
             this.label1.ForeColor = System.Drawing.Color.Teal;
             this.label1.Location = new System.Drawing.Point(267, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 44);
+            this.label1.Size = new System.Drawing.Size(129, 44);
             this.label1.TabIndex = 7;
             this.label1.Text = "libelle";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BackgroundImage = Properties.Resources.loading_product;
+            this.pictureBox1.BackgroundImage = global::Project_ENSAF.Properties.Resources.loading_product;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(2, 1);
             this.pictureBox1.Name = "pictureBox1";
@@ -189,27 +201,8 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
-            // Libelle
+            // Action
             // 
-            this.Libelle.HeaderText = "Libellé";
-            this.Libelle.Name = "Libelle";
-            this.Libelle.ReadOnly = true;
-            this.Libelle.Width = 150;
-            // 
-            // stock
-            // 
-            this.stock.HeaderText = "Stock";
-            this.stock.Name = "stock";
-            this.stock.ReadOnly = true;
-            this.stock.Width = 150;
-            // 
-            // dateExpiration
-            // 
-            this.dateExpiration.HeaderText = "Date d\'expiration";
-            this.dateExpiration.Name = "dateExpiration";
-            this.dateExpiration.ReadOnly = true;
-            this.dateExpiration.Width = 148;
-            //
             this.Action.HeaderText = "Action";
             this.Action.Name = "Action";
             this.Action.ReadOnly = true;
@@ -226,6 +219,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "FormProdDescri";
             this.Text = "Détails de produit";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormProdDescri_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -234,7 +228,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-            //  this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+
         }
         private void initCompo(System.Collections.Generic.List<Produit> stock)
         {

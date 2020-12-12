@@ -23,7 +23,7 @@ namespace Project_ENSAF
         {
             prod2Edit = p;
             this.formParent = formParent;
-            InitializeComponent(p);
+            initCompo(p);
         } 
 
         private void Parcourir_Click(object sender, EventArgs e)

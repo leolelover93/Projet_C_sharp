@@ -191,7 +191,7 @@
             this.ResumeLayout(false);
 
         }
-        private void InitializeComponent(Produit p, int nbProds)
+        private void initCompo(Produit p, int nbProds)
         {
             InitializeComponent();
             this.lblProdName.Text = p.libelle;  

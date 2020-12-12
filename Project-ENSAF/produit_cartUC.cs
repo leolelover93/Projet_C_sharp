@@ -16,7 +16,7 @@ namespace Project_ENSAF
         { 
             this.currentProd = p;
             this.formParent = formParent;
-            InitializeComponent(p,nbProds); 
+            initCompo(p,nbProds); 
         }  
         private void button2_MouseDown(object sender, MouseEventArgs e)
         {
@@ -29,20 +29,25 @@ namespace Project_ENSAF
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
-        { 
-             try
-             { 
-                var db = new dbContext();
-                var p = db.Produits.Where(prod => prod.libelle == currentProd.libelle);
-                db.Produits.RemoveRange(p);
-                db.SaveChanges();
-                this.Dispose();
-               // MessageBox.Show("product deleted"); 
-             }
-             catch (Exception excep)
-             {
-                MessageBox.Show("Error! cant delete product :" + excep.Message);
-             }  
+        {
+            DialogResult res= MessageBox.Show("Ce produit sera supprimé définitivement du magazin, voulez vous continuez?","Supprimer produit?",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (res == DialogResult.Yes)
+            {
+                try
+                {
+                    var db = new dbContext();
+                    var p = db.Produits.Where(prod => prod.libelle == currentProd.libelle);
+                    db.Produits.RemoveRange(p);
+                    db.SaveChanges();
+                    this.Dispose();
+                    // MessageBox.Show("product deleted"); 
+                }
+                catch (Exception excep)
+                {
+                    MessageBox.Show("Error! cant delete product :" + excep.Message);
+                }
+            }
+            
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
