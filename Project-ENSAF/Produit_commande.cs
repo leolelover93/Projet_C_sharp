@@ -12,17 +12,14 @@ namespace Project_ENSAF
     using System;
     using System.Collections.Generic;
     
-    public partial class Vente_magazin
+    public partial class Produit_commande
     {
-        public int idFacture { get; set; }
+        public int codeProdCommande { get; set; }
+        public int NCommande { get; set; }
         public int codeProduit { get; set; }
-        public int codeMagazin { get; set; }
-        public Nullable<System.DateTime> dateVente { get; set; }
-        public string codeProduits { get; set; }
-        public string quantiteVendus { get; set; }
-        public Nullable<decimal> gain { get; set; }
+        public int quantite { get; set; }
     
-        public virtual Magazin Magazin { get; set; }
+        public virtual Commande Commande { get; set; }
         public virtual Produit Produit { get; set; }
     }
 }

@@ -126,6 +126,9 @@
     <Compile Include="produit_cartUC.Designer.cs">
       <DependentUpon>produit_cartUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Produit_commande.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="produit_Vente.cs">
       <SubType>UserControl</SubType>
     </Compile>
