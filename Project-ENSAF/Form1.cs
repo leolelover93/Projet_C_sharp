@@ -293,6 +293,7 @@ namespace Project_ENSAF
         {
             Form_Ajouter_Produit formajout = new Form_Ajouter_Produit( this);
             formajout.Show();
+
         }  
         private void handel_AfterCloseForm(object sender, EventArgs e)
         {
