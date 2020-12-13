@@ -51,7 +51,7 @@ namespace Project_ENSAF
             {
                 MessageBox.Show("Le prix doit être un nombre decimal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             } 
-            if (isNewProd)
+            if (isNewProd) //creating new product
             {
                     try
                     {
@@ -63,53 +63,42 @@ namespace Project_ENSAF
                     {
                         MessageBox.Show("Error! please choose a valid image : " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     } 
-                    if (tbLibelle.Text.Length > 1 && tbDescription.Text.Length > 1 && tb_Prix_Achat.Text.Length > 0 && tb_Prix_Vente.Text.Length > 0 && prodImg != null && fournisseur.nomFournisseur != null)
-                    {
-                        if (false /*db.Produits.Where(p => p.libelle.Equals(tbLibelle.Text)).Count() > 0*/)
+                    if (tbLibelle.Text.Length > 0 && tbDescription.Text.Length >0&& tb_Prix_Achat.Text.Length > 0 && tb_Prix_Vente.Text.Length > 0 && prodImg != null && fournisseur.nomFournisseur != null)
+                    { 
+                        Produit p = new Produit()
                         {
-                            MessageBox.Show("Produit existe déja!", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }else {
-                                Produit p = new Produit()
-                                {
-                                    idFournisseur = fournisseur.idFournisseur,
-                                    libelle = tbLibelle.Text,
-
-                                    prixAchat = prix_Achat,
-                                    prixVente = prix_Vente,
-                                    dateExpiration = dateExpirePick.Value,
-                                    description = tbDescription.Text,
-                                    img = prodImg,
-                                };
-                                try
-                                { 
-                                    db.Produits.Add(p);
-                                    db.SaveChanges();
-                                    var pr = db.Produits.Where(prod => prod.libelle.Equals(p.libelle)).FirstOrDefault<Produit>();
-                                    var ss= db.Stock_Magazin.Where(st => st.codeProduit.Equals(pr.codeProduit)).FirstOrDefault<Stock_Magazin>();
-                                    if (db.Stock_Magazin.Where(st => st.codeProduit.Equals(pr.codeProduit)).Count() > 0)
-                                    {  
-                                        ss.quantite += Convert.ToInt32(tbQuantite.Text);
-                                    }else { 
-                                        Stock_Magazin stock = new Stock_Magazin();
-                                        stock.codeProduit = p.codeProduit;
-                                        stock.codeMagazin = 1;
-                                        stock.quantite = Convert.ToInt32(tbQuantite.Text);
-                                        db.Stock_Magazin.Add(stock);
-                                    }
-                                    db.SaveChanges();
-                                    MessageBox.Show("Produit crée avec succès!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    this.Close();
-                                    formParent.btnViewAll_Click(null, null);  
-                                }
-                                catch (Exception exc)
-                                {
-                                    MessageBox.Show("Error! " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                }
+                            idFournisseur = fournisseur.idFournisseur,
+                            libelle = tbLibelle.Text, 
+                            prixAchat = prix_Achat,
+                            prixVente = prix_Vente,
+                            dateExpiration = dateExpirePick.Value,
+                            description = tbDescription.Text,
+                            img = prodImg,
+                        };
+                    
+                    Stock_Magazin stock = new Stock_Magazin()//mise a jour de stock
+                    {
+                        codeProduit = p.codeProduit,
+                        codeMagazin = 1,
+                        quantite = Convert.ToInt32(tbQuantite.Text),
+                    };
+                    try
+                        {  
+                            db.Produits.Add(p); 
+                            db.Stock_Magazin.Add(stock); 
+                            db.SaveChanges();
+                            MessageBox.Show("Produit crée avec succès!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                            formParent.btnViewAll_Click(null, null);  
+                        }
+                        catch (Exception exc)
+                        {
+                            MessageBox.Show("Error! " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         } 
                     }
                     else MessageBox.Show("Veuillez remplir tous les champs demandés", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else
+            else //editing product
             {        
                     var q = db.Produits.Where(p => p.libelle.Equals(prod2Edit.libelle));
                     foreach (var item in q)

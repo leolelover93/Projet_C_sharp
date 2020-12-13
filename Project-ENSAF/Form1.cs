@@ -24,17 +24,32 @@ namespace Project_ENSAF
             produitVentes = db.Produits.ToList<Produit>();
             var query = (from p in db.Produits
                          group p by new { p.libelle, } into grp
-                         select new
-                         {
-                             libelle = grp.Key.libelle,
-                             cout = grp.Count(),
-                             first = grp.FirstOrDefault(),
-                             grop = grp.ToList<Produit>()
-                         }); 
-            foreach (var item in query)
-            {
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0],this, item.cout));
+                         select new {first = grp.FirstOrDefault()}); 
+            int quantity = 0;
+            foreach (var elm in query)
+            { 
+                foreach (var s in db.Stock_Magazin)
+                {
+                    if (db.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
+                }
+                this.flowLayoutPanel1.Controls.Add( new produit_cardUC(elm.first, this,quantity) );
+                quantity = 0;
             }
+
+        } 
+        public int getProdQuantity(Produit p)
+        {
+            var dbase = new dbContext();
+            var prods = dbase.Produits.Where(prod => prod.libelle.Equals(p.libelle));
+            var stocks = dbase.Stock_Magazin; 
+            foreach (var produit in prods)
+            {
+                foreach (var stock in stocks)
+                {
+                    if (stock.codeProduit.Equals(produit.codeProduit)) return stock.quantite; 
+                } 
+            }
+            return 0;
         }
         private void Form1_Load(object sender, EventArgs e)
         { 
@@ -133,89 +148,96 @@ namespace Project_ENSAF
         public void btnViewAll_Click(object sender, EventArgs e)
         {
             if (sender !=null) filter_style_click( sender,  e);  
-            produitVentes = db.Produits.ToList<Produit>();
+            produitVentes = new List<Produit>();
             var dbase = new dbContext();//fix alot of stuff
             var query = (from p in dbase.Produits
                          group p by new { p.libelle, } into grp
-                         select new
-                         {
-                             libelle = grp.Key.libelle,
-                             cout = grp.Count(),
-                             first=grp.FirstOrDefault(),
-                             grop=grp.ToList<Produit>()
-                         });
-             flowLayoutPanel1.Controls.Clear();
-             foreach (var item in query)
-             { 
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], this, item.cout)); 
-            } 
+                         select new { first = grp.FirstOrDefault() });
+            int quantity = 0;
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var elm in query)
+            {
+                produitVentes.Add(elm.first);
+                foreach (var s in dbase.Stock_Magazin)
+                {
+                    if (dbase.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
+                }
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
+                quantity = 0;
+            }
         }
         public void btnDisponible_Click(object sender, EventArgs e)
         { 
             if (sender != null) filter_style_click(sender, e);
             var dbase = new dbContext();
-            produitVentes = dbase.Produits
+            var NonExpireProds = dbase.Produits
                    .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) > 0)
-                   .ToList<Produit>();
-            var query = (from p in produitVentes
+                   .ToList<Produit>(); 
+            var query = (from p in NonExpireProds
                          group p by new { p.libelle, } into grp
-                         select new
-                         {
-                             libelle = grp.Key.libelle,
-                             cout = grp.Count(),
-                             first = grp.FirstOrDefault(),
-                             grop = grp.ToList<Produit>()
-                         });
+                         select new { first = grp.FirstOrDefault() });
+            int quantity = 0;
+            produitVentes.Clear();
             flowLayoutPanel1.Controls.Clear();
-            foreach (var item in query)
-            { 
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], this, item.cout));
-            } 
+            foreach (var elm in query)
+            {
+                produitVentes.Add(elm.first);
+                foreach (var s in dbase.Stock_Magazin)
+                {
+                    if (dbase.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
+                }
+                if(quantity>0)
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
+                quantity = 0;
+            }
         } 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         { 
             string cle = tbSearch.Text;
-            Console.WriteLine("\ncle: "+cle);  
+            Console.WriteLine("\ncle: "+cle);
+            var dbase = new dbContext();
             List<Produit> prodTrouves = produitVentes.Where(p => p.libelle.ToLower().IndexOf(cle.ToLower()) !=-1)
                                                    .ToList(); 
             var query = (from p in prodTrouves
                          group p by new { p.libelle, } into grp
                          select new
-                         {
-                             libelle = grp.Key.libelle,
-                             cout = grp.Count(),
-                             first = grp.FirstOrDefault(),
-                             grop = grp.ToList<Produit>()
+                         { 
+                             first = grp.FirstOrDefault()
                          });
-            flowLayoutPanel1.Controls.Clear();
-            foreach (var item in query)
-            {
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], this, item.cout));
+            flowLayoutPanel1.Controls.Clear(); 
+            int quantity = 0;
+            foreach (var elm in query)
+            { 
+                foreach (var s in dbase.Stock_Magazin)
+                {
+                    if (dbase.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
+                } 
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
+                quantity = 0;
             }
         } 
         public void btnNonDisponible_Click(object sender, EventArgs e)
         {
             if (sender != null) filter_style_click(sender, e);
-            //get expired products from db
-
             var dbase = new dbContext();
-            produitVentes = dbase.Produits
-                  .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) < 0)
-                  .ToList<Produit>();
-            //group expired products by 'libelle'
-            var query = (from p in produitVentes
+            var NonExpireProds = dbase.Produits
+                    .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) < 0)
+                    .ToList<Produit>();
+            var query = (from p in NonExpireProds
                          group p by new { p.libelle, } into grp
-                         select new
-                         {
-                             libelle = grp.Key.libelle,
-                             cout = grp.Count(),
-                             first = grp.FirstOrDefault(),
-                             grop = grp.ToList<Produit>()
-                         });
+                         select new { first = grp.FirstOrDefault() });
+            int quantity = 0;
+            produitVentes.Clear();
             flowLayoutPanel1.Controls.Clear();
-            foreach (var item in query)
+            foreach (var elm in query)
             {
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], this, item.cout));
+                produitVentes.Add(elm.first);
+                foreach (var s in dbase.Stock_Magazin)
+                {
+                    if (dbase.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
+                }
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
+                quantity = 0;
             }
         }  
         private void btnViderPanger_Click(object sender, EventArgs e)

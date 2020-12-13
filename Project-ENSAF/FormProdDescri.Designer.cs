@@ -5,7 +5,8 @@
     using System.Data;
     using System.Windows.Forms;
     using System.IO;
-    using System.Drawing;
+    using System.Drawing; 
+    using System.Collections.Generic; 
     partial class FormProdDescri
     {
         /// <summary>
@@ -230,7 +231,7 @@
             this.PerformLayout();
 
         }
-        private void initCompo(System.Collections.Generic.List<Produit> stock)
+        private void initCompo(Produit p)
         {
             InitializeComponent(); 
             DataGridViewButtonColumn deletebtn = new DataGridViewButtonColumn();
@@ -245,23 +246,34 @@
             deletebtn.DefaultCellStyle.ForeColor = Color.WhiteSmoke;
             dataGridView1.CellClick += dataGridView1_deleteClick;
             dataGridView1.Columns.Insert(3, deletebtn); 
-            var items = (from p in stock
+      /*      var items = (from p in stock
                          group p by new { p.dateExpiration } into grp
                          select new
                          {
                              cout = grp.Count(),
                              first = grp.FirstOrDefault(),
                              grop = grp.ToList<Produit>()
-                         }).ToArray();
+                         }).ToArray();*/
+       
+                var db = new dbContext();
+                var stock = db.Produits.Where(prod => prod.libelle == p.libelle).ToList<Produit>();
+                List<Stock_Magazin> stocks = new List<Stock_Magazin>();
+                foreach (var item in stock)
+                {
+                    stocks.Add(db.Stock_Magazin.Where(s => s.codeProduit.Equals(item.codeProduit)).FirstOrDefault<Stock_Magazin>());
+                }  
+           
+
             int i = 0;
-            foreach (var item in items)
+            foreach (var item in stocks)
             {
+                if (item == null) continue;
                 dataGridView1.Rows.Add();
-                Console.WriteLine("------" +item.first.libelle);
-                dataGridView1.Rows[i].Cells[0].Value =item.first.libelle;
-                dataGridView1.Rows[i].Cells[1].Value = item.cout;
-                dataGridView1.Rows[i].Cells[2].Value =item.grop[0].dateExpiration.ToShortDateString();
-                if (item.grop[0].dateExpiration.CompareTo(DateTime.Now) < 0) dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 153, 153); 
+                Console.WriteLine("------" +p.libelle);
+                dataGridView1.Rows[i].Cells[0].Value =p.libelle;
+                dataGridView1.Rows[i].Cells[1].Value = item.quantite;
+                dataGridView1.Rows[i].Cells[2].Value =db.Produits.Find(item.codeProduit).dateExpiration.ToShortDateString();
+                if (db.Produits.Find(item.codeProduit).dateExpiration.CompareTo(DateTime.Now) < 0) dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 153, 153); 
                 else dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(152, 230, 152);
 
                 i++;

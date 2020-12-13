@@ -322,7 +322,7 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10, 2, 5, 10);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(750, 444);
-            this.flowLayoutPanel1.TabIndex = 6; 
+            this.flowLayoutPanel1.TabIndex = 6;
             // 
             // panelGestionVentes
             // 
