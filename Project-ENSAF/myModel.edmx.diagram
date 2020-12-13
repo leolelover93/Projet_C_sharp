@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="329e04c69f5a4c049817ddc62e97b63e" Name="Diagram1">
+        <EntityTypeShape EntityType="projet_db_latestModel.Commande" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projet_db_latestModel.Fournisseur" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="projet_db_latestModel.Magazin" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projet_db_latestModel.Produit" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="projet_db_latestModel.Stock_Magazin" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="projet_db_latestModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="projet_db_latestModel.Vente_magazin" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="projet_db_latestModel.FK_Commande_Fournisseur" ManuallyRouted="false" />
+        <AssociationConnector Association="projet_db_latestModel.FK_Commande_Magazin" ManuallyRouted="false" />
+        <AssociationConnector Association="projet_db_latestModel.FK_Commande_Produit" ManuallyRouted="false" />
+        <AssociationConnector Association="projet_db_latestModel.FK_Produit_Fournisseur" ManuallyRouted="false" />
+        <AssociationConnector Association="projet_db_latestModel.FK_Stock_Magazin_Stock_Magazin" ManuallyRouted="false" />
+        <AssociationConnector Association="projet_db_latestModel.FK_Vente_magazin_Vente_magazin" ManuallyRouted="false" />
+        <AssociationConnector Association="projet_db_latestModel.FK_Stock_Magazin_Produit" ManuallyRouted="false" />
+        <AssociationConnector Association="projet_db_latestModel.FK_Vente_magazin_Produit" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

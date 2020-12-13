@@ -9,17 +9,16 @@
 
 namespace Project_ENSAF
 {
-
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class dbContext : DbContext
+    public partial class projetEntities2 : DbContext
     {
-        public dbContext()
-            : base("name=dbContext")
+        public projetEntities2()
+            : base("name=projetEntities2")
         {
         }
     
@@ -28,12 +27,12 @@ namespace Project_ENSAF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Commande> Commandes { get; set; }
-        public virtual DbSet<Fournisseur> Fournisseurs { get; set; }
-        public virtual DbSet<Magazin> Magazins { get; set; }
-        public virtual DbSet<Produit> Produits { get; set; }
+        public virtual DbSet<Commande> Commande { get; set; }
+        public virtual DbSet<Fournisseur> Fournisseur { get; set; }
+        public virtual DbSet<Magazin> Magazin { get; set; }
+        public virtual DbSet<Produit> Produit { get; set; }
         public virtual DbSet<Stock_Magazin> Stock_Magazin { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Vente_magazin> Vente_magazin { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)

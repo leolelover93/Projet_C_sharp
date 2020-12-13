@@ -20,13 +20,13 @@ namespace Project_ENSAF
             this.Commandes = new HashSet<Commande>();
             this.Produits = new HashSet<Produit>();
         }
-    
+      
         public int idFournisseur { get; set; }
         public string nomFournisseur { get; set; }
         public string prenomFournisseur { get; set; }
         public string adressFournisseur { get; set; }
         public string telFournisseur { get; set; }
-    
+       
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Commande> Commandes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
