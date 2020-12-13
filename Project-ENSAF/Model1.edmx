@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="projetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="projetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Commande">
           <Key>
             <PropertyRef Name="NCommande" />
@@ -125,7 +125,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Stock_Magazin_Produit">
+        <Association Name="FK_Stock_Magazin">
+          <End Role="Magazin" Type="Self.Magazin" Multiplicity="1" />
+          <End Role="Stock_Magazin" Type="Self.Stock_Magazin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magazin">
+              <PropertyRef Name="codeMagazin" />
+            </Principal>
+            <Dependent Role="Stock_Magazin">
+              <PropertyRef Name="codeMagazin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stock_Produit">
           <End Role="Produit" Type="Self.Produit" Multiplicity="1" />
           <End Role="Stock_Magazin" Type="Self.Stock_Magazin" Multiplicity="*" />
           <ReferentialConstraint>
@@ -134,18 +146,6 @@
             </Principal>
             <Dependent Role="Stock_Magazin">
               <PropertyRef Name="codeProduit" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Stock_Magazin_Stock_Magazin">
-          <End Role="Magazin" Type="Self.Magazin" Multiplicity="1" />
-          <End Role="Stock_Magazin" Type="Self.Stock_Magazin" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Magazin">
-              <PropertyRef Name="codeMagazin" />
-            </Principal>
-            <Dependent Role="Stock_Magazin">
-              <PropertyRef Name="codeStock" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -228,12 +228,12 @@
             <End Role="Fournisseur" EntitySet="Fournisseur" />
             <End Role="Produit" EntitySet="Produit" />
           </AssociationSet>
-          <AssociationSet Name="FK_Stock_Magazin_Produit" Association="Self.FK_Stock_Magazin_Produit">
-            <End Role="Produit" EntitySet="Produit" />
+          <AssociationSet Name="FK_Stock_Magazin" Association="Self.FK_Stock_Magazin">
+            <End Role="Magazin" EntitySet="Magazin" />
             <End Role="Stock_Magazin" EntitySet="Stock_Magazin" />
           </AssociationSet>
-          <AssociationSet Name="FK_Stock_Magazin_Stock_Magazin" Association="Self.FK_Stock_Magazin_Stock_Magazin">
-            <End Role="Magazin" EntitySet="Magazin" />
+          <AssociationSet Name="FK_Stock_Produit" Association="Self.FK_Stock_Produit">
+            <End Role="Produit" EntitySet="Produit" />
             <End Role="Stock_Magazin" EntitySet="Stock_Magazin" />
           </AssociationSet>
           <AssociationSet Name="FK_Vente_magazin_Produit" Association="Self.FK_Vente_magazin_Produit">
@@ -245,7 +245,8 @@
             <End Role="Vente_magazin" EntitySet="Vente_magazin" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="projetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -284,7 +285,7 @@
           <Property Name="codeMagazin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomMagazin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Commandes" Relationship="Self.FK_Commande_Magazin" FromRole="Magazin" ToRole="Commande" />
-          <NavigationProperty Name="Stock_Magazin" Relationship="Self.FK_Stock_Magazin_Stock_Magazin" FromRole="Magazin" ToRole="Stock_Magazin" />
+          <NavigationProperty Name="Stock_Magazin" Relationship="Self.FK_Stock_Magazin" FromRole="Magazin" ToRole="Stock_Magazin" />
           <NavigationProperty Name="Vente_magazin" Relationship="Self.FK_Vente_magazin_Vente_magazin" FromRole="Magazin" ToRole="Vente_magazin" />
         </EntityType>
         <EntityType Name="Produit">
@@ -297,12 +298,12 @@
           <Property Name="prixAchat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="prixVente" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="dateExpiration" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Commandes" Relationship="Self.FK_Commande_Produit" FromRole="Produit" ToRole="Commande" />
           <NavigationProperty Name="Fournisseur" Relationship="Self.FK_Produit_Fournisseur" FromRole="Produit" ToRole="Fournisseur" />
-          <NavigationProperty Name="Stock_Magazin" Relationship="Self.FK_Stock_Magazin_Produit" FromRole="Produit" ToRole="Stock_Magazin" />
+          <NavigationProperty Name="Stock_Magazin" Relationship="Self.FK_Stock_Produit" FromRole="Produit" ToRole="Stock_Magazin" />
           <NavigationProperty Name="Vente_magazin" Relationship="Self.FK_Vente_magazin_Produit" FromRole="Produit" ToRole="Vente_magazin" />
-          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Stock_Magazin">
           <Key>
@@ -312,8 +313,8 @@
           <Property Name="codeProduit" Type="Int32" Nullable="false" />
           <Property Name="codeMagazin" Type="Int32" Nullable="false" />
           <Property Name="quantite" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Magazin" Relationship="Self.FK_Stock_Magazin_Stock_Magazin" FromRole="Stock_Magazin" ToRole="Magazin" />
-          <NavigationProperty Name="Produit" Relationship="Self.FK_Stock_Magazin_Produit" FromRole="Stock_Magazin" ToRole="Produit" />
+          <NavigationProperty Name="Magazin" Relationship="Self.FK_Stock_Magazin" FromRole="Stock_Magazin" ToRole="Magazin" />
+          <NavigationProperty Name="Produit" Relationship="Self.FK_Stock_Produit" FromRole="Stock_Magazin" ToRole="Produit" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -385,15 +386,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Stock_Magazin_Stock_Magazin">
+        <Association Name="FK_Stock_Magazin">
           <End Role="Magazin" Type="Self.Magazin" Multiplicity="1" />
-          <End Role="Stock_Magazin" Type="Self.Stock_Magazin" Multiplicity="0..1" />
+          <End Role="Stock_Magazin" Type="Self.Stock_Magazin" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Magazin">
               <PropertyRef Name="codeMagazin" />
             </Principal>
             <Dependent Role="Stock_Magazin">
-              <PropertyRef Name="codeStock" />
+              <PropertyRef Name="codeMagazin" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -409,7 +410,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Stock_Magazin_Produit">
+        <Association Name="FK_Stock_Produit">
           <End Role="Produit" Type="Self.Produit" Multiplicity="1" />
           <End Role="Stock_Magazin" Type="Self.Stock_Magazin" Multiplicity="*" />
           <ReferentialConstraint>
@@ -457,7 +458,7 @@
             <End Role="Fournisseur" EntitySet="Fournisseurs" />
             <End Role="Produit" EntitySet="Produits" />
           </AssociationSet>
-          <AssociationSet Name="FK_Stock_Magazin_Stock_Magazin" Association="Self.FK_Stock_Magazin_Stock_Magazin">
+          <AssociationSet Name="FK_Stock_Magazin" Association="Self.FK_Stock_Magazin">
             <End Role="Magazin" EntitySet="Magazins" />
             <End Role="Stock_Magazin" EntitySet="Stock_Magazin" />
           </AssociationSet>
@@ -465,7 +466,7 @@
             <End Role="Magazin" EntitySet="Magazins" />
             <End Role="Vente_magazin" EntitySet="Vente_magazin" />
           </AssociationSet>
-          <AssociationSet Name="FK_Stock_Magazin_Produit" Association="Self.FK_Stock_Magazin_Produit">
+          <AssociationSet Name="FK_Stock_Produit" Association="Self.FK_Stock_Produit">
             <End Role="Produit" EntitySet="Produits" />
             <End Role="Stock_Magazin" EntitySet="Stock_Magazin" />
           </AssociationSet>
@@ -557,14 +558,14 @@
           <EntitySetMapping Name="Produits">
             <EntityTypeMapping TypeName="projetModel.Produit">
               <MappingFragment StoreEntitySet="Produit">
-                <ScalarProperty Name="img" ColumnName="img" />
-                <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="codeProduit" ColumnName="codeProduit" />
                 <ScalarProperty Name="idFournisseur" ColumnName="idFournisseur" />
                 <ScalarProperty Name="libelle" ColumnName="libelle" />
                 <ScalarProperty Name="prixAchat" ColumnName="prixAchat" />
                 <ScalarProperty Name="prixVente" ColumnName="prixVente" />
                 <ScalarProperty Name="dateExpiration" ColumnName="dateExpiration" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="description" ColumnName="description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

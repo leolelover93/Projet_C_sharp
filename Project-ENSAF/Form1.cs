@@ -12,7 +12,7 @@ namespace Project_ENSAF
         FormPagnierVentes a;
         int nbProduitInBasket = 0; 
         FlowLayoutPanel flowLayoutPagnierProduitVentes;
-        List<Produit> produitVentes = new List<Produit>();
+        public List<Produit> produitVentes = new List<Produit>();
         List<Produit> listeProduitsPagnier = new List<Produit>();
         dbContext db;
         public Form1()
@@ -30,16 +30,14 @@ namespace Project_ENSAF
                              cout = grp.Count(),
                              first = grp.FirstOrDefault(),
                              grop = grp.ToList<Produit>()
-                         });
-            //flowLayoutPanel1.Controls.Clear();
+                         }); 
             foreach (var item in query)
             {
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], item.cout));
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0],this, item.cout));
             }
         }
         private void Form1_Load(object sender, EventArgs e)
-        {
-
+        { 
             panelGestionVentes.Visible = false;
             prvBtnFilter = btnViewAll;
             btnViewAll.BackColor = Color.FromArgb(72, 152, 207);
@@ -82,8 +80,7 @@ namespace Project_ENSAF
                 panelGestionVentes.Visible = false; 
             }
             if ((sender as Button).Text == "Gestion Ventes")
-            {
-
+            { 
                 panelGestionProduit.Visible = false;
                 panelGestionVentes.Visible = true;
                 if(flowLayoutPanelVente.Controls.Count == 0)
@@ -94,21 +91,14 @@ namespace Project_ENSAF
                     foreach (var prd in produitVentes)
                     {
                         this.flowLayoutPanelVente.Controls.Add(new produit_Vente(prd));
-                    }
-
-
+                    } 
                 }
                 if (a == null)
                 {
                     a = new FormPagnierVentes();
                     flowLayoutPagnierProduitVentes = (FlowLayoutPanel)a.Controls[1];
-                    a.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.handel_AfterCloseForm);
-
-                }
-                
-
-
-
+                    a.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.handel_AfterCloseForm); 
+                } 
             }
 
             previousBtn.BackColor = Color.FromArgb(0, 53, 92);
@@ -117,8 +107,7 @@ namespace Project_ENSAF
             checkedLinePanel.Top = (sender as Button).Top;
             (sender as Button).BackColor = Color.FromArgb(13, 72, 114);
             
-        }
-
+        } 
         private void filter_style_click(object sender, EventArgs e)
         { 
                 prvBtnFilter.BackColor = Color.White;
@@ -126,12 +115,7 @@ namespace Project_ENSAF
                 prvBtnFilter = (sender as Button);
                 prvBtnFilter.BackColor = Color.FromArgb(72, 152, 207);
                 prvBtnFilter.ForeColor = Color.White; 
-        } 
-        private void button3_Click(object sender, EventArgs e)
-        {
-             
-        }
-
+        }   
         private void textBoxSearchProduitVentes_TextChanged(object sender, EventArgs e)
         {
             string produitArech = textBoxSearchProduitVentes.Text;
@@ -141,28 +125,17 @@ namespace Project_ENSAF
             {
                 flowLayoutPanelVente.Controls.Add(new produit_Vente(prd));  
             }
-        }
-       
+        } 
         private void btnAjouterAuPagnier_Click(object sender, EventArgs e)
+        { 
+            this.pictureBoxBasket.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D; 
+        }   
+        public void btnViewAll_Click(object sender, EventArgs e)
         {
-
-            this.pictureBoxBasket.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         
-
-        }
-
-      
-         
-        public void flowLayoutPanel1_Click(object sender, EventArgs e)
-        {
-         
-        }
-
-        private void btnViewAll_Click(object sender, EventArgs e)
-        {
-            filter_style_click( sender,  e);  
-            produitVentes = db.Produits.ToList<Produit>(); 
-            var query = (from p in db.Produits
+            if (sender !=null) filter_style_click( sender,  e);  
+            produitVentes = db.Produits.ToList<Produit>();
+            var dbase = new dbContext();//fix alot of stuff
+            var query = (from p in dbase.Produits
                          group p by new { p.libelle, } into grp
                          select new
                          {
@@ -174,14 +147,14 @@ namespace Project_ENSAF
              flowLayoutPanel1.Controls.Clear();
              foreach (var item in query)
              { 
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], item.cout));
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], this, item.cout)); 
             } 
         }
-
-        private void btnDisponible_Click(object sender, EventArgs e)
+        public void btnDisponible_Click(object sender, EventArgs e)
         { 
-            filter_style_click(sender, e);
-            produitVentes = db.Produits
+            if (sender != null) filter_style_click(sender, e);
+            var dbase = new dbContext();
+            produitVentes = dbase.Produits
                    .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) > 0)
                    .ToList<Produit>();
             var query = (from p in produitVentes
@@ -195,15 +168,14 @@ namespace Project_ENSAF
                          });
             flowLayoutPanel1.Controls.Clear();
             foreach (var item in query)
-            {
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], item.cout));
+            { 
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], this, item.cout));
             } 
-        }
-
+        } 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         { 
             string cle = tbSearch.Text;
-            Console.WriteLine("\ncle: "+cle); 
+            Console.WriteLine("\ncle: "+cle);  
             List<Produit> prodTrouves = produitVentes.Where(p => p.libelle.ToLower().IndexOf(cle.ToLower()) !=-1)
                                                    .ToList(); 
             var query = (from p in prodTrouves
@@ -218,15 +190,16 @@ namespace Project_ENSAF
             flowLayoutPanel1.Controls.Clear();
             foreach (var item in query)
             {
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], item.cout));
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], this, item.cout));
             }
-        }
-
-        private void btnNonDisponible_Click(object sender, EventArgs e)
+        } 
+        public void btnNonDisponible_Click(object sender, EventArgs e)
         {
-            filter_style_click(sender, e);
+            if (sender != null) filter_style_click(sender, e);
             //get expired products from db
-            produitVentes = db.Produits
+
+            var dbase = new dbContext();
+            produitVentes = dbase.Produits
                   .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) < 0)
                   .ToList<Produit>();
             //group expired products by 'libelle'
@@ -242,11 +215,9 @@ namespace Project_ENSAF
             flowLayoutPanel1.Controls.Clear();
             foreach (var item in query)
             {
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], item.cout));
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], this, item.cout));
             }
-        } 
-
-
+        }  
         private void btnViderPanger_Click(object sender, EventArgs e)
         {
             labelBasket.Text = "0";
@@ -256,10 +227,7 @@ namespace Project_ENSAF
             Control[] a = flowLayoutPagnierProduitVentes.Parent.Controls[0].Controls.Find("labelTFNb", true);
             Label labelPrixTotal = (Label)a[0];
             labelPrixTotal.Text = "0";
-        }
-
-     
-
+        } 
         private void listBoxItemProduct_TextChanged(object sender, EventArgs e)
         {
            /* if(listBoxItemProduct.Text != "")
@@ -294,8 +262,6 @@ namespace Project_ENSAF
 
 
         }
-
-
         private void buttonSearchGP_Click_1(object sender, EventArgs e)
         {
             string produitArech = textBoxSearchProduitVentes.Text;
@@ -307,11 +273,6 @@ namespace Project_ENSAF
                 flowLayoutPanel1.Controls.Add(new produit_Vente(prd));
             }
         }
-
-        private void produit_cardUC1_Load(object sender, EventArgs e)
-        {
-        }
-
         private void pictureBoxBasket_Click(object sender, EventArgs e)
         {
             if (Object.Equals(a,null))
@@ -328,20 +289,15 @@ namespace Project_ENSAF
             }
 
         }
-
         private void btnAjouterProduit_Click(object sender, EventArgs e)
         {
-            Form_Ajouter_Produit formajout = new Form_Ajouter_Produit();
+            Form_Ajouter_Produit formajout = new Form_Ajouter_Produit( this);
             formajout.Show();
-        }
-
+        }  
         private void handel_AfterCloseForm(object sender, EventArgs e)
         {
             labelBasket.Text  = flowLayoutPagnierProduitVentes.Controls.Count + "";
             nbProduitInBasket = flowLayoutPagnierProduitVentes.Controls.Count;
-        }
-           
-
-
+        } 
     }
 }

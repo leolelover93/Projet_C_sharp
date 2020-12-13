@@ -35,7 +35,7 @@
             MessageBox.Show("changed: " + this.lblProdName.Text);
 
         }
-        private void InitializeComponent(Produit p,int nbProds)
+        private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(produit_cardUC));
             this.lblProdName = new System.Windows.Forms.Label();
@@ -57,16 +57,18 @@
             this.lblProdName.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProdName.Location = new System.Drawing.Point(-1, 118);
             this.lblProdName.Name = "lblProdName";
-            this.lblProdName.Size = new System.Drawing.Size(56, 23);
+            this.lblProdName.Size = new System.Drawing.Size(56, 23); 
+            this.lblProdName.MaximumSize = new Size(160, 23);
             this.lblProdName.TabIndex = 0;
-            this.lblProdName.Text = p.libelle;
+            this.lblProdName.Text = "libelle";
+            this.lblProdName.AutoEllipsis = true;
             // 
             // prodImg
             // 
             this.prodImg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.prodImg.Image = p.img!=null? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
+            this.prodImg.Image =Properties.Resources.loading_product;
             this.prodImg.InitialImage = null;
             this.prodImg.Location = new System.Drawing.Point(3, -1);
             this.prodImg.Name = "prodImg";
@@ -88,7 +90,8 @@
             this.lblProdDescri.Name = "lblProdDescri";
             this.lblProdDescri.Size = new System.Drawing.Size(177, 40);
             this.lblProdDescri.TabIndex = 2;
-            this.lblProdDescri.Text =p.description; 
+            this.lblProdDescri.Text ="p.description";
+            this.lblProdDescri.AutoEllipsis = true;
             // 
             // btnReadMore
             // 
@@ -99,9 +102,9 @@
             this.btnReadMore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReadMore.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReadMore.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnReadMore.Location = new System.Drawing.Point(84, 185);
+            this.btnReadMore.Location = new System.Drawing.Point(92, 185);
             this.btnReadMore.Name = "btnReadMore";
-            this.btnReadMore.Size = new System.Drawing.Size(82, 27);
+            this.btnReadMore.Size = new System.Drawing.Size(76, 27);
             this.btnReadMore.TabIndex = 3;
             this.btnReadMore.Text = "Read more";
             this.btnReadMore.UseVisualStyleBackColor = false;
@@ -112,13 +115,16 @@
             this.lblprix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblprix.AutoSize = true;
-            this.lblprix.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblprix.Font = new System.Drawing.Font("Century Gothic", 13, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblprix.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
             this.lblprix.Location = new System.Drawing.Point(-1, 189);
             this.lblprix.Name = "lblPrix";
             this.lblprix.Size = new System.Drawing.Size(43, 23);
             this.lblprix.TabIndex = 4;
-            this.lblprix.Text = p.prixVente.ToString()+"DH";
+            this.lblprix.Text = "10 dh";
+            this.lblprix.AutoEllipsis = true;
+            this.lblprix.MaximumSize = new Size(94, 23);
+            this.lblprix.TextAlign = ContentAlignment.MiddleLeft; 
             // 
             // btnEdit
             // 
@@ -164,7 +170,7 @@
             this.lblnbProduits.Name = "lblProdDescri";
             this.lblnbProduits.Size = new System.Drawing.Size(177, 70);
             this.lblnbProduits.TabIndex = 2;
-            this.lblnbProduits.Text ="Stock: "+ nbProds.ToString(); 
+            this.lblnbProduits.Text ="Stock: 5"; 
             // 
             // produit_cardUC
             // 
@@ -185,9 +191,18 @@
             this.ResumeLayout(false);
 
         }
+        private void initCompo(Produit p, int nbProds)
+        {
+            InitializeComponent();
+            this.lblProdName.Text = p.libelle;  
+            this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
+            this.lblProdDescri.Text = p.description;  
+            this.lblprix.Text = p.prixVente.ToString() + "dh";    
+            this.lblnbProduits.Text = "Stock: " + nbProds.ToString(); 
 
+        }
         #endregion 
-        public System.Windows.Forms.Label lblProdName { get; set; } 
+        public System.Windows.Forms.Label lblProdName;
         public System.Windows.Forms.PictureBox prodImg;
         public System.Windows.Forms.Label lblProdDescri; 
         public System.Windows.Forms.Button btnReadMore;
