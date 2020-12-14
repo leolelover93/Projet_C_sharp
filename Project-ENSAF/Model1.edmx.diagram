@@ -14,11 +14,12 @@
         <EntityTypeShape EntityType="projetModel.Vente_magazin" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
         <AssociationConnector Association="projetModel.FK_Commande_Fournisseur" ManuallyRouted="false" />
         <AssociationConnector Association="projetModel.FK_Commande_Magazin" ManuallyRouted="false" />
-        <AssociationConnector Association="projetModel.FK_Commande_Produit" ManuallyRouted="false" />
+        <AssociationConnector Association="projetModel.FK_Produit_commande_Commande" ManuallyRouted="false" />
         <AssociationConnector Association="projetModel.FK_Produit_Fournisseur" ManuallyRouted="false" />
-        <AssociationConnector Association="projetModel.FK_Stock_Magazin_Stock_Magazin" ManuallyRouted="false" />
+        <AssociationConnector Association="projetModel.FK_Stock_Magazin" ManuallyRouted="false" />
         <AssociationConnector Association="projetModel.FK_Vente_magazin_Vente_magazin" ManuallyRouted="false" />
-        <AssociationConnector Association="projetModel.FK_Stock_Magazin_Produit" ManuallyRouted="false" />
+        <AssociationConnector Association="projetModel.FK_Produit_commande_Produit" ManuallyRouted="false" />
+        <AssociationConnector Association="projetModel.FK_Stock_Produit" ManuallyRouted="false" />
         <AssociationConnector Association="projetModel.FK_Vente_magazin_Produit" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

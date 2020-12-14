@@ -12,7 +12,7 @@ namespace Project_ENSAF
         FormPagnierVentes a;
         int nbProduitInBasket = 0; 
         FlowLayoutPanel flowLayoutPagnierProduitVentes;
-        List<Produit> produitVentes = new List<Produit>();
+        public List<Produit> produitVentes = new List<Produit>();
         List<Produit> listeProduitsPagnier = new List<Produit>();
         dbContext db;
         public Form1()
@@ -20,26 +20,38 @@ namespace Project_ENSAF
             InitializeComponent();
             checkedLinePanel.Height = BtnGestionProduits.Height;
             checkedLinePanel.Top = BtnGestionProduits.Top;
-            db = new dbContext();
-            produitVentes = db.Produits.ToList<Produit>();
-            var query = (from p in db.Produits
-                         group p by new { p.libelle, } into grp
-                         select new
-                         {
-                             libelle = grp.Key.libelle,
-                             cout = grp.Count(),
-                             first = grp.FirstOrDefault(),
-                             grop = grp.ToList<Produit>()
-                         });
-            //flowLayoutPanel1.Controls.Clear();
-            foreach (var item in query)
+            try
             {
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], item.cout));
+                db = new dbContext();
+                produitVentes = db.Produits.ToList<Produit>();
+                var query = (from p in db.Produits
+                             group p by new { p.libelle, } into grp
+                             select new { first = grp.FirstOrDefault() });
+                int quantity = 0;
+                if (query.Count()>0)
+                {
+                    foreach (var elm in query)
+                    {
+                        foreach (var s in db.Stock_Magazin)
+                        {
+                            if (db.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
+                        }
+                        this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
+                        quantity = 0;
+                    }
+                }
+               
             }
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur de connection! " + ex.Message);
+                this.Close();
+            }
+            
 
+        }  
+        private void Form1_Load(object sender, EventArgs e)
+        { 
             panelGestionVentes.Visible = false;
             prvBtnFilter = btnViewAll;
             btnViewAll.BackColor = Color.FromArgb(72, 152, 207);
@@ -86,8 +98,7 @@ namespace Project_ENSAF
 
             }
             if ((sender as Button).Text == "Gestion Ventes")
-            {
-
+            { 
                 panelGestionProduit.Visible = false;
                 panelGestionVentes.Visible = true;
                 panelSM_GV.Visible = true;
@@ -101,9 +112,7 @@ namespace Project_ENSAF
                     foreach (var prd in produitVentes)
                     {
                         this.flowLayoutPanelVente.Controls.Add(new produit_Vente(prd));
-                    }
-
-
+                    } 
                 }
                 if (a == null)
                 {
@@ -124,8 +133,7 @@ namespace Project_ENSAF
             checkedLinePanel.Top = (sender as Button).Top;
             (sender as Button).BackColor = Color.FromArgb(13, 72, 114);
             
-        }
-
+        } 
         private void filter_style_click(object sender, EventArgs e)
         { 
                 prvBtnFilter.BackColor = Color.White;
@@ -133,12 +141,7 @@ namespace Project_ENSAF
                 prvBtnFilter = (sender as Button);
                 prvBtnFilter.BackColor = Color.FromArgb(72, 152, 207);
                 prvBtnFilter.ForeColor = Color.White; 
-        } 
-        private void button3_Click(object sender, EventArgs e)
-        {
-             
-        }
-
+        }   
         private void textBoxSearchProduitVentes_TextChanged(object sender, EventArgs e)
         {
             string produitArech = textBoxSearchProduitVentes.Text;
@@ -148,112 +151,117 @@ namespace Project_ENSAF
             {
                 flowLayoutPanelVente.Controls.Add(new produit_Vente(prd));  
             }
-        }
-       
+        } 
         private void btnAjouterAuPagnier_Click(object sender, EventArgs e)
-        {
-
-            this.pictureBoxBasket.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         
-
-        }
-
-      
-         
-        public void flowLayoutPanel1_Click(object sender, EventArgs e)
-        {
-         
-        }
-
-        private void btnViewAll_Click(object sender, EventArgs e)
-        {
-            filter_style_click( sender,  e);  
-            produitVentes = db.Produits.ToList<Produit>(); 
-            var query = (from p in db.Produits
-                         group p by new { p.libelle, } into grp
-                         select new
-                         {
-                             libelle = grp.Key.libelle,
-                             cout = grp.Count(),
-                             first=grp.FirstOrDefault(),
-                             grop=grp.ToList<Produit>()
-                         });
-             flowLayoutPanel1.Controls.Clear();
-             foreach (var item in query)
-             { 
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], item.cout));
-            } 
-        }
-
-        private void btnDisponible_Click(object sender, EventArgs e)
         { 
-            filter_style_click(sender, e);
-            produitVentes = db.Produits
-                   .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) > 0)
-                   .ToList<Produit>();
-            var query = (from p in produitVentes
+            this.pictureBoxBasket.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D; 
+        }   
+        public void btnViewAll_Click(object sender, EventArgs e)
+        {
+            if (sender !=null) filter_style_click( sender,  e);  
+            produitVentes = new List<Produit>();
+            var dbase = new dbContext();//fix alot of stuff
+            var query = (from p in dbase.Produits
                          group p by new { p.libelle, } into grp
-                         select new
-                         {
-                             libelle = grp.Key.libelle,
-                             cout = grp.Count(),
-                             first = grp.FirstOrDefault(),
-                             grop = grp.ToList<Produit>()
-                         });
+                         select new { first = grp.FirstOrDefault() });
+            int quantity = 0;
             flowLayoutPanel1.Controls.Clear();
-            foreach (var item in query)
+            foreach (var elm in query)
             {
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], item.cout));
-            } 
+                produitVentes.Add(elm.first);
+                foreach (var s in dbase.Stock_Magazin)
+                {
+                    if (dbase.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
+                }
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
+                quantity = 0;
+            }
         }
+        public void btnDisponible_Click(object sender, EventArgs e)
+        { 
+            if (sender != null) filter_style_click(sender, e);
+            var dbase = new dbContext();
+            var NonExpireProds = dbase.Produits
+                   .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) > 0)
+                   .ToList<Produit>(); 
+            var query = (from p in NonExpireProds
+                         group p by new { p.libelle, } into grp
+                         select new { first = grp.FirstOrDefault(), all = grp.ToList<Produit>() });
+            int quantity = 0;
+            produitVentes.Clear();
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var elm in query)
+            {
+                produitVentes.Add(elm.first);
+                foreach (var s in dbase.Stock_Magazin)
+                {
+                    if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>() != null)
+                    {
+                        if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>().libelle.Equals(elm.first.libelle))
+                            quantity += s.quantite;
+                    }
+                }
+                if(quantity>0)
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
+                quantity = 0;
+            }
 
+                
+
+        } 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         { 
             string cle = tbSearch.Text;
-            Console.WriteLine("\ncle: "+cle); 
+            Console.WriteLine("\ncle: "+cle);
+            var dbase = new dbContext();
             List<Produit> prodTrouves = produitVentes.Where(p => p.libelle.ToLower().IndexOf(cle.ToLower()) !=-1)
                                                    .ToList(); 
             var query = (from p in prodTrouves
                          group p by new { p.libelle, } into grp
                          select new
-                         {
-                             libelle = grp.Key.libelle,
-                             cout = grp.Count(),
-                             first = grp.FirstOrDefault(),
-                             grop = grp.ToList<Produit>()
+                         { 
+                             first = grp.FirstOrDefault()
                          });
-            flowLayoutPanel1.Controls.Clear();
-            foreach (var item in query)
-            {
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], item.cout));
-            }
-        }
-
-        private void btnNonDisponible_Click(object sender, EventArgs e)
-        {
-            filter_style_click(sender, e);
-            //get expired products from db
-            produitVentes = db.Produits
-                  .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) < 0)
-                  .ToList<Produit>();
-            //group expired products by 'libelle'
-            var query = (from p in produitVentes
-                         group p by new { p.libelle, } into grp
-                         select new
-                         {
-                             libelle = grp.Key.libelle,
-                             cout = grp.Count(),
-                             first = grp.FirstOrDefault(),
-                             grop = grp.ToList<Produit>()
-                         });
-            flowLayoutPanel1.Controls.Clear();
-            foreach (var item in query)
-            {
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(item.grop[0], item.cout));
+            flowLayoutPanel1.Controls.Clear(); 
+            int quantity = 0;
+            foreach (var elm in query)
+            { 
+                foreach (var s in dbase.Stock_Magazin)
+                {
+                    if (dbase.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
+                } 
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
+                quantity = 0;
             }
         } 
-
-
+        public void btnNonDisponible_Click(object sender, EventArgs e)
+        {
+            if (sender != null) filter_style_click(sender, e);
+            var dbase = new dbContext();
+            var NonExpireProds = dbase.Produits
+                    .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) < 0)
+                    .ToList<Produit>();
+            var query = (from p in NonExpireProds
+                         group p by new { p.libelle, } into grp
+                         select new { first = grp.FirstOrDefault(), all=grp.ToList<Produit>() });
+            int quantity = 0;
+            produitVentes.Clear();
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var elm in query)
+            {
+                produitVentes.Add(elm.first);
+                foreach (var s in dbase.Stock_Magazin)
+                {
+                    if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>() != null)
+                    {
+                        if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>().libelle.Equals(elm.first.libelle))
+                        quantity += s.quantite;  
+                    }
+                }
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
+                quantity = 0;
+            }
+        }  
         private void btnViderPanger_Click(object sender, EventArgs e)
         {
             labelBasket.Text = "0";
@@ -263,10 +271,7 @@ namespace Project_ENSAF
             Control[] a = flowLayoutPagnierProduitVentes.Parent.Controls[0].Controls.Find("labelTFNb", true);
             Label labelPrixTotal = (Label)a[0];
             labelPrixTotal.Text = "0";
-        }
-
-     
-
+        } 
         private void listBoxItemProduct_TextChanged(object sender, EventArgs e)
         {
            if(listBoxItemProduct.Text != "")
@@ -303,8 +308,6 @@ namespace Project_ENSAF
 
 
         }
-
-
         private void buttonSearchGP_Click_1(object sender, EventArgs e)
         {
             string produitArech = textBoxSearchProduitVentes.Text;
@@ -316,11 +319,6 @@ namespace Project_ENSAF
                 flowLayoutPanel1.Controls.Add(new produit_Vente(prd));
             }
         }
-
-        private void produit_cardUC1_Load(object sender, EventArgs e)
-        {
-        }
-
         private void pictureBoxBasket_Click(object sender, EventArgs e)
         {
             if (Object.Equals(a,null))
@@ -337,10 +335,9 @@ namespace Project_ENSAF
             }
 
         }
-
         private void btnAjouterProduit_Click(object sender, EventArgs e)
         {
-            Form_Ajouter_Produit formajout = new Form_Ajouter_Produit();
+            Form_Ajouter_Produit formajout = new Form_Ajouter_Produit( this);
             formajout.Show();
         }
 

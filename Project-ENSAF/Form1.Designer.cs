@@ -226,7 +226,7 @@
             this.BtnGestionProduits.Size = new System.Drawing.Size(195, 51);
             this.BtnGestionProduits.TabIndex = 0;
             this.BtnGestionProduits.Text = "Gestion Produits";
-            this.BtnGestionProduits.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnGestionProduits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnGestionProduits.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnGestionProduits.UseVisualStyleBackColor = true;
             this.BtnGestionProduits.Click += new System.EventHandler(this.button1_Click);
@@ -758,6 +758,20 @@
             this.checkBoxTous.Text = "Tous";
             this.checkBoxTous.UseVisualStyleBackColor = true;
             this.checkBoxTous.CheckedChanged += new System.EventHandler(this.checkBoxGraphique_CheckedChanged);
+            // buttonSearchPV
+            // 
+            this.buttonSearchPV.BackColor = System.Drawing.Color.White;
+            this.buttonSearchPV.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSearchPV.BackgroundImage")));
+            this.buttonSearchPV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSearchPV.FlatAppearance.BorderSize = 0;
+            this.buttonSearchPV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchPV.Location = new System.Drawing.Point(200, 12);
+            this.buttonSearchPV.Name = "buttonSearchPV";
+            this.buttonSearchPV.Size = new System.Drawing.Size(24, 20);
+            this.buttonSearchPV.TabIndex = 4;
+            this.buttonSearchPV.UseVisualStyleBackColor = false;
+            // 
+            // textBoxSearchProduitVentes
             // 
             // labelDateDébut
             // 

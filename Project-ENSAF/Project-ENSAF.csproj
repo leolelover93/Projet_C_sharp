@@ -133,6 +133,9 @@
     <Compile Include="produit_cartUC.Designer.cs">
       <DependentUpon>produit_cartUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Produit_commande.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="produit_Vente.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -228,6 +231,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\unnamed.jpg" />
+    <None Include="Resources\camera.png" />
+    <None Include="Resources\file-upload-icon-camera.png" />
     <None Include="Resources\cross.png" />
     <None Include="Resources\cross_Icon.png" />
     <None Include="Resources\sidiAlimg.jpg" />
