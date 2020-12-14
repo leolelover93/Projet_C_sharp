@@ -17,8 +17,11 @@ namespace Project_ENSAF
         public int idFacture { get; set; }
         public int codeProduit { get; set; }
         public int codeMagazin { get; set; }
-        public int quantiteVendu { get; set; }
+        public Nullable<int> quantiteVendu { get; set; }
         public Nullable<System.DateTime> dateVente { get; set; }
+        public string codeProduits { get; set; }
+        public string quantiteVendus { get; set; }
+        public Nullable<decimal> gain { get; set; }
     
         public virtual Magazin Magazin { get; set; }
         public virtual Produit Produit { get; set; }

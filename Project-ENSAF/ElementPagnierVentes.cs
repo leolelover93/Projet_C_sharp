@@ -33,6 +33,10 @@ namespace Project_ENSAF
         private decimal prixUnit;
         private string prixToatal;
         private int qunatite;
+        private int id;
+        private decimal gain;
+
+
 
 
 
@@ -45,6 +49,22 @@ namespace Project_ENSAF
             get { return prixToatal; }
             set { prixToatal = value; labelPrixTotal.Text = prixToatal; }
         }
+
+
+        [Category("Custom Props")]
+        public decimal Gain
+        {
+            get { return gain; }
+            set { gain = value; }
+        }
+
+        [Category("Custom Props")]
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
 
         [Category("Custom Props")]
         public int Quantite

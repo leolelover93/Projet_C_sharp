@@ -39,7 +39,7 @@
           <Key>
             <PropertyRef Name="codeProduit" />
           </Key>
-          <Property Name="codeProduit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codeProduit" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="idFournisseur" Type="int" Nullable="false" />
           <Property Name="libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="prixAchat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -74,8 +74,11 @@
           <Property Name="idFacture" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="codeProduit" Type="int" Nullable="false" />
           <Property Name="codeMagazin" Type="int" Nullable="false" />
-          <Property Name="quantiteVendu" Type="int" Nullable="false" />
+          <Property Name="quantiteVendu" Type="int" />
           <Property Name="dateVente" Type="datetime" />
+          <Property Name="codeProduits" Type="varchar" MaxLength="200" />
+          <Property Name="quantiteVendus" Type="varchar" MaxLength="200" />
+          <Property Name="gain" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK_Commande_Fournisseur">
           <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
@@ -301,10 +304,13 @@
           <Property Name="idFacture" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="codeProduit" Type="Int32" Nullable="false" />
           <Property Name="codeMagazin" Type="Int32" Nullable="false" />
-          <Property Name="quantiteVendu" Type="Int32" Nullable="false" />
+          <Property Name="quantiteVendu" Type="Int32" />
           <Property Name="dateVente" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Magazin" Relationship="Self.FK_Vente_magazin_Vente_magazin" FromRole="Vente_magazin" ToRole="Magazin" />
           <NavigationProperty Name="Produit" Relationship="Self.FK_Vente_magazin_Produit" FromRole="Vente_magazin" ToRole="Produit" />
+          <Property Name="codeProduits" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="quantiteVendus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="gain" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK_Commande_Fournisseur">
           <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
@@ -520,6 +526,9 @@
           <EntitySetMapping Name="Vente_magazin">
             <EntityTypeMapping TypeName="projetModel.Vente_magazin">
               <MappingFragment StoreEntitySet="Vente_magazin">
+                <ScalarProperty Name="gain" ColumnName="gain" />
+                <ScalarProperty Name="quantiteVendus" ColumnName="quantiteVendus" />
+                <ScalarProperty Name="codeProduits" ColumnName="codeProduits" />
                 <ScalarProperty Name="idFacture" ColumnName="idFacture" />
                 <ScalarProperty Name="codeProduit" ColumnName="codeProduit" />
                 <ScalarProperty Name="codeMagazin" ColumnName="codeMagazin" />

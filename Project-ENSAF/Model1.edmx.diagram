@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="projetModel.Produit" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="projetModel.Stock_Magazin" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="projetModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="projetModel.Vente_magazin" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetModel.Vente_magazin" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
         <AssociationConnector Association="projetModel.FK_Commande_Fournisseur" ManuallyRouted="false" />
         <AssociationConnector Association="projetModel.FK_Commande_Magazin" ManuallyRouted="false" />
         <AssociationConnector Association="projetModel.FK_Commande_Produit" ManuallyRouted="false" />
