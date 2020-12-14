@@ -24,6 +24,7 @@ namespace Project_ENSAF
             {
                 db = new dbContext();
                 produitVentes = db.Produits.ToList<Produit>();
+                //groupin by libelle
                 var query = (from p in db.Produits
                              group p by new { p.libelle, } into grp
                              select new { first = grp.FirstOrDefault() });
