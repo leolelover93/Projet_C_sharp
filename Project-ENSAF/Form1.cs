@@ -59,6 +59,25 @@ namespace Project_ENSAF
             btnViewAll.ForeColor = Color.White;
             previousBtn = BtnGestionProduits;
             BtnGestionProduits.BackColor = Color.FromArgb(13, 72, 114);
+            dataGridView1.Visible = dataGridView2.Visible = false;
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(208, 213, 217);
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 151, 255);
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+            dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(208, 213, 217);
+            dataGridView2.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView2.EnableHeadersVisualStyles = false;
+            dataGridView2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridView2.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 151, 255);
+            dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+
+
+
+
             //Ajout d'un produit dans la base
             /*   try
              {
@@ -92,29 +111,52 @@ namespace Project_ENSAF
             if((sender as Button).Text == "Gestion Produits")
             {
                 panelGestionProduit.Visible = true;
-                panelGestionVentes.Visible = false; 
+                panelGestionVentes.Visible = false;
+                panelSM_GV.Visible =false;
+
             }
             if ((sender as Button).Text == "Gestion Ventes")
             { 
                 panelGestionProduit.Visible = false;
                 panelGestionVentes.Visible = true;
-                if(flowLayoutPanelVente.Controls.Count == 0)
+                panelSM_GV.Visible = true;
+                
+                var dbase = new dbContext();
+                var NonExpireProds = dbase.Produits
+                        .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) > 0)
+                        .ToList<Produit>();
+                var query = (from p in NonExpireProds
+                                group p by new { p.libelle, } into grp
+                                select new { first = grp.FirstOrDefault(), all = grp.ToList<Produit>() });
+                int quantity = 0;
+                produitVentes.Clear();
+                flowLayoutPanelVente.Controls.Clear();
+                foreach (var elm in query)
                 {
-                    produitVentes = db.Produits
-                    .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) > 0)
-                    .ToList<Produit>();
-                    foreach (var prd in produitVentes)
+                    produitVentes.Add(elm.first);
+                    foreach (var s in dbase.Stock_Magazin)
                     {
-                        this.flowLayoutPanelVente.Controls.Add(new produit_Vente(prd));
-                    } 
+                        if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>() != null)
+                        {
+                            if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>().libelle.Equals(elm.first.libelle))
+                                quantity += s.quantite;
+                        }
+                    }
+                    this.flowLayoutPanelVente.Controls.Add(new produit_Vente(elm.first,quantity));
+                    quantity = 0;
                 }
                 if (a == null)
                 {
                     a = new FormPagnierVentes();
                     flowLayoutPagnierProduitVentes = (FlowLayoutPanel)a.Controls[1];
-                    a.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.handel_AfterCloseForm); 
-                } 
+                    a.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.handel_AfterCloseForm);
+                    a.VisibleChanged += new System.EventHandler(this.handel2_AfterCloseForm);
+
+
+                }
+
             }
+           
 
             previousBtn.BackColor = Color.FromArgb(0, 53, 92);
             previousBtn = (sender as Button);
@@ -254,7 +296,8 @@ namespace Project_ENSAF
         private void btnViderPanger_Click(object sender, EventArgs e)
         {
             labelBasket.Text = "0";
-            nbProduitInBasket = 0; 
+            nbProduitInBasket = 0;
+            this.pictureBoxBasket.Image = Properties.Resources.cart;
             this.pictureBoxBasket.BorderStyle = System.Windows.Forms.BorderStyle.None;
             flowLayoutPagnierProduitVentes.Controls.Clear();
             Control[] a = flowLayoutPagnierProduitVentes.Parent.Controls[0].Controls.Find("labelTFNb", true);
@@ -263,18 +306,42 @@ namespace Project_ENSAF
         } 
         private void listBoxItemProduct_TextChanged(object sender, EventArgs e)
         {
-           /* if(listBoxItemProduct.Text != "")
+           if(listBoxItemProduct.Text != "")
             {
-                this.pictureBoxBasket.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+
+                this.pictureBoxBasket.Image = Properties.Resources.cart__full;
                 Produit p = produitVentes.Where(pa => pa.codeProduit == int.Parse(listBoxItemProduct.Text.Split(' ')[0])).ToList()[0];
                 labelBasket.Text = ++nbProduitInBasket + "";
+                var dbase = new dbContext();
+                var NonExpireProds = dbase.Produits
+                        .Where(pa => pa.codeProduit == p.codeProduit)
+                        .ToList<Produit>();
+                var query = (from paa in NonExpireProds
+                             group paa by new { paa.libelle, } into grp
+                             select new { first = grp.FirstOrDefault(), all = grp.ToList<Produit>() });
+                int quantity = 0;
+                foreach (var elm in query)
+                {
+                    foreach (var s in dbase.Stock_Magazin)
+                    {
+                        if (elm.all.Where(pb => pb.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>() != null)
+                        {
+                            if (elm.all.Where(pc => pc.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>().libelle.Equals(elm.first.libelle))
+                                quantity += s.quantite;
+                        }
+                    }
+                  
+                }
                 ElementPagnierVentes elmnt = new ElementPagnierVentes();
                 elmnt.Title = p.libelle;
+                elmnt.MaxQuantite = quantity;
+                elmnt.Gain = (p.prixVente - p.prixAchat)* int.Parse(listBoxItemProduct.Text.Split(' ')[1]); 
+                elmnt.Id = p.codeProduit;
                 elmnt.Icon = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
                 elmnt.Description = p.description;
                 elmnt.Quantite = int.Parse(listBoxItemProduct.Text.Split(' ')[1]);
                 elmnt.QuntiteProduit = listBoxItemProduct.Text.Split(' ')[1];
-                elmnt.PrixUnit = p.prixVente.ToString();
+                elmnt.PrixUnit = p.prixVente;
                 elmnt.PrixTotal = p.prixVente * int.Parse(listBoxItemProduct.Text.Split(' ')[1]) + "";
                 foreach (Control item in flowLayoutPagnierProduitVentes.Controls)
                 {
@@ -291,7 +358,7 @@ namespace Project_ENSAF
                 flowLayoutPagnierProduitVentes.Controls.Add(elmnt);
                 listBoxItemProduct.Text = "";
                 
-            }*/
+            }
 
 
         }
@@ -326,12 +393,268 @@ namespace Project_ENSAF
         {
             Form_Ajouter_Produit formajout = new Form_Ajouter_Produit( this);
             formajout.Show();
+        }
 
-        }  
+        private void buttonSM_Ventes_Click(object sender, EventArgs e)
+        {
+            panelContainerSM_GV_V.Visible = true;
+            panelContainerSM_GV_JV.Visible = false;
+        }
+
+        private void buttonSM_JVentes_Click(object sender, EventArgs e)
+        {
+            panelContainerSM_GV_V.Visible = false;
+            panelContainerSM_GV_JV.Visible = true;
+            dataGridView1.Visible = false;
+            dataGridView2.Visible = false;
+            var ventes_liste = db.Vente_magazin.OrderBy(s => s.dateVente).ToList();
+            try
+            {
+                dateTimePickerD.MinDate = ventes_liste[0].dateVente.Value;
+                dateTimePickerD.MaxDate = ventes_liste[ventes_liste.Count - 1].dateVente.Value;
+                dateTimePickerE.MinDate = ventes_liste[0].dateVente.Value;
+                dateTimePickerE.MaxDate = ventes_liste[ventes_liste.Count - 1].dateVente.Value;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur Connection base donné !","warning",MessageBoxButtons.OK,MessageBoxIcon.Error); 
+            }
+              
+        }
+
         private void handel_AfterCloseForm(object sender, EventArgs e)
         {
             labelBasket.Text  = flowLayoutPagnierProduitVentes.Controls.Count + "";
             nbProduitInBasket = flowLayoutPagnierProduitVentes.Controls.Count;
-        } 
+        }
+
+        private void buttonJournalVentes_Click(object sender, EventArgs e)
+         {
+
+            if(!checkBoxTableu.Checked && !checkBoxGraphique.Checked && !radioButtonGain.Checked && !radioButtonPerte.Checked)
+            {
+                checkBoxGraphique.Checked = true; 
+            }
+            dataGridView1.Visible = dataGridView2.Visible = checkBoxTableu.Checked;
+            chart1.Visible = chart2.Visible = checkBoxGraphique.Checked;
+            if (checkBoxGraphique.Checked)
+            {
+                if(chart2.Width == panelContainerSM_GV_JV.Width - 10)
+                {
+                    chart1.Width = (panelContainerSM_GV_JV.Width / 2) - 5;
+                    chart2.Width = (panelContainerSM_GV_JV.Width / 2) - 40;
+                    chart2.Location = new Point(chart1.Width + chart1.Location.X + 8, chart2.Location.Y);
+                }
+            }
+            if (checkBoxTableu.Checked && !checkBoxGraphique.Checked)
+            {
+                panelContainerLabelGraphe2.Visible = panelContainerLabelGraphe.Visible = false; 
+            }
+            if (!checkBoxTableu.Checked && !checkBoxGraphique.Checked)
+            {
+                dataGridView1.Visible = chart1.Visible = panelContainerLabelGraphe2.Visible = radioButtonGain.Checked;
+                dataGridView2.Visible = chart2.Visible = panelContainerLabelGraphe.Visible = radioButtonPerte.Checked;
+                if (radioButtonGain.Checked)
+                {
+                    chart1.Width = panelContainerSM_GV_JV.Width - 10;
+
+                }
+                if (radioButtonPerte.Checked)
+                {
+                    chart2.Width = panelContainerSM_GV_JV.Width - 10;
+                    chart2.Location = new Point(20, chart2.Location.Y);
+                }
+             }
+                
+            var ventes_liste = db.Vente_magazin.GroupBy(s => s.dateVente);
+                int i = 0;
+                foreach (var groupItem in ventes_liste)
+                {
+
+                    int quantite = 0;
+                    decimal? _gain = 0;
+                    DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[i].Clone();
+                    row.Cells[2].Value = groupItem.Key;
+                    i++;
+                    foreach (var venteL in groupItem)
+                    {
+                        quantite += int.Parse(venteL.quantiteVendus.Split(' ')[venteL.quantiteVendus.Split(' ').Length - 1]);
+                        _gain += venteL.gain;
+                    }
+                    row.Cells[0].Value = quantite;
+                    row.Cells[1].Value = _gain;
+                   dataGridView1.Rows.Add(row);
+
+                }
+                produitVentes = db.Produits
+                .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) < 0)
+                .ToList<Produit>();
+                int j = 0, totalQNonDispo = 0;
+                decimal totalPerte = 0;
+                int fix = 1;
+                foreach (var item in produitVentes)
+                {
+                    var countInStock = db.Stock_Magazin
+                                    .Where(s => s.codeProduit == item.codeProduit)
+                                     .Select(p => p.quantite).FirstOrDefault();
+                    if (countInStock != 0)
+                    {
+                     DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[j].Clone();
+                     if (dataGridView2.Columns.Contains(item.libelle))
+                        {
+                            row.Cells[0].Value = item.libelle + "-" + fix;
+                            fix++;
+                        }
+                        else
+                        {
+                           row.Cells[0].Value = item.libelle;
+
+                        }
+                        totalQNonDispo++;
+                        totalPerte += countInStock * item.prixAchat;
+                       row.Cells[1].Value = countInStock * item.prixAchat;
+                        j++;
+                         dataGridView2.Rows.Add(row);
+                        
+                        chart2.Series["Series1"].Points.AddXY(countInStock, countInStock * item.prixAchat);
+
+                    }
+
+                }
+                labelTotalPerte.Text += totalPerte +",Total des Produits NonDispo" +
+                "" +
+                " : "+totalQNonDispo;
+           
+           
+                var ventes_liste2 = db.Vente_magazin.GroupBy(s => s.dateVente);
+                foreach (var groupItem in ventes_liste2)
+                {
+                    if ((dateTimePickerE.Value.Date - dateTimePickerD.Value.Date).TotalDays > 30)
+                    {
+                        this.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+                    }
+                    else
+                    {
+                        this.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+
+                    }
+                    int quantite = 0;
+                    decimal? _gain = 0;
+                    foreach (var venteL in groupItem)
+                    {
+
+                        if (venteL.dateVente.Value.Date >= dateTimePickerD.Value.Date && venteL.dateVente.Value.Date <= dateTimePickerE.Value.Date && !checkBoxTous.Checked)
+                        {
+                            quantite += int.Parse(venteL.quantiteVendus.Split(' ')[venteL.quantiteVendus.Split(' ').Length - 1]);
+                            _gain += venteL.gain;
+
+                        }else
+                        {
+                            quantite += int.Parse(venteL.quantiteVendus.Split(' ')[venteL.quantiteVendus.Split(' ').Length - 1]);
+                            _gain += venteL.gain;
+                        }
+                    chart1.Series["Series1"].Points.AddXY(_gain, quantite);
+
+                }
+            }
+
+
+        }
+
+        private void test(object sender, EventArgs e)
+        {
+
+            var ventes_liste = db.Vente_magazin.GroupBy(s => s.dateVente);
+            foreach (var groupItem in ventes_liste)
+            {
+                if((dateTimePickerE.Value.Date-dateTimePickerD.Value.Date ).TotalDays >30 ) {
+                    this.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area; 
+                }else
+                {
+                    this.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+
+                }
+                int quantite = 0;
+                decimal? _gain = 0;
+                foreach (var venteL in groupItem)
+                {
+
+                    if (venteL.dateVente.Value.Date >= dateTimePickerD.Value.Date && venteL.dateVente.Value.Date <= dateTimePickerE.Value.Date)
+                    {
+                        quantite += int.Parse(venteL.quantiteVendus.Split(' ')[venteL.quantiteVendus.Split(' ').Length - 1]);
+                        _gain += venteL.gain;
+                    }
+                  
+                }
+                chart1.Series["Series1"].Points.AddXY(_gain, quantite);
+            }
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            chart1.Width = (panelContainerSM_GV_JV.Width / 2) - 5;
+            chart2.Width = (panelContainerSM_GV_JV.Width / 2) - 40;
+            chart2.Location = new Point(chart1.Location.X + chart1.Width +8, chart2.Location.Y);
+            if (radioButtonGain.Checked)
+            {
+                chart1.Width = panelContainerSM_GV_JV.Width - 10;
+                chart2.Location = new Point(chart1.Width + chart1.Location.X +8, chart2.Location.Y);
+
+            }
+            if (radioButtonPerte.Checked)
+            {
+                chart2.Width = panelContainerSM_GV_JV.Width - 10;
+                chart2.Location = new Point(20, chart2.Location.Y);
+            }
+        }
+
+   
+
+       
+
+        private void checkBoxGraphique_CheckedChanged(object sender, EventArgs e)
+        {
+        
+            if((sender as CheckBox).Name == "checkBoxTous")
+            {
+                if((sender as CheckBox).Checked)
+                {
+                    dateTimePickerD.Enabled = dateTimePickerE.Enabled = false;
+                }else
+                {
+                    dateTimePickerD.Enabled = dateTimePickerE.Enabled = true;
+
+                }
+            }
+            else
+            {
+                if ((sender as CheckBox).Checked)
+                {
+                    radioButtonGain.Checked = radioButtonPerte.Checked = false;
+                    radioButtonGain.Enabled = false;
+                    radioButtonPerte.Enabled = false;
+                }
+                else
+                {
+                    radioButtonGain.Enabled = true;
+                    radioButtonPerte.Enabled = true;
+                }
+            }
+        }
+
+        private void handel2_AfterCloseForm(object sender, EventArgs e)
+        {
+            if (a.Visible == false)
+            {
+                labelBasket.Text = "0";
+                nbProduitInBasket = 0;
+                this.pictureBoxBasket.Image = Properties.Resources.cart;
+            }
+
+            
+        }
+
+
+
     }
 }
