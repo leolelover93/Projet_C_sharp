@@ -229,6 +229,13 @@
 
         #endregion
 
+        private void InitializeComp(int quantite)
+        {
+            InitializeComponent();
+            this.numericUpDownQunatite.Maximum = qunatite;
+
+        }
+
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelDescription;
         private System.Windows.Forms.Label labelProduit;

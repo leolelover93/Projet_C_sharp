@@ -19,6 +19,11 @@ namespace Project_ENSAF
          
             InitializeComponent();
         }
+        public ElementPagnierVentes(int quantite)
+        {
+
+            InitializeComp(quantite);
+        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -35,6 +40,8 @@ namespace Project_ENSAF
         private int qunatite;
         private int id;
         private decimal gain;
+        private int maxQuantite;
+
 
 
 
@@ -48,6 +55,13 @@ namespace Project_ENSAF
         {
             get { return prixToatal; }
             set { prixToatal = value; labelPrixTotal.Text = prixToatal; }
+        }
+
+        [Category("Custom Props")]
+        public int MaxQuantite
+        {
+            get { return maxQuantite; }
+            set { maxQuantite = value; numericUpDownQunatite.Maximum = value; }
         }
 
 

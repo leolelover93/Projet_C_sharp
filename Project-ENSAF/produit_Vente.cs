@@ -13,12 +13,27 @@ namespace Project_ENSAF
 
     public partial class produit_Vente : UserControl
     {
-        private int idProduit; 
+        private int idProduit;
+        private int quntite;
+
+        public int Quantite
+        {
+            get { return quntite; }
+            set { quntite = value; }
+        }
+
         public produit_Vente(Produit p)
         {
             this.idProduit = p.codeProduit; 
             InitializeComponent(p);
         }
+        public produit_Vente(Produit p,int quantite)
+        {
+            this.idProduit = p.codeProduit;
+            this.Quantite = quantite;
+            InitializeComp(p,quantite);
+        }
+
 
         public void getTheControl()
         {
