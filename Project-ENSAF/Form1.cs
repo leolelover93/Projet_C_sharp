@@ -20,37 +20,36 @@ namespace Project_ENSAF
             InitializeComponent();
             checkedLinePanel.Height = BtnGestionProduits.Height;
             checkedLinePanel.Top = BtnGestionProduits.Top;
-            db = new dbContext();
-            produitVentes = db.Produits.ToList<Produit>();
-            var query = (from p in db.Produits
-                         group p by new { p.libelle, } into grp
-                         select new {first = grp.FirstOrDefault()}); 
-            int quantity = 0;
-            foreach (var elm in query)
-            { 
-                foreach (var s in db.Stock_Magazin)
-                {
-                    if (db.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
-                }
-                this.flowLayoutPanel1.Controls.Add( new produit_cardUC(elm.first, this,quantity) );
-                quantity = 0;
-            }
-
-        } 
-        public int getProdQuantity(Produit p)
-        {
-            var dbase = new dbContext();
-            var prods = dbase.Produits.Where(prod => prod.libelle.Equals(p.libelle));
-            var stocks = dbase.Stock_Magazin; 
-            foreach (var produit in prods)
+            try
             {
-                foreach (var stock in stocks)
+                db = new dbContext();
+                produitVentes = db.Produits.ToList<Produit>();
+                var query = (from p in db.Produits
+                             group p by new { p.libelle, } into grp
+                             select new { first = grp.FirstOrDefault() });
+                int quantity = 0;
+                if (query.Count()>0)
                 {
-                    if (stock.codeProduit.Equals(produit.codeProduit)) return stock.quantite; 
-                } 
+                    foreach (var elm in query)
+                    {
+                        foreach (var s in db.Stock_Magazin)
+                        {
+                            if (db.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
+                        }
+                        this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
+                        quantity = 0;
+                    }
+                }
+               
             }
-            return 0;
-        }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur de connection! " + ex.Message);
+                this.Close();
+            }
+            
+
+        }  
         private void Form1_Load(object sender, EventArgs e)
         { 
             panelGestionVentes.Visible = false;
@@ -175,7 +174,7 @@ namespace Project_ENSAF
                    .ToList<Produit>(); 
             var query = (from p in NonExpireProds
                          group p by new { p.libelle, } into grp
-                         select new { first = grp.FirstOrDefault() });
+                         select new { first = grp.FirstOrDefault(), all = grp.ToList<Produit>() });
             int quantity = 0;
             produitVentes.Clear();
             flowLayoutPanel1.Controls.Clear();
@@ -184,12 +183,19 @@ namespace Project_ENSAF
                 produitVentes.Add(elm.first);
                 foreach (var s in dbase.Stock_Magazin)
                 {
-                    if (dbase.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
+                    if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>() != null)
+                    {
+                        if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>().libelle.Equals(elm.first.libelle))
+                            quantity += s.quantite;
+                    }
                 }
                 if(quantity>0)
                 this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
                 quantity = 0;
             }
+
+                
+
         } 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         { 
@@ -225,7 +231,7 @@ namespace Project_ENSAF
                     .ToList<Produit>();
             var query = (from p in NonExpireProds
                          group p by new { p.libelle, } into grp
-                         select new { first = grp.FirstOrDefault() });
+                         select new { first = grp.FirstOrDefault(), all=grp.ToList<Produit>() });
             int quantity = 0;
             produitVentes.Clear();
             flowLayoutPanel1.Controls.Clear();
@@ -234,7 +240,11 @@ namespace Project_ENSAF
                 produitVentes.Add(elm.first);
                 foreach (var s in dbase.Stock_Magazin)
                 {
-                    if (dbase.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
+                    if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>() != null)
+                    {
+                        if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>().libelle.Equals(elm.first.libelle))
+                        quantity += s.quantite;  
+                    }
                 }
                 this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
                 quantity = 0;
