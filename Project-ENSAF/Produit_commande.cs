@@ -10,13 +10,16 @@
 namespace Project_ENSAF
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class Produit_commande
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public int codeProdCommande { get; set; }
+        public int NCommande { get; set; }
+        public int codeProduit { get; set; }
+        public int quantite { get; set; }
+    
+        public virtual Commande Commande { get; set; }
+        public virtual Produit Produit { get; set; }
     }
 }

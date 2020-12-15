@@ -67,7 +67,7 @@ namespace Project_ENSAF
                     {
                         if (false /*db.Produits.Where(p => p.libelle.Equals(tbLibelle.Text)).Count() > 0*/)
                         {
-                            MessageBox.Show("Produit existe déja!", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                           /* MessageBox.Show("Produit existe déja!", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);*/
                         }else {
                                 Produit p = new Produit()
                                 {
