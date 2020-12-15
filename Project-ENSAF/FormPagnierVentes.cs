@@ -88,6 +88,7 @@ namespace Project_ENSAF
             string cProduits = "";
             decimal _gain = 0;
             int qVenduInt = 0;
+            int prodActuel = 1; 
             foreach(ElementPagnierVentes item in listElementPagnier)
             {
                 var Stock_Prod = db.Stock_Magazin.
@@ -108,7 +109,7 @@ namespace Project_ENSAF
                         return; 
                     }
                 }
-               
+                prodActuel = Stock_Prod.codeProduit;
             }
             //La dernier valuer c'est le toatal de facture
             qVendu += qVenduInt;
@@ -116,18 +117,28 @@ namespace Project_ENSAF
             {
                 quantiteVendus = qVendu,
                 codeMagazin = 1,
-                codeProduit = 1,
+                codeProduit = prodActuel,
                 gain = _gain,
                 dateVente = DateTime.Now.Date,
                 codeProduits = cProduits
 
             };
-            db.Vente_magazin.Add(facture);
-            db.SaveChanges();
+            try
+            {
+                db.Vente_magazin.Add(facture);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show($"Probléme dans BaseDonné (Stock) ", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
             MessageBox.Show("facture aded");
-            this.Visible = false;
             listElementPagnier.Clear();
             flowLayoutPanel1.Controls.Clear();
+            this.Visible = false;
+
 
         }
     }

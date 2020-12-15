@@ -28,19 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title10 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title7 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.LogoPanel = new System.Windows.Forms.Panel();
             this.lblLogo = new System.Windows.Forms.Label();
+            this.BtnGestionVentes = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.checkedLinePanel = new System.Windows.Forms.Panel();
+            this.BtnGestionProduits = new System.Windows.Forms.Button();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.panelGestionProduit = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
@@ -48,6 +51,7 @@
             this.btnDisponible = new System.Windows.Forms.Button();
             this.btnViewAll = new System.Windows.Forms.Button();
             this.panelSearchBox = new System.Windows.Forms.Panel();
+            this.buttonSearchGP = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnAjouterProduit = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -56,9 +60,11 @@
             this.panelGestionVentes = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonSearchPV = new System.Windows.Forms.Button();
             this.textBoxSearchProduitVentes = new System.Windows.Forms.TextBox();
             this.btnViderPanger = new System.Windows.Forms.Button();
             this.labelBasket = new System.Windows.Forms.Label();
+            this.pictureBoxBasket = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanelVente = new System.Windows.Forms.FlowLayoutPanel();
             this.listBoxItemProduct = new System.Windows.Forms.Label();
             this.panelBottom_SM_GV_JV = new System.Windows.Forms.Panel();
@@ -77,6 +83,9 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBoxAffichageJV = new System.Windows.Forms.GroupBox();
@@ -94,16 +103,7 @@
             this.labelDateDébut = new System.Windows.Forms.Label();
             this.dateTimePickerD = new System.Windows.Forms.DateTimePicker();
             this.panelHeader_SM_GV_JV = new System.Windows.Forms.Panel();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelTitreJV = new System.Windows.Forms.Label();
-            this.buttonSearchPV = new System.Windows.Forms.Button();
-            this.pictureBoxBasket = new System.Windows.Forms.PictureBox();
-            this.buttonSearchGP = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.BtnGestionProduits = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             this.panelContainer.SuspendLayout();
@@ -115,6 +115,7 @@
             this.panelGestionVentes.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasket)).BeginInit();
             this.panelBottom_SM_GV_JV.SuspendLayout();
             this.panelContainerSM_GV_JV.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -127,14 +128,13 @@
             this.groupBoxAffichageJV.SuspendLayout();
             this.groupBoxFilterSearchJV.SuspendLayout();
             this.panelHeader_SM_GV_JV.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasket)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(92)))));
             this.panel1.Controls.Add(this.LogoPanel);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.BtnGestionVentes);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.checkedLinePanel);
             this.panel1.Controls.Add(this.BtnGestionProduits);
@@ -169,6 +169,44 @@
             this.lblLogo.TabIndex = 0;
             this.lblLogo.Text = "SUPREME";
             // 
+            // BtnGestionVentes
+            // 
+            this.BtnGestionVentes.FlatAppearance.BorderSize = 0;
+            this.BtnGestionVentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGestionVentes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnGestionVentes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BtnGestionVentes.Image = ((System.Drawing.Image)(resources.GetObject("BtnGestionVentes.Image")));
+            this.BtnGestionVentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnGestionVentes.Location = new System.Drawing.Point(6, 230);
+            this.BtnGestionVentes.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.BtnGestionVentes.Name = "BtnGestionVentes";
+            this.BtnGestionVentes.Size = new System.Drawing.Size(195, 51);
+            this.BtnGestionVentes.TabIndex = 2;
+            this.BtnGestionVentes.Text = "Gestion Ventes";
+            this.BtnGestionVentes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnGestionVentes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnGestionVentes.UseVisualStyleBackColor = true;
+            this.BtnGestionVentes.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(6, 173);
+            this.button1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(195, 51);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Gestion Produits 2";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // checkedLinePanel
             // 
             this.checkedLinePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
@@ -177,11 +215,29 @@
             this.checkedLinePanel.Size = new System.Drawing.Size(6, 49);
             this.checkedLinePanel.TabIndex = 1;
             // 
+            // BtnGestionProduits
+            // 
+            this.BtnGestionProduits.FlatAppearance.BorderSize = 0;
+            this.BtnGestionProduits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGestionProduits.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnGestionProduits.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BtnGestionProduits.Image = ((System.Drawing.Image)(resources.GetObject("BtnGestionProduits.Image")));
+            this.BtnGestionProduits.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnGestionProduits.Location = new System.Drawing.Point(6, 116);
+            this.BtnGestionProduits.Name = "BtnGestionProduits";
+            this.BtnGestionProduits.Size = new System.Drawing.Size(195, 51);
+            this.BtnGestionProduits.TabIndex = 0;
+            this.BtnGestionProduits.Text = "Gestion Produits";
+            this.BtnGestionProduits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnGestionProduits.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnGestionProduits.UseVisualStyleBackColor = true;
+            this.BtnGestionProduits.Click += new System.EventHandler(this.button1_Click);
+            // 
             // panelContainer
             // 
             this.panelContainer.BackColor = System.Drawing.Color.Transparent;
-            this.panelContainer.Controls.Add(this.panelGestionProduit);
             this.panelContainer.Controls.Add(this.panelSM_GV);
+            this.panelContainer.Controls.Add(this.panelGestionProduit);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(201, 0);
             this.panelContainer.Name = "panelContainer";
@@ -266,6 +322,20 @@
             this.panelSearchBox.Size = new System.Drawing.Size(246, 45);
             this.panelSearchBox.TabIndex = 1;
             // 
+            // buttonSearchGP
+            // 
+            this.buttonSearchGP.BackColor = System.Drawing.Color.White;
+            this.buttonSearchGP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSearchGP.BackgroundImage")));
+            this.buttonSearchGP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSearchGP.FlatAppearance.BorderSize = 0;
+            this.buttonSearchGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchGP.Location = new System.Drawing.Point(199, 12);
+            this.buttonSearchGP.Name = "buttonSearchGP";
+            this.buttonSearchGP.Size = new System.Drawing.Size(24, 20);
+            this.buttonSearchGP.TabIndex = 3;
+            this.buttonSearchGP.UseVisualStyleBackColor = false;
+            this.buttonSearchGP.Click += new System.EventHandler(this.buttonSearchGP_Click_1);
+            // 
             // tbSearch
             // 
             this.tbSearch.BackColor = System.Drawing.Color.White;
@@ -293,7 +363,7 @@
             this.btnAjouterProduit.Margin = new System.Windows.Forms.Padding(0);
             this.btnAjouterProduit.MaximumSize = new System.Drawing.Size(0, 31);
             this.btnAjouterProduit.Name = "btnAjouterProduit";
-            this.btnAjouterProduit.Size = new System.Drawing.Size(0, 29);
+            this.btnAjouterProduit.Size = new System.Drawing.Size(120, 29);
             this.btnAjouterProduit.TabIndex = 0;
             this.btnAjouterProduit.Text = " Ajouter Prdouit";
             this.btnAjouterProduit.UseVisualStyleBackColor = false;
@@ -317,9 +387,9 @@
             // panelSM_GV
             // 
             this.panelSM_GV.BackColor = System.Drawing.Color.Transparent;
+            this.panelSM_GV.Controls.Add(this.panelContainerSM_GV_JV);
             this.panelSM_GV.Controls.Add(this.panelContainerSM_GV_V);
             this.panelSM_GV.Controls.Add(this.panelBottom_SM_GV_JV);
-            this.panelSM_GV.Controls.Add(this.panelContainerSM_GV_JV);
             this.panelSM_GV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSM_GV.Location = new System.Drawing.Point(0, 0);
             this.panelSM_GV.Name = "panelSM_GV";
@@ -369,6 +439,19 @@
             this.panel3.Size = new System.Drawing.Size(246, 45);
             this.panel3.TabIndex = 4;
             // 
+            // buttonSearchPV
+            // 
+            this.buttonSearchPV.BackColor = System.Drawing.Color.White;
+            this.buttonSearchPV.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSearchPV.BackgroundImage")));
+            this.buttonSearchPV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSearchPV.FlatAppearance.BorderSize = 0;
+            this.buttonSearchPV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchPV.Location = new System.Drawing.Point(200, 12);
+            this.buttonSearchPV.Name = "buttonSearchPV";
+            this.buttonSearchPV.Size = new System.Drawing.Size(24, 20);
+            this.buttonSearchPV.TabIndex = 4;
+            this.buttonSearchPV.UseVisualStyleBackColor = false;
+            // 
             // textBoxSearchProduitVentes
             // 
             this.textBoxSearchProduitVentes.BackColor = System.Drawing.Color.White;
@@ -416,6 +499,20 @@
             this.labelBasket.TabIndex = 1;
             this.labelBasket.Text = "0";
             this.labelBasket.Click += new System.EventHandler(this.pictureBoxBasket_Click);
+            // 
+            // pictureBoxBasket
+            // 
+            this.pictureBoxBasket.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxBasket.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxBasket.Image = global::Project_ENSAF.Properties.Resources.cart;
+            this.pictureBoxBasket.Location = new System.Drawing.Point(673, 12);
+            this.pictureBoxBasket.Name = "pictureBoxBasket";
+            this.pictureBoxBasket.Size = new System.Drawing.Size(46, 34);
+            this.pictureBoxBasket.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxBasket.TabIndex = 0;
+            this.pictureBoxBasket.TabStop = false;
+            this.pictureBoxBasket.Click += new System.EventHandler(this.pictureBoxBasket_Click);
             // 
             // flowLayoutPanelVente
             // 
@@ -495,7 +592,7 @@
             this.panelContainerSM_GV_JV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainerSM_GV_JV.Location = new System.Drawing.Point(0, 0);
             this.panelContainerSM_GV_JV.Name = "panelContainerSM_GV_JV";
-            this.panelContainerSM_GV_JV.Size = new System.Drawing.Size(750, 499);
+            this.panelContainerSM_GV_JV.Size = new System.Drawing.Size(750, 467);
             this.panelContainerSM_GV_JV.TabIndex = 0;
             // 
             // panel4
@@ -512,8 +609,9 @@
             this.panel4.Controls.Add(this.groupBoxFilterSearchJV);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 55);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(750, 444);
+            this.panel4.Size = new System.Drawing.Size(750, 412);
             this.panel4.TabIndex = 4;
             // 
             // panelContainerLabelGraphe2
@@ -616,10 +714,10 @@
             this.dataGridView2.Location = new System.Drawing.Point(0, 396);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle9.NullValue = "0";
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle7.NullValue = "0";
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView2.Size = new System.Drawing.Size(733, 169);
             this.dataGridView2.TabIndex = 31;
             // 
@@ -653,11 +751,11 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.NullValue = "0";
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.NullValue = "0";
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.dataGridView1.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowTemplate.Height = 21;
@@ -665,44 +763,62 @@
             this.dataGridView1.Size = new System.Drawing.Size(733, 482);
             this.dataGridView1.TabIndex = 30;
             // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "NobreDeVentes";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "LeGain";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Date";
+            this.Column3.Name = "Column3";
+            // 
             // chart2
             // 
-            chartArea9.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea9);
+            chartArea7.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea7);
             this.chart2.Location = new System.Drawing.Point(370, 132);
             this.chart2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-            series9.Name = "Series1";
-            series9.YValuesPerPoint = 4;
-            this.chart2.Series.Add(series9);
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            series7.Name = "Series1";
+            series7.YValuesPerPoint = 4;
+            this.chart2.Series.Add(series7);
             this.chart2.Size = new System.Drawing.Size(342, 264);
             this.chart2.TabIndex = 29;
             this.chart2.Text = "chart2";
-            title9.Name = "Title1";
-            this.chart2.Titles.Add(title9);
+            title7.Name = "Title1";
+            this.chart2.Titles.Add(title7);
             // 
             // chart1
             // 
-            chartArea10.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea10);
+            chartArea8.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea8);
             this.chart1.Location = new System.Drawing.Point(20, 132);
             this.chart1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-            series10.Name = "Series1";
-            series10.ToolTip = "DirectionDate-->";
-            series10.YValuesPerPoint = 4;
-            this.chart1.Series.Add(series10);
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            series8.Name = "Series1";
+            series8.ToolTip = "DirectionDate-->";
+            series8.YValuesPerPoint = 4;
+            this.chart1.Series.Add(series8);
             this.chart1.Size = new System.Drawing.Size(333, 264);
             this.chart1.TabIndex = 28;
             this.chart1.Text = "chart1";
-            title10.Name = "Title1";
-            this.chart1.Titles.Add(title10);
+            title8.Name = "Title1";
+            this.chart1.Titles.Add(title8);
             // 
             // groupBoxAffichageJV
             // 
@@ -751,6 +867,7 @@
             this.radioButtonGain.TabStop = true;
             this.radioButtonGain.Text = "De Gain";
             this.radioButtonGain.UseVisualStyleBackColor = true;
+            this.radioButtonGain.CheckedChanged += new System.EventHandler(this.radioButtonPerte_CheckedChanged);
             // 
             // button3
             // 
@@ -776,6 +893,7 @@
             this.radioButtonPerte.TabStop = true;
             this.radioButtonPerte.Text = "De Perte";
             this.radioButtonPerte.UseVisualStyleBackColor = true;
+            this.radioButtonPerte.CheckedChanged += new System.EventHandler(this.radioButtonPerte_CheckedChanged);
             // 
             // checkBoxTableu
             // 
@@ -872,24 +990,6 @@
             this.panelHeader_SM_GV_JV.Size = new System.Drawing.Size(750, 55);
             this.panelHeader_SM_GV_JV.TabIndex = 3;
             // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "NobreDeVentes";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "LeGain";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Date";
-            this.Column3.Name = "Column3";
-            // 
             // labelTitreJV
             // 
             this.labelTitreJV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -903,103 +1003,6 @@
             this.labelTitreJV.Size = new System.Drawing.Size(268, 36);
             this.labelTitreJV.TabIndex = 1;
             this.labelTitreJV.Text = "Journal de ventes";
-            // 
-            // buttonSearchPV
-            // 
-            this.buttonSearchPV.BackColor = System.Drawing.Color.White;
-            this.buttonSearchPV.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSearchPV.BackgroundImage")));
-            this.buttonSearchPV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSearchPV.FlatAppearance.BorderSize = 0;
-            this.buttonSearchPV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchPV.Location = new System.Drawing.Point(200, 12);
-            this.buttonSearchPV.Name = "buttonSearchPV";
-            this.buttonSearchPV.Size = new System.Drawing.Size(24, 20);
-            this.buttonSearchPV.TabIndex = 4;
-            this.buttonSearchPV.UseVisualStyleBackColor = false;
-            // 
-            // pictureBoxBasket
-            // 
-            this.pictureBoxBasket.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxBasket.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxBasket.Image = global::Project_ENSAF.Properties.Resources.cart;
-            this.pictureBoxBasket.Location = new System.Drawing.Point(673, 12);
-            this.pictureBoxBasket.Name = "pictureBoxBasket";
-            this.pictureBoxBasket.Size = new System.Drawing.Size(46, 34);
-            this.pictureBoxBasket.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxBasket.TabIndex = 0;
-            this.pictureBoxBasket.TabStop = false;
-            this.pictureBoxBasket.Click += new System.EventHandler(this.pictureBoxBasket_Click);
-            // 
-            // buttonSearchGP
-            // 
-            this.buttonSearchGP.BackColor = System.Drawing.Color.White;
-            this.buttonSearchGP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSearchGP.BackgroundImage")));
-            this.buttonSearchGP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSearchGP.FlatAppearance.BorderSize = 0;
-            this.buttonSearchGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchGP.Location = new System.Drawing.Point(199, 12);
-            this.buttonSearchGP.Name = "buttonSearchGP";
-            this.buttonSearchGP.Size = new System.Drawing.Size(24, 20);
-            this.buttonSearchGP.TabIndex = 3;
-            this.buttonSearchGP.UseVisualStyleBackColor = false;
-            this.buttonSearchGP.Click += new System.EventHandler(this.buttonSearchGP_Click_1);
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(6, 230);
-            this.button2.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(195, 51);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Gestion Ventes";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button1
-            // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(6, 173);
-            this.button1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(195, 51);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Gestion Produits 2";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // BtnGestionProduits
-            // 
-            this.BtnGestionProduits.FlatAppearance.BorderSize = 0;
-            this.BtnGestionProduits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnGestionProduits.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGestionProduits.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnGestionProduits.Image = ((System.Drawing.Image)(resources.GetObject("BtnGestionProduits.Image")));
-            this.BtnGestionProduits.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGestionProduits.Location = new System.Drawing.Point(6, 116);
-            this.BtnGestionProduits.Name = "BtnGestionProduits";
-            this.BtnGestionProduits.Size = new System.Drawing.Size(195, 51);
-            this.BtnGestionProduits.TabIndex = 0;
-            this.BtnGestionProduits.Text = "Gestion Produits";
-            this.BtnGestionProduits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnGestionProduits.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnGestionProduits.UseVisualStyleBackColor = true;
-            this.BtnGestionProduits.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -1030,6 +1033,7 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasket)).EndInit();
             this.panelBottom_SM_GV_JV.ResumeLayout(false);
             this.panelContainerSM_GV_JV.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -1047,7 +1051,6 @@
             this.groupBoxFilterSearchJV.PerformLayout();
             this.panelHeader_SM_GV_JV.ResumeLayout(false);
             this.panelHeader_SM_GV_JV.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasket)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1057,7 +1060,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BtnGestionProduits;
         private System.Windows.Forms.Panel checkedLinePanel;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BtnGestionVentes;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel LogoPanel;
         private System.Windows.Forms.Label lblLogo;
