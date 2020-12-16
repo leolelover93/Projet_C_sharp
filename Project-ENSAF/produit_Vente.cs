@@ -13,12 +13,27 @@ namespace Project_ENSAF
 
     public partial class produit_Vente : UserControl
     {
-        private int idProduit; 
+        private int idProduit;
+        private int quntite;
+
+        public int Quantite
+        {
+            get { return quntite; }
+            set { quntite = value; }
+        }
+
         public produit_Vente(Produit p)
         {
             this.idProduit = p.codeProduit; 
-            InitializeComponent(p);
+            InitializeComp2(p);
         }
+        public produit_Vente(Produit p,int quantite)
+        {
+            this.idProduit = p.codeProduit;
+            this.Quantite = quantite;
+            InitializeComp(p,quantite);
+        }
+
 
         public void getTheControl()
         {
@@ -26,7 +41,7 @@ namespace Project_ENSAF
         }
         private void btnReadMore_Click(object sender, EventArgs e)
         {
-           Control[] tabElment =  this.Parent.Parent.Controls.Find("listBoxItemProduct", true);
+           Control[] tabElment =  this.Parent.Parent.Parent.Controls.Find("listBoxItemProduct", true);
             Label label = (Label) tabElment[0];
             //Just to fire the event of the hidden text in form1
           if (label.Text == (this.idProduit.ToString() + " " + numericUpDownQauntite.Value)) label.Text = "";

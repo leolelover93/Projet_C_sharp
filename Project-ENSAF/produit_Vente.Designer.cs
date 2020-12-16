@@ -28,7 +28,7 @@
         /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas 
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
-        private void InitializeComponent(Produit p)
+        private void InitializeComponent()
         {
             this.prodImg = new System.Windows.Forms.PictureBox();
             this.lblProdName = new System.Windows.Forms.Label();
@@ -36,6 +36,7 @@
             this.lblprix = new System.Windows.Forms.Label();
             this.lblProdDescri = new System.Windows.Forms.Label();
             this.numericUpDownQauntite = new System.Windows.Forms.NumericUpDown();
+            this.lblnbProduits = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.prodImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQauntite)).BeginInit();
             this.SuspendLayout();
@@ -45,12 +46,11 @@
             this.prodImg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
             this.prodImg.InitialImage = null;
             this.prodImg.Location = new System.Drawing.Point(3, -1);
             this.prodImg.Name = "prodImg";
             this.prodImg.Size = new System.Drawing.Size(166, 117);
-            this.prodImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.prodImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.prodImg.TabIndex = 0;
             this.prodImg.TabStop = false;
             // 
@@ -62,9 +62,9 @@
             this.lblProdName.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProdName.Location = new System.Drawing.Point(-1, 118);
             this.lblProdName.Name = "lblProdName";
-            this.lblProdName.Size = new System.Drawing.Size(85, 23);
+            this.lblProdName.Size = new System.Drawing.Size(46, 23);
             this.lblProdName.TabIndex = 1;
-            this.lblProdName.Text = p.libelle;
+            this.lblProdName.Text = "Title";
             // 
             // btnReadMore
             // 
@@ -92,9 +92,9 @@
             this.lblprix.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
             this.lblprix.Location = new System.Drawing.Point(-1, 189);
             this.lblprix.Name = "lblprix";
-            this.lblprix.Size = new System.Drawing.Size(36, 23);
+            this.lblprix.Size = new System.Drawing.Size(63, 23);
             this.lblprix.TabIndex = 4;
-            this.lblprix.Text = p.prixVente.ToString()+"DH";
+            this.lblprix.Text = "2.0DH";
             // 
             // lblProdDescri
             // 
@@ -107,9 +107,9 @@
             this.lblProdDescri.Location = new System.Drawing.Point(0, 144);
             this.lblProdDescri.MaximumSize = new System.Drawing.Size(190, 40);
             this.lblProdDescri.Name = "lblProdDescri";
-            this.lblProdDescri.Size = new System.Drawing.Size(86, 17);
+            this.lblProdDescri.Size = new System.Drawing.Size(75, 17);
             this.lblProdDescri.TabIndex = 2;
-            this.lblProdDescri.Text = p.description;
+            this.lblProdDescri.Text = "description";
             // 
             // numericUpDownQauntite
             // 
@@ -128,11 +128,25 @@
             0,
             0});
             // 
+            // lblnbProduits
+            // 
+            this.lblnbProduits.AutoSize = true;
+            this.lblnbProduits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblnbProduits.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnbProduits.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.lblnbProduits.Location = new System.Drawing.Point(56, 164);
+            this.lblnbProduits.MaximumSize = new System.Drawing.Size(190, 20);
+            this.lblnbProduits.Name = "lblnbProduits";
+            this.lblnbProduits.Size = new System.Drawing.Size(55, 17);
+            this.lblnbProduits.TabIndex = 6;
+            this.lblnbProduits.Text = "Stock: ";
+            // 
             // produit_Vente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblnbProduits);
             this.Controls.Add(this.numericUpDownQauntite);
             this.Controls.Add(this.lblProdDescri);
             this.Controls.Add(this.lblprix);
@@ -149,12 +163,34 @@
         }
 
         #endregion
+        private void InitializeComp2(Produit p)
+        {
 
+            InitializeComponent();
+            this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
+            this.lblProdName.Text = p.libelle;
+            this.lblprix.Text = p.prixVente.ToString() + "DH";
+            this.lblProdDescri.Text = p.description;
+
+
+
+        }
+        private void InitializeComp(Produit p,  int quantite)
+        {
+            InitializeComponent();
+            this.numericUpDownQauntite.Maximum = quantite;
+            this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
+            this.lblProdName.Text = p.libelle;
+            this.lblprix.Text = p.prixVente.ToString() + "DH";
+            this.lblProdDescri.Text = p.description;
+            this.lblnbProduits.Text += quantite;
+        }
         private System.Windows.Forms.PictureBox prodImg;
         private System.Windows.Forms.Label lblProdName;
         private System.Windows.Forms.Button btnReadMore;
         private System.Windows.Forms.Label lblprix;
         private System.Windows.Forms.Label lblProdDescri;
         private System.Windows.Forms.NumericUpDown numericUpDownQauntite;
+        public System.Windows.Forms.Label lblnbProduits;
     }
 }

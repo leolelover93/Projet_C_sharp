@@ -240,6 +240,7 @@
             this.comboFornisseur.Name = "comboFornisseur";
             this.comboFornisseur.Size = new System.Drawing.Size(156, 26);
             this.comboFornisseur.TabIndex = 24;
+            this.comboFornisseur.DropDownStyle = ComboBoxStyle.DropDownList; 
             this.comboFornisseur.SelectedIndexChanged += new System.EventHandler(this.comboFornisseur_SelectedIndexChanged);
             // 
             // ID_Four

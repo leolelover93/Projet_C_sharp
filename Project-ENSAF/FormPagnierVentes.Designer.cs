@@ -137,6 +137,7 @@
             this.buttonSumbitPagnier.TabIndex = 0;
             this.buttonSumbitPagnier.Text = "Valider Achats";
             this.buttonSumbitPagnier.UseVisualStyleBackColor = false;
+            this.buttonSumbitPagnier.Click += new System.EventHandler(this.buttonSumbitPagnier_Click);
             // 
             // FormPagnierVentes
             // 

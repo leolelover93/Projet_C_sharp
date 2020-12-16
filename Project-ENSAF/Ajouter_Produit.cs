@@ -51,7 +51,7 @@ namespace Project_ENSAF
             {
                 MessageBox.Show("Le prix doit être un nombre decimal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             } 
-            if (isNewProd)
+            if (isNewProd) //creating new product
             {
                     try
                     {
@@ -109,7 +109,7 @@ namespace Project_ENSAF
                     }
                     else MessageBox.Show("Veuillez remplir tous les champs demandés", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else
+            else //editing product
             {        
                     var q = db.Produits.Where(p => p.libelle.Equals(prod2Edit.libelle));
                     foreach (var item in q)

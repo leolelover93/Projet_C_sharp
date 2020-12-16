@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Windows.Forms; 
-using System.Drawing; 
+using System.Windows.Forms;  
 using System.Linq; 
 namespace Project_ENSAF
 {
@@ -27,7 +26,6 @@ namespace Project_ENSAF
 
             (sender as Button).BackColor = System.Drawing.Color.White;
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DialogResult res= MessageBox.Show("Ce produit sera supprimé définitivement du magazin, voulez vous continuez?","Supprimer produit?",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
@@ -55,11 +53,9 @@ namespace Project_ENSAF
             fAout.Show();
         }
         private void btnReadMore_click(object sender, EventArgs e)
-        {
-            var db = new dbContext();
-            var stock = db.Produits.Where(p => p.libelle == currentProd.libelle).ToList<Produit>();  
-            FormProdDescri prodDescri = new FormProdDescri(stock, formParent);
-            prodDescri.Show();
+        { 
+           FormProdDescri prodDescri = new FormProdDescri(currentProd, formParent);
+           prodDescri.Show();
         }
 
     }
