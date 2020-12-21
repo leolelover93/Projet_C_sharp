@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="Model.Fournisseur" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Magazin" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Produit" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Produit_commande" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Produit_commande" Width="1.75" PointX="5.25" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Stock_Magazin" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Vente_magazin" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
         <AssociationConnector Association="Model.FK_Commande_Magazin" ManuallyRouted="false" />

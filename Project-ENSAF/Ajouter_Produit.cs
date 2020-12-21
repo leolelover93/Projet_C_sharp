@@ -73,7 +73,6 @@ namespace Project_ENSAF
                                 {
                                     idFournisseur = fournisseur.idFournisseur,
                                     libelle = tbLibelle.Text,
-
                                     prixAchat = prix_Achat,
                                     prixVente = prix_Vente,
                                     dateExpiration = dateExpirePick.Value,

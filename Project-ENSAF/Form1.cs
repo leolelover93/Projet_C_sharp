@@ -626,6 +626,12 @@ namespace Project_ENSAF
             checkBoxGraphique.Checked = checkBoxTableu.Checked = false;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Espace_Commande esp = new Espace_Commande();
+            esp.Show();
+        }
+
         private void handel2_AfterCloseForm(object sender, EventArgs e)
         {
             if (a.Visible == false)

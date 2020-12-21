@@ -73,6 +73,12 @@
     <Compile Include="AjouterFournisseur.Designer.cs">
       <DependentUpon>AjouterFournisseur.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ajout_Commande.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajout_Commande.Designer.cs">
+      <DependentUpon>Ajout_Commande.cs</DependentUpon>
+    </Compile>
     <Compile Include="Commande.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -81,6 +87,12 @@
     </Compile>
     <Compile Include="ElementPagnierVentes.Designer.cs">
       <DependentUpon>ElementPagnierVentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Espace_Commande.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Espace_Commande.Designer.cs">
+      <DependentUpon>Espace_Commande.cs</DependentUpon>
     </Compile>
     <Compile Include="Espace_Fournisseur.cs">
       <SubType>Form</SubType>
@@ -182,8 +194,14 @@
     <EmbeddedResource Include="Ajouter_Produit.resx">
       <DependentUpon>Ajouter_Produit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ajout_Commande.resx">
+      <DependentUpon>Ajout_Commande.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ElementPagnierVentes.resx">
       <DependentUpon>ElementPagnierVentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Espace_Commande.resx">
+      <DependentUpon>Espace_Commande.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Espace_Fournisseur.resx">
       <DependentUpon>Espace_Fournisseur.cs</DependentUpon>
@@ -222,6 +240,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Commande.datasource" />
     <None Include="Properties\DataSources\Fournisseur.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
