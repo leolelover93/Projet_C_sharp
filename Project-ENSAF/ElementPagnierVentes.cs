@@ -84,7 +84,7 @@ namespace Project_ENSAF
         public int Quantite
         {
             get { return qunatite; }
-            set { qunatite = value; numericUpDownQunatite.Value = value; }
+            set { qunatite = value; numericUpDownQunatite.Maximum = value; }
         }
 
 

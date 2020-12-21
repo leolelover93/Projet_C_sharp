@@ -28,7 +28,7 @@ namespace Project_ENSAF
                 var query = (from p in db.Produits
                              group p by new { p.libelle, } into grp
                              select new { first = grp.FirstOrDefault() });
-                int quantity = 0;
+                int quantity = 0; 
                 if (query.Count()>0)
                 {
                     foreach (var elm in query)
@@ -40,8 +40,7 @@ namespace Project_ENSAF
                         this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
                         quantity = 0;
                     }
-                }
-               
+                } 
             }
             catch (Exception ex)
             {
