@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="projetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="projetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Commande">
           <Key>
             <PropertyRef Name="NCommande" />
@@ -12,7 +12,7 @@
           <Property Name="NCommande" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="codeMagazin" Type="int" Nullable="false" />
           <Property Name="dateDemande" Type="datetime" Nullable="false" />
-          <Property Name="dateArriveSouhaite" Type="datetime" />
+          <Property Name="dateArriveSouhaite" Type="datetime" Nullable="false" />
           <Property Name="statut" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Fournisseur">
@@ -234,8 +234,7 @@
             <End Role="Vente_magazin" EntitySet="Vente_magazin" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="projetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -246,7 +245,7 @@
           <Property Name="NCommande" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="codeMagazin" Type="Int32" Nullable="false" />
           <Property Name="dateDemande" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="dateArriveSouhaite" Type="DateTime" Precision="3" />
+          <Property Name="dateArriveSouhaite" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="statut" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Magazin" Relationship="Self.FK_Commande_Magazin" FromRole="Commande" ToRole="Magazin" />
           <NavigationProperty Name="Produit_commande" Relationship="Self.FK_Produit_commande_Commande" FromRole="Commande" ToRole="Produit_commande" />

@@ -23,7 +23,7 @@ namespace Project_ENSAF
         public int NCommande { get; set; }
         public int codeMagazin { get; set; }
         public System.DateTime dateDemande { get; set; }
-        public Nullable<System.DateTime> dateArriveSouhaite { get; set; }
+        public System.DateTime dateArriveSouhaite { get; set; }
         public bool statut { get; set; }
     
         public virtual Magazin Magazin { get; set; }
