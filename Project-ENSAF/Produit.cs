@@ -30,6 +30,7 @@ namespace Project_ENSAF
         public System.DateTime dateExpiration { get; set; }
         public byte[] img { get; set; }
         public string description { get; set; }
+        public Nullable<int> dureeValidite_jour { get; set; }
     
         public virtual Fournisseur Fournisseur { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

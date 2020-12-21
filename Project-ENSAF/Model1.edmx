@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="projetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="projetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Commande">
           <Key>
             <PropertyRef Name="NCommande" />
@@ -44,6 +44,7 @@
           <Property Name="dateExpiration" Type="datetime" Nullable="false" />
           <Property Name="img" Type="image" />
           <Property Name="description" Type="varchar" MaxLength="200" />
+          <Property Name="dureeValidite_jour" Type="int" />
         </EntityType>
         <EntityType Name="Produit_commande">
           <Key>
@@ -191,7 +192,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ModelStoreContainer">
+        <EntityContainer Name="projetModelStoreContainer">
           <EntitySet Name="Commande" EntityType="Self.Commande" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Fournisseur" EntityType="Self.Fournisseur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Magazin" EntityType="Self.Magazin" Schema="dbo" store:Type="Tables" />
@@ -233,10 +234,11 @@
             <End Role="Vente_magazin" EntitySet="Vente_magazin" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="projetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Commande">
           <Key>
             <PropertyRef Name="NCommande" />
@@ -258,7 +260,7 @@
           <Property Name="prenomFournisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="adressFournisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="telFournisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Produit" Relationship="Self.FK_Produit_Fournisseur" FromRole="Fournisseur" ToRole="Produit" />
+          <NavigationProperty Name="Produits" Relationship="Self.FK_Produit_Fournisseur" FromRole="Fournisseur" ToRole="Produit" />
         </EntityType>
         <EntityType Name="Magazin">
           <Key>
@@ -266,7 +268,7 @@
           </Key>
           <Property Name="codeMagazin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomMagazin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Commande" Relationship="Self.FK_Commande_Magazin" FromRole="Magazin" ToRole="Commande" />
+          <NavigationProperty Name="Commandes" Relationship="Self.FK_Commande_Magazin" FromRole="Magazin" ToRole="Commande" />
           <NavigationProperty Name="Stock_Magazin" Relationship="Self.FK_Stock_Magazin" FromRole="Magazin" ToRole="Stock_Magazin" />
           <NavigationProperty Name="Vente_magazin" Relationship="Self.FK_Vente_magazin_Vente_magazin" FromRole="Magazin" ToRole="Vente_magazin" />
         </EntityType>
@@ -282,6 +284,7 @@
           <Property Name="dateExpiration" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="dureeValidite_jour" Type="Int32" />
           <NavigationProperty Name="Fournisseur" Relationship="Self.FK_Produit_Fournisseur" FromRole="Produit" ToRole="Fournisseur" />
           <NavigationProperty Name="Produit_commande" Relationship="Self.FK_Produit_commande_Produit" FromRole="Produit" ToRole="Produit_commande" />
           <NavigationProperty Name="Stock_Magazin" Relationship="Self.FK_Stock_Produit" FromRole="Produit" ToRole="Stock_Magazin" />
@@ -308,6 +311,16 @@
           <Property Name="quantite" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Magazin" Relationship="Self.FK_Stock_Magazin" FromRole="Stock_Magazin" ToRole="Magazin" />
           <NavigationProperty Name="Produit" Relationship="Self.FK_Stock_Produit" FromRole="Stock_Magazin" ToRole="Produit" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Vente_magazin">
           <Key>
@@ -430,65 +443,55 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="dbContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Commande" EntityType="Self.Commande" />
-          <EntitySet Name="Fournisseur" EntityType="Self.Fournisseur" />
-          <EntitySet Name="Magazin" EntityType="Self.Magazin" />
-          <EntitySet Name="Produit" EntityType="Self.Produit" />
+          <EntitySet Name="Commandes" EntityType="Self.Commande" />
+          <EntitySet Name="Fournisseurs" EntityType="Self.Fournisseur" />
+          <EntitySet Name="Magazins" EntityType="Self.Magazin" />
+          <EntitySet Name="Produits" EntityType="Self.Produit" />
           <EntitySet Name="Produit_commande" EntityType="Self.Produit_commande" />
           <EntitySet Name="Stock_Magazin" EntityType="Self.Stock_Magazin" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Vente_magazin" EntityType="Self.Vente_magazin" />
           <AssociationSet Name="FK_Commande_Magazin" Association="Self.FK_Commande_Magazin">
-            <End Role="Magazin" EntitySet="Magazin" />
-            <End Role="Commande" EntitySet="Commande" />
+            <End Role="Magazin" EntitySet="Magazins" />
+            <End Role="Commande" EntitySet="Commandes" />
           </AssociationSet>
           <AssociationSet Name="FK_Produit_commande_Commande" Association="Self.FK_Produit_commande_Commande">
-            <End Role="Commande" EntitySet="Commande" />
+            <End Role="Commande" EntitySet="Commandes" />
             <End Role="Produit_commande" EntitySet="Produit_commande" />
           </AssociationSet>
           <AssociationSet Name="FK_Produit_Fournisseur" Association="Self.FK_Produit_Fournisseur">
-            <End Role="Fournisseur" EntitySet="Fournisseur" />
-            <End Role="Produit" EntitySet="Produit" />
+            <End Role="Fournisseur" EntitySet="Fournisseurs" />
+            <End Role="Produit" EntitySet="Produits" />
           </AssociationSet>
           <AssociationSet Name="FK_Stock_Magazin" Association="Self.FK_Stock_Magazin">
-            <End Role="Magazin" EntitySet="Magazin" />
+            <End Role="Magazin" EntitySet="Magazins" />
             <End Role="Stock_Magazin" EntitySet="Stock_Magazin" />
           </AssociationSet>
           <AssociationSet Name="FK_Vente_magazin_Vente_magazin" Association="Self.FK_Vente_magazin_Vente_magazin">
-            <End Role="Magazin" EntitySet="Magazin" />
+            <End Role="Magazin" EntitySet="Magazins" />
             <End Role="Vente_magazin" EntitySet="Vente_magazin" />
           </AssociationSet>
           <AssociationSet Name="FK_Produit_commande_Produit" Association="Self.FK_Produit_commande_Produit">
-            <End Role="Produit" EntitySet="Produit" />
+            <End Role="Produit" EntitySet="Produits" />
             <End Role="Produit_commande" EntitySet="Produit_commande" />
           </AssociationSet>
           <AssociationSet Name="FK_Stock_Produit" Association="Self.FK_Stock_Produit">
-            <End Role="Produit" EntitySet="Produit" />
+            <End Role="Produit" EntitySet="Produits" />
             <End Role="Stock_Magazin" EntitySet="Stock_Magazin" />
           </AssociationSet>
           <AssociationSet Name="FK_Vente_magazin_Produit" Association="Self.FK_Vente_magazin_Produit">
-            <End Role="Produit" EntitySet="Produit" />
+            <End Role="Produit" EntitySet="Produits" />
             <End Role="Vente_magazin" EntitySet="Vente_magazin" />
           </AssociationSet>
-          <EntitySet Name="sysdiagrams" EntityType="projetModel.sysdiagrams" />
         </EntityContainer>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="dbContext">
-          <EntitySetMapping Name="Commande">
-            <EntityTypeMapping TypeName="Model.Commande">
+        <EntityContainerMapping StorageEntityContainer="projetModelStoreContainer" CdmEntityContainer="dbContext">
+          <EntitySetMapping Name="Commandes">
+            <EntityTypeMapping TypeName="projetModel.Commande">
               <MappingFragment StoreEntitySet="Commande">
                 <ScalarProperty Name="NCommande" ColumnName="NCommande" />
                 <ScalarProperty Name="codeMagazin" ColumnName="codeMagazin" />
@@ -498,8 +501,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Fournisseur">
-            <EntityTypeMapping TypeName="Model.Fournisseur">
+          <EntitySetMapping Name="Fournisseurs">
+            <EntityTypeMapping TypeName="projetModel.Fournisseur">
               <MappingFragment StoreEntitySet="Fournisseur">
                 <ScalarProperty Name="idFournisseur" ColumnName="idFournisseur" />
                 <ScalarProperty Name="nomFournisseur" ColumnName="nomFournisseur" />
@@ -509,16 +512,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Magazin">
-            <EntityTypeMapping TypeName="Model.Magazin">
+          <EntitySetMapping Name="Magazins">
+            <EntityTypeMapping TypeName="projetModel.Magazin">
               <MappingFragment StoreEntitySet="Magazin">
                 <ScalarProperty Name="codeMagazin" ColumnName="codeMagazin" />
                 <ScalarProperty Name="nomMagazin" ColumnName="nomMagazin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Produit">
-            <EntityTypeMapping TypeName="Model.Produit">
+          <EntitySetMapping Name="Produits">
+            <EntityTypeMapping TypeName="projetModel.Produit">
               <MappingFragment StoreEntitySet="Produit">
                 <ScalarProperty Name="codeProduit" ColumnName="codeProduit" />
                 <ScalarProperty Name="idFournisseur" ColumnName="idFournisseur" />
@@ -528,11 +531,12 @@
                 <ScalarProperty Name="dateExpiration" ColumnName="dateExpiration" />
                 <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="dureeValidite_jour" ColumnName="dureeValidite_jour" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Produit_commande">
-            <EntityTypeMapping TypeName="Model.Produit_commande">
+            <EntityTypeMapping TypeName="projetModel.Produit_commande">
               <MappingFragment StoreEntitySet="Produit_commande">
                 <ScalarProperty Name="codeProdCommande" ColumnName="codeProdCommande" />
                 <ScalarProperty Name="NCommande" ColumnName="NCommande" />
@@ -542,7 +546,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Stock_Magazin">
-            <EntityTypeMapping TypeName="Model.Stock_Magazin">
+            <EntityTypeMapping TypeName="projetModel.Stock_Magazin">
               <MappingFragment StoreEntitySet="Stock_Magazin">
                 <ScalarProperty Name="codeStock" ColumnName="codeStock" />
                 <ScalarProperty Name="codeProduit" ColumnName="codeProduit" />
@@ -551,8 +555,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="projetModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Vente_magazin">
-            <EntityTypeMapping TypeName="Model.Vente_magazin">
+            <EntityTypeMapping TypeName="projetModel.Vente_magazin">
               <MappingFragment StoreEntitySet="Vente_magazin">
                 <ScalarProperty Name="idFacture" ColumnName="idFacture" />
                 <ScalarProperty Name="codeProduit" ColumnName="codeProduit" />
@@ -561,17 +576,6 @@
                 <ScalarProperty Name="codeProduits" ColumnName="codeProduits" />
                 <ScalarProperty Name="quantiteVendus" ColumnName="quantiteVendus" />
                 <ScalarProperty Name="gain" ColumnName="gain" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="projetModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -589,10 +593,10 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
