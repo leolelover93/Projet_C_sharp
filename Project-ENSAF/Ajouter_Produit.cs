@@ -63,37 +63,47 @@ namespace Project_ENSAF
                     {
                         MessageBox.Show("Error! please choose a valid image : " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     } 
-                    if (tbLibelle.Text.Length > 0 && tbDescription.Text.Length >0&& tb_Prix_Achat.Text.Length > 0 && tb_Prix_Vente.Text.Length > 0 && prodImg != null && fournisseur.nomFournisseur != null)
-                    { 
-                        Produit p = new Produit()
-                        {
-                            idFournisseur = fournisseur.idFournisseur,
-                            libelle = tbLibelle.Text, 
-                            prixAchat = prix_Achat,
-                            prixVente = prix_Vente,
-                            dateExpiration = dateExpirePick.Value,
-                            description = tbDescription.Text,
-                            img = prodImg,
-                        };
-                    
-                    Stock_Magazin stock = new Stock_Magazin()//mise a jour de stock
+                    if (tbLibelle.Text.Length > 1 && tbDescription.Text.Length > 1 && tb_Prix_Achat.Text.Length > 0 && tb_Prix_Vente.Text.Length > 0 && prodImg != null && fournisseur.nomFournisseur != null)
                     {
-                        codeProduit = p.codeProduit,
-                        codeMagazin = 1,
-                        quantite = Convert.ToInt32(tbQuantite.Text),
-                    };
-                    try
-                        {  
-                            db.Produits.Add(p); 
-                            db.Stock_Magazin.Add(stock); 
-                            db.SaveChanges();
-                            MessageBox.Show("Produit crée avec succès!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
-                            formParent.btnViewAll_Click(null, null);  
-                        }
-                        catch (Exception exc)
+                        if (false /*db.Produits.Where(p => p.libelle.Equals(tbLibelle.Text)).Count() > 0*/)
                         {
-                            MessageBox.Show("Error! " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                           /* MessageBox.Show("Produit existe déja!", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);*/
+                        }else {
+                                Produit p = new Produit()
+                                {
+                                    idFournisseur = fournisseur.idFournisseur,
+                                    libelle = tbLibelle.Text,
+                                    prixAchat = prix_Achat,
+                                    prixVente = prix_Vente,
+                                    dateExpiration = dateExpirePick.Value,
+                                    description = tbDescription.Text,
+                                    img = prodImg,
+                                };
+                                try
+                                { 
+                                    db.Produits.Add(p);
+                                    db.SaveChanges();
+                                    var pr = db.Produits.Where(prod => prod.libelle.Equals(p.libelle)).FirstOrDefault<Produit>();
+                                    var ss= db.Stock_Magazin.Where(st => st.codeProduit.Equals(pr.codeProduit)).FirstOrDefault<Stock_Magazin>();
+                                    if (db.Stock_Magazin.Where(st => st.codeProduit.Equals(pr.codeProduit)).Count() > 0)
+                                    {  
+                                        ss.quantite += Convert.ToInt32(tbQuantite.Text);
+                                    }else { 
+                                        Stock_Magazin stock = new Stock_Magazin();
+                                        stock.codeProduit = p.codeProduit;
+                                        stock.codeMagazin = 1;
+                                        stock.quantite = Convert.ToInt32(tbQuantite.Text);
+                                        db.Stock_Magazin.Add(stock);
+                                    }
+                                    db.SaveChanges();
+                                    MessageBox.Show("Produit crée avec succès!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    this.Close();
+                                    formParent.btnViewAll_Click(null, null);  
+                                }
+                                catch (Exception exc)
+                                {
+                                    MessageBox.Show("Error! " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
                         } 
                     }
                     else MessageBox.Show("Veuillez remplir tous les champs demandés", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);

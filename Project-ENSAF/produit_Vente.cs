@@ -25,7 +25,7 @@ namespace Project_ENSAF
         public produit_Vente(Produit p)
         {
             this.idProduit = p.codeProduit; 
-            InitializeComponent(p);
+            InitializeComp2(p);
         }
         public produit_Vente(Produit p,int quantite)
         {

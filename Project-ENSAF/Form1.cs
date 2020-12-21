@@ -425,12 +425,22 @@ namespace Project_ENSAF
         {
             labelBasket.Text  = flowLayoutPagnierProduitVentes.Controls.Count + "";
             nbProduitInBasket = flowLayoutPagnierProduitVentes.Controls.Count;
+            if(flowLayoutPagnierProduitVentes.Controls.Count == 0)
+            {
+                this.pictureBoxBasket.Image = Properties.Resources.cart;
+                
+            }
+
         }
 
         private void buttonJournalVentes_Click(object sender, EventArgs e)
          {
-
-            if(!checkBoxTableu.Checked && !checkBoxGraphique.Checked && !radioButtonGain.Checked && !radioButtonPerte.Checked)
+            chart1.Series["Series1"].Points.Clear();
+            chart2.Series["Series1"].Points.Clear();
+            dataGridView1.Rows.Clear();
+            dataGridView2.Rows.Clear();
+            //For the responsivness of the dataGridView and the Charts---StartBloc#x1
+            if (!checkBoxTableu.Checked && !checkBoxGraphique.Checked && !radioButtonGain.Checked && !radioButtonPerte.Checked)
             {
                 checkBoxGraphique.Checked = true; 
             }
@@ -441,13 +451,17 @@ namespace Project_ENSAF
                 if(chart2.Width == panelContainerSM_GV_JV.Width - 10)
                 {
                     chart1.Width = (panelContainerSM_GV_JV.Width / 2) - 5;
-                    chart2.Width = (panelContainerSM_GV_JV.Width / 2) - 40;
+                    chart2.Width = (panelContainerSM_GV_JV.Width / 2) - 150;
                     chart2.Location = new Point(chart1.Width + chart1.Location.X + 8, chart2.Location.Y);
                 }
             }
             if (checkBoxTableu.Checked && !checkBoxGraphique.Checked)
             {
                 panelContainerLabelGraphe2.Visible = panelContainerLabelGraphe.Visible = false; 
+            }else
+            {
+                panelContainerLabelGraphe2.Visible = panelContainerLabelGraphe.Visible = true;
+
             }
             if (!checkBoxTableu.Checked && !checkBoxGraphique.Checked)
             {
@@ -462,9 +476,18 @@ namespace Project_ENSAF
                 {
                     chart2.Width = panelContainerSM_GV_JV.Width - 10;
                     chart2.Location = new Point(20, chart2.Location.Y);
+                    dataGridView2.Location = new Point(dataGridView2.Location.X, chart2.Location.Y + chart2.Height + 8);
+
                 }
-             }
-                
+            }
+            //For the responsivness of the dataGridView and the Charts---EndBloc#x1
+
+            if (dateTimePickerD.Value.Date > dateTimePickerE.Value.Date)
+                {
+                    DateTime temp = dateTimePickerD.Value.Date;
+                    dateTimePickerD.Value = dateTimePickerE.Value.Date;
+                     dateTimePickerE.Value = temp; 
+                }
             var ventes_liste = db.Vente_magazin.GroupBy(s => s.dateVente);
                 int i = 0;
                 foreach (var groupItem in ventes_liste)
@@ -473,19 +496,34 @@ namespace Project_ENSAF
                     int quantite = 0;
                     decimal? _gain = 0;
                     DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[i].Clone();
-                    row.Cells[2].Value = groupItem.Key;
-                    i++;
-                    foreach (var venteL in groupItem)
+                    if (dateTimePickerD.Enabled && dateTimePickerD.Enabled)
                     {
-                        quantite += int.Parse(venteL.quantiteVendus.Split(' ')[venteL.quantiteVendus.Split(' ').Length - 1]);
-                        _gain += venteL.gain;
+                        if (groupItem.Key.Value.Date >= dateTimePickerD.Value.Date && groupItem.Key.Value.Date <= dateTimePickerE.Value.Date)
+                        {
+                            row.Cells[2].Value = groupItem.Key;
+                            i++;
+                        }else if(groupItem.Key.Value.Date > dateTimePickerE.Value.Date)
+                        {
+                            break;
+                        }
+                    }else
+                    {
+                        row.Cells[2].Value = groupItem.Key;
+                        i++;
                     }
+               
+                foreach (var venteL in groupItem)
+                    {
+                    quantite += int.Parse(venteL.quantiteVendus.Split(' ')[venteL.quantiteVendus.Split(' ').Length - 1]);
+                    _gain += venteL.gain;
+                }
                     row.Cells[0].Value = quantite;
                     row.Cells[1].Value = _gain;
-                   dataGridView1.Rows.Add(row);
+                    dataGridView1.Rows.Add(row);
+                    chart1.Series["Series1"].Points.AddXY(_gain, quantite);
 
                 }
-                produitVentes = db.Produits
+                 produitVentes = db.Produits
                 .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) < 0)
                 .ToList<Produit>();
                 int j = 0, totalQNonDispo = 0;
@@ -525,75 +563,14 @@ namespace Project_ENSAF
                 " : "+totalQNonDispo;
            
            
-                var ventes_liste2 = db.Vente_magazin.GroupBy(s => s.dateVente);
-                foreach (var groupItem in ventes_liste2)
-                {
-                    if ((dateTimePickerE.Value.Date - dateTimePickerD.Value.Date).TotalDays > 30)
-                    {
-                        this.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-                    }
-                    else
-                    {
-                        this.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
 
-                    }
-                    int quantite = 0;
-                    decimal? _gain = 0;
-                    foreach (var venteL in groupItem)
-                    {
-
-                        if (venteL.dateVente.Value.Date >= dateTimePickerD.Value.Date && venteL.dateVente.Value.Date <= dateTimePickerE.Value.Date && !checkBoxTous.Checked)
-                        {
-                            quantite += int.Parse(venteL.quantiteVendus.Split(' ')[venteL.quantiteVendus.Split(' ').Length - 1]);
-                            _gain += venteL.gain;
-
-                        }else
-                        {
-                            quantite += int.Parse(venteL.quantiteVendus.Split(' ')[venteL.quantiteVendus.Split(' ').Length - 1]);
-                            _gain += venteL.gain;
-                        }
-                    chart1.Series["Series1"].Points.AddXY(_gain, quantite);
-
-                }
-            }
-
-
-        }
-
-        private void test(object sender, EventArgs e)
-        {
-
-            var ventes_liste = db.Vente_magazin.GroupBy(s => s.dateVente);
-            foreach (var groupItem in ventes_liste)
-            {
-                if((dateTimePickerE.Value.Date-dateTimePickerD.Value.Date ).TotalDays >30 ) {
-                    this.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area; 
-                }else
-                {
-                    this.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-
-                }
-                int quantite = 0;
-                decimal? _gain = 0;
-                foreach (var venteL in groupItem)
-                {
-
-                    if (venteL.dateVente.Value.Date >= dateTimePickerD.Value.Date && venteL.dateVente.Value.Date <= dateTimePickerE.Value.Date)
-                    {
-                        quantite += int.Parse(venteL.quantiteVendus.Split(' ')[venteL.quantiteVendus.Split(' ').Length - 1]);
-                        _gain += venteL.gain;
-                    }
-                  
-                }
-                chart1.Series["Series1"].Points.AddXY(_gain, quantite);
-            }
         }
 
         private void Form1_Resize(object sender, EventArgs e)
         {
             chart1.Width = (panelContainerSM_GV_JV.Width / 2) - 5;
-            chart2.Width = (panelContainerSM_GV_JV.Width / 2) - 40;
-            chart2.Location = new Point(chart1.Location.X + chart1.Width +8, chart2.Location.Y);
+            chart2.Width = (panelContainerSM_GV_JV.Width / 2) - 150;
+            chart2.Location = new Point(chart1.Location.X + chart1.Width + 8, chart2.Location.Y);
             if (radioButtonGain.Checked)
             {
                 chart1.Width = panelContainerSM_GV_JV.Width - 10;
@@ -604,7 +581,10 @@ namespace Project_ENSAF
             {
                 chart2.Width = panelContainerSM_GV_JV.Width - 10;
                 chart2.Location = new Point(20, chart2.Location.Y);
+
             }
+           
+
         }
 
    
@@ -641,16 +621,35 @@ namespace Project_ENSAF
             }
         }
 
+        private void radioButtonPerte_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxGraphique.Checked = checkBoxTableu.Checked = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Espace_Commande esp = new Espace_Commande();
+            esp.Show();
+        }
+
         private void handel2_AfterCloseForm(object sender, EventArgs e)
         {
             if (a.Visible == false)
             {
                 labelBasket.Text = "0";
                 nbProduitInBasket = 0;
+            }
+            if (flowLayoutPagnierProduitVentes.Controls.Count == 0)
+            {
                 this.pictureBoxBasket.Image = Properties.Resources.cart;
+                produitVentes.Clear(); 
+                flowLayoutPanelVente.Controls.Clear();
+                button1_Click(BtnGestionVentes, e);
+                flowLayoutPanelVente.Refresh();
+
             }
 
-            
+
         }
 
 

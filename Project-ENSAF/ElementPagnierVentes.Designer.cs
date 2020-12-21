@@ -72,11 +72,6 @@
             // numericUpDownQunatite
             // 
             this.numericUpDownQunatite.Location = new System.Drawing.Point(383, 67);
-            this.numericUpDownQunatite.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.numericUpDownQunatite.Name = "numericUpDownQunatite";
             this.numericUpDownQunatite.Size = new System.Drawing.Size(60, 20);
             this.numericUpDownQunatite.TabIndex = 11;
