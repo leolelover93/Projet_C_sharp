@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using System.Windows.Forms.DataVisualization.Charting;
 namespace Project_ENSAF
 {
     public partial class Form1 : Form
@@ -58,23 +59,27 @@ namespace Project_ENSAF
             btnViewAll.ForeColor = Color.White;
             previousBtn = BtnGestionProduits;
             BtnGestionProduits.BackColor = Color.FromArgb(13, 72, 114);
+
+            chart1.Series["Series1"].Points.AddXY(0, 0);
+            chart2.Series["Series1"].Points.AddXY(0, 0);
+
             dataGridView1.Visible = dataGridView2.Visible = false;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(208, 213, 217);
-            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView2.DefaultCellStyle.BackColor = Color.White;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 151, 255);
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            
 
             dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(208, 213, 217);
-            dataGridView2.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView2.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView2.DefaultCellStyle.BackColor = Color.White;
             dataGridView2.EnableHeadersVisualStyles = false;
             dataGridView2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridView2.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 151, 255);
             dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-
-
-
 
 
             //Ajout d'un produit dans la base
@@ -435,50 +440,86 @@ namespace Project_ENSAF
 
         private void buttonJournalVentes_Click(object sender, EventArgs e)
          {
-            chart1.Series["Series1"].Points.Clear();
-            chart2.Series["Series1"].Points.Clear();
-            dataGridView1.Rows.Clear();
-            dataGridView2.Rows.Clear();
-            //For the responsivness of the dataGridView and the Charts---StartBloc#x1
             if (!checkBoxTableu.Checked && !checkBoxGraphique.Checked && !radioButtonGain.Checked && !radioButtonPerte.Checked)
             {
-                checkBoxGraphique.Checked = true; 
+                checkBoxGraphique.Checked = true;
             }
+            labelErrorGraph.Text = "";
+            chart1.Series.Clear();
+            chart2.Series["Series1"].Points.Clear();
+            chart2.Series["Series1"].Points.AddXY(0,0);
+            dataGridView1.Rows.Clear();
+            dataGridView2.Rows.Clear();
             dataGridView1.Visible = dataGridView2.Visible = checkBoxTableu.Checked;
             chart1.Visible = chart2.Visible = checkBoxGraphique.Checked;
+            //For the responsivness of the dataGridView and the Charts---StartBloc#x1
             if (checkBoxGraphique.Checked)
             {
-                if(chart2.Width == panelContainerSM_GV_JV.Width - 10)
+                if(chart2.Width == panelContainerSM_GV_JV.Width -50)
                 {
-                    chart1.Width = (panelContainerSM_GV_JV.Width / 2) - 5;
-                    chart2.Width = (panelContainerSM_GV_JV.Width / 2) - 150;
-                    chart2.Location = new Point(chart1.Width + chart1.Location.X + 8, chart2.Location.Y);
+                    chart1.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
+                    chart2.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
+                    chart2.Location = new Point(chart1.Width + chart1.Location.X + 15, chart2.Location.Y);
                 }
+                if(chart1.Width == panelContainerSM_GV_JV.Width - 50)
+                {
+                    chart1.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
+                    chart2.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
+                    chart1.Location = new Point(20, chart1.Location.Y);
+                }
+            }
+            if (checkBoxTableu.Checked)
+            {
+                dataGridView2.Location = new Point(chart2.Location.X, chart2.Location.Y + chart2.Height + 8);
+
             }
             if (checkBoxTableu.Checked && !checkBoxGraphique.Checked)
             {
-                panelContainerLabelGraphe2.Visible = panelContainerLabelGraphe.Visible = false; 
-            }else
-            {
-                panelContainerLabelGraphe2.Visible = panelContainerLabelGraphe.Visible = true;
+                panelContainerLabelGraphe2.Visible = panelContainerLabelGraphe.Visible = false;
+                dataGridView1.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
+                dataGridView2.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
+                dataGridView1.Location = new Point(dataGridView1.Location.X, 132);
+                dataGridView2.Location = new Point(dataGridView1.Location.X+dataGridView1.Width+8,132);
 
             }
+            else if(!checkBoxTableu.Checked && checkBoxGraphique.Checked)
+            {
+                panelContainerLabelGraphe2.Visible = panelContainerLabelGraphe.Visible = true;
+                dataGridView1.Location = new Point(chart1.Location.X, chart1.Location.Y + chart1.Height +8);
+                dataGridView2.Location = new Point(chart2.Location.X, chart2.Location.Y + chart2.Height + 8);
+            }
+
+
             if (!checkBoxTableu.Checked && !checkBoxGraphique.Checked)
             {
                 dataGridView1.Visible = chart1.Visible = panelContainerLabelGraphe2.Visible = radioButtonGain.Checked;
                 dataGridView2.Visible = chart2.Visible = panelContainerLabelGraphe.Visible = radioButtonPerte.Checked;
                 if (radioButtonGain.Checked)
                 {
-                    chart1.Width = panelContainerSM_GV_JV.Width - 10;
+                    chart1.Width = panelContainerSM_GV_JV.Width - 50;
+                    dataGridView1.Width = chart1.Width ;
+                    dataGridView1.Location = new Point(dataGridView1.Location.X, chart1.Location.Y + chart1.Height + 8);
+
 
                 }
+
                 if (radioButtonPerte.Checked)
                 {
-                    chart2.Width = panelContainerSM_GV_JV.Width - 10;
+                    chart2.Width = panelContainerSM_GV_JV.Width - 50;
                     chart2.Location = new Point(20, chart2.Location.Y);
-                    dataGridView2.Location = new Point(dataGridView2.Location.X, chart2.Location.Y + chart2.Height + 8);
+                    dataGridView2.Width = chart2.Width;
+                    dataGridView2.Location = new Point(chart2.Location.X, chart2.Location.Y + chart2.Height + 8);
+
 
                 }
+            }
+            if(checkBoxTableu.Checked && checkBoxGraphique.Checked)
+            {
+                panelContainerLabelGraphe2.Visible = panelContainerLabelGraphe.Visible = true;
+                dataGridView1.Width = chart1.Width;
+                dataGridView2.Width = chart2.Width;
+                dataGridView1.Location = new Point(chart1.Location.X, chart1.Location.Y + chart1.Height + 8);
+                dataGridView2.Location = new Point(chart2.Location.X, chart2.Location.Y + chart2.Height + 8);
             }
             //For the responsivness of the dataGridView and the Charts---EndBloc#x1
 
@@ -490,40 +531,59 @@ namespace Project_ENSAF
                 }
             var ventes_liste = db.Vente_magazin.GroupBy(s => s.dateVente);
                 int i = 0;
-                foreach (var groupItem in ventes_liste)
+            foreach (var groupItem in ventes_liste)
                 {
 
                     int quantite = 0;
                     decimal? _gain = 0;
                     DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[i].Clone();
-                    if (dateTimePickerD.Enabled && dateTimePickerD.Enabled)
+                    if (!checkBoxTous.Checked)
                     {
                         if (groupItem.Key.Value.Date >= dateTimePickerD.Value.Date && groupItem.Key.Value.Date <= dateTimePickerE.Value.Date)
                         {
-                            row.Cells[2].Value = groupItem.Key;
+                            row.Cells[2].Value = groupItem.Key.Value.Date.ToString("dd/MM/yyyy");
                             i++;
-                        }else if(groupItem.Key.Value.Date > dateTimePickerE.Value.Date)
+                        }else 
                         {
-                            break;
+                            continue;
                         }
                     }else
                     {
-                        row.Cells[2].Value = groupItem.Key;
+                        row.Cells[2].Value = groupItem.Key.Value.Date.ToString("dd/MM/yyyy");
                         i++;
                     }
-               
+                System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+                series2.ChartArea = "ChartArea1";
+                series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                series2.Name = "Series" + i ;
+                series2.YValuesPerPoint = 1;
+                series2.ToolTip = groupItem.Key.Value.Date.ToString("dd/MM/yyyy");
+                chart1.Series.Add(series2);
+                Axis axisX = chart1.ChartAreas[0].AxisX;
+                axisX.MajorGrid.Enabled = false;
+                chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
                 foreach (var venteL in groupItem)
                     {
                     quantite += int.Parse(venteL.quantiteVendus.Split(' ')[venteL.quantiteVendus.Split(' ').Length - 1]);
                     _gain += venteL.gain;
-                }
+                     }
                     row.Cells[0].Value = quantite;
                     row.Cells[1].Value = _gain;
                     dataGridView1.Rows.Add(row);
-                    chart1.Series["Series1"].Points.AddXY(_gain, quantite);
-
-                }
-                 produitVentes = db.Produits
+                     series2.IsValueShownAsLabel = false;
+                    series2.Label = _gain+"/"+quantite ;
+                    series2.Points.AddXY(i, _gain);
+                    chart1.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
+                    chart1.ChartAreas[0].AxisX.Title = "Quantite Produit vendu";
+                    chart1.ChartAreas[0].AxisY.Title = "Gain(dhs)";
+                    
+            }
+            if(chart1.Series.Count == 0)
+            {
+                MessageBox.Show("Aucaun donné à affciher de"+dateTimePickerD.Value.Date.ToString("dd/MM/yyyy")+"-"+dateTimePickerE.Value.Date.ToString("dd/MM/yyyy"), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                labelErrorGraph.Text = "No Data To show";
+            }
+            produitVentes = db.Produits
                 .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) < 0)
                 .ToList<Produit>();
                 int j = 0, totalQNonDispo = 0;
@@ -558,9 +618,10 @@ namespace Project_ENSAF
                     }
 
                 }
-                labelTotalPerte.Text += totalPerte +",Total des Produits NonDispo" +
-                "" +
-                " : "+totalQNonDispo;
+                chart2.ChartAreas[0].AxisX.Title = "Pertes(dhs)";
+                chart2.ChartAreas[0].AxisY.Title = "QuntiteChaqueProduitNonDisponible";
+                labelTotalPerte.Text = "Perts Totale :"+totalPerte + "---" + totalQNonDispo + " produits";
+               
            
            
 
@@ -568,22 +629,45 @@ namespace Project_ENSAF
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            chart1.Width = (panelContainerSM_GV_JV.Width / 2) - 5;
-            chart2.Width = (panelContainerSM_GV_JV.Width / 2) - 150;
+            chart1.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
+            chart2.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
+            dataGridView1.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
+            dataGridView2.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
             chart2.Location = new Point(chart1.Location.X + chart1.Width + 8, chart2.Location.Y);
+            if(checkBoxGraphique.Checked && checkBoxTableu.Checked)
+            {
+                chart1.Visible = chart2.Visible = true;
+                dataGridView1.Width = chart1.Width;
+                dataGridView2.Width = chart2.Width;
+                dataGridView1.Location = new Point(chart1.Location.X, chart1.Location.Y + chart1.Height +8);
+                dataGridView2.Location = new Point(chart2.Location.X, chart2.Location.Y + chart2.Height + 8);
+            }
+         
+           if(checkBoxGraphique.Checked == false && checkBoxTableu.Checked)
+            {
+                dataGridView1.Location = new Point(dataGridView1.Location.X, 132);
+                dataGridView2.Location = new Point(dataGridView1.Location.X + dataGridView1.Width + 8, 132);
+                
+            }
+
             if (radioButtonGain.Checked)
             {
-                chart1.Width = panelContainerSM_GV_JV.Width - 10;
-                chart2.Location = new Point(chart1.Width + chart1.Location.X +8, chart2.Location.Y);
+                chart1.Width = panelContainerSM_GV_JV.Width - 50;
+                dataGridView1.Width = chart1.Width ;
+                dataGridView1.Location = new Point(dataGridView1.Location.X, chart1.Location.Y + chart1.Height + 8);
+
 
             }
+
             if (radioButtonPerte.Checked)
             {
-                chart2.Width = panelContainerSM_GV_JV.Width - 10;
+                chart2.Width = panelContainerSM_GV_JV.Width - 50;
                 chart2.Location = new Point(20, chart2.Location.Y);
+                dataGridView2.Width = chart2.Width;
+                dataGridView2.Location = new Point(chart2.Location.X, chart2.Location.Y + chart2.Height + 8);
 
             }
-           
+
 
         }
 

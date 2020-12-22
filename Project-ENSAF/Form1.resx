@@ -262,7 +262,7 @@
   <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="buttonSearchGP.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="buttonSearchPV.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAtAAAALQCAYAAAC5V0ecAAAABGdBTUEAALGPC/xhBQAA/8dJREFUeF7s
         vQd8XdWVvn1c6N2WJYNvkSEzmflnvmSSzGQSEiD0XgzGGDAlvZLQce9F1eru9EBoCamUAKEECISOqyT3
@@ -1793,7 +1793,7 @@
         jo7/PyawNhKc5m5DAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="buttonSearchPV.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="buttonSearchGP.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAtAAAALQCAYAAAC5V0ecAAAABGdBTUEAALGPC/xhBQAA/8dJREFUeF7s
         vQd8XdWVvn1c6N2WJYNvkSEzmflnvmSSzGQSEiD0XgzGGDAlvZLQce9F1eru9EBoCamUAKEECISOqyT3

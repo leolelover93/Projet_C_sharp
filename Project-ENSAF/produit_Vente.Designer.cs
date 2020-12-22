@@ -75,9 +75,9 @@
             this.btnReadMore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReadMore.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReadMore.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnReadMore.Location = new System.Drawing.Point(84, 185);
+            this.btnReadMore.Location = new System.Drawing.Point(79, 185);
             this.btnReadMore.Name = "btnReadMore";
-            this.btnReadMore.Size = new System.Drawing.Size(82, 27);
+            this.btnReadMore.Size = new System.Drawing.Size(87, 27);
             this.btnReadMore.TabIndex = 3;
             this.btnReadMore.Text = "Ajouter Produit";
             this.btnReadMore.UseVisualStyleBackColor = false;
@@ -137,7 +137,7 @@
             this.lblnbProduits.Location = new System.Drawing.Point(56, 164);
             this.lblnbProduits.MaximumSize = new System.Drawing.Size(190, 20);
             this.lblnbProduits.Name = "lblnbProduits";
-            this.lblnbProduits.Size = new System.Drawing.Size(55, 17);
+            this.lblnbProduits.Size = new System.Drawing.Size(48, 17);
             this.lblnbProduits.TabIndex = 6;
             this.lblnbProduits.Text = "Stock: ";
             // 
@@ -155,6 +155,7 @@
             this.Controls.Add(this.prodImg);
             this.Name = "produit_Vente";
             this.Size = new System.Drawing.Size(172, 218);
+            this.Load += new System.EventHandler(this.produit_Vente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.prodImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQauntite)).EndInit();
             this.ResumeLayout(false);
@@ -178,12 +179,21 @@
         private void InitializeComp(Produit p,  int quantite)
         {
             InitializeComponent();
-            this.numericUpDownQauntite.Maximum = quantite;
+          
             this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
             this.lblProdName.Text = p.libelle;
             this.lblprix.Text = p.prixVente.ToString() + "DH";
             this.lblProdDescri.Text = p.description;
             this.lblnbProduits.Text += quantite;
+            if (this.Quantite == 0)
+            {
+                btnReadMore.Text = "Commander";
+                btnReadMore.BackColor = Color.FromArgb(236, 88, 88);
+                lblnbProduits.Visible = false;
+            }else
+            {
+                this.numericUpDownQauntite.Maximum = quantite;
+            }
         }
         private System.Windows.Forms.PictureBox prodImg;
         private System.Windows.Forms.Label lblProdName;
