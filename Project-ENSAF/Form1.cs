@@ -62,18 +62,14 @@ namespace Project_ENSAF
             previousBtn = BtnGestionProduits;
             BtnGestionProduits.BackColor = Color.FromArgb(13, 72, 114);
 
-            chart1.Series["Series1"].Points.AddXY(0, 0);
-            chart2.Series["Series1"].Points.AddXY(0, 0);
-
             dataGridView1.Visible = dataGridView2.Visible = false;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(208, 213, 217);
             dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dataGridView2.DefaultCellStyle.BackColor = Color.White;
+            dataGridView1.DefaultCellStyle.BackColor = Color.White;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 151, 255);
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            
 
             dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(208, 213, 217);
             dataGridView2.DefaultCellStyle.SelectionForeColor = Color.Black;
@@ -84,32 +80,6 @@ namespace Project_ENSAF
             dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
 
-            //Ajout d'un produit dans la base
-            /*   try
-             {
-
-                 byte[] buffer = (byte[])new ImageConverter().ConvertTo(Properties.Resources.sweets, typeof(byte[]));
-                 Produit p = new Produit()
-                 {
-                     libelle = "danone2",
-                     dateExpiration = DateTime.Now,
-                     prixAchat = (decimal)1.5,
-                     prixVente = (decimal)2,
-                     description = "danone banane",
-                     idFournisseur = 1,
-                     img = buffer
-                 };
-                 var db = new dbContext();
-                 db.Produits.Add(p);
-                 this.Parent.Refresh();
-                 db.SaveChanges();
-
-                 MessageBox.Show("product insertion successed:");
-             }
-             catch (Exception exce)
-             {
-                 MessageBox.Show("Error! cant insert product :" + exce.Message);
-             }*/
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -162,7 +132,18 @@ namespace Project_ENSAF
 
 
                 }
-
+            }
+            if((sender as Button).Text == "Gestion Commandes")
+            {
+                panelGestionProduit.Visible = false;
+                panelGestionVentes.Visible = false;
+                panelSM_GV.Visible = false;
+                var db = new dbContext();
+                UC_Gestion_Commades uc_Commandes = new UC_Gestion_Commades(db.Commandes.ToList<Commande>());
+                panelCommandes.Controls.Clear();
+                panelCommandes.Controls.Add(uc_Commandes);
+                panelCommandes.Controls[0].Dock = System.Windows.Forms.DockStyle.Fill;
+                panelCommandes.Visible = true;
             }
            
 
@@ -716,19 +697,6 @@ namespace Project_ENSAF
             checkBoxGraphique.Checked = checkBoxTableu.Checked = false;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //Espace_Commande esp = new Espace_Commande();
-            panelContainerSM_GV_V.Visible = false;
-            panelContainerSM_GV_JV.Visible = false; 
-            panelGestionProduit.Visible = false;
-            panelGestionVentes.Visible = false;
-            panelSM_GV.Visible = false;
-           // panelCommandes.Controls.Add(new UserControl1());
-            panelCommandes.Visible = true;
-
-
-        }
 
         private void handel2_AfterCloseForm(object sender, EventArgs e)
         {

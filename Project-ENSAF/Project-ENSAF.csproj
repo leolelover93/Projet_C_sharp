@@ -185,11 +185,11 @@
     <Compile Include="Stock_Magazin.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserControl1.cs">
+    <Compile Include="UC_Gestion_Commades.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <Compile Include="UC_Gestion_Commades.Designer.cs">
+      <DependentUpon>UC_Gestion_Commades.cs</DependentUpon>
     </Compile>
     <Compile Include="Vente_magazin.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -239,8 +239,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <EmbeddedResource Include="UC_Gestion_Commades.resx">
+      <DependentUpon>UC_Gestion_Commades.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
