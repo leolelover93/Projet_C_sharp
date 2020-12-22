@@ -134,17 +134,7 @@
         private void initCompo()
         {
             InitializeComponent();
-            var db = new dbContext();
-            int i = 0;
-            foreach (var item in db.Commandes)
-            { 
-                dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = item.NCommande;
-                dataGridView1.Rows[i].Cells[1].Value = item.dateDemande.ToShortDateString();
-                dataGridView1.Rows[i].Cells[2].Value = item.dateArriveSouhaite.ToShortDateString();
-                dataGridView1.Rows[i].Cells[3].Value = "produit1, produit2...";
-                i++;
-            }
+          
         }
         
         #endregion

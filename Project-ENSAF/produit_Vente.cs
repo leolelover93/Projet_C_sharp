@@ -21,7 +21,10 @@ namespace Project_ENSAF
             get { return quntite; }
             set { quntite = value; }
         }
-
+        public produit_Vente()
+        {
+            InitializeComponent();
+        }
         public produit_Vente(Produit p)
         {
             this.idProduit = p.codeProduit; 

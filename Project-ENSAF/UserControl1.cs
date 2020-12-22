@@ -15,7 +15,9 @@ namespace Project_ENSAF
         public UserControl1()
         {
             initCompo();
-
         }
+      
+
+       
     }
 }

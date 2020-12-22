@@ -47,16 +47,35 @@
             this.checkedLinePanel = new System.Windows.Forms.Panel();
             this.BtnGestionProduits = new System.Windows.Forms.Button();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.panelCommandes = new System.Windows.Forms.Panel();
             this.panelSM_GV = new System.Windows.Forms.Panel();
+            this.panelContainerSM_GV_V = new System.Windows.Forms.Panel();
+            this.panelGestionVentes = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonSearchPV = new System.Windows.Forms.Button();
+            this.textBoxSearchProduitVentes = new System.Windows.Forms.TextBox();
+            this.btnViderPanger = new System.Windows.Forms.Button();
+            this.labelBasket = new System.Windows.Forms.Label();
+            this.pictureBoxBasket = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanelVente = new System.Windows.Forms.FlowLayoutPanel();
+            this.listBoxItemProduct = new System.Windows.Forms.Label();
+            this.panelBottom_SM_GV_JV = new System.Windows.Forms.Panel();
+            this.buttonSM_JVentes = new System.Windows.Forms.Button();
+            this.buttonSM_Ventes = new System.Windows.Forms.Button();
             this.panelContainerSM_GV_JV = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelContainerLabelGraphe2 = new System.Windows.Forms.Panel();
+            this.labelErrorGraph = new System.Windows.Forms.Label();
             this.panelContainerLabelGraphe = new System.Windows.Forms.Panel();
             this.labelTotalPerte = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBoxAffichageJV = new System.Windows.Forms.GroupBox();
@@ -75,20 +94,6 @@
             this.dateTimePickerD = new System.Windows.Forms.DateTimePicker();
             this.panelHeader_SM_GV_JV = new System.Windows.Forms.Panel();
             this.labelTitreJV = new System.Windows.Forms.Label();
-            this.panelContainerSM_GV_V = new System.Windows.Forms.Panel();
-            this.panelGestionVentes = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonSearchPV = new System.Windows.Forms.Button();
-            this.textBoxSearchProduitVentes = new System.Windows.Forms.TextBox();
-            this.btnViderPanger = new System.Windows.Forms.Button();
-            this.labelBasket = new System.Windows.Forms.Label();
-            this.pictureBoxBasket = new System.Windows.Forms.PictureBox();
-            this.flowLayoutPanelVente = new System.Windows.Forms.FlowLayoutPanel();
-            this.listBoxItemProduct = new System.Windows.Forms.Label();
-            this.panelBottom_SM_GV_JV = new System.Windows.Forms.Panel();
-            this.buttonSM_JVentes = new System.Windows.Forms.Button();
-            this.buttonSM_Ventes = new System.Windows.Forms.Button();
             this.panelGestionProduit = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.btnNonDisponible = new System.Windows.Forms.Button();
@@ -99,30 +104,18 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnAjouterProduit = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelErrorGraph = new System.Windows.Forms.Label();
-            this.panelContainerSM_GV_V = new System.Windows.Forms.Panel();
-            this.panelGestionVentes = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonSearchPV = new System.Windows.Forms.Button();
-            this.textBoxSearchProduitVentes = new System.Windows.Forms.TextBox();
-            this.btnViderPanger = new System.Windows.Forms.Button();
-            this.labelBasket = new System.Windows.Forms.Label();
-            this.pictureBoxBasket = new System.Windows.Forms.PictureBox();
-            this.flowLayoutPanelVente = new System.Windows.Forms.FlowLayoutPanel();
-            this.listBoxItemProduct = new System.Windows.Forms.Label();
-            this.panelBottom_SM_GV_JV = new System.Windows.Forms.Panel();
-            this.buttonSM_JVentes = new System.Windows.Forms.Button();
-            this.buttonSM_Ventes = new System.Windows.Forms.Button();
-            this.panelCommandes = new System.Windows.Forms.Panel();
             this.userControl11 = new Project_ENSAF.UserControl1();
             this.panel1.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             this.panelContainer.SuspendLayout();
+            this.panelCommandes.SuspendLayout();
             this.panelSM_GV.SuspendLayout();
+            this.panelContainerSM_GV_V.SuspendLayout();
+            this.panelGestionVentes.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasket)).BeginInit();
+            this.panelBottom_SM_GV_JV.SuspendLayout();
             this.panelContainerSM_GV_JV.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panelContainerLabelGraphe2.SuspendLayout();
@@ -134,12 +127,6 @@
             this.groupBoxAffichageJV.SuspendLayout();
             this.groupBoxFilterSearchJV.SuspendLayout();
             this.panelHeader_SM_GV_JV.SuspendLayout();
-            this.panelContainerSM_GV_V.SuspendLayout();
-            this.panelGestionVentes.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasket)).BeginInit();
-            this.panelBottom_SM_GV_JV.SuspendLayout();
             this.panelGestionProduit.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelSearchBox.SuspendLayout();
@@ -270,13 +257,23 @@
             // 
             this.panelContainer.BackColor = System.Drawing.Color.Transparent;
             this.panelContainer.Controls.Add(this.panelCommandes);
-            this.panelContainer.Controls.Add(this.panelGestionProduit);
             this.panelContainer.Controls.Add(this.panelSM_GV);
+            this.panelContainer.Controls.Add(this.panelGestionProduit);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(201, 0);
             this.panelContainer.Name = "panelContainer";
             this.panelContainer.Size = new System.Drawing.Size(750, 499);
             this.panelContainer.TabIndex = 1;
+            // 
+            // panelCommandes
+            // 
+            this.panelCommandes.BackColor = System.Drawing.Color.White;
+            this.panelCommandes.Controls.Add(this.userControl11);
+            this.panelCommandes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelCommandes.Location = new System.Drawing.Point(0, 0);
+            this.panelCommandes.Name = "panelCommandes";
+            this.panelCommandes.Size = new System.Drawing.Size(750, 499);
+            this.panelCommandes.TabIndex = 8;
             // 
             // panelSM_GV
             // 
@@ -289,6 +286,192 @@
             this.panelSM_GV.Name = "panelSM_GV";
             this.panelSM_GV.Size = new System.Drawing.Size(750, 499);
             this.panelSM_GV.TabIndex = 7;
+            // 
+            // panelContainerSM_GV_V
+            // 
+            this.panelContainerSM_GV_V.Controls.Add(this.panelGestionVentes);
+            this.panelContainerSM_GV_V.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContainerSM_GV_V.Location = new System.Drawing.Point(0, 0);
+            this.panelContainerSM_GV_V.Name = "panelContainerSM_GV_V";
+            this.panelContainerSM_GV_V.Size = new System.Drawing.Size(750, 467);
+            this.panelContainerSM_GV_V.TabIndex = 1;
+            // 
+            // panelGestionVentes
+            // 
+            this.panelGestionVentes.BackColor = System.Drawing.Color.Tomato;
+            this.panelGestionVentes.Controls.Add(this.panel2);
+            this.panelGestionVentes.Controls.Add(this.flowLayoutPanelVente);
+            this.panelGestionVentes.Controls.Add(this.listBoxItemProduct);
+            this.panelGestionVentes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelGestionVentes.Location = new System.Drawing.Point(0, 0);
+            this.panelGestionVentes.Name = "panelGestionVentes";
+            this.panelGestionVentes.Size = new System.Drawing.Size(750, 467);
+            this.panelGestionVentes.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.btnViderPanger);
+            this.panel2.Controls.Add(this.labelBasket);
+            this.panel2.Controls.Add(this.pictureBoxBasket);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(750, 55);
+            this.panel2.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.buttonSearchPV);
+            this.panel3.Controls.Add(this.textBoxSearchProduitVentes);
+            this.panel3.Location = new System.Drawing.Point(0, 7);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(246, 45);
+            this.panel3.TabIndex = 4;
+            // 
+            // buttonSearchPV
+            // 
+            this.buttonSearchPV.BackColor = System.Drawing.Color.White;
+            this.buttonSearchPV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSearchPV.FlatAppearance.BorderSize = 0;
+            this.buttonSearchPV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchPV.Location = new System.Drawing.Point(200, 12);
+            this.buttonSearchPV.Name = "buttonSearchPV";
+            this.buttonSearchPV.Size = new System.Drawing.Size(24, 20);
+            this.buttonSearchPV.TabIndex = 4;
+            this.buttonSearchPV.UseVisualStyleBackColor = false;
+            // 
+            // textBoxSearchProduitVentes
+            // 
+            this.textBoxSearchProduitVentes.BackColor = System.Drawing.Color.White;
+            this.textBoxSearchProduitVentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxSearchProduitVentes.Font = new System.Drawing.Font("Calibri", 12.25F);
+            this.textBoxSearchProduitVentes.Location = new System.Drawing.Point(9, 9);
+            this.textBoxSearchProduitVentes.Multiline = true;
+            this.textBoxSearchProduitVentes.Name = "textBoxSearchProduitVentes";
+            this.textBoxSearchProduitVentes.Size = new System.Drawing.Size(216, 26);
+            this.textBoxSearchProduitVentes.TabIndex = 2;
+            this.textBoxSearchProduitVentes.TextChanged += new System.EventHandler(this.textBoxSearchProduitVentes_TextChanged);
+            // 
+            // btnViderPanger
+            // 
+            this.btnViderPanger.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViderPanger.AutoSize = true;
+            this.btnViderPanger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.btnViderPanger.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnViderPanger.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnViderPanger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViderPanger.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.btnViderPanger.ForeColor = System.Drawing.Color.White;
+            this.btnViderPanger.Location = new System.Drawing.Point(511, 11);
+            this.btnViderPanger.Margin = new System.Windows.Forms.Padding(0);
+            this.btnViderPanger.Name = "btnViderPanger";
+            this.btnViderPanger.Size = new System.Drawing.Size(156, 33);
+            this.btnViderPanger.TabIndex = 3;
+            this.btnViderPanger.Text = "Vider le pagnier";
+            this.btnViderPanger.UseVisualStyleBackColor = false;
+            this.btnViderPanger.Click += new System.EventHandler(this.btnViderPanger_Click);
+            // 
+            // labelBasket
+            // 
+            this.labelBasket.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelBasket.AutoSize = true;
+            this.labelBasket.BackColor = System.Drawing.Color.Transparent;
+            this.labelBasket.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBasket.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelBasket.Location = new System.Drawing.Point(720, 19);
+            this.labelBasket.MaximumSize = new System.Drawing.Size(0, 13);
+            this.labelBasket.Name = "labelBasket";
+            this.labelBasket.Size = new System.Drawing.Size(15, 13);
+            this.labelBasket.TabIndex = 1;
+            this.labelBasket.Text = "0";
+            this.labelBasket.Click += new System.EventHandler(this.pictureBoxBasket_Click);
+            // 
+            // pictureBoxBasket
+            // 
+            this.pictureBoxBasket.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxBasket.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxBasket.Image = global::Project_ENSAF.Properties.Resources.cart;
+            this.pictureBoxBasket.Location = new System.Drawing.Point(673, 12);
+            this.pictureBoxBasket.Name = "pictureBoxBasket";
+            this.pictureBoxBasket.Size = new System.Drawing.Size(46, 34);
+            this.pictureBoxBasket.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxBasket.TabIndex = 0;
+            this.pictureBoxBasket.TabStop = false;
+            this.pictureBoxBasket.Click += new System.EventHandler(this.pictureBoxBasket_Click);
+            // 
+            // flowLayoutPanelVente
+            // 
+            this.flowLayoutPanelVente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelVente.AutoScroll = true;
+            this.flowLayoutPanelVente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanelVente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
+            this.flowLayoutPanelVente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanelVente.Location = new System.Drawing.Point(0, 55);
+            this.flowLayoutPanelVente.Name = "flowLayoutPanelVente";
+            this.flowLayoutPanelVente.Size = new System.Drawing.Size(750, 412);
+            this.flowLayoutPanelVente.TabIndex = 3;
+            // 
+            // listBoxItemProduct
+            // 
+            this.listBoxItemProduct.Location = new System.Drawing.Point(44, 6);
+            this.listBoxItemProduct.Name = "listBoxItemProduct";
+            this.listBoxItemProduct.Size = new System.Drawing.Size(72, 39);
+            this.listBoxItemProduct.TabIndex = 5;
+            this.listBoxItemProduct.Visible = false;
+            this.listBoxItemProduct.TextChanged += new System.EventHandler(this.listBoxItemProduct_TextChanged);
+            // 
+            // panelBottom_SM_GV_JV
+            // 
+            this.panelBottom_SM_GV_JV.Controls.Add(this.buttonSM_JVentes);
+            this.panelBottom_SM_GV_JV.Controls.Add(this.buttonSM_Ventes);
+            this.panelBottom_SM_GV_JV.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBottom_SM_GV_JV.Location = new System.Drawing.Point(0, 467);
+            this.panelBottom_SM_GV_JV.Name = "panelBottom_SM_GV_JV";
+            this.panelBottom_SM_GV_JV.Size = new System.Drawing.Size(750, 32);
+            this.panelBottom_SM_GV_JV.TabIndex = 0;
+            // 
+            // buttonSM_JVentes
+            // 
+            this.buttonSM_JVentes.BackColor = System.Drawing.Color.White;
+            this.buttonSM_JVentes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSM_JVentes.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonSM_JVentes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
+            this.buttonSM_JVentes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
+            this.buttonSM_JVentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSM_JVentes.Font = new System.Drawing.Font("Century Gothic", 8.25F);
+            this.buttonSM_JVentes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.buttonSM_JVentes.Location = new System.Drawing.Point(375, 0);
+            this.buttonSM_JVentes.Name = "buttonSM_JVentes";
+            this.buttonSM_JVentes.Size = new System.Drawing.Size(375, 32);
+            this.buttonSM_JVentes.TabIndex = 1;
+            this.buttonSM_JVentes.Text = "Journal de ventes";
+            this.buttonSM_JVentes.UseVisualStyleBackColor = false;
+            this.buttonSM_JVentes.Click += new System.EventHandler(this.buttonSM_JVentes_Click);
+            // 
+            // buttonSM_Ventes
+            // 
+            this.buttonSM_Ventes.BackColor = System.Drawing.Color.White;
+            this.buttonSM_Ventes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSM_Ventes.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonSM_Ventes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
+            this.buttonSM_Ventes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
+            this.buttonSM_Ventes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSM_Ventes.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSM_Ventes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.buttonSM_Ventes.Location = new System.Drawing.Point(0, 0);
+            this.buttonSM_Ventes.Name = "buttonSM_Ventes";
+            this.buttonSM_Ventes.Size = new System.Drawing.Size(375, 32);
+            this.buttonSM_Ventes.TabIndex = 0;
+            this.buttonSM_Ventes.Text = "Ventes";
+            this.buttonSM_Ventes.UseVisualStyleBackColor = false;
+            this.buttonSM_Ventes.Click += new System.EventHandler(this.buttonSM_Ventes_Click);
             // 
             // panelContainerSM_GV_JV
             // 
@@ -328,6 +511,15 @@
             this.panelContainerLabelGraphe2.Name = "panelContainerLabelGraphe2";
             this.panelContainerLabelGraphe2.Size = new System.Drawing.Size(200, 28);
             this.panelContainerLabelGraphe2.TabIndex = 39;
+            // 
+            // labelErrorGraph
+            // 
+            this.labelErrorGraph.AutoSize = true;
+            this.labelErrorGraph.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.labelErrorGraph.Location = new System.Drawing.Point(21, 7);
+            this.labelErrorGraph.Name = "labelErrorGraph";
+            this.labelErrorGraph.Size = new System.Drawing.Size(0, 17);
+            this.labelErrorGraph.TabIndex = 0;
             // 
             // panelContainerLabelGraphe
             // 
@@ -417,11 +609,11 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.NullValue = "0";
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.NullValue = "0";
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.dataGridView1.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowTemplate.Height = 21;
@@ -429,29 +621,51 @@
             this.dataGridView1.Size = new System.Drawing.Size(339, 482);
             this.dataGridView1.TabIndex = 30;
             // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "NombreDeVentes";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.ToolTipText = "Tous Les produits Vendu/Jour";
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "LeGain(dhs)";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Date";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
             // chart2
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea5);
+            chartArea7.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea7);
             this.chart2.Location = new System.Drawing.Point(370, 132);
             this.chart2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-            series5.Name = "Series1";
-            series5.YValuesPerPoint = 4;
-            this.chart2.Series.Add(series5);
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            series7.Name = "Series1";
+            series7.YValuesPerPoint = 4;
+            this.chart2.Series.Add(series7);
             this.chart2.Size = new System.Drawing.Size(342, 264);
             this.chart2.TabIndex = 29;
             this.chart2.Text = "chart2";
-            title5.Name = "Title1";
-            this.chart2.Titles.Add(title5);
+            title7.Name = "Title1";
+            this.chart2.Titles.Add(title7);
             // 
             // chart1
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea6);
+            chartArea8.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea8);
             this.chart1.Location = new System.Drawing.Point(20, 132);
             this.chart1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.chart1.Name = "chart1";
@@ -464,8 +678,8 @@
             this.chart1.Size = new System.Drawing.Size(333, 264);
             this.chart1.TabIndex = 28;
             this.chart1.Text = "chart1";
-            title6.Name = "Title1";
-            this.chart1.Titles.Add(title6);
+            title8.Name = "Title1";
+            this.chart1.Titles.Add(title8);
             // 
             // groupBoxAffichageJV
             // 
@@ -651,193 +865,6 @@
             this.labelTitreJV.TabIndex = 1;
             this.labelTitreJV.Text = "Journal de ventes";
             // 
-            // panelContainerSM_GV_V
-            // 
-            this.panelContainerSM_GV_V.Controls.Add(this.panelGestionVentes);
-            this.panelContainerSM_GV_V.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainerSM_GV_V.Location = new System.Drawing.Point(0, 0);
-            this.panelContainerSM_GV_V.Name = "panelContainerSM_GV_V";
-            this.panelContainerSM_GV_V.Size = new System.Drawing.Size(750, 467);
-            this.panelContainerSM_GV_V.TabIndex = 1;
-            // 
-            // panelGestionVentes
-            // 
-            this.panelGestionVentes.BackColor = System.Drawing.Color.Tomato;
-            this.panelGestionVentes.Controls.Add(this.panel2);
-            this.panelGestionVentes.Controls.Add(this.flowLayoutPanelVente);
-            this.panelGestionVentes.Controls.Add(this.listBoxItemProduct);
-            this.panelGestionVentes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGestionVentes.Location = new System.Drawing.Point(0, 0);
-            this.panelGestionVentes.Name = "panelGestionVentes";
-            this.panelGestionVentes.Size = new System.Drawing.Size(750, 467);
-            this.panelGestionVentes.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.btnViderPanger);
-            this.panel2.Controls.Add(this.labelBasket);
-            this.panel2.Controls.Add(this.pictureBoxBasket);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(750, 55);
-            this.panel2.TabIndex = 2;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.buttonSearchPV);
-            this.panel3.Controls.Add(this.textBoxSearchProduitVentes);
-            this.panel3.Location = new System.Drawing.Point(0, 7);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(246, 45);
-            this.panel3.TabIndex = 4;
-            // 
-            // buttonSearchPV
-            // 
-            this.buttonSearchPV.BackColor = System.Drawing.Color.White;
-            this.buttonSearchPV.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSearchPV.BackgroundImage")));
-            this.buttonSearchPV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSearchPV.FlatAppearance.BorderSize = 0;
-            this.buttonSearchPV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchPV.Location = new System.Drawing.Point(200, 12);
-            this.buttonSearchPV.Name = "buttonSearchPV";
-            this.buttonSearchPV.Size = new System.Drawing.Size(24, 20);
-            this.buttonSearchPV.TabIndex = 4;
-            this.buttonSearchPV.UseVisualStyleBackColor = false;
-            // 
-            // textBoxSearchProduitVentes
-            // 
-            this.textBoxSearchProduitVentes.BackColor = System.Drawing.Color.White;
-            this.textBoxSearchProduitVentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxSearchProduitVentes.Font = new System.Drawing.Font("Calibri", 12.25F);
-            this.textBoxSearchProduitVentes.Location = new System.Drawing.Point(9, 9);
-            this.textBoxSearchProduitVentes.Multiline = true;
-            this.textBoxSearchProduitVentes.Name = "textBoxSearchProduitVentes";
-            this.textBoxSearchProduitVentes.Size = new System.Drawing.Size(216, 26);
-            this.textBoxSearchProduitVentes.TabIndex = 2;
-            this.textBoxSearchProduitVentes.TextChanged += new System.EventHandler(this.textBoxSearchProduitVentes_TextChanged);
-            // 
-            // btnViderPanger
-            // 
-            this.btnViderPanger.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnViderPanger.AutoSize = true;
-            this.btnViderPanger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.btnViderPanger.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnViderPanger.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnViderPanger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViderPanger.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.btnViderPanger.ForeColor = System.Drawing.Color.White;
-            this.btnViderPanger.Location = new System.Drawing.Point(511, 11);
-            this.btnViderPanger.Margin = new System.Windows.Forms.Padding(0);
-            this.btnViderPanger.Name = "btnViderPanger";
-            this.btnViderPanger.Size = new System.Drawing.Size(156, 33);
-            this.btnViderPanger.TabIndex = 3;
-            this.btnViderPanger.Text = "Vider le pagnier";
-            this.btnViderPanger.UseVisualStyleBackColor = false;
-            this.btnViderPanger.Click += new System.EventHandler(this.btnViderPanger_Click);
-            // 
-            // labelBasket
-            // 
-            this.labelBasket.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelBasket.AutoSize = true;
-            this.labelBasket.BackColor = System.Drawing.Color.Transparent;
-            this.labelBasket.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBasket.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.labelBasket.Location = new System.Drawing.Point(720, 19);
-            this.labelBasket.MaximumSize = new System.Drawing.Size(0, 13);
-            this.labelBasket.Name = "labelBasket";
-            this.labelBasket.Size = new System.Drawing.Size(15, 13);
-            this.labelBasket.TabIndex = 1;
-            this.labelBasket.Text = "0";
-            this.labelBasket.Click += new System.EventHandler(this.pictureBoxBasket_Click);
-            // 
-            // pictureBoxBasket
-            // 
-            this.pictureBoxBasket.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxBasket.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxBasket.Image = global::Project_ENSAF.Properties.Resources.cart;
-            this.pictureBoxBasket.Location = new System.Drawing.Point(673, 12);
-            this.pictureBoxBasket.Name = "pictureBoxBasket";
-            this.pictureBoxBasket.Size = new System.Drawing.Size(46, 34);
-            this.pictureBoxBasket.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxBasket.TabIndex = 0;
-            this.pictureBoxBasket.TabStop = false;
-            this.pictureBoxBasket.Click += new System.EventHandler(this.pictureBoxBasket_Click);
-            // 
-            // flowLayoutPanelVente
-            // 
-            this.flowLayoutPanelVente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelVente.AutoScroll = true;
-            this.flowLayoutPanelVente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanelVente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.flowLayoutPanelVente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanelVente.Location = new System.Drawing.Point(0, 55);
-            this.flowLayoutPanelVente.Name = "flowLayoutPanelVente";
-            this.flowLayoutPanelVente.Size = new System.Drawing.Size(750, 412);
-            this.flowLayoutPanelVente.TabIndex = 3;
-            // 
-            // listBoxItemProduct
-            // 
-            this.listBoxItemProduct.Location = new System.Drawing.Point(44, 6);
-            this.listBoxItemProduct.Name = "listBoxItemProduct";
-            this.listBoxItemProduct.Size = new System.Drawing.Size(72, 39);
-            this.listBoxItemProduct.TabIndex = 5;
-            this.listBoxItemProduct.Visible = false;
-            this.listBoxItemProduct.TextChanged += new System.EventHandler(this.listBoxItemProduct_TextChanged);
-            // 
-            // panelBottom_SM_GV_JV
-            // 
-            this.panelBottom_SM_GV_JV.Controls.Add(this.buttonSM_JVentes);
-            this.panelBottom_SM_GV_JV.Controls.Add(this.buttonSM_Ventes);
-            this.panelBottom_SM_GV_JV.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom_SM_GV_JV.Location = new System.Drawing.Point(0, 467);
-            this.panelBottom_SM_GV_JV.Name = "panelBottom_SM_GV_JV";
-            this.panelBottom_SM_GV_JV.Size = new System.Drawing.Size(750, 32);
-            this.panelBottom_SM_GV_JV.TabIndex = 0;
-            // 
-            // buttonSM_JVentes
-            // 
-            this.buttonSM_JVentes.BackColor = System.Drawing.Color.White;
-            this.buttonSM_JVentes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSM_JVentes.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonSM_JVentes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            this.buttonSM_JVentes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            this.buttonSM_JVentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSM_JVentes.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            this.buttonSM_JVentes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.buttonSM_JVentes.Location = new System.Drawing.Point(375, 0);
-            this.buttonSM_JVentes.Name = "buttonSM_JVentes";
-            this.buttonSM_JVentes.Size = new System.Drawing.Size(375, 32);
-            this.buttonSM_JVentes.TabIndex = 1;
-            this.buttonSM_JVentes.Text = "Journal de ventes";
-            this.buttonSM_JVentes.UseVisualStyleBackColor = false;
-            this.buttonSM_JVentes.Click += new System.EventHandler(this.buttonSM_JVentes_Click);
-            // 
-            // buttonSM_Ventes
-            // 
-            this.buttonSM_Ventes.BackColor = System.Drawing.Color.White;
-            this.buttonSM_Ventes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSM_Ventes.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonSM_Ventes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            this.buttonSM_Ventes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            this.buttonSM_Ventes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSM_Ventes.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSM_Ventes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.buttonSM_Ventes.Location = new System.Drawing.Point(0, 0);
-            this.buttonSM_Ventes.Name = "buttonSM_Ventes";
-            this.buttonSM_Ventes.Size = new System.Drawing.Size(375, 32);
-            this.buttonSM_Ventes.TabIndex = 0;
-            this.buttonSM_Ventes.Text = "Ventes";
-            this.buttonSM_Ventes.UseVisualStyleBackColor = false;
-            this.buttonSM_Ventes.Click += new System.EventHandler(this.buttonSM_Ventes_Click);
-            // 
             // panelGestionProduit
             // 
             this.panelGestionProduit.BackColor = System.Drawing.Color.White;
@@ -978,36 +1005,13 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(750, 444);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
-            // Column1
+            // userControl11
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "NombreDeVentes";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.ToolTipText = "Tous Les produits Vendu/Jour";
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "LeGain(dhs)";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Date";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // labelErrorGraph
-            // 
-            this.labelErrorGraph.AutoSize = true;
-            this.labelErrorGraph.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.labelErrorGraph.Location = new System.Drawing.Point(21, 7);
-            this.labelErrorGraph.Name = "labelErrorGraph";
-            this.labelErrorGraph.Size = new System.Drawing.Size(0, 17);
-            this.labelErrorGraph.TabIndex = 0;
+            this.userControl11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControl11.Location = new System.Drawing.Point(0, 0);
+            this.userControl11.Name = "userControl11";
+            this.userControl11.Size = new System.Drawing.Size(750, 499);
+            this.userControl11.TabIndex = 0;
             // 
             // Form1
             // 
@@ -1026,7 +1030,16 @@
             this.LogoPanel.ResumeLayout(false);
             this.LogoPanel.PerformLayout();
             this.panelContainer.ResumeLayout(false);
+            this.panelCommandes.ResumeLayout(false);
             this.panelSM_GV.ResumeLayout(false);
+            this.panelContainerSM_GV_V.ResumeLayout(false);
+            this.panelGestionVentes.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasket)).EndInit();
+            this.panelBottom_SM_GV_JV.ResumeLayout(false);
             this.panelContainerSM_GV_JV.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panelContainerLabelGraphe2.ResumeLayout(false);
@@ -1043,28 +1056,11 @@
             this.groupBoxFilterSearchJV.PerformLayout();
             this.panelHeader_SM_GV_JV.ResumeLayout(false);
             this.panelHeader_SM_GV_JV.PerformLayout();
-            this.panelContainerSM_GV_V.ResumeLayout(false);
-            this.panelGestionVentes.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasket)).EndInit();
-            this.panelBottom_SM_GV_JV.ResumeLayout(false);
             this.panelGestionProduit.ResumeLayout(false);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelSearchBox.ResumeLayout(false);
             this.panelSearchBox.PerformLayout();
-            this.panelContainerSM_GV_V.ResumeLayout(false);
-            this.panelGestionVentes.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasket)).EndInit();
-            this.panelBottom_SM_GV_JV.ResumeLayout(false);
-            this.panelCommandes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1136,9 +1132,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Label labelErrorGraph;
-        private System.Windows.Forms.Label labelTitreJV;
         private System.Windows.Forms.Button button2;
         private UserControl1 userControl11;
     }
+    
 }
 

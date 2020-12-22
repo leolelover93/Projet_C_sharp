@@ -724,8 +724,10 @@ namespace Project_ENSAF
             panelGestionProduit.Visible = false;
             panelGestionVentes.Visible = false;
             panelSM_GV.Visible = false;
-            //panelCommandes.Controls.Add(new UserControl1());
-            panelCommandes.Visible = true;  
+           // panelCommandes.Controls.Add(new UserControl1());
+            panelCommandes.Visible = true;
+
+
         }
 
         private void handel2_AfterCloseForm(object sender, EventArgs e)
