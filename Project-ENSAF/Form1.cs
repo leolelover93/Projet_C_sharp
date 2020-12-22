@@ -15,7 +15,8 @@ namespace Project_ENSAF
         FlowLayoutPanel flowLayoutPagnierProduitVentes;
         public List<Produit> produitVentes = new List<Produit>();
         List<Produit> listeProduitsPagnier = new List<Produit>();
-        dbContext db;
+        dbContext db; 
+
         public Form1()
         {
             InitializeComponent();
@@ -25,10 +26,11 @@ namespace Project_ENSAF
             {
                 db = new dbContext();
                 produitVentes = db.Produits.ToList<Produit>();
+                //groupin by libelle
                 var query = (from p in db.Produits
                              group p by new { p.libelle, } into grp
                              select new { first = grp.FirstOrDefault() });
-                int quantity = 0;
+                int quantity = 0; 
                 if (query.Count()>0)
                 {
                     foreach (var elm in query)
@@ -40,8 +42,7 @@ namespace Project_ENSAF
                         this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
                         quantity = 0;
                     }
-                }
-               
+                } 
             }
             catch (Exception ex)
             {
@@ -53,7 +54,8 @@ namespace Project_ENSAF
         }  
         private void Form1_Load(object sender, EventArgs e)
         { 
-            panelGestionVentes.Visible = false;
+            panelGestionVentes.Visible = false; 
+            panelCommandes.Visible = false;
             prvBtnFilter = btnViewAll;
             btnViewAll.BackColor = Color.FromArgb(72, 152, 207);
             btnViewAll.ForeColor = Color.White;
@@ -114,14 +116,16 @@ namespace Project_ENSAF
         {
             if((sender as Button).Text == "Gestion Produits")
             {
-                panelGestionProduit.Visible = true;
                 panelGestionVentes.Visible = false;
-                panelSM_GV.Visible =false;
+                panelSM_GV.Visible =false; 
+                panelCommandes.Visible = false;
+                panelGestionProduit.Visible = true;
 
             }
             if ((sender as Button).Text == "Gestion Ventes")
             { 
                 panelGestionProduit.Visible = false;
+                panelCommandes.Visible = false;
                 panelGestionVentes.Visible = true;
                 panelSM_GV.Visible = true;
                 
@@ -402,13 +406,15 @@ namespace Project_ENSAF
         private void buttonSM_Ventes_Click(object sender, EventArgs e)
         {
             panelContainerSM_GV_V.Visible = true;
-            panelContainerSM_GV_JV.Visible = false;
+            panelContainerSM_GV_JV.Visible = false; 
+            panelCommandes.Visible = false;
         }
 
         private void buttonSM_JVentes_Click(object sender, EventArgs e)
         {
+
             panelContainerSM_GV_V.Visible = false;
-            panelContainerSM_GV_JV.Visible = true;
+            panelContainerSM_GV_JV.Visible = true;  
             dataGridView1.Visible = false;
             dataGridView2.Visible = false;
             var ventes_liste = db.Vente_magazin.OrderBy(s => s.dateVente).ToList();
@@ -708,6 +714,18 @@ namespace Project_ENSAF
         private void radioButtonPerte_CheckedChanged(object sender, EventArgs e)
         {
             checkBoxGraphique.Checked = checkBoxTableu.Checked = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //Espace_Commande esp = new Espace_Commande();
+            panelContainerSM_GV_V.Visible = false;
+            panelContainerSM_GV_JV.Visible = false; 
+            panelGestionProduit.Visible = false;
+            panelGestionVentes.Visible = false;
+            panelSM_GV.Visible = false;
+            //panelCommandes.Controls.Add(new UserControl1());
+            panelCommandes.Visible = true;  
         }
 
         private void handel2_AfterCloseForm(object sender, EventArgs e)

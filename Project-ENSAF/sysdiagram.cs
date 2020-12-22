@@ -12,14 +12,12 @@ namespace Project_ENSAF
     using System;
     using System.Collections.Generic;
     
-    public partial class Stock_Magazin
+    public partial class sysdiagram
     {
-        public int codeStock { get; set; }
-        public int codeProduit { get; set; }
-        public int codeMagazin { get; set; }
-        public int quantite { get; set; }
-    
-        public virtual Magazin Magazin { get; set; }
-        public virtual Produit Produit { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

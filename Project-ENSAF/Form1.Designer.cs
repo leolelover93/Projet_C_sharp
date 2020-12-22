@@ -39,6 +39,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.LogoPanel = new System.Windows.Forms.Panel();
             this.lblLogo = new System.Windows.Forms.Label();
             this.BtnGestionVentes = new System.Windows.Forms.Button();
@@ -102,6 +103,22 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelErrorGraph = new System.Windows.Forms.Label();
+            this.panelContainerSM_GV_V = new System.Windows.Forms.Panel();
+            this.panelGestionVentes = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonSearchPV = new System.Windows.Forms.Button();
+            this.textBoxSearchProduitVentes = new System.Windows.Forms.TextBox();
+            this.btnViderPanger = new System.Windows.Forms.Button();
+            this.labelBasket = new System.Windows.Forms.Label();
+            this.pictureBoxBasket = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanelVente = new System.Windows.Forms.FlowLayoutPanel();
+            this.listBoxItemProduct = new System.Windows.Forms.Label();
+            this.panelBottom_SM_GV_JV = new System.Windows.Forms.Panel();
+            this.buttonSM_JVentes = new System.Windows.Forms.Button();
+            this.buttonSM_Ventes = new System.Windows.Forms.Button();
+            this.panelCommandes = new System.Windows.Forms.Panel();
+            this.userControl11 = new Project_ENSAF.UserControl1();
             this.panel1.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             this.panelContainer.SuspendLayout();
@@ -131,6 +148,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(92)))));
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.LogoPanel);
             this.panel1.Controls.Add(this.BtnGestionVentes);
             this.panel1.Controls.Add(this.button1);
@@ -142,6 +160,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(201, 499);
             this.panel1.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(3, 287);
+            this.button2.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(195, 51);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Gestion Commandes";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // LogoPanel
             // 
@@ -173,7 +209,6 @@
             this.BtnGestionVentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGestionVentes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGestionVentes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnGestionVentes.Image = ((System.Drawing.Image)(resources.GetObject("BtnGestionVentes.Image")));
             this.BtnGestionVentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnGestionVentes.Location = new System.Drawing.Point(6, 230);
             this.BtnGestionVentes.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
@@ -234,6 +269,7 @@
             // panelContainer
             // 
             this.panelContainer.BackColor = System.Drawing.Color.Transparent;
+            this.panelContainer.Controls.Add(this.panelCommandes);
             this.panelContainer.Controls.Add(this.panelGestionProduit);
             this.panelContainer.Controls.Add(this.panelSM_GV);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -381,12 +417,12 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.NullValue = "0";
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.NullValue = "0";
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.dataGridView1.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowTemplate.Height = 21;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -395,27 +431,27 @@
             // 
             // chart2
             // 
-            chartArea7.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea7);
+            chartArea5.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea5);
             this.chart2.Location = new System.Drawing.Point(370, 132);
             this.chart2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-            series7.Name = "Series1";
-            series7.YValuesPerPoint = 4;
-            this.chart2.Series.Add(series7);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            series5.Name = "Series1";
+            series5.YValuesPerPoint = 4;
+            this.chart2.Series.Add(series5);
             this.chart2.Size = new System.Drawing.Size(342, 264);
             this.chart2.TabIndex = 29;
             this.chart2.Text = "chart2";
-            title7.Name = "Title1";
-            this.chart2.Titles.Add(title7);
+            title5.Name = "Title1";
+            this.chart2.Titles.Add(title5);
             // 
             // chart1
             // 
-            chartArea8.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea8);
+            chartArea6.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea6);
             this.chart1.Location = new System.Drawing.Point(20, 132);
             this.chart1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.chart1.Name = "chart1";
@@ -428,8 +464,8 @@
             this.chart1.Size = new System.Drawing.Size(333, 264);
             this.chart1.TabIndex = 28;
             this.chart1.Text = "chart1";
-            title8.Name = "Title1";
-            this.chart1.Titles.Add(title8);
+            title6.Name = "Title1";
+            this.chart1.Titles.Add(title6);
             // 
             // groupBoxAffichageJV
             // 
@@ -1020,6 +1056,15 @@
             this.panelHeader.PerformLayout();
             this.panelSearchBox.ResumeLayout(false);
             this.panelSearchBox.PerformLayout();
+            this.panelContainerSM_GV_V.ResumeLayout(false);
+            this.panelGestionVentes.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasket)).EndInit();
+            this.panelBottom_SM_GV_JV.ResumeLayout(false);
+            this.panelCommandes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1035,6 +1080,7 @@
         private System.Windows.Forms.Label lblLogo;
         private System.Windows.Forms.Panel panelContainer;
         private System.Windows.Forms.Panel panelGestionProduit;
+        private System.Windows.Forms.Panel panelCommandes;
         private System.Windows.Forms.Panel panelSM_GV;
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.Button btnNonDisponible;
@@ -1090,6 +1136,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Label labelErrorGraph;
+        private System.Windows.Forms.Label labelTitreJV;
+        private System.Windows.Forms.Button button2;
+        private UserControl1 userControl11;
     }
 }
 
