@@ -297,7 +297,6 @@ namespace Project_ENSAF
         {
            if(listBoxItemProduct.Text != "")
             {
-
                 this.pictureBoxBasket.Image = Properties.Resources.cart__full;
                 Produit p = produitVentes.Where(pa => pa.codeProduit == int.Parse(listBoxItemProduct.Text.Split(' ')[0])).ToList()[0];
                 labelBasket.Text = ++nbProduitInBasket + "";

@@ -88,12 +88,6 @@
     <Compile Include="ElementPagnierVentes.Designer.cs">
       <DependentUpon>ElementPagnierVentes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Espace_Commande.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Espace_Commande.Designer.cs">
-      <DependentUpon>Espace_Commande.cs</DependentUpon>
-    </Compile>
     <Compile Include="Espace_Fournisseur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,12 +105,6 @@
     </Compile>
     <Compile Include="Ajouter_Produit.Designer.cs">
       <DependentUpon>Ajouter_Produit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormJournalVentes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormJournalVentes.Designer.cs">
-      <DependentUpon>FormJournalVentes.cs</DependentUpon>
     </Compile>
     <Compile Include="FormProdDescri.cs">
       <SubType>Form</SubType>
@@ -206,18 +194,12 @@
     <EmbeddedResource Include="ElementPagnierVentes.resx">
       <DependentUpon>ElementPagnierVentes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Espace_Commande.resx">
-      <DependentUpon>Espace_Commande.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Espace_Fournisseur.resx">
       <DependentUpon>Espace_Fournisseur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormJournalVentes.resx">
-      <DependentUpon>FormJournalVentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPagnierVentes.resx">
       <DependentUpon>FormPagnierVentes.cs</DependentUpon>
