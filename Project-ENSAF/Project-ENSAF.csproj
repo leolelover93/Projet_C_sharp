@@ -73,6 +73,12 @@
     <Compile Include="AjouterFournisseur.Designer.cs">
       <DependentUpon>AjouterFournisseur.cs</DependentUpon>
     </Compile>
+    <Compile Include="AjouterFournisseurForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AjouterFournisseurForm.Designer.cs">
+      <DependentUpon>AjouterFournisseurForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ajout_Commande.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,12 +93,6 @@
     </Compile>
     <Compile Include="ElementPagnierVentes.Designer.cs">
       <DependentUpon>ElementPagnierVentes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Espace_Commande.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Espace_Commande.Designer.cs">
-      <DependentUpon>Espace_Commande.cs</DependentUpon>
     </Compile>
     <Compile Include="Espace_Fournisseur.cs">
       <SubType>Form</SubType>
@@ -111,12 +111,6 @@
     </Compile>
     <Compile Include="Ajouter_Produit.Designer.cs">
       <DependentUpon>Ajouter_Produit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormJournalVentes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormJournalVentes.Designer.cs">
-      <DependentUpon>FormJournalVentes.cs</DependentUpon>
     </Compile>
     <Compile Include="FormProdDescri.cs">
       <SubType>Form</SubType>
@@ -185,6 +179,15 @@
     <Compile Include="Stock_Magazin.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UC_GestionFournisseur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_GestionFournisseur.Designer.cs">
+      <DependentUpon>UC_GestionFournisseur.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_Gestion_Commades.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -197,6 +200,9 @@
     <EmbeddedResource Include="AjouterFournisseur.resx">
       <DependentUpon>AjouterFournisseur.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AjouterFournisseurForm.resx">
+      <DependentUpon>AjouterFournisseurForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ajouter_Produit.resx">
       <DependentUpon>Ajouter_Produit.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,18 +212,12 @@
     <EmbeddedResource Include="ElementPagnierVentes.resx">
       <DependentUpon>ElementPagnierVentes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Espace_Commande.resx">
-      <DependentUpon>Espace_Commande.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Espace_Fournisseur.resx">
       <DependentUpon>Espace_Fournisseur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormJournalVentes.resx">
-      <DependentUpon>FormJournalVentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPagnierVentes.resx">
       <DependentUpon>FormPagnierVentes.cs</DependentUpon>
@@ -238,6 +238,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_GestionFournisseur.resx">
+      <DependentUpon>UC_GestionFournisseur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Gestion_Commades.resx">
       <DependentUpon>UC_Gestion_Commades.cs</DependentUpon>
