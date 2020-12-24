@@ -32,5 +32,12 @@ namespace Project_ENSAF
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 151, 255);
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            dbContext db = new dbContext();
+            var queryCommande = db.Commandes.Where(n => n.NCommande.ToString().Contains(searchBar.Text)).ToList();
+            refrechDataGrid(queryCommande);
+        }
     }
 }
