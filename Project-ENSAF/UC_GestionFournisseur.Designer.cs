@@ -166,6 +166,7 @@
             this.Modifier.HeaderText = "Modifier";
             this.Modifier.Name = "Modifier";
             this.Modifier.ReadOnly = true;
+            this.Modifier.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Supprimer
             // 
