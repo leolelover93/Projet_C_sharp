@@ -50,5 +50,15 @@ namespace Project_ENSAF
                 f.Show();
             }
         }
+
+        private void UC_GestionFournisseur_Load(object sender, EventArgs e)
+        {
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(208, 213, 217);
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 151, 255);
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        }
     }
 }

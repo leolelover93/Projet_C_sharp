@@ -11,8 +11,10 @@ namespace Project_ENSAF
     {
         Button previousBtn,prvBtnFilter;
         FormPagnierVentes a;
-        FormAcheterProduits b; 
-        int nbProduitInBasket = 0; 
+        FormAcheterProduits b;
+        UC_GestionFournisseur uc;
+        int nbProduitInBasket = 0;
+        UC_Gestion_Commades uc_Commandes;
         FlowLayoutPanel flowLayoutPagnierProduitVentes;
         public List<Produit> produitVentes = new List<Produit>();
         List<Produit> listeProduitsPagnier = new List<Produit>();
@@ -131,7 +133,6 @@ namespace Project_ENSAF
                     a.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.handel_AfterCloseForm);
                     a.VisibleChanged += new System.EventHandler(this.handel2_AfterCloseForm);
 
-
                 }
             }
             if((sender as Button).Text == "Gestion Commandes")
@@ -144,14 +145,25 @@ namespace Project_ENSAF
                 panelGestionVentes.Visible = false;
                 panelSM_GV.Visible = false;
                 var db = new dbContext();
-                UC_Gestion_Commades uc_Commandes = new UC_Gestion_Commades(db.Commandes.ToList<Commande>(),b);
+                this.uc_Commandes = new UC_Gestion_Commades(db.Commandes.ToList<Commande>(),b);
                 panelCommandes.Controls.Clear();
                 panelCommandes.Controls.Add(uc_Commandes);
                 panelCommandes.Controls[0].Dock = System.Windows.Forms.DockStyle.Fill;
                 panelCommandes.Visible = true;
             }
+            if((sender as Button).Text == "Fournisseurs")
+            {
+                panelGestionProduit.Visible = false;
+                panelGestionVentes.Visible = false;
+                panelSM_GV.Visible = false;
+                var db = new dbContext();
+                uc = new UC_GestionFournisseur(db.Fournisseurs.ToList<Fournisseur>());
+                panelCommandes.Controls.Clear();
+                panelCommandes.Controls.Add(uc);
+                panelCommandes.Controls[0].Dock = System.Windows.Forms.DockStyle.Fill;
+                panelCommandes.Visible = true;
+            }
            
-
             previousBtn.BackColor = Color.FromArgb(0, 53, 92);
             previousBtn = (sender as Button);
             checkedLinePanel.Height = (sender as Button).Height;

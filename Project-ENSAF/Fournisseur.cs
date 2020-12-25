@@ -17,8 +17,8 @@ namespace Project_ENSAF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Fournisseur()
         {
-            this.Produit = new HashSet<Produit>();
             this.Commande = new HashSet<Commande>();
+            this.Produit = new HashSet<Produit>();
         }
     
         public int idFournisseur { get; set; }
@@ -28,8 +28,8 @@ namespace Project_ENSAF
         public string telFournisseur { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Produit> Produit { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Commande> Commande { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Produit> Produit { get; set; }
     }
 }

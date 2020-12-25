@@ -12,7 +12,6 @@ namespace Project_ENSAF
 
     public partial class UC_Gestion_Commades : UserControl
     {
-        Dictionary<int, int> listeDemander = new Dictionary<int, int>();
         List<Produit> produitVentes;
         FormAcheterProduits a;
         DateTimePicker dateSouhaité;
@@ -103,7 +102,7 @@ namespace Project_ENSAF
                     dbase.Produit_commande.Add(pc);
                     dbase.SaveChanges();
                 }
-                
+                refrechDataGrid(list); 
             }
 
             if (produitVentes != null)
@@ -114,7 +113,9 @@ namespace Project_ENSAF
                 remplireListeProduit();
             
             a.Visible = false;
-          
+
+
+
 
 
 
@@ -197,19 +198,12 @@ namespace Project_ENSAF
                 elmnt.QuntiteProduit = quantiteDemander+"";
                 elmnt.PrixUnit = p.prixVente;
                 elmnt.PrixTotal = p.prixVente * quantiteDemander + "";
-                MessageBox.Show("id produit" + idProduit +" id fourniiser" + p.idFournisseur);
-              
-                if (!listeDemander.ContainsKey(idProduit))
-                {
-                    listeDemander.Add(idProduit, quantiteDemander);
-                }
                 foreach (Control item in flowLayoutPagnierProduitCommandes.Controls)
                 {
                     ElementPagnierVentes epv = (ElementPagnierVentes)item;
                     if (epv.Title == elmnt.Title)
                     {
                         epv.Quantite = quantiteDemander;
-                        listeDemander[idProduit] = quantiteDemander;
                         labelNbCommande.Text = --nbCommandes + "";
                         return;
                     }
@@ -233,6 +227,7 @@ namespace Project_ENSAF
             if (flowLayoutPagnierProduitCommandes.Controls.Count == 0)
             {
                 this.pictureBox.Image = Properties.Resources.open_box;
+                
             }
 
         }
@@ -270,14 +265,13 @@ namespace Project_ENSAF
             }
         }
 
-        
-        }
-
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
             dbContext db = new dbContext();
-            var queryCommande = db.Commandes.Where(n => n.NCommande.ToString().Contains(searchBar.Text)).ToList();
+            var queryCommande = db.Commandes.Where(n => n.NCommande.ToString().Contains(searchBar.Text) ).ToList();
             refrechDataGrid(queryCommande);
+
         }
     }
+
 }
