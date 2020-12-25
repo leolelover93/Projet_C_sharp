@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Gestion_Commades));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Gestion_Commades));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panelSearchBox = new System.Windows.Forms.Panel();
+            this.buttonSearchGP = new System.Windows.Forms.Button();
+            this.searchBar = new System.Windows.Forms.TextBox();
             this.bAjoutCommande = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.nCommandeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDemandeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateArriveSouhaiteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produitcommandeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelSearchBox = new System.Windows.Forms.Panel();
-            this.buttonSearchGP = new System.Windows.Forms.Button();
-            this.searchBar = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelSearchBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -57,6 +57,41 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(750, 55);
             this.panel1.TabIndex = 3;
+            // 
+            // panelSearchBox
+            // 
+            this.panelSearchBox.Controls.Add(this.buttonSearchGP);
+            this.panelSearchBox.Controls.Add(this.searchBar);
+            this.panelSearchBox.Location = new System.Drawing.Point(22, 3);
+            this.panelSearchBox.Name = "panelSearchBox";
+            this.panelSearchBox.Size = new System.Drawing.Size(246, 45);
+            this.panelSearchBox.TabIndex = 2;
+            // 
+            // buttonSearchGP
+            // 
+            this.buttonSearchGP.BackColor = System.Drawing.Color.White;
+            this.buttonSearchGP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSearchGP.BackgroundImage")));
+            this.buttonSearchGP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSearchGP.FlatAppearance.BorderSize = 0;
+            this.buttonSearchGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchGP.Location = new System.Drawing.Point(199, 12);
+            this.buttonSearchGP.Name = "buttonSearchGP";
+            this.buttonSearchGP.Size = new System.Drawing.Size(24, 20);
+            this.buttonSearchGP.TabIndex = 3;
+            this.buttonSearchGP.UseVisualStyleBackColor = false;
+            // 
+            // searchBar
+            // 
+            this.searchBar.BackColor = System.Drawing.Color.White;
+            this.searchBar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchBar.Font = new System.Drawing.Font("Calibri", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBar.Location = new System.Drawing.Point(9, 9);
+            this.searchBar.MinimumSize = new System.Drawing.Size(0, 26);
+            this.searchBar.Multiline = true;
+            this.searchBar.Name = "searchBar";
+            this.searchBar.Size = new System.Drawing.Size(216, 26);
+            this.searchBar.TabIndex = 2;
+            this.searchBar.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
             // bAjoutCommande
             // 
@@ -76,6 +111,7 @@
             this.bAjoutCommande.TabIndex = 0;
             this.bAjoutCommande.Text = "Ajouter commande";
             this.bAjoutCommande.UseVisualStyleBackColor = true;
+            this.bAjoutCommande.Click += new System.EventHandler(this.bAjoutCommande_Click);
             // 
             // dataGridView1
             // 
@@ -144,41 +180,6 @@
             this.produitcommandeDataGridViewTextBoxColumn.Name = "produitcommandeDataGridViewTextBoxColumn";
             this.produitcommandeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // panelSearchBox
-            // 
-            this.panelSearchBox.Controls.Add(this.buttonSearchGP);
-            this.panelSearchBox.Controls.Add(this.searchBar);
-            this.panelSearchBox.Location = new System.Drawing.Point(22, 3);
-            this.panelSearchBox.Name = "panelSearchBox";
-            this.panelSearchBox.Size = new System.Drawing.Size(246, 45);
-            this.panelSearchBox.TabIndex = 2;
-            // 
-            // buttonSearchGP
-            // 
-            this.buttonSearchGP.BackColor = System.Drawing.Color.White;
-            this.buttonSearchGP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSearchGP.BackgroundImage")));
-            this.buttonSearchGP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSearchGP.FlatAppearance.BorderSize = 0;
-            this.buttonSearchGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchGP.Location = new System.Drawing.Point(199, 12);
-            this.buttonSearchGP.Name = "buttonSearchGP";
-            this.buttonSearchGP.Size = new System.Drawing.Size(24, 20);
-            this.buttonSearchGP.TabIndex = 3;
-            this.buttonSearchGP.UseVisualStyleBackColor = false;
-            // 
-            // searchBar
-            // 
-            this.searchBar.BackColor = System.Drawing.Color.White;
-            this.searchBar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.searchBar.Font = new System.Drawing.Font("Calibri", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBar.Location = new System.Drawing.Point(9, 9);
-            this.searchBar.MinimumSize = new System.Drawing.Size(0, 26);
-            this.searchBar.Multiline = true;
-            this.searchBar.Name = "searchBar";
-            this.searchBar.Size = new System.Drawing.Size(216, 26);
-            this.searchBar.TabIndex = 2;
-            this.searchBar.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
-            // 
             // UC_Gestion_Commades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,9 +191,9 @@
             this.Load += new System.EventHandler(this.UC_Gestion_Commades_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panelSearchBox.ResumeLayout(false);
             this.panelSearchBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }

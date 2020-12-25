@@ -39,5 +39,10 @@ namespace Project_ENSAF
             var queryCommande = db.Commandes.Where(n => n.NCommande.ToString().Contains(searchBar.Text)).ToList();
             refrechDataGrid(queryCommande);
         }
+
+        private void bAjoutCommande_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
