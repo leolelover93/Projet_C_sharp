@@ -15,6 +15,7 @@ namespace Project_ENSAF
     {
         private int idProduit;
         private int quntite;
+        private bool test; 
 
         public int Quantite
         {
@@ -30,11 +31,12 @@ namespace Project_ENSAF
             this.idProduit = p.codeProduit; 
             InitializeComp2(p);
         }
-        public produit_Vente(Produit p,int quantite)
+        public produit_Vente(Produit p,int quantite,bool test=false)
         {
+            this.test = test;
             this.idProduit = p.codeProduit;
             this.Quantite = quantite;
-            InitializeComp(p,quantite);
+            InitializeComp(p,quantite,test);
         }
 
 
@@ -44,7 +46,7 @@ namespace Project_ENSAF
         }
         private void btnReadMore_Click(object sender, EventArgs e)
         {
-            if(this.Quantite > 0)
+            if(this.Quantite > 0 && !this.test)
             {
                 Control[] tabElment = this.Parent.Parent.Parent.Controls.Find("listBoxItemProduct", true);
                 Label label = (Label)tabElment[0];
@@ -54,14 +56,13 @@ namespace Project_ENSAF
 
             }else
             {
-                MessageBox.Show("hna ghydar wahd lblan naadi");
+                Control[] tabElment = this.Parent.Parent.Controls.Find("labelHiden", true);
+                Label label = (Label)tabElment[0];
+                if (label.Text == (this.idProduit.ToString() + " " + numericUpDownQauntite.Value)) label.Text = "";
+                label.Text = (this.idProduit.ToString() + " " + numericUpDownQauntite.Value);
             }
-
         }
 
-        private void produit_Vente_Load(object sender, EventArgs e)
-        {
-          
-        }
+       
     }
 }

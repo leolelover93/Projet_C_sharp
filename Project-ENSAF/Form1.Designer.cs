@@ -217,7 +217,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(195, 51);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Gestion Produits 2";
+            this.button1.Text = "Fournisseurs";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;

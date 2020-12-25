@@ -94,6 +94,12 @@
     <Compile Include="Ajouter_Produit.Designer.cs">
       <DependentUpon>Ajouter_Produit.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAcheterProduits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAcheterProduits.Designer.cs">
+      <DependentUpon>FormAcheterProduits.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormProdDescri.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAcheterProduits.resx">
+      <DependentUpon>FormAcheterProduits.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPagnierVentes.resx">
       <DependentUpon>FormPagnierVentes.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,6 +261,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\open-box.png" />
+    <None Include="Resources\closed-box.png" />
     <None Include="Resources\loading-product.png" />
     <None Include="Resources\cart _full.png" />
     <None Include="Resources\cart.png" />
