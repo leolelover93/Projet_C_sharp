@@ -14,6 +14,7 @@
           <Property Name="dateDemande" Type="datetime" Nullable="false" />
           <Property Name="dateArriveSouhaite" Type="datetime" Nullable="false" />
           <Property Name="statut" Type="bit" Nullable="false" />
+          <Property Name="idFournisseur" Type="int" />
         </EntityType>
         <EntityType Name="Fournisseur">
           <Key>
@@ -76,6 +77,18 @@
           <Property Name="quantiteVendus" Type="varchar" MaxLength="200" />
           <Property Name="gain" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
+        <Association Name="FK_Commande_Fournisseur">
+          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="0..1" />
+          <End Role="Commande" Type="Self.Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="idFournisseur" />
+            </Principal>
+            <Dependent Role="Commande">
+              <PropertyRef Name="idFournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Commande_Magazin">
           <End Role="Magazin" Type="Self.Magazin" Multiplicity="1" />
           <End Role="Commande" Type="Self.Commande" Multiplicity="*" />
@@ -190,6 +203,10 @@
           <EntitySet Name="Produit_commande" EntityType="Self.Produit_commande" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stock_Magazin" EntityType="Self.Stock_Magazin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vente_magazin" EntityType="Self.Vente_magazin" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Commande_Fournisseur" Association="Self.FK_Commande_Fournisseur">
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+            <End Role="Commande" EntitySet="Commande" />
+          </AssociationSet>
           <AssociationSet Name="FK_Commande_Magazin" Association="Self.FK_Commande_Magazin">
             <End Role="Magazin" EntitySet="Magazin" />
             <End Role="Commande" EntitySet="Commande" />
@@ -238,6 +255,8 @@
           <Property Name="statut" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Magazin" Relationship="Self.FK_Commande_Magazin" FromRole="Commande" ToRole="Magazin" />
           <NavigationProperty Name="Produit_commande" Relationship="Self.FK_Produit_commande_Commande" FromRole="Commande" ToRole="Produit_commande" />
+          <Property Name="idFournisseur" Type="Int32" />
+          <NavigationProperty Name="Fournisseur" Relationship="projetModel.FK_Commande_Fournisseur" FromRole="Commande" ToRole="Fournisseur" />
         </EntityType>
         <EntityType Name="Fournisseur">
           <Key>
@@ -249,6 +268,7 @@
           <Property Name="adressFournisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="telFournisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Produit" Relationship="Self.FK_Produit_Fournisseur" FromRole="Fournisseur" ToRole="Produit" />
+          <NavigationProperty Name="Commande" Relationship="projetModel.FK_Commande_Fournisseur" FromRole="Fournisseur" ToRole="Commande" />
         </EntityType>
         <EntityType Name="Magazin">
           <Key>
@@ -460,7 +480,23 @@
             <End Role="Produit" EntitySet="Produit" />
             <End Role="Vente_magazin" EntitySet="Vente_magazin" />
           </AssociationSet>
+          <AssociationSet Name="FK_Commande_Fournisseur" Association="projetModel.FK_Commande_Fournisseur">
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+            <End Role="Commande" EntitySet="Commande" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Commande_Fournisseur">
+          <End Type="projetModel.Fournisseur" Role="Fournisseur" Multiplicity="0..1" />
+          <End Type="projetModel.Commande" Role="Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="idFournisseur" />
+            </Principal>
+            <Dependent Role="Commande">
+              <PropertyRef Name="idFournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -470,6 +506,7 @@
           <EntitySetMapping Name="Commande">
             <EntityTypeMapping TypeName="projetModel.Commande">
               <MappingFragment StoreEntitySet="Commande">
+                <ScalarProperty Name="idFournisseur" ColumnName="idFournisseur" />
                 <ScalarProperty Name="NCommande" ColumnName="NCommande" />
                 <ScalarProperty Name="codeMagazin" ColumnName="codeMagazin" />
                 <ScalarProperty Name="dateDemande" ColumnName="dateDemande" />

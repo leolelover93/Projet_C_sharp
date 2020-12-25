@@ -1,5 +1,6 @@
 ﻿namespace Project_ENSAF
 {
+
     partial class UC_Gestion_Commades
     {
         /// <summary> 
@@ -28,19 +29,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelNbCommande = new System.Windows.Forms.Label();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.bAjoutCommande = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panelContainerAjouterCommande = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelHiden = new System.Windows.Forms.Label();
             this.nCommandeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDemandeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateArriveSouhaiteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produitcommandeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelContainerAjouterCommande = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelHiden = new System.Windows.Forms.Label();
+            this.AprouverColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelContainerAjouterCommande.SuspendLayout();
             this.SuspendLayout();
@@ -48,6 +53,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.panel1.Controls.Add(this.labelNbCommande);
+            this.panel1.Controls.Add(this.pictureBox);
             this.panel1.Controls.Add(this.bAjoutCommande);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -55,6 +62,30 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(750, 55);
             this.panel1.TabIndex = 3;
+            // 
+            // labelNbCommande
+            // 
+            this.labelNbCommande.AutoSize = true;
+            this.labelNbCommande.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNbCommande.ForeColor = System.Drawing.Color.White;
+            this.labelNbCommande.Location = new System.Drawing.Point(559, 20);
+            this.labelNbCommande.Name = "labelNbCommande";
+            this.labelNbCommande.Size = new System.Drawing.Size(15, 16);
+            this.labelNbCommande.TabIndex = 2;
+            this.labelNbCommande.Text = "0";
+            this.labelNbCommande.Visible = false;
+            this.labelNbCommande.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Image = global::Project_ENSAF.Properties.Resources.open_box;
+            this.pictureBox.Location = new System.Drawing.Point(519, 14);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(44, 28);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox.TabIndex = 1;
+            this.pictureBox.TabStop = false;
+            this.pictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // bAjoutCommande
             // 
@@ -87,29 +118,60 @@
             this.nCommandeDataGridViewTextBoxColumn,
             this.dateDemandeDataGridViewTextBoxColumn,
             this.dateArriveSouhaiteDataGridViewTextBoxColumn,
-            this.produitcommandeDataGridViewTextBoxColumn});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.produitcommandeDataGridViewTextBoxColumn,
+            this.AprouverColumn});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
             this.dataGridView1.Location = new System.Drawing.Point(22, 76);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
             this.dataGridView1.Size = new System.Drawing.Size(704, 411);
             this.dataGridView1.TabIndex = 2;
+            // 
+            // panelContainerAjouterCommande
+            // 
+            this.panelContainerAjouterCommande.Controls.Add(this.flowLayoutPanel1);
+            this.panelContainerAjouterCommande.Controls.Add(this.labelHiden);
+            this.panelContainerAjouterCommande.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContainerAjouterCommande.Location = new System.Drawing.Point(0, 55);
+            this.panelContainerAjouterCommande.Name = "panelContainerAjouterCommande";
+            this.panelContainerAjouterCommande.Size = new System.Drawing.Size(750, 444);
+            this.panelContainerAjouterCommande.TabIndex = 4;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(750, 444);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // labelHiden
+            // 
+            this.labelHiden.AutoSize = true;
+            this.labelHiden.Location = new System.Drawing.Point(3, 0);
+            this.labelHiden.Name = "labelHiden";
+            this.labelHiden.Size = new System.Drawing.Size(35, 13);
+            this.labelHiden.TabIndex = 0;
+            this.labelHiden.Text = "label1";
+            this.labelHiden.Visible = false;
+            this.labelHiden.TextChanged += new System.EventHandler(this.labelHiden_TextChanged);
             // 
             // nCommandeDataGridViewTextBoxColumn
             // 
@@ -143,35 +205,11 @@
             this.produitcommandeDataGridViewTextBoxColumn.Name = "produitcommandeDataGridViewTextBoxColumn";
             this.produitcommandeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // panelContainerAjouterCommande
+            // AprouverColumn
             // 
-            this.panelContainerAjouterCommande.Controls.Add(this.flowLayoutPanel1);
-            this.panelContainerAjouterCommande.Controls.Add(this.labelHiden);
-            this.panelContainerAjouterCommande.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainerAjouterCommande.Location = new System.Drawing.Point(0, 55);
-            this.panelContainerAjouterCommande.Name = "panelContainerAjouterCommande";
-            this.panelContainerAjouterCommande.Size = new System.Drawing.Size(750, 444);
-            this.panelContainerAjouterCommande.TabIndex = 4;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(750, 444);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // labelHiden
-            // 
-            this.labelHiden.AutoSize = true;
-            this.labelHiden.Location = new System.Drawing.Point(3, 0);
-            this.labelHiden.Name = "labelHiden";
-            this.labelHiden.Size = new System.Drawing.Size(35, 13);
-            this.labelHiden.TabIndex = 0;
-            this.labelHiden.Text = "label1";
-            this.labelHiden.Visible = false;
-            this.labelHiden.TextChanged += new System.EventHandler(this.labelHiden_TextChanged);
+            this.AprouverColumn.HeaderText = "Aprouver";
+            this.AprouverColumn.Name = "AprouverColumn";
+            this.AprouverColumn.Text = "Aprouver";
             // 
             // UC_Gestion_Commades
             // 
@@ -185,6 +223,7 @@
             this.Load += new System.EventHandler(this.UC_Gestion_Commades_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panelContainerAjouterCommande.ResumeLayout(false);
             this.panelContainerAjouterCommande.PerformLayout();
@@ -211,12 +250,15 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button bAjoutCommande;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panelContainerAjouterCommande;
+        private System.Windows.Forms.Label labelHiden;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.Label labelNbCommande;
         private System.Windows.Forms.DataGridViewTextBoxColumn nCommandeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDemandeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateArriveSouhaiteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn produitcommandeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Panel panelContainerAjouterCommande;
-        private System.Windows.Forms.Label labelHiden;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.DataGridViewButtonColumn AprouverColumn;
     }
 }

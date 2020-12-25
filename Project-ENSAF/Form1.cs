@@ -11,6 +11,7 @@ namespace Project_ENSAF
     {
         Button previousBtn,prvBtnFilter;
         FormPagnierVentes a;
+        FormAcheterProduits b; 
         int nbProduitInBasket = 0; 
         FlowLayoutPanel flowLayoutPagnierProduitVentes;
         public List<Produit> produitVentes = new List<Produit>();
@@ -135,11 +136,15 @@ namespace Project_ENSAF
             }
             if((sender as Button).Text == "Gestion Commandes")
             {
+                if(b == null)
+                {
+                    b = new FormAcheterProduits(); 
+                }
                 panelGestionProduit.Visible = false;
                 panelGestionVentes.Visible = false;
                 panelSM_GV.Visible = false;
                 var db = new dbContext();
-                UC_Gestion_Commades uc_Commandes = new UC_Gestion_Commades(db.Commandes.ToList<Commande>());
+                UC_Gestion_Commades uc_Commandes = new UC_Gestion_Commades(db.Commandes.ToList<Commande>(),b);
                 panelCommandes.Controls.Clear();
                 panelCommandes.Controls.Add(uc_Commandes);
                 panelCommandes.Controls[0].Dock = System.Windows.Forms.DockStyle.Fill;

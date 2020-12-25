@@ -25,9 +25,11 @@ namespace Project_ENSAF
         public System.DateTime dateDemande { get; set; }
         public System.DateTime dateArriveSouhaite { get; set; }
         public bool statut { get; set; }
+        public Nullable<int> idFournisseur { get; set; }
     
         public virtual Magazin Magazin { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Produit_commande> Produit_commande { get; set; }
+        public virtual Fournisseur Fournisseur { get; set; }
     }
 }
