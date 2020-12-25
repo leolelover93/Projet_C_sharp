@@ -139,10 +139,10 @@ namespace Project_ENSAF
                 panelGestionVentes.Visible = false;
                 panelSM_GV.Visible = false;
                 var db = new dbContext();
-                // UC_Gestion_Commades uc_Commandes = new UC_Gestion_Commades(db.Commandes.ToList<Commande>());
-               UC_GestionFournisseur uc = new UC_GestionFournisseur(db.Fournisseurs.ToList<Fournisseur>());
-                panelCommandes.Controls.Clear();
-               // panelCommandes.Controls.Add(uc_Commandes);
+                //UC_Gestion_Commades uc_Commandes = new UC_Gestion_Commades(db.Commandes.ToList<Commande>());
+                UC_GestionFournisseur uc = new UC_GestionFournisseur(db.Fournisseurs.ToList<Fournisseur>());
+                panelCommandes.Controls.Clear(); 
+                //panelCommandes.Controls.Add(uc_Commandes);
                 panelCommandes.Controls.Add(uc);
                 panelCommandes.Controls[0].Dock = System.Windows.Forms.DockStyle.Fill;
                 panelCommandes.Visible = true;
