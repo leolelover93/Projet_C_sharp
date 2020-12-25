@@ -27,7 +27,7 @@ namespace Project_ENSAF
     
         public virtual DbSet<Commande> Commandes { get; set; }
         public virtual DbSet<Fournisseur> Fournisseurs { get; set; }
-        public virtual DbSet<Magazin> Magazin { get; set; }
+        public virtual DbSet<Magazin> Magazins { get; set; }
         public virtual DbSet<Produit> Produits { get; set; }
         public virtual DbSet<Produit_commande> Produit_commande { get; set; }
         public virtual DbSet<Stock_Magazin> Stock_Magazin { get; set; }

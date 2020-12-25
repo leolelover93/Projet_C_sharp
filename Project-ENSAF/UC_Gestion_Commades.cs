@@ -271,5 +271,13 @@ namespace Project_ENSAF
         }
 
         
+        }
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            dbContext db = new dbContext();
+            var queryCommande = db.Commandes.Where(n => n.NCommande.ToString().Contains(searchBar.Text)).ToList();
+            refrechDataGrid(queryCommande);
+        }
     }
 }
