@@ -32,6 +32,7 @@ namespace Project_ENSAF
             {
                 try
                 {
+                    if (e.RowIndex < 0) return;//avoid header click event exception
                     Fournisseur fournisseur = db.Fournisseurs.ToArray<Fournisseur>()[e.RowIndex];
                     db.Fournisseurs.Remove(fournisseur);
                     db.SaveChanges();   
@@ -44,10 +45,11 @@ namespace Project_ENSAF
                 }
             }
             if (e.ColumnIndex == 5 )//edit fournisseur row
-            {
-                Fournisseur fournisseur = db.Fournisseurs.ToArray<Fournisseur>()[e.RowIndex];
-                AjouterFournisseurForm f = new AjouterFournisseurForm(fournisseur,this);
-                f.Show();
+            {  
+                    if (e.RowIndex < 0) return;
+                    Fournisseur fournisseur = db.Fournisseurs.ToArray<Fournisseur>()[e.RowIndex];
+                    AjouterFournisseurForm f = new AjouterFournisseurForm(fournisseur, this);
+                    f.Show(); 
             }
         }
 

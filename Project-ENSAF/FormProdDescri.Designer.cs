@@ -37,9 +37,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Libelle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateExpiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -50,6 +47,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Libelle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateExpiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supprimer = new System.Windows.Forms.DataGridViewLinkColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -73,7 +74,8 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Libelle,
             this.stock,
-            this.dateExpiration});
+            this.dateExpiration,
+            this.supprimer});
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView1.Location = new System.Drawing.Point(12, 281);
@@ -81,27 +83,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(639, 159);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Libelle
-            // 
-            this.Libelle.HeaderText = "Libellé";
-            this.Libelle.Name = "Libelle";
-            this.Libelle.ReadOnly = true;
-            this.Libelle.Width = 150;
-            // 
-            // stock
-            // 
-            this.stock.HeaderText = "Stock";
-            this.stock.Name = "stock";
-            this.stock.ReadOnly = true;
-            this.stock.Width = 150;
-            // 
-            // dateExpiration
-            // 
-            this.dateExpiration.HeaderText = "Date d\'expiration";
-            this.dateExpiration.Name = "dateExpiration";
-            this.dateExpiration.ReadOnly = true;
-            this.dateExpiration.Width = 148;
             // 
             // label7
             // 
@@ -209,6 +190,37 @@
             this.Action.ReadOnly = true;
             this.Action.Width = 150;
             // 
+            // Libelle
+            // 
+            this.Libelle.HeaderText = "Libellé";
+            this.Libelle.Name = "Libelle";
+            this.Libelle.ReadOnly = true;
+            this.Libelle.Width = 150;
+            // 
+            // stock
+            // 
+            this.stock.HeaderText = "Stock";
+            this.stock.Name = "stock";
+            this.stock.ReadOnly = true;
+            this.stock.Width = 150;
+            // 
+            // dateExpiration
+            // 
+            this.dateExpiration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dateExpiration.HeaderText = "Date d\'expiration";
+            this.dateExpiration.Name = "dateExpiration";
+            this.dateExpiration.ReadOnly = true;
+            // 
+            // supprimer
+            // 
+            this.supprimer.HeaderText = "supprimer";
+            this.supprimer.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.supprimer.LinkColor = System.Drawing.Color.Teal;
+            this.supprimer.Name = "supprimer";
+            this.supprimer.ReadOnly = true;
+            this.supprimer.Text = "Supprimer";
+            this.supprimer.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            // 
             // FormProdDescri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,63 +241,44 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
         private void initCompo(Produit p)
         {
-            InitializeComponent(); 
-            DataGridViewButtonColumn deletebtn = new DataGridViewButtonColumn();
-            deletebtn.Name = "supprimer";
-            deletebtn.Text = "Supprimer";
-            deletebtn.HeaderText = "Action";
-            deletebtn.Width = 120;
-            deletebtn.UseColumnTextForButtonValue = true;
-            deletebtn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            deletebtn.FlatStyle = FlatStyle.Flat;
-            //deletebtn.DefaultCellStyle.BackColor = Color.DarkRed;
-            deletebtn.DefaultCellStyle.ForeColor = Color.WhiteSmoke;
-            dataGridView1.CellClick += dataGridView1_deleteClick;
-            dataGridView1.Columns.Insert(3, deletebtn); 
-      /*      var items = (from p in stock
-                         group p by new { p.dateExpiration } into grp
-                         select new
-                         {
-                             cout = grp.Count(),
-                             first = grp.FirstOrDefault(),
-                             grop = grp.ToList<Produit>()
-                         }).ToArray();*/
-       
-                var db = new dbContext();
-                var stock = db.Produits.Where(prod => prod.libelle == p.libelle).ToList<Produit>();
-                List<Stock_Magazin> stocks = new List<Stock_Magazin>();
-                foreach (var item in stock)
-                {
-                    stocks.Add(db.Stock_Magazin.Where(s => s.codeProduit.Equals(item.codeProduit)).FirstOrDefault<Stock_Magazin>());
-                }  
-           
-
+            InitializeComponent();   
+            this.label4.Text = "Prix d\'achat : " + p.prixAchat;
+            this.label3.Text = "Prix de vente : " + p.prixVente;
+            this.label2.Text = "Description: " + p.description;
+            this.label1.Text = p.libelle;
+            this.pictureBox1.BackgroundImage = p.img != null ? Image.FromStream(new MemoryStream(p.img))
+                                                                              : Properties.Resources.loading_product;
+            refreshDatagrid(p);
+        }
+        public void refreshDatagrid(Produit p)
+        {
+            dataGridView1.Rows.Clear();
+            var db = new dbContext();
+            var stock = db.Produits.Where(prod => prod.libelle == p.libelle).ToList<Produit>();
+            List<Stock_Magazin> stocks = new List<Stock_Magazin>();
+            foreach (var item in stock)
+            {
+                stocks.Add(db.Stock_Magazin.Where(s => s.codeProduit.Equals(item.codeProduit)).FirstOrDefault<Stock_Magazin>());
+            }
             int i = 0;
             foreach (var item in stocks)
             {
                 if (item == null) continue;
-                dataGridView1.Rows.Add();
-                Console.WriteLine("------" +p.libelle);
-                dataGridView1.Rows[i].Cells[0].Value =p.libelle;
+                if (i < stocks.Count - 1) dataGridView1.Rows.Add();
+                Console.WriteLine("------" + p.libelle);
+                dataGridView1.Rows[i].Cells[0].Value = p.libelle;
                 dataGridView1.Rows[i].Cells[1].Value = item.quantite;
-                dataGridView1.Rows[i].Cells[2].Value =db.Produits.Find(item.codeProduit).dateExpiration.ToShortDateString();
-                if (db.Produits.Find(item.codeProduit).dateExpiration.CompareTo(DateTime.Now) < 0) dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 153, 153); 
+                dataGridView1.Rows[i].Cells[2].Value = db.Produits.Find(item.codeProduit).dateExpiration.ToShortDateString();
+                dataGridView1.Rows[i].Cells[3].Value = "Supprimer";
+                if (db.Produits.Find(item.codeProduit).dateExpiration.CompareTo(DateTime.Now) < 0) dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 153, 153);
                 else dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(152, 230, 152);
-
                 i++;
             }
-            i = 0;     
-            this.label4.Text = "Prix d\'achat : "+ stock.First<Produit>().prixAchat;
-            this.label3.Text = "Prix de vente : "+ stock.First<Produit>().prixVente; 
-            this.label2.Text ="Description: "+ stock.First<Produit>().description;
-            this.label1.Text =stock.First<Produit>().libelle; 
-            this.pictureBox1.BackgroundImage = stock.First<Produit>().img != null ? Image.FromStream(new MemoryStream(stock.First<Produit>().img)) 
-                                                                                   : Properties.Resources.loading_product;
-        } 
+            
+        }
         #endregion
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label7;
@@ -297,9 +290,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Libelle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateExpiration;
         private System.Windows.Forms.DataGridViewTextBoxColumn Action;
+        private DataGridViewTextBoxColumn Libelle;
+        private DataGridViewTextBoxColumn stock;
+        private DataGridViewTextBoxColumn dateExpiration;
+        private DataGridViewLinkColumn supprimer;
     }
 }

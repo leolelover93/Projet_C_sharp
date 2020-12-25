@@ -273,10 +273,7 @@ namespace Project_ENSAF
 
         }
 
-        private void bAjoutCommande_Click(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 
 }
