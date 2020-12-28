@@ -80,21 +80,13 @@ namespace Project_ENSAF
                                     img = prodImg,
                                 };
                                 try
-                                { 
+                                {  
+                                    Stock_Magazin stock = new Stock_Magazin();
+                                    stock.codeProduit = p.codeProduit;
+                                    stock.codeMagazin = 1;
+                                    stock.quantite = Convert.ToInt32(tbQuantite.Text);
+                                    db.Stock_Magazin.Add(stock); 
                                     db.Produits.Add(p);
-                                    db.SaveChanges();
-                                    var pr = db.Produits.Where(prod => prod.libelle.Equals(p.libelle)).FirstOrDefault<Produit>();
-                                    var ss= db.Stock_Magazin.Where(st => st.codeProduit.Equals(pr.codeProduit)).FirstOrDefault<Stock_Magazin>();
-                                    if (db.Stock_Magazin.Where(st => st.codeProduit.Equals(pr.codeProduit)).Count() > 0)
-                                    {  
-                                        ss.quantite += Convert.ToInt32(tbQuantite.Text);
-                                    }else { 
-                                        Stock_Magazin stock = new Stock_Magazin();
-                                        stock.codeProduit = p.codeProduit;
-                                        stock.codeMagazin = 1;
-                                        stock.quantite = Convert.ToInt32(tbQuantite.Text);
-                                        db.Stock_Magazin.Add(stock);
-                                    }
                                     db.SaveChanges();
                                     MessageBox.Show("Produit crée avec succès!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     this.Close();
