@@ -93,6 +93,7 @@ namespace Project_ENSAF
                 panelSM_GV.Visible =false; 
                 panelCommandes.Visible = false;
                 panelGestionProduit.Visible = true;
+                btnViewAll_Click(null, null);
 
             }
             if ((sender as Button).Text == "Gestion Ventes")

@@ -22,8 +22,9 @@ namespace Project_ENSAF
             InitializeComponent();
         }
 
+       
 
-    
+
         private void FormPagnierVentes_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)

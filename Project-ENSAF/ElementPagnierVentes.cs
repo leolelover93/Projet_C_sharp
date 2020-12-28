@@ -13,22 +13,21 @@ namespace Project_ENSAF
 {
     public partial class ElementPagnierVentes : UserControl
     {
-       
-        public ElementPagnierVentes()
+        bool closeIconVisbility = true;
+
+
+        public ElementPagnierVentes(bool closeIconVisbility = true)
         {
-         
+            this.closeIconVisbility = closeIconVisbility;
             InitializeComponent();
         }
-        public ElementPagnierVentes(int quantite)
+        public ElementPagnierVentes(int quantite , bool closeIconVisbility = true )
         {
-
+            this.closeIconVisbility = closeIconVisbility;
             InitializeComp(quantite);
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private string _title;
         private string _description;
@@ -148,6 +147,13 @@ namespace Project_ENSAF
           //decimal prix = decimal.Parse(this.PrixTotal.ToString());
             labelNbProduit.Text = numericUpDownQunatite.Value + "";
             labelPrixTotal.Text =  prixUnit*Qpr +"";
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            pictureBox1.Visible = this.closeIconVisbility;
+            numericUpDownQunatite.Visible = this.closeIconVisbility;
+          
         }
     }
 }

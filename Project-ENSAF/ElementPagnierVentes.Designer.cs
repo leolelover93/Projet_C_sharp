@@ -68,6 +68,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(511, 121);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // numericUpDownQunatite
             // 
@@ -153,7 +154,6 @@
             this.labelNbProduit.Size = new System.Drawing.Size(47, 17);
             this.labelNbProduit.TabIndex = 5;
             this.labelNbProduit.Text = "label1";
-            this.labelNbProduit.Click += new System.EventHandler(this.label1_Click);
             // 
             // labelQ
             // 

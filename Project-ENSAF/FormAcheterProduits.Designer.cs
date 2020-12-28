@@ -112,6 +112,7 @@
             // 
             this.dateTimePickerSouhaite.Location = new System.Drawing.Point(115, 7);
             this.dateTimePickerSouhaite.Name = "dateTimePickerSouhaite";
+            this.dateTimePickerSouhaite.MinDate = System.DateTime.Now;
             this.dateTimePickerSouhaite.Size = new System.Drawing.Size(166, 20);
             this.dateTimePickerSouhaite.TabIndex = 4;
             // 

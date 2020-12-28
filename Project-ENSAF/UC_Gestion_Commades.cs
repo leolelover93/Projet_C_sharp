@@ -66,8 +66,8 @@ namespace Project_ENSAF
         }
         private void affecterCommande(object sender, EventArgs e)
         {
-          
-                var dbase = new dbContext();
+            var dbase = new dbContext();
+            List<Commande> list = dbase.Commandes.ToList<Commande>();
             List<int> idfournisseurDansLaCommande = new List<int>();
             foreach (ElementPagnierVentes item in flowLayoutPagnierProduitCommandes.Controls) 
             {
@@ -75,20 +75,21 @@ namespace Project_ENSAF
                              Where(s => s.codeProduit == item.Id).SingleOrDefault();
                 if(p != null && !idfournisseurDansLaCommande.Contains(p.idFournisseur))
                 {
-                    idfournisseurDansLaCommande.Add(p.idFournisseur); 
-                    
+                    idfournisseurDansLaCommande.Add(p.idFournisseur);
+                    Commande CommadeAchaquefournisseur = new Commande()
+                    {
+                        codeMagazin = 1,
+                        dateDemande = DateTime.Now,
+                        dateArriveSouhaite = dateSouhaité.Value,
+                        statut = false,
+                        idFournisseur = idfournisseurDansLaCommande[idfournisseurDansLaCommande.Count - 1]
+                    };
+                    dbase.Commandes.Add(CommadeAchaquefournisseur);
+                    dbase.SaveChanges();
+
                 }
-                Commande CommadeAchaquefournisseur = new Commande()
-                {
-                    codeMagazin = 1,
-                    dateDemande = DateTime.Now,
-                    dateArriveSouhaite = dateSouhaité.Value,
-                    statut = false,
-                    idFournisseur = idfournisseurDansLaCommande[idfournisseurDansLaCommande.Count - 1]
-                };
-                dbase.Commandes.Add(CommadeAchaquefournisseur);
-                dbase.SaveChanges();
-                List<Commande> list = dbase.Commandes.ToList<Commande>();
+               
+                 list = dbase.Commandes.ToList<Commande>();
                 Commande lastOneId = list[list.Count - 1];
                 if(a != null)
                 {
@@ -102,23 +103,17 @@ namespace Project_ENSAF
                     dbase.Produit_commande.Add(pc);
                     dbase.SaveChanges();
                 }
-                refrechDataGrid(list); 
             }
-
+            refrechDataGrid(list);
             if (produitVentes != null)
                 {
-                    produitVentes.Clear();
+                   produitVentes.Clear();
                 }
-                this.flowLayoutPanel1.Controls.Clear();
-                remplireListeProduit();
+                //this.flowLayoutPanel1.Controls.Clear();
+                this.flowLayoutPagnierProduitCommandes.Controls.Clear();
+                //remplireListeProduit();
+                a.Visible = false;
             
-            a.Visible = false;
-
-
-
-
-
-
         }
         private void remplireListeProduit()
         {
@@ -160,11 +155,13 @@ namespace Project_ENSAF
                 pictureBox.Visible = true;
                 labelNbCommande.Visible = true;
                 panelContainerAjouterCommande.Visible = true;
-
+                panelListeCommande.Visible = false;
             }
             else
             {
                 panelContainerAjouterCommande.Visible = false;
+                panelListeCommande.Visible = true;
+
                 (sender as Button).Text = "Ajouter commande";
             }
             if((sender as Button).Text == "Ajouter commande")
@@ -242,8 +239,8 @@ namespace Project_ENSAF
             if (flowLayoutPagnierProduitCommandes.Controls.Count == 0)
             {
                 this.pictureBox.Image = Properties.Resources.open_box;
-               
-
+                labelNbCommande.Text = "0";
+                nbCommandes = 0;
             }
 
         }
@@ -271,6 +268,71 @@ namespace Project_ENSAF
             var queryCommande = db.Commandes.Where(n => n.NCommande.ToString().Contains(searchBar.Text) ).ToList();
             refrechDataGrid(queryCommande);
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == 4)
+            {
+                var db = new dbContext();
+                int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                var commande = db.Commandes.Where(c => c.NCommande == id).FirstOrDefault(); 
+                if(commande != null && commande.statut == false)
+                {
+                    this.AprouveColumn.Text = "Valider";
+                    commande.statut = true;
+                    db.SaveChanges();
+                    dataGridView1.Rows[e.RowIndex].Cells[4].Style.BackColor = Color.Green;
+                    dataGridView1.Rows[e.RowIndex].Cells[4].Style.SelectionBackColor = Color.Green;
+                    dataGridView1.Rows[e.RowIndex].Selected = true;
+                    var produits_commande = db.Produit_commande.Where(p => p.NCommande == id).ToList();
+                    foreach (var item in produits_commande)
+                    {
+
+                        double addDate =(item.Produit.dureeValidite_jour==null)?10:(double)item.Produit.dureeValidite_jour;
+                        DateTime dateExpire = DateTime.Now.AddDays(addDate) ==null? Convert.ToDateTime("07/12/1999") : DateTime.Now.AddDays(addDate);
+                        Produit newProduit = new Produit()
+                        {
+                            idFournisseur = item.Produit.idFournisseur,
+                            libelle = item.Produit.libelle,
+                            prixAchat = item.Produit.prixAchat,
+                            prixVente = item.Produit.prixVente,
+                            dateExpiration = dateExpire,
+                            img = item.Produit.img,
+                            description = item.Produit.description,
+                            dureeValidite_jour = item.Produit.dureeValidite_jour
+                            
+                        };
+                        db.Produits.Add(newProduit);
+                        db.SaveChanges();
+                        List<Produit> list = db.Produits.ToList<Produit>();
+                        Produit lastOneId = list[list.Count - 1];
+                        Stock_Magazin stockNewProduit = new Stock_Magazin()
+                        {
+                            codeMagazin = 1,
+                            codeProduit = lastOneId.codeProduit,
+                            quantite = item.quantite,
+
+                        };
+                        db.Stock_Magazin.Add(stockNewProduit);
+                        db.SaveChanges();
+                    }
+               
+                }
+
+            }
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if(e.ColumnIndex == 3)
+            {
+                var dbase = new dbContext();
+                int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                List<Produit_commande> produits_commande2 = dbase.Produit_commande.Where(p => p.NCommande == id).ToList();
+                FormAfficherPrComma fpv = new FormAfficherPrComma(produits_commande2);
+                fpv.Show();
+            }
         }
     }
 
