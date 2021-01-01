@@ -73,7 +73,7 @@ namespace Project_ENSAF
             {
                 Produit p = dbase.Produits.
                              Where(s => s.codeProduit == item.Id).SingleOrDefault();
-                if(p != null && !idfournisseurDansLaCommande.Contains(p.idFournisseur))
+                if (p != null && !idfournisseurDansLaCommande.Contains(p.idFournisseur))
                 {
                     idfournisseurDansLaCommande.Add(p.idFournisseur);
                     Commande CommadeAchaquefournisseur = new Commande()
@@ -91,7 +91,9 @@ namespace Project_ENSAF
                
                  list = dbase.Commandes.ToList<Commande>();
                 Commande lastOneId = list[list.Count - 1];
-                if(a != null)
+                Form1.SetMessageLog("La commande N " + lastOneId.NCommande + " est commandée du fournisseur N " + p.idFournisseur + "/ " + p.Fournisseur.nomFournisseur +" "+ p.Fournisseur.prenomFournisseur);
+
+                if (a != null)
                 {
                     Produit_commande pc = new Produit_commande()
                     {
@@ -193,7 +195,7 @@ namespace Project_ENSAF
                 elmnt.Description = p.description;
                 elmnt.Quantite = quantiteDemander;
                 elmnt.QuntiteProduit = quantiteDemander+"";
-                elmnt.PrixUnit = p.prixVente;
+                elmnt.PrixUnit = p.prixAchat;
                 elmnt.PrixTotal = p.prixVente * quantiteDemander + "";
                 foreach (Control item in flowLayoutPagnierProduitCommandes.Controls)
                 {
@@ -279,6 +281,7 @@ namespace Project_ENSAF
                 var commande = db.Commandes.Where(c => c.NCommande == id).FirstOrDefault(); 
                 if(commande != null && commande.statut == false)
                 {
+                    Form1.SetMessageLog("La commande N " + commande.NCommande + " est arrivée");
                     this.AprouveColumn.Text = "Valider";
                     commande.statut = true;
                     db.SaveChanges();
