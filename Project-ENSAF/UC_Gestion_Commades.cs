@@ -275,6 +275,7 @@ namespace Project_ENSAF
             if(e.ColumnIndex == 4)
             {
                 var db = new dbContext();
+                if (e.RowIndex < 0) return;
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 var commande = db.Commandes.Where(c => c.NCommande == id).FirstOrDefault(); 
                 if(commande != null && commande.statut == false)
@@ -291,20 +292,6 @@ namespace Project_ENSAF
 
                         double addDate =(item.Produit.dureeValidite_jour==null)?10:(double)item.Produit.dureeValidite_jour;
                         DateTime dateExpire = DateTime.Now.AddDays(addDate) ==null? Convert.ToDateTime("07/12/1999") : DateTime.Now.AddDays(addDate);
-                        Produit newProduit = new Produit()
-                        {
-                            idFournisseur = item.Produit.idFournisseur,
-                            libelle = item.Produit.libelle,
-                            prixAchat = item.Produit.prixAchat,
-                            prixVente = item.Produit.prixVente,
-                            dateExpiration = dateExpire,
-                            img = item.Produit.img,
-                            description = item.Produit.description,
-                            dureeValidite_jour = item.Produit.dureeValidite_jour
-                            
-                        };
-                        db.Produits.Add(newProduit);
-                        db.SaveChanges();
                         List<Produit> list = db.Produits.ToList<Produit>();
                         Produit lastOneId = list[list.Count - 1];
                         Stock_Magazin stockNewProduit = new Stock_Magazin()
@@ -312,6 +299,7 @@ namespace Project_ENSAF
                             codeMagazin = 1,
                             codeProduit = lastOneId.codeProduit,
                             quantite = item.quantite,
+                            dateExpiration= dateExpire
 
                         };
                         db.Stock_Magazin.Add(stockNewProduit);
@@ -327,6 +315,7 @@ namespace Project_ENSAF
         {
             if(e.ColumnIndex == 3)
             {
+                if (e.RowIndex < 0) return;
                 var dbase = new dbContext();
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 List<Produit_commande> produits_commande2 = dbase.Produit_commande.Where(p => p.NCommande == id).ToList();

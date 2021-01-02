@@ -34,8 +34,8 @@ namespace Project_ENSAF
                 try
                 {
                     var db = new dbContext();
-                    var p = db.Produits.Where(prod => prod.libelle == currentProd.libelle);
-                    db.Produits.RemoveRange(p);
+                    var stock2delete = db.Stock_Magazin.Where(st => st.codeProduit.Equals(currentProd.codeProduit)) ;
+                    db.Stock_Magazin.RemoveRange(stock2delete);
                     db.SaveChanges();
                     this.Dispose();
                     // MessageBox.Show("product deleted"); 

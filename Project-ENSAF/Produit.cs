@@ -27,7 +27,6 @@ namespace Project_ENSAF
         public string libelle { get; set; }
         public decimal prixAchat { get; set; }
         public decimal prixVente { get; set; }
-        public System.DateTime dateExpiration { get; set; }
         public byte[] img { get; set; }
         public string description { get; set; }
         public Nullable<int> dureeValidite_jour { get; set; }

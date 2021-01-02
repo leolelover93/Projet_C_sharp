@@ -18,6 +18,7 @@ namespace Project_ENSAF
         public int codeProduit { get; set; }
         public int codeMagazin { get; set; }
         public int quantite { get; set; }
+        public System.DateTime dateExpiration { get; set; }
     
         public virtual Magazin Magazin { get; set; }
         public virtual Produit Produit { get; set; }

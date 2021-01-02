@@ -35,8 +35,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Libelle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateExpiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supprimer = new System.Windows.Forms.DataGridViewLinkColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -47,10 +51,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Libelle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateExpiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supprimer = new System.Windows.Forms.DataGridViewLinkColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -62,27 +62,58 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(217)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(217)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Libelle,
             this.stock,
             this.dateExpiration,
             this.supprimer});
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView1.Location = new System.Drawing.Point(12, 281);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(639, 159);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Libelle
+            // 
+            this.Libelle.HeaderText = "Libellé";
+            this.Libelle.Name = "Libelle";
+            this.Libelle.ReadOnly = true;
+            this.Libelle.Width = 150;
+            // 
+            // stock
+            // 
+            this.stock.HeaderText = "Stock";
+            this.stock.Name = "stock";
+            this.stock.ReadOnly = true;
+            this.stock.Width = 150;
+            // 
+            // dateExpiration
+            // 
+            this.dateExpiration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dateExpiration.HeaderText = "Date d\'expiration";
+            this.dateExpiration.Name = "dateExpiration";
+            this.dateExpiration.ReadOnly = true;
+            // 
+            // supprimer
+            // 
+            this.supprimer.HeaderText = "supprimer";
+            this.supprimer.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.supprimer.LinkColor = System.Drawing.Color.Teal;
+            this.supprimer.Name = "supprimer";
+            this.supprimer.ReadOnly = true;
+            this.supprimer.Text = "Supprimer";
+            this.supprimer.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             // 
             // label7
             // 
@@ -190,37 +221,6 @@
             this.Action.ReadOnly = true;
             this.Action.Width = 150;
             // 
-            // Libelle
-            // 
-            this.Libelle.HeaderText = "Libellé";
-            this.Libelle.Name = "Libelle";
-            this.Libelle.ReadOnly = true;
-            this.Libelle.Width = 150;
-            // 
-            // stock
-            // 
-            this.stock.HeaderText = "Stock";
-            this.stock.Name = "stock";
-            this.stock.ReadOnly = true;
-            this.stock.Width = 150;
-            // 
-            // dateExpiration
-            // 
-            this.dateExpiration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dateExpiration.HeaderText = "Date d\'expiration";
-            this.dateExpiration.Name = "dateExpiration";
-            this.dateExpiration.ReadOnly = true;
-            // 
-            // supprimer
-            // 
-            this.supprimer.HeaderText = "supprimer";
-            this.supprimer.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.supprimer.LinkColor = System.Drawing.Color.Teal;
-            this.supprimer.Name = "supprimer";
-            this.supprimer.ReadOnly = true;
-            this.supprimer.Text = "Supprimer";
-            this.supprimer.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            // 
             // FormProdDescri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,6 +241,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
         private void initCompo(Produit p)
         {
@@ -256,24 +257,19 @@
         public void refreshDatagrid(Produit p)
         {
             dataGridView1.Rows.Clear();
-            var db = new dbContext();
-            var stock = db.Produits.Where(prod => prod.libelle == p.libelle).ToList<Produit>();
-            List<Stock_Magazin> stocks = new List<Stock_Magazin>();
+            var db = new dbContext(); 
+            int i = 0;
+            var stock = db.Stock_Magazin.Where(s => s.codeProduit.Equals(p.codeProduit));
             foreach (var item in stock)
             {
-                stocks.Add(db.Stock_Magazin.Where(s => s.codeProduit.Equals(item.codeProduit)).FirstOrDefault<Stock_Magazin>());
-            }
-            int i = 0;
-            foreach (var item in stocks)
-            {
                 if (item == null) continue;
-                if (i < stocks.Count - 1) dataGridView1.Rows.Add();
+                if (i < stock.Count() - 1) dataGridView1.Rows.Add();
                 Console.WriteLine("------" + p.libelle);
                 dataGridView1.Rows[i].Cells[0].Value = p.libelle;
                 dataGridView1.Rows[i].Cells[1].Value = item.quantite;
-                dataGridView1.Rows[i].Cells[2].Value = db.Produits.Find(item.codeProduit).dateExpiration.ToShortDateString();
+                dataGridView1.Rows[i].Cells[2].Value = item.dateExpiration.ToShortDateString();
                 dataGridView1.Rows[i].Cells[3].Value = "Supprimer";
-                if (db.Produits.Find(item.codeProduit).dateExpiration.CompareTo(DateTime.Now) < 0) dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 153, 153);
+                if (item.dateExpiration.CompareTo(DateTime.Now) < 0) dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 153, 153);
                 else dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(152, 230, 152);
                 i++;
             }

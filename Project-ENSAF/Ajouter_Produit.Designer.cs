@@ -51,6 +51,8 @@
             this.ID_Four = new System.Windows.Forms.Label();
             this.tbDescription = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +74,7 @@
             this.Libe.AutoSize = true;
             this.Libe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Libe.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Libe.Location = new System.Drawing.Point(314, 63);
+            this.Libe.Location = new System.Drawing.Point(317, 101);
             this.Libe.Name = "Libe";
             this.Libe.Size = new System.Drawing.Size(62, 20);
             this.Libe.TabIndex = 3;
@@ -83,7 +85,7 @@
             this.PA.AutoSize = true;
             this.PA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PA.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.PA.Location = new System.Drawing.Point(314, 103);
+            this.PA.Location = new System.Drawing.Point(317, 141);
             this.PA.Name = "PA";
             this.PA.Size = new System.Drawing.Size(100, 20);
             this.PA.TabIndex = 4;
@@ -94,7 +96,7 @@
             this.PV.AutoSize = true;
             this.PV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PV.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.PV.Location = new System.Drawing.Point(314, 143);
+            this.PV.Location = new System.Drawing.Point(317, 181);
             this.PV.Name = "PV";
             this.PV.Size = new System.Drawing.Size(111, 20);
             this.PV.TabIndex = 5;
@@ -105,7 +107,7 @@
             this.DE.AutoSize = true;
             this.DE.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DE.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.DE.Location = new System.Drawing.Point(314, 183);
+            this.DE.Location = new System.Drawing.Point(317, 221);
             this.DE.Name = "DE";
             this.DE.Size = new System.Drawing.Size(134, 20);
             this.DE.TabIndex = 6;
@@ -113,7 +115,8 @@
             // 
             // tbLibelle
             // 
-            this.tbLibelle.Location = new System.Drawing.Point(464, 60);
+            this.tbLibelle.Enabled = false;
+            this.tbLibelle.Location = new System.Drawing.Point(467, 98);
             this.tbLibelle.MinimumSize = new System.Drawing.Size(4, 27);
             this.tbLibelle.Multiline = true;
             this.tbLibelle.Name = "tbLibelle";
@@ -122,7 +125,8 @@
             // 
             // tb_Prix_Achat
             // 
-            this.tb_Prix_Achat.Location = new System.Drawing.Point(464, 100);
+            this.tb_Prix_Achat.Enabled = false;
+            this.tb_Prix_Achat.Location = new System.Drawing.Point(467, 138);
             this.tb_Prix_Achat.MinimumSize = new System.Drawing.Size(4, 27);
             this.tb_Prix_Achat.Multiline = true;
             this.tb_Prix_Achat.Name = "tb_Prix_Achat";
@@ -131,7 +135,8 @@
             // 
             // tb_Prix_Vente
             // 
-            this.tb_Prix_Vente.Location = new System.Drawing.Point(464, 140);
+            this.tb_Prix_Vente.Enabled = false;
+            this.tb_Prix_Vente.Location = new System.Drawing.Point(467, 178);
             this.tb_Prix_Vente.MinimumSize = new System.Drawing.Size(4, 27);
             this.tb_Prix_Vente.Multiline = true;
             this.tb_Prix_Vente.Name = "tb_Prix_Vente";
@@ -145,7 +150,7 @@
             this.Annuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Annuler.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.Annuler.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Annuler.Location = new System.Drawing.Point(414, 351);
+            this.Annuler.Location = new System.Drawing.Point(417, 389);
             this.Annuler.Name = "Annuler";
             this.Annuler.Size = new System.Drawing.Size(94, 32);
             this.Annuler.TabIndex = 13;
@@ -160,7 +165,7 @@
             this.Ajouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Ajouter.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Ajouter.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Ajouter.Location = new System.Drawing.Point(526, 351);
+            this.Ajouter.Location = new System.Drawing.Point(529, 389);
             this.Ajouter.Name = "Ajouter";
             this.Ajouter.Size = new System.Drawing.Size(94, 32);
             this.Ajouter.TabIndex = 16;
@@ -175,33 +180,31 @@
             this.Parcourir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Parcourir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Parcourir.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Parcourir.Location = new System.Drawing.Point(76, 314);
+            this.Parcourir.Location = new System.Drawing.Point(77, 373);
             this.Parcourir.Name = "Parcourir";
             this.Parcourir.Size = new System.Drawing.Size(145, 32);
             this.Parcourir.TabIndex = 17;
             this.Parcourir.Text = "Parcourir...";
             this.Parcourir.UseVisualStyleBackColor = false;
-            this.Parcourir.Click += new System.EventHandler(this.Parcourir_Click);
+            this.Parcourir.Visible = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::Project_ENSAF.Properties.Resources.camera;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(21, 63);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(275, 245);
+            this.pictureBox1.Size = new System.Drawing.Size(275, 294);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.Parcourir_Click);
             // 
             // dateExpirePick
             // 
             this.dateExpirePick.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateExpirePick.Location = new System.Drawing.Point(464, 180);
+            this.dateExpirePick.Location = new System.Drawing.Point(467, 218);
             this.dateExpirePick.MinimumSize = new System.Drawing.Size(4, 27);
             this.dateExpirePick.Name = "dateExpirePick";
             this.dateExpirePick.Size = new System.Drawing.Size(156, 27);
@@ -209,7 +212,7 @@
             // 
             // tbQuantite
             // 
-            this.tbQuantite.Location = new System.Drawing.Point(464, 220);
+            this.tbQuantite.Location = new System.Drawing.Point(467, 258);
             this.tbQuantite.MinimumSize = new System.Drawing.Size(4, 27);
             this.tbQuantite.Multiline = true;
             this.tbQuantite.Name = "tbQuantite";
@@ -222,7 +225,7 @@
             this.lblQuantite.AutoSize = true;
             this.lblQuantite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQuantite.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblQuantite.Location = new System.Drawing.Point(314, 223);
+            this.lblQuantite.Location = new System.Drawing.Point(317, 261);
             this.lblQuantite.Name = "lblQuantite";
             this.lblQuantite.Size = new System.Drawing.Size(78, 20);
             this.lblQuantite.TabIndex = 21;
@@ -231,16 +234,16 @@
             // comboFornisseur
             // 
             this.comboFornisseur.BackColor = System.Drawing.Color.White;
+            this.comboFornisseur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboFornisseur.Enabled = false;
             this.comboFornisseur.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboFornisseur.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboFornisseur.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.comboFornisseur.FormattingEnabled = true;
             this.comboFornisseur.ItemHeight = 18;
-            this.comboFornisseur.Location = new System.Drawing.Point(464, 260);
+            this.comboFornisseur.Location = new System.Drawing.Point(467, 298);
             this.comboFornisseur.Name = "comboFornisseur";
             this.comboFornisseur.Size = new System.Drawing.Size(156, 26);
             this.comboFornisseur.TabIndex = 24;
-            this.comboFornisseur.DropDownStyle = ComboBoxStyle.DropDownList; 
             this.comboFornisseur.SelectedIndexChanged += new System.EventHandler(this.comboFornisseur_SelectedIndexChanged);
             // 
             // ID_Four
@@ -248,7 +251,7 @@
             this.ID_Four.AutoSize = true;
             this.ID_Four.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ID_Four.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ID_Four.Location = new System.Drawing.Point(314, 263);
+            this.ID_Four.Location = new System.Drawing.Point(317, 301);
             this.ID_Four.Name = "ID_Four";
             this.ID_Four.Size = new System.Drawing.Size(101, 20);
             this.ID_Four.TabIndex = 23;
@@ -256,7 +259,8 @@
             // 
             // tbDescription
             // 
-            this.tbDescription.Location = new System.Drawing.Point(464, 295);
+            this.tbDescription.Enabled = false;
+            this.tbDescription.Location = new System.Drawing.Point(467, 333);
             this.tbDescription.MinimumSize = new System.Drawing.Size(4, 27);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
@@ -268,11 +272,36 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(314, 299);
+            this.label1.Location = new System.Drawing.Point(317, 337);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 20);
             this.label1.TabIndex = 25;
             this.label1.Text = "Description :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(317, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 20);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Produit";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.White;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.comboBox1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.comboBox1.ItemHeight = 18;
+            this.comboBox1.Location = new System.Drawing.Point(467, 60);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(156, 26);
+            this.comboBox1.TabIndex = 28;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Form_Ajouter_Produit
             // 
@@ -280,6 +309,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(635, 433);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.tbDescription);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboFornisseur);
@@ -322,7 +353,7 @@
             isNewProd = false;
             try
             {
-                prodImg = p.img;
+                //prodImg = p.img;
                 pictureBox1.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product; 
             }
             catch (System.Exception exc)
@@ -351,5 +382,7 @@
         private System.Windows.Forms.Label ID_Four;
         private System.Windows.Forms.TextBox tbDescription;
         private System.Windows.Forms.Label label1;
+        private Label label2;
+        public ComboBox comboBox1;
     }
 }

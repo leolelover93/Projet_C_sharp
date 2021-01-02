@@ -8,7 +8,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 namespace Project_ENSAF
 {
     public partial class Form1 : Form
-    {
+    { 
         Button previousBtn,prvBtnFilter;
         FormPagnierVentes a;
         FormAcheterProduits b;
@@ -18,7 +18,7 @@ namespace Project_ENSAF
         FlowLayoutPanel flowLayoutPagnierProduitVentes;
         public List<Produit> produitVentes = new List<Produit>();
         List<Produit> listeProduitsPagnier = new List<Produit>();
-        dbContext db; 
+        dbContext db=new dbContext(); 
 
         public Form1()
         {
@@ -27,38 +27,21 @@ namespace Project_ENSAF
             checkedLinePanel.Top = BtnGestionProduits.Top;
             try
             {
-                db = new dbContext();
-                produitVentes = db.Produits.ToList<Produit>();
-                //groupin by libelle
-                var query = (from p in db.Produits
-                             group p by new { p.libelle, } into grp
-                             select new { first = grp.FirstOrDefault() });
-                int quantity = 0; 
-                if (query.Count()>0)
-                {
-                    foreach (var elm in query)
-                    {
-                        foreach (var s in db.Stock_Magazin)
-                        {
-                            if (db.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
-                        }
-                        this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
-                        quantity = 0;
-                    }
-                } 
+                btnViewAll_Click(null, null);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erreur de connection! " + ex.Message);
+                MessageBox.Show("Erreur de connection a la base de donnees! solutions proposés:\n-Verifier le server de db\n-verifier si la db existe deja\n " + ex.Message);
                 this.Close();
             }
-            
-
         }  
         private void Form1_Load(object sender, EventArgs e)
         { 
             panelGestionVentes.Visible = false; 
+            panelGestionVentes.Visible = false;
+            panelSM_GV.Visible = false;
             panelCommandes.Visible = false;
+            panelGestionProduit.Visible = true;
             prvBtnFilter = btnViewAll;
             btnViewAll.BackColor = Color.FromArgb(72, 152, 207);
             btnViewAll.ForeColor = Color.White;
@@ -101,30 +84,22 @@ namespace Project_ENSAF
                 panelGestionProduit.Visible = false;
                 panelCommandes.Visible = false;
                 panelGestionVentes.Visible = true;
-                panelSM_GV.Visible = true;
-                
+                panelSM_GV.Visible = true; 
                 var dbase = new dbContext();
-                var NonExpireProds = dbase.Produits
-                        .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) > 0)
-                        .ToList<Produit>();
-                var query = (from p in NonExpireProds
-                                group p by new { p.libelle, } into grp
-                                select new { first = grp.FirstOrDefault(), all = grp.ToList<Produit>() });
-                int quantity = 0;
+                var NonExpireStock = dbase.Stock_Magazin
+                        .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) > 0).ToList<Stock_Magazin>();
                 produitVentes.Clear();
-                flowLayoutPanelVente.Controls.Clear();
-                foreach (var elm in query)
+                foreach (var st in NonExpireStock) //fetch non expired products from stock
                 {
-                    produitVentes.Add(elm.first);
-                    foreach (var s in dbase.Stock_Magazin)
-                    {
-                        if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>() != null)
-                        {
-                            if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>().libelle.Equals(elm.first.libelle))
-                                quantity += s.quantite;
-                        }
-                    }
-                    this.flowLayoutPanelVente.Controls.Add(new produit_Vente(elm.first,quantity));
+                    if (dbase.Produits.Find(st.codeProduit)==null) continue;
+                    produitVentes.Add( dbase.Produits.Find(st.codeProduit) );
+                }
+                flowLayoutPanelVente.Controls.Clear();
+                int quantity = 0;
+                foreach (var prod in produitVentes)
+                {
+                    quantity = NonExpireStock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk=>stk.quantite);
+                    this.flowLayoutPanelVente.Controls.Add(new produit_Vente(prod, quantity));
                     quantity = 0;
                 }
                 if (a == null)
@@ -197,55 +172,47 @@ namespace Project_ENSAF
         public void btnViewAll_Click(object sender, EventArgs e)
         {
             if (sender !=null) filter_style_click( sender,  e);  
-            produitVentes = new List<Produit>();
             var dbase = new dbContext();//fix alot of stuff
-            var query = (from p in dbase.Produits
-                         group p by new { p.libelle, } into grp
-                         select new { first = grp.FirstOrDefault() });
             int quantity = 0;
-            flowLayoutPanel1.Controls.Clear();
-            foreach (var elm in query)
+            produitVentes.Clear();
+            produitVentes = dbase.Produits.ToList<Produit>();
+            flowLayoutPanel1.Controls.Clear(); 
+            if (dbase.Produits.Count() > 0)
             {
-                produitVentes.Add(elm.first);
-                foreach (var s in dbase.Stock_Magazin)
+                foreach (var produit in dbase.Produits)
                 {
-                    if (dbase.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
+                    quantity = dbase.Stock_Magazin.ToList<Stock_Magazin>()
+                               .FindAll(s => s.codeProduit.Equals(produit.codeProduit))
+                               .Sum(stk => stk.quantite);
+                    if (quantity > 0)
+                        this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit, this, quantity));
+                    quantity = 0;
                 }
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
-                quantity = 0;
+                
             }
         }
         public void btnDisponible_Click(object sender, EventArgs e)
         { 
             if (sender != null) filter_style_click(sender, e);
             var dbase = new dbContext();
-            var NonExpireProds = dbase.Produits
-                   .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) > 0)
-                   .ToList<Produit>(); 
-            var query = (from p in NonExpireProds
-                         group p by new { p.libelle, } into grp
-                         select new { first = grp.FirstOrDefault(), all = grp.ToList<Produit>() });
+            var NonExpireStock = dbase.Stock_Magazin
+                    .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) > 0)
+                    .ToList<Stock_Magazin>();
             int quantity = 0;
             produitVentes.Clear();
-            flowLayoutPanel1.Controls.Clear();
-            foreach (var elm in query)
+            foreach (var st in NonExpireStock) //fetch non expired products from stock
             {
-                produitVentes.Add(elm.first);
-                foreach (var s in dbase.Stock_Magazin)
-                {
-                    if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>() != null)
-                    {
-                        if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>().libelle.Equals(elm.first.libelle))
-                            quantity += s.quantite;
-                    }
-                }
-                if(quantity>0)
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
-                quantity = 0;
+                if (dbase.Produits.Find(st.codeProduit) == null) continue;
+                    produitVentes.Add(dbase.Produits.Find(st.codeProduit));
             }
-
-                
-
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var prod in produitVentes)//somme des quantités des stocks de chaque prod
+            {
+                quantity = NonExpireStock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk => stk.quantite);
+                if (quantity > 0)
+                    this.flowLayoutPanel1.Controls.Add(new produit_cardUC(prod, this, quantity));
+                quantity = 0;
+            } 
         } 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         { 
@@ -276,29 +243,22 @@ namespace Project_ENSAF
         {
             if (sender != null) filter_style_click(sender, e);
             var dbase = new dbContext();
-            var NonExpireProds = dbase.Produits
-                    .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) < 0)
-                    .ToList<Produit>();
-            var query = (from p in NonExpireProds
-                         group p by new { p.libelle, } into grp
-                         select new { first = grp.FirstOrDefault(), all=grp.ToList<Produit>() });
+            var ExpiredStock = dbase.Stock_Magazin
+                    .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) < 0).ToList<Stock_Magazin>();
             int quantity = 0;
             produitVentes.Clear();
-            flowLayoutPanel1.Controls.Clear();
-            foreach (var elm in query)
+            foreach (var st in ExpiredStock) //fetch expired products from stock
             {
-                produitVentes.Add(elm.first);
-                foreach (var s in dbase.Stock_Magazin)
-                {
-                    if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>() != null)
-                    {
-                        if (elm.all.Where(p => p.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>().libelle.Equals(elm.first.libelle))
-                        quantity += s.quantite;  
-                    }
-                }
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
-                quantity = 0;
+                if (dbase.Produits.Find(st.codeProduit) != null)
+                    produitVentes.Add(dbase.Produits.Find(st.codeProduit));
             }
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var prod in produitVentes)//somme des quantités des stocks de chaque prod
+            {
+                quantity = ExpiredStock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk => stk.quantite);
+                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(prod, this, quantity));
+                quantity = 0;
+            } 
         }  
         private void btnViderPanger_Click(object sender, EventArgs e)
         {
@@ -410,11 +370,11 @@ namespace Project_ENSAF
 
         private void buttonSM_JVentes_Click(object sender, EventArgs e)
         {
-
             panelContainerSM_GV_V.Visible = false;
             panelContainerSM_GV_JV.Visible = true;  
             dataGridView1.Visible = false;
             dataGridView2.Visible = false;
+            var db = new dbContext();
             var ventes_liste = db.Vente_magazin.OrderBy(s => s.dateVente).ToList();
             try
             {
@@ -444,6 +404,7 @@ namespace Project_ENSAF
 
         private void buttonJournalVentes_Click(object sender, EventArgs e)
          {
+            var db = new dbContext();
             if (!checkBoxTableu.Checked && !checkBoxGraphique.Checked && !radioButtonGain.Checked && !radioButtonPerte.Checked)
             {
                 checkBoxGraphique.Checked = true;
@@ -513,8 +474,6 @@ namespace Project_ENSAF
                     chart2.Location = new Point(20, chart2.Location.Y);
                     dataGridView2.Width = chart2.Width;
                     dataGridView2.Location = new Point(chart2.Location.X, chart2.Location.Y + chart2.Height + 8);
-
-
                 }
             }
             if(checkBoxTableu.Checked && checkBoxGraphique.Checked)
@@ -525,8 +484,7 @@ namespace Project_ENSAF
                 dataGridView1.Location = new Point(chart1.Location.X, chart1.Location.Y + chart1.Height + 8);
                 dataGridView2.Location = new Point(chart2.Location.X, chart2.Location.Y + chart2.Height + 8);
             }
-            //For the responsivness of the dataGridView and the Charts---EndBloc#x1
-
+            //For the responsivness of the dataGridView and the Charts---EndBloc#x1 
             if (dateTimePickerD.Value.Date > dateTimePickerE.Value.Date)
                 {
                     DateTime temp = dateTimePickerD.Value.Date;
@@ -586,49 +544,47 @@ namespace Project_ENSAF
             {
                 MessageBox.Show("Aucaun donné à affciher de"+dateTimePickerD.Value.Date.ToString("dd/MM/yyyy")+"-"+dateTimePickerE.Value.Date.ToString("dd/MM/yyyy"), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 labelErrorGraph.Text = "No Data To show";
-            }
-            produitVentes = db.Produits
-                .Where(p => DateTime.Compare(p.dateExpiration, DateTime.Now) < 0)
-                .ToList<Produit>();
-                int j = 0, totalQNonDispo = 0;
-                decimal totalPerte = 0;
-                int fix = 1;
-                foreach (var item in produitVentes)
+            }  
+            var ExpiredStock = db.Stock_Magazin
+                   .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) < 0).ToList<Stock_Magazin>();
+            produitVentes.Clear();
+            foreach (var st in ExpiredStock) //fetch expired products from stock
+            {
+                if (db.Produits.Find(st.codeProduit) != null)
+                    produitVentes.Add(db.Produits.Find(st.codeProduit));
+            } 
+            int j = 0, totalQNonDispo = 0;
+            decimal totalPerte = 0;
+            int fix = 1;
+            foreach (var item in produitVentes)//somme des quantités de chaque produit expiré
+            {
+                var countInStock = db.Stock_Magazin.ToList<Stock_Magazin>()
+                                    .FindAll(s => s.codeProduit.Equals(item.codeProduit))
+                                    .Sum(stk => stk.quantite);
+                if (countInStock != 0)
                 {
-                    var countInStock = db.Stock_Magazin
-                                    .Where(s => s.codeProduit == item.codeProduit)
-                                     .Select(p => p.quantite).FirstOrDefault();
-                    if (countInStock != 0)
+                    DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[j].Clone();
+                    if (dataGridView2.Columns.Contains(item.libelle))
                     {
-                     DataGridViewRow row = (DataGridViewRow)dataGridView2.Rows[j].Clone();
-                     if (dataGridView2.Columns.Contains(item.libelle))
-                        {
-                            row.Cells[0].Value = item.libelle + "-" + fix;
-                            fix++;
-                        }
-                        else
-                        {
-                           row.Cells[0].Value = item.libelle;
-
-                        }
-                        totalQNonDispo++;
-                        totalPerte += countInStock * item.prixAchat;
-                       row.Cells[1].Value = countInStock * item.prixAchat;
-                        j++;
-                         dataGridView2.Rows.Add(row);
-                        
-                        chart2.Series["Series1"].Points.AddXY(countInStock, countInStock * item.prixAchat);
-
+                        row.Cells[0].Value = item.libelle + "-" + fix;
+                        fix++;
                     }
-
+                    else
+                    {
+                        row.Cells[0].Value = item.libelle;
+                    }
+                    totalQNonDispo++;
+                    totalPerte += countInStock * item.prixAchat;
+                    row.Cells[1].Value = countInStock * item.prixAchat;
+                    j++;
+                        dataGridView2.Rows.Add(row);
+                        
+                    chart2.Series["Series1"].Points.AddXY(countInStock, countInStock * item.prixAchat);
                 }
-                chart2.ChartAreas[0].AxisX.Title = "Pertes(dhs)";
-                chart2.ChartAreas[0].AxisY.Title = "QuntiteChaqueProduitNonDisponible";
-                labelTotalPerte.Text = "Perts Totale :"+totalPerte + "---" + totalQNonDispo + " produits";
-               
-           
-           
-
+            }
+            chart2.ChartAreas[0].AxisX.Title = "Pertes(dhs)";
+            chart2.ChartAreas[0].AxisY.Title = "QuntiteChaqueProduitNonDisponible";
+            labelTotalPerte.Text = "Perts Totale :"+totalPerte + "---" + totalQNonDispo + " produits"; 
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -669,19 +625,10 @@ namespace Project_ENSAF
                 chart2.Location = new Point(20, chart2.Location.Y);
                 dataGridView2.Width = chart2.Width;
                 dataGridView2.Location = new Point(chart2.Location.X, chart2.Location.Y + chart2.Height + 8);
-
             }
-
-
-        }
-
-   
-
-       
-
+        } 
         private void checkBoxGraphique_CheckedChanged(object sender, EventArgs e)
         {
-        
             if((sender as CheckBox).Name == "checkBoxTous")
             {
                 if((sender as CheckBox).Checked)
@@ -713,8 +660,6 @@ namespace Project_ENSAF
         {
             checkBoxGraphique.Checked = checkBoxTableu.Checked = false;
         }
-
-
         private void handel2_AfterCloseForm(object sender, EventArgs e)
         {
             if (a.Visible == false)
@@ -729,13 +674,7 @@ namespace Project_ENSAF
                 flowLayoutPanelVente.Controls.Clear();
                 button1_Click(BtnGestionVentes, e);
                 flowLayoutPanelVente.Refresh();
-
             }
-
-
         }
-
-
-
     }
 }

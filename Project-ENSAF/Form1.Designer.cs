@@ -250,9 +250,9 @@
             // panelContainer
             // 
             this.panelContainer.BackColor = System.Drawing.Color.Transparent;
+            this.panelContainer.Controls.Add(this.panelSM_GV);
             this.panelContainer.Controls.Add(this.panelGestionProduit);
             this.panelContainer.Controls.Add(this.panelCommandes);
-            this.panelContainer.Controls.Add(this.panelSM_GV);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(201, 0);
             this.panelContainer.Name = "panelContainer";
@@ -411,9 +411,9 @@
             // panelSM_GV
             // 
             this.panelSM_GV.BackColor = System.Drawing.Color.Transparent;
+            this.panelSM_GV.Controls.Add(this.panelContainerSM_GV_JV);
             this.panelSM_GV.Controls.Add(this.panelContainerSM_GV_V);
             this.panelSM_GV.Controls.Add(this.panelBottom_SM_GV_JV);
-            this.panelSM_GV.Controls.Add(this.panelContainerSM_GV_JV);
             this.panelSM_GV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSM_GV.Location = new System.Drawing.Point(0, 0);
             this.panelSM_GV.Name = "panelSM_GV";
@@ -615,7 +615,7 @@
             this.panelContainerSM_GV_JV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainerSM_GV_JV.Location = new System.Drawing.Point(0, 0);
             this.panelContainerSM_GV_JV.Name = "panelContainerSM_GV_JV";
-            this.panelContainerSM_GV_JV.Size = new System.Drawing.Size(750, 499);
+            this.panelContainerSM_GV_JV.Size = new System.Drawing.Size(750, 467);
             this.panelContainerSM_GV_JV.TabIndex = 0;
             // 
             // panel4
@@ -633,7 +633,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 55);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(750, 444);
+            this.panel4.Size = new System.Drawing.Size(750, 412);
             this.panel4.TabIndex = 4;
             // 
             // panelContainerLabelGraphe2

@@ -135,7 +135,7 @@ namespace Project_ENSAF
                 MessageBox.Show($"Probléme dans BaseDonné (Stock) ", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
-            MessageBox.Show("facture aded");
+            MessageBox.Show("Facture réglé!");
             listElementPagnier.Clear();
             flowLayoutPanel1.Controls.Clear();
             this.Visible = false;

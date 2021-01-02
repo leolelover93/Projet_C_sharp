@@ -19,14 +19,13 @@ namespace Project_ENSAF
             if (e.ColumnIndex == 3)
             { 
                 if (e.RowIndex < 0) return;
-                DateTime date = DateTime.Parse(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value.ToString());
                 try
                 {
                     var db = new dbContext();
-                    var q = db.Produits.Where(p => p.dateExpiration.Day == date.Day && p.dateExpiration.Month == date.Month && p.dateExpiration.Year == date.Year);
-                    Produit pr = q.First<Produit>();
-                    db.Produits.Remove(pr);
-                    db.SaveChanges();
+                    var stock = db.Stock_Magazin.Where(s => s.codeProduit.Equals(currentProd.codeProduit));
+                    var stk2delete = stock.ToList<Stock_Magazin>()[e.RowIndex];
+                    db.Stock_Magazin.Remove(stk2delete);
+                    db.SaveChanges(); 
                     refreshDatagrid(currentProd); 
                     DialogResult res = MessageBox.Show("Stock supprimé!", "Supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
