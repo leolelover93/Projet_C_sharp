@@ -36,10 +36,11 @@ namespace Project_ENSAF
             }
         }  
         private void FormProdDescri_FormClosing(object sender, FormClosingEventArgs e)
-        { 
-            formParent.btnNonDisponible_Click(null, null);
-            formParent.btnDisponible_Click(null, null);
-            formParent.btnViewAll_Click(null, null);
+        {  
+            //refrech flowlayoutpanel1
+            if (formParent.filter == 0) formParent.btnViewAll_Click(null, null);
+            else if (formParent.filter == 1) formParent.btnDisponible_Click(null, null);
+            else if (formParent.filter == 2) formParent.btnNonDisponible_Click(null, null);
         }
     }
 }

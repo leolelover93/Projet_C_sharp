@@ -3,9 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using System.Linq;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading;
+using System.Collections.Generic; 
 using System.Windows.Forms.DataVisualization.Charting;
 namespace Project_ENSAF
 {
@@ -21,7 +19,7 @@ namespace Project_ENSAF
         public List<Produit> produitVentes = new List<Produit>();
         List<Produit> listeProduitsPagnier = new List<Produit>();
         dbContext db=new dbContext();
-        int filter = 0;
+        public int filter = 0;
         public Form1()
         {
             InitializeComponent();
@@ -69,12 +67,7 @@ namespace Project_ENSAF
             dataGridView2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridView2.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 151, 255);
             dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-
-           
-
-           
-
-
+            SetMessageLog("Utilisateur connecté");
         }
 
         public static void SetMessageLog(String msg)
@@ -130,21 +123,20 @@ namespace Project_ENSAF
                 panelSM_GV.Visible = true; 
                 var dbase = new dbContext();
                 var NonExpireStock = dbase.Stock_Magazin
-                        .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) > 0).ToList<Stock_Magazin>();
+                        .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) > 0)
+                        .GroupBy(st => st.codeProduit, (key, g) => new { grp = g.ToList<Stock_Magazin>() });
+                int quantity = 0;
                 produitVentes.Clear();
+                flowLayoutPanelVente.Controls.Clear();
                 foreach (var st in NonExpireStock) //fetch non expired products from stock
                 {
-                    if (dbase.Produits.Find(st.codeProduit)==null) continue;
-                    produitVentes.Add( dbase.Produits.Find(st.codeProduit) );
-                }
-                flowLayoutPanelVente.Controls.Clear();
-                int quantity = 0;
-                foreach (var prod in produitVentes)
-                {
-                    quantity = NonExpireStock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk=>stk.quantite);
-                    this.flowLayoutPanelVente.Controls.Add(new produit_Vente(prod, quantity));
+                    Produit p = dbase.Produits.Find(st.grp.FirstOrDefault().codeProduit);
+                    if (p==null) continue;
+                    produitVentes.Add(p);
+                    quantity = st.grp.Sum(stk => stk.quantite);
+                    if(quantity>0) this.flowLayoutPanelVente.Controls.Add(new produit_Vente(p, quantity));
                     quantity = 0;
-                }
+                } 
                 if (a == null)
                 {
                     a = new FormPagnierVentes();
@@ -249,26 +241,23 @@ namespace Project_ENSAF
         public void btnDisponible_Click(object sender, EventArgs e)
         { 
             if (sender != null) filter_style_click(sender, e);
-            filter = 1; //display non expired products
+            filter = 1; //display non expired products 
             var dbase = new dbContext();
             var NonExpireStock = dbase.Stock_Magazin
                     .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) > 0)
-                    .ToList<Stock_Magazin>();
+                    .GroupBy(st => st.codeProduit, (key, g) => new { grp = g.ToList<Stock_Magazin>() });
             int quantity = 0;
             produitVentes.Clear();
+            flowLayoutPanel1.Controls.Clear();
             foreach (var st in NonExpireStock) //fetch non expired products from stock
             {
-                if (dbase.Produits.Find(st.codeProduit) == null) continue;
-                    produitVentes.Add(dbase.Produits.Find(st.codeProduit));
-            }
-            flowLayoutPanel1.Controls.Clear(); 
-            foreach (var prod in produitVentes)//somme des quantités des stocks de chaque prod
-            {
-                quantity = NonExpireStock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk => stk.quantite);
-                if (quantity > 0)
-                    this.flowLayoutPanel1.Controls.Add(new produit_cardUC(prod, this, quantity));
+                Produit p = dbase.Produits.Find(st.grp.FirstOrDefault().codeProduit);
+                if (p == null) continue;
+                produitVentes.Add(p);
+                quantity = st.grp.Sum(stk => stk.quantite);
+                if (quantity > 0) this.flowLayoutPanel1.Controls.Add(new produit_cardUC(p, this, quantity));
                 quantity = 0;
-            } 
+            }
         } 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         { 

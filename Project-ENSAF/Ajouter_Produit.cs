@@ -66,7 +66,10 @@ namespace Project_ENSAF
                         db.SaveChanges();
                         MessageBox.Show("Produit ajouté!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
-                        formParent.btnViewAll_Click(null, null);  
+                       //refrech flowlayoutpanel1
+                        if(formParent.filter==0) formParent.btnViewAll_Click(null, null);
+                        else if (formParent.filter == 1) formParent.btnDisponible_Click(null, null);
+                        else if (formParent.filter == 2) formParent.btnNonDisponible_Click(null, null);
                     }
                     catch (Exception exc)
                     {
