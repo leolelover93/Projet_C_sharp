@@ -4,14 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="da14b8ddc0ed4898bcbc2ed0ba8861a3" Name="Diagram1">
+      <Diagram DiagramId="fbcccf3ec74246379e393b019269376e" Name="Diagram1">
         <EntityTypeShape EntityType="projetModel.Commande" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="projetModel.Fournisseur" Width="1.5" PointX="0.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetModel.Fournisseur" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="projetModel.Magazin" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="projetModel.Produit" Width="1.5" PointX="2.625" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetModel.Produit" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="projetModel.Produit_commande" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="projetModel.Stock_Magazin" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="projetModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="projetModel.Vente_magazin" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
         <AssociationConnector Association="projetModel.FK_Commande_Magazin" ManuallyRouted="false" />
         <AssociationConnector Association="projetModel.FK_Produit_commande_Commande" ManuallyRouted="false" />

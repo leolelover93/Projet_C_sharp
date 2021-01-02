@@ -15,7 +15,7 @@ namespace Project_ENSAF
     {
         private int idProduit;
         private int quntite;
-        private bool test; 
+        private bool DansPanelCommande; 
 
         public int Quantite
         {
@@ -33,7 +33,7 @@ namespace Project_ENSAF
         }
         public produit_Vente(Produit p,int quantite,bool test=false)
         {
-            this.test = test;
+            this.DansPanelCommande = test;
             this.idProduit = p.codeProduit;
             this.Quantite = quantite;
             InitializeComp(p,quantite,test);
@@ -46,7 +46,7 @@ namespace Project_ENSAF
         }
         private void btnReadMore_Click(object sender, EventArgs e)
         {
-            if(this.Quantite > 0 && !this.test)
+            if(this.Quantite > 0 && !this.DansPanelCommande)
             {
                 Control[] tabElment = this.Parent.Parent.Parent.Controls.Find("listBoxItemProduct", true);
                 Label label = (Label)tabElment[0];
@@ -61,6 +61,8 @@ namespace Project_ENSAF
                 if (label.Text == (this.idProduit.ToString() + " " + numericUpDownQauntite.Value)) label.Text = "";
                 label.Text = (this.idProduit.ToString() + " " + numericUpDownQauntite.Value);
             }
+
+
         }
 
        

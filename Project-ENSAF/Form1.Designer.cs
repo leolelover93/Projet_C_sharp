@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title11 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title12 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
@@ -105,6 +105,7 @@
             this.buttonSM_JVentes = new System.Windows.Forms.Button();
             this.buttonSM_Ventes = new System.Windows.Forms.Button();
             this.panelCommandes = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             this.panelContainer.SuspendLayout();
@@ -130,6 +131,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBasket)).BeginInit();
             this.panelBottom_SM_GV_JV.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox1.Image = global::Project_ENSAF.Properties.Resources.log_file;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 452);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 35);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.LogAll_click);
             // 
             // panel1
             // 
@@ -252,9 +266,9 @@
             // panelContainer
             // 
             this.panelContainer.BackColor = System.Drawing.Color.Transparent;
-            this.panelContainer.Controls.Add(this.panelGestionProduit);
             this.panelContainer.Controls.Add(this.panelSM_GV);
             this.panelContainer.Controls.Add(this.panelCommandes);
+            this.panelContainer.Controls.Add(this.panelGestionProduit);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(201, 0);
             this.panelContainer.Name = "panelContainer";
@@ -380,7 +394,7 @@
             this.btnAjouterProduit.Margin = new System.Windows.Forms.Padding(0);
             this.btnAjouterProduit.MaximumSize = new System.Drawing.Size(0, 31);
             this.btnAjouterProduit.Name = "btnAjouterProduit";
-            this.btnAjouterProduit.Size = new System.Drawing.Size(0, 29);
+            this.btnAjouterProduit.Size = new System.Drawing.Size(120, 29);
             this.btnAjouterProduit.TabIndex = 0;
             this.btnAjouterProduit.Text = " Ajouter Prdouit";
             this.btnAjouterProduit.UseVisualStyleBackColor = false;
@@ -404,9 +418,9 @@
             // panelSM_GV
             // 
             this.panelSM_GV.BackColor = System.Drawing.Color.Transparent;
-            this.panelSM_GV.Controls.Add(this.panelContainerSM_GV_JV);
             this.panelSM_GV.Controls.Add(this.panelContainerSM_GV_V);
             this.panelSM_GV.Controls.Add(this.panelBottom_SM_GV_JV);
+            this.panelSM_GV.Controls.Add(this.panelContainerSM_GV_JV);
             this.panelSM_GV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSM_GV.Location = new System.Drawing.Point(0, 0);
             this.panelSM_GV.Name = "panelSM_GV";
@@ -422,7 +436,7 @@
             this.panelContainerSM_GV_JV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainerSM_GV_JV.Location = new System.Drawing.Point(0, 0);
             this.panelContainerSM_GV_JV.Name = "panelContainerSM_GV_JV";
-            this.panelContainerSM_GV_JV.Size = new System.Drawing.Size(750, 467);
+            this.panelContainerSM_GV_JV.Size = new System.Drawing.Size(750, 499);
             this.panelContainerSM_GV_JV.TabIndex = 0;
             // 
             // panel4
@@ -440,7 +454,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 55);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(750, 412);
+            this.panel4.Size = new System.Drawing.Size(750, 444);
             this.panel4.TabIndex = 4;
             // 
             // panelContainerLabelGraphe2
@@ -501,10 +515,10 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle1.NullValue = "0";
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle16.NullValue = "0";
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridView2.Size = new System.Drawing.Size(342, 479);
             this.dataGridView2.TabIndex = 31;
             // 
@@ -535,25 +549,25 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
             this.dataGridView1.Location = new System.Drawing.Point(20, 411);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.NullValue = "0";
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.NullValue = "0";
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dataGridView1.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowTemplate.Height = 21;
@@ -585,41 +599,41 @@
             // 
             // chart2
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
+            chartArea11.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea11);
             this.chart2.Location = new System.Drawing.Point(370, 132);
             this.chart2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 4;
-            this.chart2.Series.Add(series1);
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            series11.Name = "Series1";
+            series11.YValuesPerPoint = 4;
+            this.chart2.Series.Add(series11);
             this.chart2.Size = new System.Drawing.Size(342, 264);
             this.chart2.TabIndex = 29;
             this.chart2.Text = "chart2";
-            title1.Name = "Title1";
-            this.chart2.Titles.Add(title1);
+            title11.Name = "Title1";
+            this.chart2.Titles.Add(title11);
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea12.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea12);
             this.chart1.Location = new System.Drawing.Point(20, 132);
             this.chart1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series2.ChartArea = "ChartArea1";
-            series2.Name = "Series1";
-            series2.ToolTip = "DirectionDate-->";
-            series2.YValuesPerPoint = 4;
-            this.chart1.Series.Add(series2);
+            series12.ChartArea = "ChartArea1";
+            series12.Name = "Series1";
+            series12.ToolTip = "DirectionDate-->";
+            series12.YValuesPerPoint = 4;
+            this.chart1.Series.Add(series12);
             this.chart1.Size = new System.Drawing.Size(333, 264);
             this.chart1.TabIndex = 28;
             this.chart1.Text = "chart1";
-            title2.Name = "Title1";
-            this.chart1.Titles.Add(title2);
+            title12.Name = "Title1";
+            this.chart1.Titles.Add(title12);
             // 
             // groupBoxAffichageJV
             // 
@@ -793,8 +807,7 @@
             // 
             // labelTitreJV
             // 
-            this.labelTitreJV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.labelTitreJV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTitreJV.AutoSize = true;
             this.labelTitreJV.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -933,6 +946,7 @@
             this.flowLayoutPanelVente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanelVente.Location = new System.Drawing.Point(0, 55);
             this.flowLayoutPanelVente.Name = "flowLayoutPanelVente";
+            this.flowLayoutPanelVente.Padding = new System.Windows.Forms.Padding(10, 2, 5, 10);
             this.flowLayoutPanelVente.Size = new System.Drawing.Size(750, 412);
             this.flowLayoutPanelVente.TabIndex = 3;
             // 
@@ -957,9 +971,9 @@
             // 
             // buttonSM_JVentes
             // 
+            this.buttonSM_JVentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSM_JVentes.BackColor = System.Drawing.Color.White;
             this.buttonSM_JVentes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSM_JVentes.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonSM_JVentes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.buttonSM_JVentes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.buttonSM_JVentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -977,7 +991,6 @@
             // 
             this.buttonSM_Ventes.BackColor = System.Drawing.Color.White;
             this.buttonSM_Ventes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSM_Ventes.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonSM_Ventes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.buttonSM_Ventes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.buttonSM_Ventes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -999,19 +1012,6 @@
             this.panelCommandes.Name = "panelCommandes";
             this.panelCommandes.Size = new System.Drawing.Size(750, 499);
             this.panelCommandes.TabIndex = 8;
-
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox1.Image = global::Project_ENSAF.Properties.Resources.log_file;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 452);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 35);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.LogAll_click);
             // 
             // Form1
             // 
@@ -1026,6 +1026,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.LogoPanel.ResumeLayout(false);
             this.LogoPanel.PerformLayout();

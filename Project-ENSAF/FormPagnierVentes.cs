@@ -93,7 +93,7 @@ namespace Project_ENSAF
             foreach(ElementPagnierVentes item in listElementPagnier)
             {
                 var Stock_Prod = db.Stock_Magazin.
-                             Where(s => s.codeProduit == item.Id).SingleOrDefault();
+                             Where(s => (s.codeProduit == item.Id) &&( DateTime.Compare(s.dateExpiration, DateTime.Now) > 0)).FirstOrDefault<Stock_Magazin>();
                 if(Stock_Prod != null)
                 {
                     _gain += item.Gain;

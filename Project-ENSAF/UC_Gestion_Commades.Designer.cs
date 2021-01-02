@@ -31,15 +31,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Gestion_Commades));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.labelNbCommande = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.panelSearchBox = new System.Windows.Forms.Panel();
-            this.buttonSearchGP = new System.Windows.Forms.Button();
             this.searchBar = new System.Windows.Forms.TextBox();
             this.bAjoutCommande = new System.Windows.Forms.Button();
             this.panelContainerAjouterCommande = new System.Windows.Forms.Panel();
@@ -52,6 +50,7 @@
             this.dateArriveSouhaiteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produitcommandeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewLinkColumn();
             this.AprouveColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.comboBoxFilterCommande = new System.Windows.Forms.ComboBox();
             this.panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.panelSearchBox.SuspendLayout();
@@ -102,25 +101,12 @@
             // 
             // panelSearchBox
             // 
-            this.panelSearchBox.Controls.Add(this.buttonSearchGP);
+            this.panelSearchBox.Controls.Add(this.comboBoxFilterCommande);
             this.panelSearchBox.Controls.Add(this.searchBar);
             this.panelSearchBox.Location = new System.Drawing.Point(22, 3);
             this.panelSearchBox.Name = "panelSearchBox";
-            this.panelSearchBox.Size = new System.Drawing.Size(246, 45);
+            this.panelSearchBox.Size = new System.Drawing.Size(286, 45);
             this.panelSearchBox.TabIndex = 2;
-            // 
-            // buttonSearchGP
-            // 
-            this.buttonSearchGP.BackColor = System.Drawing.Color.White;
-            this.buttonSearchGP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSearchGP.BackgroundImage")));
-            this.buttonSearchGP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSearchGP.FlatAppearance.BorderSize = 0;
-            this.buttonSearchGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchGP.Location = new System.Drawing.Point(199, 12);
-            this.buttonSearchGP.Name = "buttonSearchGP";
-            this.buttonSearchGP.Size = new System.Drawing.Size(24, 20);
-            this.buttonSearchGP.TabIndex = 3;
-            this.buttonSearchGP.UseVisualStyleBackColor = false;
             // 
             // searchBar
             // 
@@ -131,7 +117,7 @@
             this.searchBar.MinimumSize = new System.Drawing.Size(0, 26);
             this.searchBar.Multiline = true;
             this.searchBar.Name = "searchBar";
-            this.searchBar.Size = new System.Drawing.Size(216, 26);
+            this.searchBar.Size = new System.Drawing.Size(260, 26);
             this.searchBar.TabIndex = 2;
             this.searchBar.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
@@ -213,25 +199,25 @@
             this.dateArriveSouhaiteDataGridViewTextBoxColumn,
             this.produitcommandeDataGridViewTextBoxColumn,
             this.AprouveColumn});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
             this.dataGridView1.Location = new System.Drawing.Point(22, 16);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
             this.dataGridView1.Size = new System.Drawing.Size(704, 425);
             this.dataGridView1.TabIndex = 2;
@@ -275,14 +261,38 @@
             // AprouveColumn
             // 
             this.AprouveColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(169)))), ((int)(((byte)(0)))));
-            this.AprouveColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(169)))), ((int)(((byte)(0)))));
+            this.AprouveColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.AprouveColumn.HeaderText = "";
             this.AprouveColumn.Name = "AprouveColumn";
             this.AprouveColumn.ReadOnly = true;
             this.AprouveColumn.Text = "aprouver";
             this.AprouveColumn.UseColumnTextForButtonValue = true;
+            // 
+            // comboBoxFilterCommande
+            // 
+            this.comboBoxFilterCommande.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxFilterCommande.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.comboBoxFilterCommande.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.comboBoxFilterCommande.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBoxFilterCommande.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxFilterCommande.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxFilterCommande.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.comboBoxFilterCommande.IntegralHeight = false;
+            this.comboBoxFilterCommande.ItemHeight = 16;
+            this.comboBoxFilterCommande.Items.AddRange(new object[] {
+            "Fournisseur",
+            "NCommande",
+            "Produit"});
+            this.comboBoxFilterCommande.Location = new System.Drawing.Point(163, 9);
+            this.comboBoxFilterCommande.MaxDropDownItems = 3;
+            this.comboBoxFilterCommande.Name = "comboBoxFilterCommande";
+            this.comboBoxFilterCommande.Size = new System.Drawing.Size(106, 24);
+            this.comboBoxFilterCommande.Sorted = true;
+            this.comboBoxFilterCommande.TabIndex = 4;
             // 
             // UC_Gestion_Commades
             // 
@@ -351,7 +361,6 @@
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Label labelNbCommande;
         private System.Windows.Forms.Panel panelSearchBox;
-        private System.Windows.Forms.Button buttonSearchGP;
         private System.Windows.Forms.TextBox searchBar;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn nCommandeDataGridViewTextBoxColumn;
@@ -359,5 +368,6 @@
         private DataGridViewTextBoxColumn dateArriveSouhaiteDataGridViewTextBoxColumn;
         private DataGridViewLinkColumn produitcommandeDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn AprouveColumn;
+        private ComboBox comboBoxFilterCommande;
     }
 }

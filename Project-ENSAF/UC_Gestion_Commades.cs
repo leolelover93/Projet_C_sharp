@@ -16,6 +16,7 @@ namespace Project_ENSAF
         FormAcheterProduits a;
         DateTimePicker dateSouhaité;
         int nbCommandes = 0;
+        bool isInListeCommande = true;
         FlowLayoutPanel flowLayoutPagnierProduitCommandes;
         public UC_Gestion_Commades()
         {
@@ -146,6 +147,7 @@ namespace Project_ENSAF
                 labelNbCommande.Visible = true;
                 panelContainerAjouterCommande.Visible = true;
                 panelListeCommande.Visible = false;
+                this.isInListeCommande = false;
             }
             else
             {
@@ -156,6 +158,7 @@ namespace Project_ENSAF
             }
             if((sender as Button).Text == "Ajouter commande")
             {
+                this.isInListeCommande = true ;
                 labelNbCommande.Visible = false;
                 pictureBox.Visible =false;
 
@@ -254,10 +257,49 @@ namespace Project_ENSAF
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
+            string filterDeCherche = comboBoxFilterCommande.Text;
+            string serachText = searchBar.Text.ToLower();
             dbContext db = new dbContext();
-            var queryCommande = db.Commandes.Where(n => n.NCommande.ToString().Contains(searchBar.Text) ).ToList();
-            refrechDataGrid(queryCommande);
+            if (this.isInListeCommande)
+            {
+                List<Commande> queryCommande = new List<Commande>();
+                switch (filterDeCherche)
+                {
+                    case "Ncommande":
+                        queryCommande = db.Commandes.Where(n => n.NCommande.ToString().ToLower().Contains(serachText)).ToList();
+                        break;
+                    case "Fournisseur":
+                        Fournisseur fournisser = db.Fournisseurs.Where(f => f.nomFournisseur.ToString().ToLower().Contains(serachText)
+                        || f.prenomFournisseur.ToString().ToLower().Contains(serachText)).FirstOrDefault<Fournisseur>();
+                        if (fournisser == null) break;
+                        int idFournisseur = fournisser.idFournisseur;
+                        queryCommande = db.Commandes.Where(n => n.idFournisseur == idFournisseur).ToList();
+                        break;
+                    case "Produit":
+                        queryCommande.Clear();
+                        Produit produit = db.Produits.Where(f => f.libelle.ToString().ToLower().Contains(serachText)).FirstOrDefault<Produit>();
+                        if (produit == null) break;
+                        int idProduit = produit.codeProduit;
+                        var produit_Commandes = db.Produit_commande
+                            .Where(n => n.codeProduit == idProduit)
+                            .GroupBy(g => g.NCommande);
+                        foreach (var item in produit_Commandes)
+                        {
+                            queryCommande.Add(db.Commandes.Where(c => c.NCommande == item.Key).FirstOrDefault<Commande>());
 
+                        }
+
+                        break;
+                    default:
+                        queryCommande = db.Commandes.Where(n => n.NCommande.ToString().ToLower().Contains(serachText)).ToList();
+                        break;
+                }
+                if (serachText == "")
+                {
+                    queryCommande = db.Commandes.ToList();
+                }
+                refrechDataGrid(queryCommande);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
