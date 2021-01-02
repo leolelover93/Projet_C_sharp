@@ -12,6 +12,14 @@ namespace Project_ENSAF
         public LogForm()
         {
             InitializeComponent();
+            String filePath = Path.Combine(Directory.GetCurrentDirectory(), "log.txt");
+            string[] lines = File.ReadAllLines(filePath);
+
+            foreach (string line in lines)
+            {
+                Console.WriteLine(line);
+                listView1.Items.Add(line);
+            }
         }
 
         private void btnEnregister_Click(object sender, EventArgs e)

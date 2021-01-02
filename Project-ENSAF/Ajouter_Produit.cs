@@ -117,7 +117,7 @@ namespace Project_ENSAF
         {
 
             var db = new dbContext();
-            byte[] buffer = File.ReadAllBytes(@"C:\Users\said.leader\source\repos\Projet Csharp\Project-ENSAF\Resources\sidiAlimg.jpg");
+         /*   byte[] buffer = File.ReadAllBytes(@"C:\Users\said.leader\source\repos\Projet Csharp\Project-ENSAF\Resources\sidiAlimg.jpg");
             Produit nv_p = new Produit()
             {
                 libelle = "Sidi Ali",
@@ -128,7 +128,7 @@ namespace Project_ENSAF
                 img = buffer,
                 dureeValidite_jour=10,
             };
-            //db.Produits.Add(nv_p);
+            db.Produits.Add(nv_p);
             Stock_Magazin ss = new Stock_Magazin()
             {
                 codeProduit=154,
@@ -137,7 +137,7 @@ namespace Project_ENSAF
                 quantite=52,
             };
             //db.Stock_Magazin.Add(ss);
-            db.SaveChanges();
+            db.SaveChanges();*/
             foreach (var p in db.Produits)
             {
                 comboBox1.Items.Add(p.libelle);
