@@ -5,7 +5,7 @@ namespace Project_ENSAF
 {
     public partial class produit_cardUC : UserControl
     {
-        Produit currentProd=new Produit();
+        public Produit currentProd=new Produit();
         Form1 formParent;
         public produit_cardUC()
         { 

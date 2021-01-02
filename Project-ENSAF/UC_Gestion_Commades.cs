@@ -98,7 +98,6 @@ namespace Project_ENSAF
                         codeProduit = item.Id,
                         quantite = int.Parse(item.QuntiteProduit),
                         NCommande = lastOneId.NCommande,
-
                     };
                     dbase.Produit_commande.Add(pc);
                     dbase.SaveChanges();
@@ -113,30 +112,19 @@ namespace Project_ENSAF
                 this.flowLayoutPagnierProduitCommandes.Controls.Clear();
                 //remplireListeProduit();
                 a.Visible = false;
-            
         }
         private void remplireListeProduit()
         {
             try
             {
                 var db = new dbContext();
-                produitVentes = db.Produits.ToList<Produit>();
-                //groupin by libelle
-                var query = (from p in db.Produits
-                             group p by new { p.libelle, } into grp
-                             select new { first = grp.FirstOrDefault() });
+                produitVentes = db.Produits.ToList<Produit>(); 
                 int quantity = 0;
-                if (query.Count() > 0)
+                foreach (var elm in db.Produits)
                 {
-                    foreach (var elm in query)
-                    {
-                        foreach (var s in db.Stock_Magazin)
-                        {
-                            if (db.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
-                        }
-                        this.flowLayoutPanel1.Controls.Add(new produit_Vente(elm.first, quantity, true));
-                        quantity = 0;
-                    }
+                    quantity = db.Stock_Magazin.ToList<Stock_Magazin>().FindAll(st => st.codeProduit.Equals(elm.codeProduit)).Sum(stk => stk.quantite);
+                    this.flowLayoutPanel1.Controls.Add(new produit_Vente(elm, quantity, true));
+                    quantity = 0;
                 }
             }
             catch (Exception ex)
@@ -280,7 +268,7 @@ namespace Project_ENSAF
                 var commande = db.Commandes.Where(c => c.NCommande == id).FirstOrDefault(); 
                 if(commande != null && commande.statut == false)
                 {
-                    this.AprouveColumn.Text = "Valider";
+                    this.AprouveColumn.Text = "Arrivé";
                     commande.statut = true;
                     db.SaveChanges();
                     dataGridView1.Rows[e.RowIndex].Cells[4].Style.BackColor = Color.Green;
@@ -292,22 +280,17 @@ namespace Project_ENSAF
 
                         double addDate =(item.Produit.dureeValidite_jour==null)?10:(double)item.Produit.dureeValidite_jour;
                         DateTime dateExpire = DateTime.Now.AddDays(addDate) ==null? Convert.ToDateTime("07/12/1999") : DateTime.Now.AddDays(addDate);
-                        List<Produit> list = db.Produits.ToList<Produit>();
-                        Produit lastOneId = list[list.Count - 1];
                         Stock_Magazin stockNewProduit = new Stock_Magazin()
                         {
                             codeMagazin = 1,
-                            codeProduit = lastOneId.codeProduit,
+                            codeProduit = item.codeProduit,
                             quantite = item.quantite,
                             dateExpiration= dateExpire
-
                         };
                         db.Stock_Magazin.Add(stockNewProduit);
                         db.SaveChanges();
                     }
-               
                 }
-
             }
         }
 

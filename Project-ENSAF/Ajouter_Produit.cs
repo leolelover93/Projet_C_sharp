@@ -121,7 +121,7 @@ namespace Project_ENSAF
                 prixAchat = (decimal)4.5,
                 prixVente = 5,
                 description = "Eau minirale 2L",
-                idFournisseur=27,
+                idFournisseur=29,
                 img = buffer,
                 dureeValidite_jour=10,
             };

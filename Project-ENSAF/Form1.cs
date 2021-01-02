@@ -18,8 +18,8 @@ namespace Project_ENSAF
         FlowLayoutPanel flowLayoutPagnierProduitVentes;
         public List<Produit> produitVentes = new List<Produit>();
         List<Produit> listeProduitsPagnier = new List<Produit>();
-        dbContext db=new dbContext(); 
-
+        dbContext db=new dbContext();
+        int filter = 0;
         public Form1()
         {
             InitializeComponent();
@@ -158,11 +158,20 @@ namespace Project_ENSAF
         private void textBoxSearchProduitVentes_TextChanged(object sender, EventArgs e)
         {
             string produitArech = textBoxSearchProduitVentes.Text;
-            List<Produit> ToRender  =  produitVentes.Where(p => p.libelle.ToLower().Contains(produitArech.ToLower())).ToList();
+            Console.WriteLine(produitArech);
+            var dbase = new dbContext();
+            List<Produit> ToRender = produitVentes.Where(p => p.libelle.ToLower().Contains(produitArech.ToLower())).ToList();
+            var NonExpiredStock = dbase.Stock_Magazin
+                    .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) > 0)
+                    .ToList<Stock_Magazin>();
             flowLayoutPanelVente.Controls.Clear();
-            foreach(var prd in ToRender)
+            int quantity = 0;
+            foreach (var prd in ToRender)
             {
-                flowLayoutPanelVente.Controls.Add(new produit_Vente(prd));  
+                quantity = NonExpiredStock.FindAll(s => s.codeProduit.Equals(prd.codeProduit)).Sum(stk => stk.quantite);
+                Console.WriteLine("search vente-> produit: " + prd.libelle + "Quanti: " + quantity);
+                flowLayoutPanelVente.Controls.Add(new produit_Vente(prd, quantity));
+                quantity = 0;
             }
         } 
         private void btnAjouterAuPagnier_Click(object sender, EventArgs e)
@@ -171,7 +180,8 @@ namespace Project_ENSAF
         }   
         public void btnViewAll_Click(object sender, EventArgs e)
         {
-            if (sender !=null) filter_style_click( sender,  e);  
+            if (sender !=null) filter_style_click( sender,  e);
+            filter = 0; //display all
             var dbase = new dbContext();//fix alot of stuff
             int quantity = 0;
             produitVentes.Clear();
@@ -194,6 +204,7 @@ namespace Project_ENSAF
         public void btnDisponible_Click(object sender, EventArgs e)
         { 
             if (sender != null) filter_style_click(sender, e);
+            filter = 1; //display non expired products
             var dbase = new dbContext();
             var NonExpireStock = dbase.Stock_Magazin
                     .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) > 0)
@@ -205,7 +216,7 @@ namespace Project_ENSAF
                 if (dbase.Produits.Find(st.codeProduit) == null) continue;
                     produitVentes.Add(dbase.Produits.Find(st.codeProduit));
             }
-            flowLayoutPanel1.Controls.Clear();
+            flowLayoutPanel1.Controls.Clear(); 
             foreach (var prod in produitVentes)//somme des quantités des stocks de chaque prod
             {
                 quantity = NonExpireStock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk => stk.quantite);
@@ -217,31 +228,34 @@ namespace Project_ENSAF
         private void tbSearch_TextChanged(object sender, EventArgs e)
         { 
             string cle = tbSearch.Text;
-            Console.WriteLine("\ncle: "+cle);
+            Console.WriteLine("\nCherche: "+cle);
             var dbase = new dbContext();
-            List<Produit> prodTrouves = produitVentes.Where(p => p.libelle.ToLower().IndexOf(cle.ToLower()) !=-1)
-                                                   .ToList(); 
-            var query = (from p in prodTrouves
-                         group p by new { p.libelle, } into grp
-                         select new
-                         { 
-                             first = grp.FirstOrDefault()
-                         });
-            flowLayoutPanel1.Controls.Clear(); 
+            var stock=dbase.Stock_Magazin.ToList<Stock_Magazin>();
+            switch (filter) //detemine ou on doit chercher
+            {
+                case 1: //si on est dans btnDisponible_Click()
+                    stock = dbase.Stock_Magazin.Where(s=> DateTime.Compare(s.dateExpiration, DateTime.Now) > 0)
+                                                    .ToList<Stock_Magazin>();
+                        break;
+                case 2://si on est dans btnNonDisponible_Click()
+                    stock = dbase.Stock_Magazin.Where(s => DateTime.Compare(s.dateExpiration, DateTime.Now) < 0)
+                                            .ToList<Stock_Magazin>();
+                    break;//si on est dans btnDViewAll_Click()
+                default: stock = dbase.Stock_Magazin.ToList<Stock_Magazin>(); break;
+            } 
             int quantity = 0;
-            foreach (var elm in query)
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var prod in produitVentes)
             { 
-                foreach (var s in dbase.Stock_Magazin)
-                {
-                    if (dbase.Produits.Find(s.codeProduit).libelle.Equals(elm.first.libelle)) quantity += s.quantite;
-                } 
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(elm.first, this, quantity));
-                quantity = 0;
+                if (prod.libelle.ToLower().IndexOf(cle.ToLower()) == -1) continue;
+                quantity = stock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk => stk.quantite); 
+                this.flowLayoutPanel1.Controls.Add(new produit_Vente(prod, quantity));  
             }
         } 
         public void btnNonDisponible_Click(object sender, EventArgs e)
         {
             if (sender != null) filter_style_click(sender, e);
+            filter = 2; //display expired products
             var dbase = new dbContext();
             var ExpiredStock = dbase.Stock_Magazin
                     .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) < 0).ToList<Stock_Magazin>();
@@ -327,17 +341,6 @@ namespace Project_ENSAF
             }
 
 
-        }
-        private void buttonSearchGP_Click_1(object sender, EventArgs e)
-        {
-            string produitArech = textBoxSearchProduitVentes.Text;
-            Console.WriteLine(produitArech);
-            List<Produit> ToRender = produitVentes.Where(p => p.libelle.Contains(produitArech)).ToList();
-            if (ToRender.Count > 0) flowLayoutPanel1.Controls.Clear();
-            foreach (var prd in ToRender)
-            {
-                flowLayoutPanel1.Controls.Add(new produit_Vente(prd));
-            }
         }
         private void pictureBoxBasket_Click(object sender, EventArgs e)
         {

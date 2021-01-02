@@ -326,9 +326,7 @@
                 if (item.statut == true)
                {
                    dataGridView1.Rows[i].Cells[4].Style.BackColor = Color.Green;
-                    this.AprouveColumn.Text = "Valider";
-
-
+                    this.AprouveColumn.Text = "arrivé"; 
                }
                 else
                 {
