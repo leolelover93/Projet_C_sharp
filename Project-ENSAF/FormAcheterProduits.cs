@@ -80,9 +80,6 @@ namespace Project_ENSAF
 
         }
 
-        private void buttonSumbitPagnier_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

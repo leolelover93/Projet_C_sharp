@@ -38,6 +38,10 @@ namespace Project_ENSAF
                     db.Stock_Magazin.RemoveRange(stock2delete);
                     db.SaveChanges();
                     this.Dispose();
+
+                    //Matnsach tziid looog 
+                    Form1.SetMessageLog("le produit ");
+                    
                     // MessageBox.Show("product deleted"); 
                 }
                 catch (Exception excep)

@@ -133,6 +133,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(92)))));
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.LogoPanel);
             this.panel1.Controls.Add(this.BtnGestionVentes);
@@ -378,7 +379,7 @@
             this.btnAjouterProduit.Margin = new System.Windows.Forms.Padding(0);
             this.btnAjouterProduit.MaximumSize = new System.Drawing.Size(0, 31);
             this.btnAjouterProduit.Name = "btnAjouterProduit";
-            this.btnAjouterProduit.Size = new System.Drawing.Size(120, 29);
+            this.btnAjouterProduit.Size = new System.Drawing.Size(0, 29);
             this.btnAjouterProduit.TabIndex = 0;
             this.btnAjouterProduit.Text = " Ajouter Prdouit";
             this.btnAjouterProduit.UseVisualStyleBackColor = false;
@@ -1117,6 +1118,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Label labelErrorGraph;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
     
 }

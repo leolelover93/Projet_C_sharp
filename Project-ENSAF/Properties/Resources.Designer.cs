@@ -143,6 +143,16 @@ namespace Project_ENSAF.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap log_file {
+            get {
+                object obj = ResourceManager.GetObject("log_file", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap open_box {
             get {
                 object obj = ResourceManager.GetObject("open_box", resourceCulture);

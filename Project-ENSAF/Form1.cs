@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms.DataVisualization.Charting;
 namespace Project_ENSAF
 {
@@ -25,6 +27,7 @@ namespace Project_ENSAF
             InitializeComponent();
             checkedLinePanel.Height = BtnGestionProduits.Height;
             checkedLinePanel.Top = BtnGestionProduits.Top;
+
             try
             {
                 btnViewAll_Click(null, null);
@@ -35,6 +38,8 @@ namespace Project_ENSAF
                 this.Close();
             }
         }  
+
+
         private void Form1_Load(object sender, EventArgs e)
         { 
             panelGestionVentes.Visible = false; 
@@ -65,7 +70,45 @@ namespace Project_ENSAF
             dataGridView2.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 151, 255);
             dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
+           
 
+           
+
+
+        }
+
+        public static void SetMessageLog(String msg)
+        {
+            String filePath = Path.Combine(Directory.GetCurrentDirectory(), "log.txt");
+            StreamWriter writer = new StreamWriter(filePath, true);
+            writer.WriteLine(DateTime.Now + " : "+msg);
+            writer.Close();
+
+        }
+        private void writeFactureInlog(object sender, EventArgs e)
+        {
+            var dbase = new dbContext();
+            List<Vente_magazin> factures = dbase.Vente_magazin.ToList<Vente_magazin>();
+            Vente_magazin venteL = factures[factures.Count - 1];
+            if(venteL != null)
+            {
+                int quantite = int.Parse(venteL.quantiteVendus.Split(' ')[venteL.quantiteVendus.Split(' ').Length - 1]);
+                SetMessageLog("Vendre de " + quantite + " produit(s) avec un gain de : " + venteL.gain+" Dh");
+            }
+            
+        }
+        private Button findAjouterFactureBtn()
+        {
+            if (a != null)
+            {
+                Control[] ctrl = a.Controls.Find("panelInfoBottom", true);
+                Panel panel = (Panel)ctrl[0];
+                Control[] ctrl2 = panel.Controls.Find("buttonSumbitPagnier", true);
+                Button btn = (Button)ctrl2[0];
+                return btn;
+            }
+            return null;
+          
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -108,6 +151,8 @@ namespace Project_ENSAF
                     flowLayoutPagnierProduitVentes = (FlowLayoutPanel)a.Controls[1];
                     a.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.handel_AfterCloseForm);
                     a.VisibleChanged += new System.EventHandler(this.handel2_AfterCloseForm);
+                    Button BtnaffecterFacture = findAjouterFactureBtn();
+                    BtnaffecterFacture.Click += new System.EventHandler(this.writeFactureInlog);
 
                 }
             }
@@ -289,30 +334,17 @@ namespace Project_ENSAF
         {
            if(listBoxItemProduct.Text != "")
             {
+                var dbase = new dbContext();
                 this.pictureBoxBasket.Image = Properties.Resources.cart__full;
                 Produit p = produitVentes.Where(pa => pa.codeProduit == int.Parse(listBoxItemProduct.Text.Split(' ')[0])).ToList()[0];
                 labelBasket.Text = ++nbProduitInBasket + "";
-                var dbase = new dbContext();
-                var NonExpireProds = dbase.Produits
-                        .Where(pa => pa.codeProduit == p.codeProduit)
-                        .ToList<Produit>();
-                var query = (from paa in NonExpireProds
-                             group paa by new { paa.libelle, } into grp
-                             select new { first = grp.FirstOrDefault(), all = grp.ToList<Produit>() });
+                var stock_produit_tables = dbase.Stock_Magazin.Where(s => s.Produit.libelle == p.libelle).ToList();
                 int quantity = 0;
-                foreach (var elm in query)
+                foreach (var elm in stock_produit_tables)
                 {
-                    foreach (var s in dbase.Stock_Magazin)
-                    {
-                        if (elm.all.Where(pb => pb.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>() != null)
-                        {
-                            if (elm.all.Where(pc => pc.codeProduit.Equals(s.codeProduit)).FirstOrDefault<Produit>().libelle.Equals(elm.first.libelle))
-                                quantity += s.quantite;
-                        }
-                    }
-                  
-                }
-                ElementPagnierVentes elmnt = new ElementPagnierVentes();
+                    quantity += elm.quantite;
+                 }
+                 ElementPagnierVentes elmnt = new ElementPagnierVentes();
                 elmnt.Title = p.libelle;
                 elmnt.MaxQuantite = quantity;
                 elmnt.Gain = (p.prixVente - p.prixAchat)* int.Parse(listBoxItemProduct.Text.Split(' ')[1]); 
@@ -678,6 +710,17 @@ namespace Project_ENSAF
                 button1_Click(BtnGestionVentes, e);
                 flowLayoutPanelVente.Refresh();
             }
+
+
+        }
+
+        private Font verdana10Font;
+        private StreamReader reader;
+        public void LogAll_click(object sender, EventArgs e)
+        {
+         
+            LogForm logform = new LogForm();
+            logform.Show();
         }
     }
 }
