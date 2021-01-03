@@ -538,6 +538,7 @@ namespace Project_ENSAF
                         row.Cells[2].Value = groupItem.Key.Value.Date.ToString("dd/MM/yyyy");
                         i++;
                     }
+                    //---
                 System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
                 series2.ChartArea = "ChartArea1";
                 series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
