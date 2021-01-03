@@ -307,6 +307,10 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\filled-box-24.png" />
+    <None Include="Resources\bunch-ingredients-24.png" />
+    <None Include="Resources\conference-call-24.png" />
+    <None Include="Resources\folder-6-24.png" />
     <None Include="Resources\add-product.png" />
     <None Include="Resources\log-file.png" />
     <None Include="Resources\open-box.png" />
