@@ -9,8 +9,7 @@ namespace Project_ENSAF
 {
     public partial class LogForm : Form
     {
-        public LogForm()
-        {
+        public LogForm()        {
             InitializeComponent();
         }
 
@@ -23,16 +22,24 @@ namespace Project_ENSAF
             saveFileDialog1.Filter = "txt files (*.txt)|*.txt";
             saveFileDialog1.FilterIndex = 2;
             saveFileDialog1.RestoreDirectory = true;
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            try
             {
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    myStream.Close();
-                    File.Copy(Filepath, saveFileDialog1.FileName, true);
+                    if ((myStream = saveFileDialog1.OpenFile()) != null)
+                    {
+                        myStream.Close();
+                        File.Copy(Filepath, saveFileDialog1.FileName, true);
+                    }
                 }
+                this.Close();
+
             }
-            this.Close();
+            catch (Exception )
+            {
+                MessageBox.Show("SVP CHOISIE UN AUTRE PROPRE NOM POUR LE FICHIER !","Attention", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+           
 
         }
 

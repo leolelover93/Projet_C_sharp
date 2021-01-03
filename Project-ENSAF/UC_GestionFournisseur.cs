@@ -28,29 +28,50 @@ namespace Project_ENSAF
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var db = new dbContext();
-            if (e.ColumnIndex == 6)//delete fournisseur row
+            if(e.RowIndex != -1)
             {
-                try
+                if (e.ColumnIndex == 6)//delete fournisseur row
                 {
-                    if (e.RowIndex < 0) return;//avoid header click event exception
-                    Fournisseur fournisseur = db.Fournisseurs.ToArray<Fournisseur>()[e.RowIndex];
-                    db.Fournisseurs.Remove(fournisseur);
-                    db.SaveChanges();   
-                    refrechDataGrid(db.Fournisseurs.ToList());
-                    DialogResult res = MessageBox.Show("Fournisseur supprimé!", "Supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var result = MessageBox.Show("la suppression est en cascade .Tous les produits relative a ce fourniseur vont etre supprimer  y compris tous les records.Vous voulez Continuez ? ", "Attention",
+                                 MessageBoxButtons.YesNo,
+                                 MessageBoxIcon.Warning);
+                    if(result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            if (e.RowIndex < 0) return;//avoid header click event exception
+                            Fournisseur fournisseur = db.Fournisseurs.ToArray<Fournisseur>()[e.RowIndex];
+                            Form1.SetMessageLog($"Suppression du fournisseur {fournisseur.nomFournisseur} {fournisseur.prenomFournisseur} depuis la liste des fournisseur");
+                            db.Fournisseurs.Remove(fournisseur);
+                            db.SaveChanges();
+                            refrechDataGrid(db.Fournisseurs.ToList());
+                            DialogResult res = MessageBox.Show("Fournisseur supprimé!", "Supprimé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception exc)
+                        {
+                            MessageBox.Show("Error! " + exc.Message);
+                        }
+                    }else
+                    {
+                        return;
+                    }
+                   
                 }
-                catch (Exception exc)
+                if (e.ColumnIndex == 5)//edit fournisseur row
                 {
-                    MessageBox.Show("Error! " + exc.Message);
-                }
-            }
-            if (e.ColumnIndex == 5 )//edit fournisseur row
-            {  
                     if (e.RowIndex < 0) return;
                     Fournisseur fournisseur = db.Fournisseurs.ToArray<Fournisseur>()[e.RowIndex];
                     AjouterFournisseurForm f = new AjouterFournisseurForm(fournisseur, this);
-                    f.Show(); 
+                    f.Show();
+                }
+                if (e.ColumnIndex == 7)//Detaille des produits
+                {
+                    int idFournisseur = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                    FormDetailleFournisseur a = new FormDetailleFournisseur(idFournisseur);
+                    a.Show();
+                }
             }
+          
         }
 
         private void UC_GestionFournisseur_Load(object sender, EventArgs e)

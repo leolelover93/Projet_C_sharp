@@ -50,6 +50,7 @@ namespace Project_ENSAF
                         }; 
                         db.Fournisseurs.Add(f);
                         db.SaveChanges();
+                        Form1.SetMessageLog($"Ajouter le fournisseur {tbNom.Text} {tbPrenom} au liste des fournisseur");
                         MessageBox.Show("Fournisseur ajouté!", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                         theCaller.refrechDataGrid(db.Fournisseurs.ToList());

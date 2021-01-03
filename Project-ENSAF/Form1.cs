@@ -381,7 +381,7 @@ namespace Project_ENSAF
         }
         private void btnAjouterProduit_Click(object sender, EventArgs e)
         {
-            Form_Ajouter_Produit formajout = new Form_Ajouter_Produit( this);
+          Form_Ajouter_Produit formajout = new Form_Ajouter_Produit( this);
             formajout.Show();
         }
 
@@ -703,8 +703,6 @@ namespace Project_ENSAF
 
         }
 
-        private Font verdana10Font;
-        private StreamReader reader;
         public void LogAll_click(object sender, EventArgs e)
         {
          

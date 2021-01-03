@@ -41,6 +41,7 @@
             this.produitcommandeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modifier = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Supprimer = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Produits = new System.Windows.Forms.DataGridViewLinkColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -85,7 +86,7 @@
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -99,7 +100,8 @@
             this.tel,
             this.produitcommandeDataGridViewTextBoxColumn,
             this.Modifier,
-            this.Supprimer});
+            this.Supprimer,
+            this.Produits});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 10.75F);
@@ -164,16 +166,37 @@
             // 
             // Modifier
             // 
+            this.Modifier.ActiveLinkColor = System.Drawing.Color.Aquamarine;
+            this.Modifier.FillWeight = 90F;
             this.Modifier.HeaderText = "Modifier";
             this.Modifier.Name = "Modifier";
             this.Modifier.ReadOnly = true;
             this.Modifier.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Modifier.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Modifier.Width = 85;
             // 
             // Supprimer
             // 
+            this.Supprimer.ActiveLinkColor = System.Drawing.Color.Aquamarine;
+            this.Supprimer.FillWeight = 90F;
             this.Supprimer.HeaderText = "Supprimer";
             this.Supprimer.Name = "Supprimer";
             this.Supprimer.ReadOnly = true;
+            this.Supprimer.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Supprimer.Width = 85;
+            // 
+            // Produits
+            // 
+            this.Produits.ActiveLinkColor = System.Drawing.Color.Aquamarine;
+            this.Produits.FillWeight = 90F;
+            this.Produits.HeaderText = "Produits";
+            this.Produits.Name = "Produits";
+            this.Produits.ReadOnly = true;
+            this.Produits.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Produits.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Produits.Text = "Voir Plus..";
+            this.Produits.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Produits.Width = 85;
             // 
             // UC_GestionFournisseur
             // 
@@ -213,6 +236,7 @@
                 dataGridView1.Rows[i].Cells[4].Value = item.adressFournisseur;
                 dataGridView1.Rows[i].Cells[5].Value = "Modifier";
                 dataGridView1.Rows[i].Cells[6].Value = "Supprimer";
+                dataGridView1.Rows[i].Cells[7].Value = "Détaille";
                 i++;
             }
         }
@@ -228,5 +252,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn produitcommandeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewLinkColumn Modifier;
         private System.Windows.Forms.DataGridViewLinkColumn Supprimer;
+        private System.Windows.Forms.DataGridViewLinkColumn Produits;
     }
 }

@@ -148,6 +148,7 @@ namespace Project_ENSAF
                 panelContainerAjouterCommande.Visible = true;
                 panelListeCommande.Visible = false;
                 this.isInListeCommande = false;
+                this.comboBoxFilterCommande.Visible = false;
             }
             else
             {
@@ -158,6 +159,8 @@ namespace Project_ENSAF
             }
             if((sender as Button).Text == "Ajouter commande")
             {
+                this.comboBoxFilterCommande.Visible = true;
+
                 this.isInListeCommande = true ;
                 labelNbCommande.Visible = false;
                 pictureBox.Visible =false;
@@ -299,6 +302,20 @@ namespace Project_ENSAF
                     queryCommande = db.Commandes.ToList();
                 }
                 refrechDataGrid(queryCommande);
+            }else
+            {
+
+                string cle = searchBar.Text.ToLower();
+                var dbase = new dbContext();
+                var stock = dbase.Stock_Magazin.ToList<Stock_Magazin>();
+                int quantity = 0;
+                flowLayoutPanel1.Controls.Clear();
+                foreach (var prod in produitVentes)
+                {
+                    if (prod.libelle.ToLower().IndexOf(cle.ToLower()) == -1) continue;
+                    quantity = stock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk => stk.quantite);
+                    this.flowLayoutPanel1.Controls.Add(new produit_Vente(prod, quantity,true));
+                }
             }
         }
 
@@ -312,8 +329,8 @@ namespace Project_ENSAF
                 var commande = db.Commandes.Where(c => c.NCommande == id).FirstOrDefault(); 
                 if(commande != null && commande.statut == false)
                 {
-                    this.AprouveColumn.Text = "Arrivé";
-                    Form1.SetMessageLog("La commande N " + commande.NCommande + " est arrivée"); 
+                    Form1.SetMessageLog("La commande N " + commande.NCommande + " est arrivée");
+                    dataGridView1.Rows[e.RowIndex].Cells[4].Value = "arrivé";
                     commande.statut = true;
                     db.SaveChanges();
                     dataGridView1.Rows[e.RowIndex].Cells[4].Style.BackColor = Color.Green;
@@ -347,6 +364,13 @@ namespace Project_ENSAF
                 var dbase = new dbContext();
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 List<Produit_commande> produits_commande2 = dbase.Produit_commande.Where(p => p.NCommande == id).ToList();
+                if(produits_commande2.Count == 0)
+                {
+                    var result = MessageBox.Show("le fournisseur de ces produits est supprimé, rien a visionner. ", "Information",
+                              MessageBoxButtons.OK,
+                              MessageBoxIcon.Information);
+                    return;
+                }
                 FormAfficherPrComma fpv = new FormAfficherPrComma(produits_commande2);
                 fpv.Show();
             }

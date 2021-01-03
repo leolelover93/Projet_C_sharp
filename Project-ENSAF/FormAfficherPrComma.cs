@@ -12,9 +12,8 @@ namespace Project_ENSAF
 {
     public partial class FormAfficherPrComma : Form
     {
-
-        List<ElementPagnierVentes> listElementPagnier = new List<ElementPagnierVentes>();
-        decimal total = 0;
+// List<ElementPagnierVentes> listElementPagnier = new List<ElementPagnierVentes>();
+       // decimal total = 0;
 
         public FormAfficherPrComma()
         {

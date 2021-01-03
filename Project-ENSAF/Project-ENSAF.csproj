@@ -73,6 +73,18 @@
     <Compile Include="AjouterFournisseurForm.Designer.cs">
       <DependentUpon>AjouterFournisseurForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ajouter_Produit _Fournisseur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajouter_Produit _Fournisseur.Designer.cs">
+      <DependentUpon>Ajouter_Produit _Fournisseur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ajouter_Produit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajouter_Produit.Designer.cs">
+      <DependentUpon>Ajouter_Produit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Commande.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -88,11 +100,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ajouter_Produit.cs">
+    <Compile Include="Modifier_Produit_Fournisseurt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ajouter_Produit.Designer.cs">
-      <DependentUpon>Ajouter_Produit.cs</DependentUpon>
+    <Compile Include="Modifier_Produit_Fournisseurt.Designer.cs">
+      <DependentUpon>Modifier_Produit_Fournisseurt.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAcheterProduits.cs">
       <SubType>Form</SubType>
@@ -105,6 +117,12 @@
     </Compile>
     <Compile Include="FormAfficherPrComma.Designer.cs">
       <DependentUpon>FormAfficherPrComma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDetailleFournisseur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDetailleFournisseur.Designer.cs">
+      <DependentUpon>FormDetailleFournisseur.cs</DependentUpon>
     </Compile>
     <Compile Include="FormProdDescri.cs">
       <SubType>Form</SubType>
@@ -191,8 +209,14 @@
     <EmbeddedResource Include="AjouterFournisseurForm.resx">
       <DependentUpon>AjouterFournisseurForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ajouter_Produit _Fournisseur.resx">
+      <DependentUpon>Ajouter_Produit _Fournisseur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ajouter_Produit.resx">
       <DependentUpon>Ajouter_Produit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modifier_Produit_Fournisseurt.resx">
+      <DependentUpon>Modifier_Produit_Fournisseurt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ElementPagnierVentes.resx">
       <DependentUpon>ElementPagnierVentes.cs</DependentUpon>
@@ -206,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAfficherPrComma.resx">
       <DependentUpon>FormAfficherPrComma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDetailleFournisseur.resx">
+      <DependentUpon>FormDetailleFournisseur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPagnierVentes.resx">
       <DependentUpon>FormPagnierVentes.cs</DependentUpon>
@@ -277,6 +304,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\add-product.png" />
     <None Include="Resources\log-file.png" />
     <None Include="Resources\open-box.png" />
     <None Include="Resources\closed-box.png" />

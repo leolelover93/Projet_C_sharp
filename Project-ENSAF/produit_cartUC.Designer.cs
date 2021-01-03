@@ -198,6 +198,7 @@
         { 
             InitializeComponent();
             this.lblProdName.Text = p.libelle;  
+          //  this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
             this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
             this.lblProdDescri.Text = p.description;  
             this.lblprix.Text = p.prixVente.ToString() + "dh";
