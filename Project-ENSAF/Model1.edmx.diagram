@@ -20,6 +20,7 @@
         <AssociationConnector Association="projetModel.FK_Produit_commande_Produit" ManuallyRouted="false" />
         <AssociationConnector Association="projetModel.FK_Stock_Magazin_Produit" ManuallyRouted="false" />
         <AssociationConnector Association="projetModel.FK_Vente_magazin_Produit" ManuallyRouted="false" />
+        <AssociationConnector Association="projetModel.FK_Commande_Fournisseur" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

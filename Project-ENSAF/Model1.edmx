@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="projetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="projetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Commande">
           <Key>
             <PropertyRef Name="NCommande" />
@@ -87,6 +87,18 @@
           <Property Name="quantiteVendus" Type="varchar" MaxLength="200" />
           <Property Name="gain" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
+        <Association Name="FK_Commande_Fournisseur">
+          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="0..1" />
+          <End Role="Commande" Type="Self.Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="idFournisseur" />
+            </Principal>
+            <Dependent Role="Commande">
+              <PropertyRef Name="idFournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Commande_Magazin">
           <End Role="Magazin" Type="Self.Magazin" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -206,6 +218,10 @@
           <EntitySet Name="Stock_Magazin" EntityType="Self.Stock_Magazin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vente_magazin" EntityType="Self.Vente_magazin" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Commande_Fournisseur" Association="Self.FK_Commande_Fournisseur">
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+            <End Role="Commande" EntitySet="Commande" />
+          </AssociationSet>
           <AssociationSet Name="FK_Commande_Magazin" Association="Self.FK_Commande_Magazin">
             <End Role="Magazin" EntitySet="Magazin" />
             <End Role="Commande" EntitySet="Commande" />
@@ -239,8 +255,7 @@
             <End Role="Vente_magazin" EntitySet="Vente_magazin" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="projetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -256,6 +271,7 @@
           <Property Name="idFournisseur" Type="Int32" />
           <NavigationProperty Name="Magazin" Relationship="Self.FK_Commande_Magazin" FromRole="Commande" ToRole="Magazin" />
           <NavigationProperty Name="Produit_commande" Relationship="Self.FK_Produit_commande_Commande" FromRole="Commande" ToRole="Produit_commande" />
+          <NavigationProperty Name="Fournisseur" Relationship="projetModel.FK_Commande_Fournisseur" FromRole="Commande" ToRole="Fournisseur" />
         </EntityType>
         <EntityType Name="Fournisseur">
           <Key>
@@ -267,6 +283,7 @@
           <Property Name="adressFournisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="telFournisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Produits" Relationship="Self.FK_Produit_Fournisseur" FromRole="Fournisseur" ToRole="Produit" />
+          <NavigationProperty Name="Commandes" Relationship="projetModel.FK_Commande_Fournisseur" FromRole="Fournisseur" ToRole="Commande" />
         </EntityType>
         <EntityType Name="Magazin">
           <Key>
@@ -493,7 +510,23 @@
             <End Role="Produit" EntitySet="Produits" />
             <End Role="Vente_magazin" EntitySet="Vente_magazin" />
           </AssociationSet>
+          <AssociationSet Name="FK_Commande_Fournisseur" Association="projetModel.FK_Commande_Fournisseur">
+            <End Role="Fournisseur" EntitySet="Fournisseurs" />
+            <End Role="Commande" EntitySet="Commandes" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Commande_Fournisseur">
+          <End Type="projetModel.Fournisseur" Role="Fournisseur" Multiplicity="0..1" />
+          <End Type="projetModel.Commande" Role="Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="idFournisseur" />
+            </Principal>
+            <Dependent Role="Commande">
+              <PropertyRef Name="idFournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

@@ -30,5 +30,6 @@ namespace Project_ENSAF
         public virtual Magazin Magazin { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Produit_commande> Produit_commande { get; set; }
+        public virtual Fournisseur Fournisseur { get; set; }
     }
 }

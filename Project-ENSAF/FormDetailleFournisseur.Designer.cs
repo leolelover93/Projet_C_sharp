@@ -62,18 +62,16 @@
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(0, 0);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(800, 450);
+            this.panelContainer.Size = new System.Drawing.Size(828, 514);
             this.panelContainer.TabIndex = 0;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::Project_ENSAF.Properties.Resources.add_product;
-            this.pictureBox1.Location = new System.Drawing.Point(741, 77);
+            this.pictureBox1.Location = new System.Drawing.Point(765, 46);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(47, 33);
+            this.pictureBox1.Size = new System.Drawing.Size(39, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -83,10 +81,10 @@
             // 
             this.panelLineBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
             this.panelLineBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelLineBottom.Location = new System.Drawing.Point(8, 442);
+            this.panelLineBottom.Location = new System.Drawing.Point(8, 506);
             this.panelLineBottom.Name = "panelLineBottom";
             this.panelLineBottom.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panelLineBottom.Size = new System.Drawing.Size(784, 8);
+            this.panelLineBottom.Size = new System.Drawing.Size(812, 8);
             this.panelLineBottom.TabIndex = 5;
             // 
             // panelLineLeft
@@ -96,17 +94,17 @@
             this.panelLineLeft.Location = new System.Drawing.Point(0, 8);
             this.panelLineLeft.Name = "panelLineLeft";
             this.panelLineLeft.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panelLineLeft.Size = new System.Drawing.Size(8, 442);
+            this.panelLineLeft.Size = new System.Drawing.Size(8, 506);
             this.panelLineLeft.TabIndex = 4;
             // 
             // panelLineRight
             // 
             this.panelLineRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
             this.panelLineRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelLineRight.Location = new System.Drawing.Point(792, 8);
+            this.panelLineRight.Location = new System.Drawing.Point(820, 8);
             this.panelLineRight.Name = "panelLineRight";
             this.panelLineRight.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panelLineRight.Size = new System.Drawing.Size(8, 442);
+            this.panelLineRight.Size = new System.Drawing.Size(8, 506);
             this.panelLineRight.TabIndex = 3;
             // 
             // panelLineTop
@@ -116,7 +114,7 @@
             this.panelLineTop.Location = new System.Drawing.Point(0, 0);
             this.panelLineTop.Name = "panelLineTop";
             this.panelLineTop.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panelLineTop.Size = new System.Drawing.Size(800, 8);
+            this.panelLineTop.Size = new System.Drawing.Size(828, 8);
             this.panelLineTop.TabIndex = 2;
             // 
             // flowLayoutPanel1
@@ -126,10 +124,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(8, 139);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(8, 103);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10, 2, 5, 10);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(784, 303);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(812, 409);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // groupBox1
@@ -146,12 +144,12 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(66, 33);
+            this.groupBox1.Location = new System.Drawing.Point(21, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(665, 100);
+            this.groupBox1.Size = new System.Drawing.Size(738, 97);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Information Forunisseur";
+            this.groupBox1.Text = "Informations de Fournisseur";
             // 
             // labelAdresse
             // 
@@ -229,10 +227,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(828, 514);
             this.Controls.Add(this.panelContainer);
             this.Name = "FormDetailleFournisseur";
-            this.Text = "FormDetailleFournisseur";
+            this.ShowIcon = false;
+            this.Text = "Gestion des produits de Fournisseur";
             this.Load += new System.EventHandler(this.FormDetailleFournisseur_Load);
             this.panelContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

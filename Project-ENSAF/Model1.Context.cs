@@ -31,6 +31,7 @@ namespace Project_ENSAF
         public virtual DbSet<Produit> Produits { get; set; }
         public virtual DbSet<Produit_commande> Produit_commande { get; set; }
         public virtual DbSet<Stock_Magazin> Stock_Magazin { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Vente_magazin> Vente_magazin { get; set; }
     }
 }

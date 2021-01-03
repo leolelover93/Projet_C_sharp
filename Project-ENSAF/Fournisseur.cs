@@ -18,6 +18,7 @@ namespace Project_ENSAF
         public Fournisseur()
         {
             this.Produits = new HashSet<Produit>();
+            this.Commandes = new HashSet<Commande>();
         }
     
         public int idFournisseur { get; set; }
@@ -28,5 +29,7 @@ namespace Project_ENSAF
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Produit> Produits { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Commande> Commandes { get; set; }
     }
 }
