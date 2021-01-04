@@ -67,7 +67,10 @@ namespace Project_ENSAF
             dataGridView2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridView2.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 151, 255);
             dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            //SetMessageLog("Utilisateur connecté");
+
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.pictureBoxLog,"Log");
+            SetMessageLog("Connecté");
         }
 
         public static void SetMessageLog(String msg)

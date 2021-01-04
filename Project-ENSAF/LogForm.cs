@@ -9,16 +9,35 @@ namespace Project_ENSAF
 {
     public partial class LogForm : Form
     {
-        public LogForm()        {
+        string[] lines;
+        public LogForm()
+        {
+            //Set the intial settong to true
             InitializeComponent();
+            DateTime lastDate = DateTime.Now;
+            if (Properties.Settings.Default.DateDelteLog != "")
+            {
+                lastDate = DateTime.Parse(Properties.Settings.Default.DateDelteLog);
+            }
+            int nbDay = Convert.ToInt32(Properties.Settings.Default.NombreDayToDeleteLog.ToString());
             String filePath = Path.Combine(Directory.GetCurrentDirectory(), "log.txt");
-            string[] lines = File.ReadAllLines(filePath);
+            if ((DateTime.Now - lastDate).Days > nbDay)
+            {
+                StreamWriter writer = new StreamWriter(filePath, false);
+                writer.Write("");
+                Properties.Settings.Default.DateDelteLog = DateTime.Now.ToString();
+                Properties.Settings.Default.Save();
+
+            }
+            lines = File.ReadAllLines(filePath);
 
             foreach (string line in lines)
             {
                 Console.WriteLine(line);
                 listView1.Items.Add(line);
             }
+
+
         }
 
         private void btnEnregister_Click(object sender, EventArgs e)
@@ -43,11 +62,11 @@ namespace Project_ENSAF
                 this.Close();
 
             }
-            catch (Exception )
+            catch (Exception)
             {
-                MessageBox.Show("SVP CHOISIE UN AUTRE PROPRE NOM POUR LE FICHIER !","Attention", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("SVP CHOISIE UN AUTRE PROPRE NOM POUR LE FICHIER !", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-           
+
 
         }
 
@@ -75,12 +94,21 @@ namespace Project_ENSAF
 
                 Thread.Sleep(3000);
 
-                  /*if (printProcess != null &&  printProcess.CloseMainWindow()==false)
-                   {
-                       printProcess.Kill();
-                   }*/
+                /*if (printProcess != null &&  printProcess.CloseMainWindow()==false)
+                 {
+                     printProcess.Kill();
+                 }*/
             }
             this.Close();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            SettingsLog a = new SettingsLog();
+            a.Show();
+        }
+
+
     }
 }
+
