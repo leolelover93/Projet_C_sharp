@@ -130,7 +130,7 @@
             this.Annuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Annuler.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.Annuler.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Annuler.Location = new System.Drawing.Point(417, 389);
+            this.Annuler.Location = new System.Drawing.Point(419, 373);
             this.Annuler.Name = "Annuler";
             this.Annuler.Size = new System.Drawing.Size(94, 32);
             this.Annuler.TabIndex = 13;
@@ -145,7 +145,7 @@
             this.Ajouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Ajouter.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Ajouter.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Ajouter.Location = new System.Drawing.Point(529, 389);
+            this.Ajouter.Location = new System.Drawing.Point(529, 372);
             this.Ajouter.Name = "Ajouter";
             this.Ajouter.Size = new System.Drawing.Size(94, 32);
             this.Ajouter.TabIndex = 16;
