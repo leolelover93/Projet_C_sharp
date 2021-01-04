@@ -398,7 +398,7 @@
             this.btnAjouterProduit.Name = "btnAjouterProduit";
             this.btnAjouterProduit.Size = new System.Drawing.Size(120, 29);
             this.btnAjouterProduit.TabIndex = 0;
-            this.btnAjouterProduit.Text = " Ajouter Prdouit";
+            this.btnAjouterProduit.Text = " Ajouter Stock";
             this.btnAjouterProduit.UseVisualStyleBackColor = false;
             this.btnAjouterProduit.Click += new System.EventHandler(this.btnAjouterProduit_Click);
             // 
@@ -502,7 +502,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnViderPanger.AutoSize = true;
             this.btnViderPanger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.btnViderPanger.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnViderPanger.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnViderPanger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViderPanger.Font = new System.Drawing.Font("Century Gothic", 12F);
@@ -536,7 +535,6 @@
             // 
             this.pictureBoxBasket.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxBasket.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxBasket.Image = global::Project_ENSAF.Properties.Resources.cart;
             this.pictureBoxBasket.Location = new System.Drawing.Point(673, 12);
             this.pictureBoxBasket.Name = "pictureBoxBasket";
@@ -584,7 +582,6 @@
             // 
             this.buttonSM_JVentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSM_JVentes.BackColor = System.Drawing.Color.White;
-            this.buttonSM_JVentes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSM_JVentes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.buttonSM_JVentes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.buttonSM_JVentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -601,7 +598,6 @@
             // buttonSM_Ventes
             // 
             this.buttonSM_Ventes.BackColor = System.Drawing.Color.White;
-            this.buttonSM_Ventes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSM_Ventes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.buttonSM_Ventes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.buttonSM_Ventes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1023,6 +1019,7 @@
             this.ClientSize = new System.Drawing.Size(951, 499);
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

@@ -34,8 +34,6 @@ namespace Project_ENSAF
             this.Text = "Modfier Produit";
             this.Titre.Text = "Modfier Produit";
         }    
-       
-
        private void Parcourir_Click(object sender, EventArgs e)
         {
             if (isDetailFournisseur)
@@ -46,28 +44,26 @@ namespace Project_ENSAF
                 {
                     imgLocation = dialog.FileName.ToString();
                     pictureBox1.ImageLocation = imgLocation;
-
                 }
             }
         }
-
         private void Ajouter_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("stat " + isAjouterProd);
             var db = new dbContext();
             if (isDetailFournisseur)
             {
-                Decimal prix_Achat = 0, prix_Vente = 0;
+                Decimal prix_Achat, prix_Vente;
                 try
                 {
                     prix_Achat = Convert.ToDecimal(tb_Prix_Achat.Text);
                     prix_Vente = Convert.ToDecimal(tb_Prix_Vente.Text);
+                    MessageBox.Show(prix_Achat + " " + prix_Achat); 
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Le prix doit être un nombre decimal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
-
                 try
                 {
                     Produit prod = db.Produits.Where(p => p.codeProduit == this.prod2Edit.codeProduit).FirstOrDefault<Produit>();
@@ -77,7 +73,6 @@ namespace Project_ENSAF
                         prod.libelle = tbLibelle.Text;
                         prod.prixAchat = prix_Achat;
                         prod.prixVente = prix_Vente;
-                        //item.dateExpiration = dateExpirePick.Value;
                         prod.description = tbDescription.Text;
                         prod.img = (byte[])(new ImageConverter()).ConvertTo(pictureBox1.Image, typeof(byte[]));
                     }
@@ -85,15 +80,13 @@ namespace Project_ENSAF
                     {
                         MessageBox.Show("Opération Non effectuer", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-
                         db.SaveChanges();
                         formParent2.remplireLayout(db);
                          this.Close(); 
                 }
                 catch (Exception exc)
                 {
-                 MessageBox.Show("Error! " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                throw exc;
+                 MessageBox.Show("Error! " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
                 }
             }
           

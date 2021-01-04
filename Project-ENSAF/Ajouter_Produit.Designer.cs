@@ -338,7 +338,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
         private void initCompo(Produit p)
         {
@@ -347,13 +346,10 @@
             tb_Prix_Achat.Text = p.prixAchat.ToString();
             tb_Prix_Vente.Text = p.prixVente.ToString();
             tbDescription.Text = p.description;
-          //  dateExpirePick.Value = p.dateExpiration; 
             tbQuantite.Enabled = false;
             dateExpirePick.Enabled = false;
-            isNewProd = false;
             try
             {
-                //prodImg = p.img;
                 pictureBox1.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product; 
             }
             catch (System.Exception exc)
