@@ -178,7 +178,8 @@ namespace Project_ENSAF
                 int idProduit = int.Parse(labelHiden.Text.Split(' ')[0]); 
                 int quantiteDemander = int.Parse(labelHiden.Text.Split(' ')[1]);
                 pictureBox.Image = Properties.Resources.closed_box;
-                Produit p = produitVentes.Where(pa => pa.codeProduit == idProduit).ToList()[0];
+                Produit p = produitVentes.Where(pa => pa.codeProduit == idProduit).FirstOrDefault<Produit>();
+                if (p == null) return;
                 var dbase = new dbContext();
                 ElementPagnierVentes elmnt = new ElementPagnierVentes();
                 elmnt.Title = p.libelle;

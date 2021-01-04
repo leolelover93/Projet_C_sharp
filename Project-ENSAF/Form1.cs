@@ -106,7 +106,7 @@ namespace Project_ENSAF
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if((sender as Button).Text == "Gestion Produits")
+            if((sender as Button).Text == "Produits")
             {
                 panelGestionVentes.Visible = false;
                 panelSM_GV.Visible =false; 
@@ -115,7 +115,7 @@ namespace Project_ENSAF
                 btnViewAll_Click(null, null);
 
             }
-            if ((sender as Button).Text == "Gestion Ventes")
+            if ((sender as Button).Text == "Ventes")
             { 
                 panelGestionProduit.Visible = false;
                 panelCommandes.Visible = false;
@@ -148,7 +148,7 @@ namespace Project_ENSAF
 
                 }
             }
-            if((sender as Button).Text == "Gestion Commandes")
+            if((sender as Button).Text == "Commandes")
             {
                 if(b == null)
                 {

@@ -213,6 +213,16 @@ namespace Project_ENSAF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap printer_24 {
+            get {
+                object obj = ResourceManager.GetObject("printer_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Search_icon {
             get {
                 object obj = ResourceManager.GetObject("Search_icon", resourceCulture);
