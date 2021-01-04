@@ -205,7 +205,16 @@
             this.panelHorsStock.Visible = false;
             this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
             this.lblProdName.Text = p.libelle;
-            this.lblprix.Text = p.prixVente.ToString() + "DH";
+            if (this.DansPanelCommande)
+            {
+                this.lblprix.Text = p.prixAchat.ToString() + "DH";
+
+            }
+            else
+            {
+                this.lblprix.Text = p.prixVente.ToString() + "DH";
+
+            }
             this.lblProdDescri.Text = p.description;
             this.lblnbProduits.Text += quantite;
             if (testCommande== true)

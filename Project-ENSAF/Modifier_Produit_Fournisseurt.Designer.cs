@@ -179,7 +179,7 @@
             this.Parcourir.TabIndex = 17;
             this.Parcourir.Text = "Parcourir...";
             this.Parcourir.UseVisualStyleBackColor = false;
-            this.Parcourir.Visible = false;
+            this.Parcourir.Click += new System.EventHandler(this.Parcourir_Click);
             // 
             // pictureBox1
             // 
