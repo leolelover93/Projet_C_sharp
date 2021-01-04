@@ -33,5 +33,41 @@ namespace Project_ENSAF.Properties {
                 return ((string)(this["projetConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DateDelteLog {
+            get {
+                return ((string)(this["DateDelteLog"]));
+            }
+            set {
+                this["DateDelteLog"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("31")]
+        public string NombreDayToDeleteLog {
+            get {
+                return ((string)(this["NombreDayToDeleteLog"]));
+            }
+            set {
+                this["NombreDayToDeleteLog"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool inTialSettings {
+            get {
+                return ((bool)(this["inTialSettings"]));
+            }
+            set {
+                this["inTialSettings"] = value;
+            }
+        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿namespace Project_ENSAF
-{ 
+{
     using System.Linq;
     using System.ComponentModel;
     using System.IO;
@@ -30,7 +30,7 @@
         public void fct()
         {
 
-            this.lblProdName.Text ="Said";
+            this.lblProdName.Text = "Said";
 
             MessageBox.Show("changed: " + this.lblProdName.Text);
 
@@ -50,7 +50,7 @@
             // 
             // lblProdName
             // 
-            this.lblProdName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblProdName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProdName.AutoEllipsis = true;
             this.lblProdName.AutoSize = true;
@@ -64,8 +64,8 @@
             // 
             // prodImg
             // 
-            this.prodImg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.prodImg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.prodImg.Image = global::Project_ENSAF.Properties.Resources.loading_product;
             this.prodImg.InitialImage = null;
@@ -78,7 +78,7 @@
             // 
             // lblProdDescri
             // 
-            this.lblProdDescri.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblProdDescri.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProdDescri.AutoEllipsis = true;
             this.lblProdDescri.AutoSize = true;
@@ -111,7 +111,7 @@
             // 
             // lblprix
             // 
-            this.lblprix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblprix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblprix.AutoEllipsis = true;
             this.lblprix.AutoSize = true;
@@ -195,12 +195,14 @@
 
         }
         private void initCompo(Produit p, int nbProds)
-        { 
+        {
             InitializeComponent();
-            this.lblProdName.Text = p.libelle;  
-          //  this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
+            lblnbProduits.Visible = !isDeatilleFournisseur;
+            this.btnEdit.Visible = isDeatilleFournisseur;
+            this.lblProdName.Text = p.libelle;
+            //  this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
             this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
-            this.lblProdDescri.Text = p.description;  
+            this.lblProdDescri.Text = p.description;
             this.lblprix.Text = p.prixVente.ToString() + "dh";
             this.lblnbProduits.Text = "Stock: " + nbProds;//nbProds.ToString(); 
 
@@ -208,11 +210,12 @@
         #endregion 
         public System.Windows.Forms.Label lblProdName;
         public System.Windows.Forms.PictureBox prodImg;
-        public System.Windows.Forms.Label lblProdDescri; 
+        public System.Windows.Forms.Label lblProdDescri;
         public System.Windows.Forms.Button btnReadMore;
-        public System.Windows.Forms.Label lblprix; 
+        public System.Windows.Forms.Label lblprix;
         public System.Windows.Forms.Button btnEdit;
         public System.Windows.Forms.Button btnDelete;
         public System.Windows.Forms.Label lblnbProduits;
     }
 }
+
