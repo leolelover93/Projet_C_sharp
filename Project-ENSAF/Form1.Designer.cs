@@ -40,11 +40,11 @@
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxLog = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonCommandes = new System.Windows.Forms.Button();
             this.LogoPanel = new System.Windows.Forms.Panel();
             this.lblLogo = new System.Windows.Forms.Label();
             this.BtnGestionVentes = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonForunisseur = new System.Windows.Forms.Button();
             this.checkedLinePanel = new System.Windows.Forms.Panel();
             this.BtnGestionProduits = new System.Windows.Forms.Button();
             this.panelContainer = new System.Windows.Forms.Panel();
@@ -136,10 +136,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(92)))));
             this.panel1.Controls.Add(this.pictureBoxLog);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.buttonCommandes);
             this.panel1.Controls.Add(this.LogoPanel);
             this.panel1.Controls.Add(this.BtnGestionVentes);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.buttonForunisseur);
             this.panel1.Controls.Add(this.checkedLinePanel);
             this.panel1.Controls.Add(this.BtnGestionProduits);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -161,23 +161,23 @@
             this.pictureBoxLog.TabStop = false;
             this.pictureBoxLog.Click += new System.EventHandler(this.LogAll_click);
             // 
-            // button2
+            // buttonCommandes
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Image = global::Project_ENSAF.Properties.Resources.folder_6_24;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(6, 287);
-            this.button2.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(192, 51);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Commandes";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button1_Click);
+            this.buttonCommandes.FlatAppearance.BorderSize = 0;
+            this.buttonCommandes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCommandes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCommandes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonCommandes.Image = global::Project_ENSAF.Properties.Resources.folder_6_24;
+            this.buttonCommandes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonCommandes.Location = new System.Drawing.Point(6, 232);
+            this.buttonCommandes.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.buttonCommandes.Name = "buttonCommandes";
+            this.buttonCommandes.Size = new System.Drawing.Size(192, 51);
+            this.buttonCommandes.TabIndex = 3;
+            this.buttonCommandes.Text = "Commandes";
+            this.buttonCommandes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonCommandes.UseVisualStyleBackColor = true;
+            this.buttonCommandes.Click += new System.EventHandler(this.button1_Click);
             // 
             // LogoPanel
             // 
@@ -211,7 +211,7 @@
             this.BtnGestionVentes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BtnGestionVentes.Image = global::Project_ENSAF.Properties.Resources.bunch_ingredients_24;
             this.BtnGestionVentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGestionVentes.Location = new System.Drawing.Point(6, 230);
+            this.BtnGestionVentes.Location = new System.Drawing.Point(6, 175);
             this.BtnGestionVentes.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.BtnGestionVentes.Name = "BtnGestionVentes";
             this.BtnGestionVentes.Size = new System.Drawing.Size(195, 51);
@@ -221,29 +221,29 @@
             this.BtnGestionVentes.UseVisualStyleBackColor = true;
             this.BtnGestionVentes.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button1
+            // buttonForunisseur
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Image = global::Project_ENSAF.Properties.Resources.conference_call_24;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(6, 173);
-            this.button1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(195, 51);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Fournisseurs";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonForunisseur.FlatAppearance.BorderSize = 0;
+            this.buttonForunisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonForunisseur.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonForunisseur.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonForunisseur.Image = global::Project_ENSAF.Properties.Resources.conference_call_24;
+            this.buttonForunisseur.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonForunisseur.Location = new System.Drawing.Point(6, 118);
+            this.buttonForunisseur.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.buttonForunisseur.Name = "buttonForunisseur";
+            this.buttonForunisseur.Size = new System.Drawing.Size(195, 51);
+            this.buttonForunisseur.TabIndex = 1;
+            this.buttonForunisseur.Text = "Fournisseurs";
+            this.buttonForunisseur.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonForunisseur.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonForunisseur.UseVisualStyleBackColor = true;
+            this.buttonForunisseur.Click += new System.EventHandler(this.button1_Click);
             // 
             // checkedLinePanel
             // 
             this.checkedLinePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.checkedLinePanel.Location = new System.Drawing.Point(0, 116);
+            this.checkedLinePanel.Location = new System.Drawing.Point(0, 61);
             this.checkedLinePanel.Name = "checkedLinePanel";
             this.checkedLinePanel.Size = new System.Drawing.Size(6, 49);
             this.checkedLinePanel.TabIndex = 1;
@@ -256,7 +256,7 @@
             this.BtnGestionProduits.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BtnGestionProduits.Image = global::Project_ENSAF.Properties.Resources.filled_box_24;
             this.BtnGestionProduits.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGestionProduits.Location = new System.Drawing.Point(6, 116);
+            this.BtnGestionProduits.Location = new System.Drawing.Point(6, 61);
             this.BtnGestionProduits.Name = "BtnGestionProduits";
             this.BtnGestionProduits.Size = new System.Drawing.Size(195, 51);
             this.BtnGestionProduits.TabIndex = 0;
@@ -1073,7 +1073,7 @@
         private System.Windows.Forms.Button BtnGestionProduits;
         private System.Windows.Forms.Panel checkedLinePanel;
         private System.Windows.Forms.Button BtnGestionVentes;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonForunisseur;
         private System.Windows.Forms.Panel LogoPanel;
         private System.Windows.Forms.Label lblLogo;
         private System.Windows.Forms.Panel panelContainer;
@@ -1134,7 +1134,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Label labelErrorGraph;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonCommandes;
         private System.Windows.Forms.PictureBox pictureBoxLog;
     }
     

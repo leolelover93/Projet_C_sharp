@@ -70,6 +70,7 @@ namespace Project_ENSAF
 
             ToolTip tt = new ToolTip();
             tt.SetToolTip(this.pictureBoxLog,"Log");
+
             SetMessageLog("Connecté");
         }
 
@@ -109,7 +110,8 @@ namespace Project_ENSAF
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if((sender as Button).Text == "Produits")
+            if (previousBtn == (sender as Button)) return;
+            if((sender as Button).Name == "BtnGestionProduits")
             {
                 panelGestionVentes.Visible = false;
                 panelSM_GV.Visible =false; 
@@ -118,7 +120,7 @@ namespace Project_ENSAF
                 btnViewAll_Click(null, null);
 
             }
-            if ((sender as Button).Text == "Ventes")
+            if ((sender as Button).Name == "BtnGestionVentes")
             { 
                 panelGestionProduit.Visible = false;
                 panelCommandes.Visible = false;
@@ -151,7 +153,7 @@ namespace Project_ENSAF
 
                 }
             }
-            if((sender as Button).Text == "Commandes")
+            if((sender as Button).Name == "buttonCommandes")
             {
                 if(b == null)
                 {
@@ -167,7 +169,7 @@ namespace Project_ENSAF
                 panelCommandes.Controls[0].Dock = System.Windows.Forms.DockStyle.Fill;
                 panelCommandes.Visible = true;
             }
-            if((sender as Button).Text == "Fournisseurs")
+            if((sender as Button).Name == "buttonForunisseur")
             {
                 panelGestionProduit.Visible = false;
                 panelGestionVentes.Visible = false;
