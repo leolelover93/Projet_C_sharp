@@ -67,7 +67,7 @@ namespace Project_ENSAF
             dataGridView2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridView2.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 151, 255);
             dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            SetMessageLog("Utilisateur connecté");
+            //SetMessageLog("Utilisateur connecté");
         }
 
         public static void SetMessageLog(String msg)
@@ -86,7 +86,7 @@ namespace Project_ENSAF
             if(venteL != null)
             {
                 int quantite = int.Parse(venteL.quantiteVendus.Split(' ')[venteL.quantiteVendus.Split(' ').Length - 1]);
-                SetMessageLog("Vendre de " + quantite + " produit(s) avec un gain de : " + venteL.gain+" Dh");
+                SetMessageLog("Vente de " + quantite + " produit(s) avec un gain de : " + venteL.gain+" Dh");
             }
             
         }

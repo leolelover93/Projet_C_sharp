@@ -93,7 +93,7 @@ namespace Project_ENSAF
                     MessageBox.Show("Opération Non effectuer", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 var fournisseur = db.Fournisseurs.Where(f => f.idFournisseur == idFournisseurAajouter).FirstOrDefault();
-                Form1.SetMessageLog($"Ajouter le produit '{tbLibelle.Text}' au liste des produits du  fournisseur {fournisseur.nomFournisseur} {fournisseur.prenomFournisseur} ");
+                Form1.SetMessageLog($"L'ajout d'un nouveau produit '{tbLibelle.Text}' au liste des produits du  fournisseur {fournisseur.nomFournisseur} {fournisseur.prenomFournisseur} ");
                 db.Produits.Add(prod);
                 db.SaveChanges();
                 formParent2.remplireLayout(db);

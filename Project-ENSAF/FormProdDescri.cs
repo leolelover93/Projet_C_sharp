@@ -34,7 +34,7 @@ namespace Project_ENSAF
                     var db = new dbContext();
                     var stock = db.Stock_Magazin.Where(s => s.codeProduit.Equals(currentProd.codeProduit));
                     var stk2delete = stock.ToList<Stock_Magazin>()[e.RowIndex];
-                    Form1.SetMessageLog("Retirer le produit '"+ currentProd.libelle +"' du stock : " +"Quatite retitré "+ stk2delete.quantite + " produit(s) ---- date d'expiration : " + stk2delete.dateExpiration.ToShortDateString());
+                    Form1.SetMessageLog("Suppression du stock N"+stk2delete.codeStock+" du '"+ currentProd.libelle +", Quatite retitré "+ stk2delete.quantite + " produit(s) , date d'expiration : " + stk2delete.dateExpiration.ToShortDateString());
 
                     db.Stock_Magazin.Remove(stk2delete);
                     db.SaveChanges(); 

@@ -70,7 +70,7 @@ namespace Project_ENSAF
                         if(formParent.filter==0) formParent.btnViewAll_Click(null, null);
                         else if (formParent.filter == 1) formParent.btnDisponible_Click(null, null);
                         else if (formParent.filter == 2) formParent.btnNonDisponible_Click(null, null);
-                        Form1.SetMessageLog("L'ajout d'un nouveau stock de produit "+prod.libelle+", quantité: "+stock.quantite+", date d'expiration: "+stock.dateExpiration);
+                        Form1.SetMessageLog("L'ajout d'un nouveau stock de "+prod.libelle+", quantité: "+stock.quantite+", date d'expiration: "+stock.dateExpiration);
                     }
                     catch (Exception exc)
                     {

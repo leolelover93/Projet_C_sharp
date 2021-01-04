@@ -41,7 +41,7 @@ namespace Project_ENSAF
                         {
                             if (e.RowIndex < 0) return;//avoid header click event exception
                             Fournisseur fournisseur = db.Fournisseurs.ToArray<Fournisseur>()[e.RowIndex];
-                            Form1.SetMessageLog($"Suppression du fournisseur {fournisseur.nomFournisseur} {fournisseur.prenomFournisseur} depuis la liste des fournisseur");
+                            Form1.SetMessageLog($"Suppression de {fournisseur.nomFournisseur} {fournisseur.prenomFournisseur} de la liste des fournisseurs");
                             db.Fournisseurs.Remove(fournisseur);
                             db.SaveChanges();
                             refrechDataGrid(db.Fournisseurs.ToList());

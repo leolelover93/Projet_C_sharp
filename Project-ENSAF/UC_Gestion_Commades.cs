@@ -91,8 +91,8 @@ namespace Project_ENSAF
                 }
                
                  list = dbase.Commandes.ToList<Commande>();
-                Commande lastOneId = list[list.Count - 1];
-                Form1.SetMessageLog("La commande N " + lastOneId.NCommande + " est commandée du fournisseur N " + p.idFournisseur + "/ " + p.Fournisseur.nomFournisseur +" "+ p.Fournisseur.prenomFournisseur);
+                Commande lastOneId = list[list.Count - 1];//chno had khra a Messlo7i wliti rj3ti hadi
+                Form1.SetMessageLog("Création de la commande N " + lastOneId.NCommande + " du fournisseur : " + p.Fournisseur.nomFournisseur +" "+ p.Fournisseur.prenomFournisseur);
 
                 if (a != null)
                 {

@@ -236,7 +236,7 @@
                 dataGridView1.Rows[i].Cells[4].Value = item.adressFournisseur;
                 dataGridView1.Rows[i].Cells[5].Value = "Modifier";
                 dataGridView1.Rows[i].Cells[6].Value = "Supprimer";
-                dataGridView1.Rows[i].Cells[7].Value = "Détaille";
+                dataGridView1.Rows[i].Cells[7].Value = "Voir";
                 i++;
             }
         }

@@ -48,10 +48,8 @@ namespace Project_ENSAF
                     var stock2delete = db.Stock_Magazin.Where(st => st.codeProduit.Equals(currentProd.codeProduit)) ;
                     db.Stock_Magazin.RemoveRange(stock2delete);
                     db.SaveChanges();
-                    this.Dispose();
-
-                    //Matnsach tziid looog 
-                    Form1.SetMessageLog("le produit ");
+                    this.Dispose(); 
+                    Form1.SetMessageLog("Retiration de tous les stocks du "+currentProd.libelle);
                     
                     // MessageBox.Show("product deleted"); 
                 }
