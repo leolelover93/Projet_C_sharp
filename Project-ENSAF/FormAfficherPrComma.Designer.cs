@@ -122,8 +122,8 @@
                 elmnt.Icon = p.Produit.img != null ? Image.FromStream(new MemoryStream(p.Produit.img)) : Properties.Resources.loading_product;
                 elmnt.Description = p.Produit.description;
                 elmnt.QuntiteProduit = p.quantite + "";
-                elmnt.PrixUnit = p.Produit.prixVente;
-                elmnt.PrixTotal = p.quantite * p.Produit.prixVente +"";
+                elmnt.PrixUnit = p.Produit.prixAchat;
+                elmnt.PrixTotal = p.quantite * p.Produit.prixAchat +"";
                 this.Text = "Produit(s) commander dans la commande N'" + p.NCommande; 
                 this.flowLayoutPanel1.Controls.Add(elmnt);
             }

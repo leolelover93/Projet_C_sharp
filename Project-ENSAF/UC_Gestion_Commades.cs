@@ -322,7 +322,7 @@ namespace Project_ENSAF
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 4)
+            if(e.ColumnIndex == 5)
             {
                 var db = new dbContext();
                 if (e.RowIndex < 0) return;
