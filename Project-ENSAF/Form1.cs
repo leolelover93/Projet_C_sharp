@@ -105,9 +105,7 @@ namespace Project_ENSAF
                 return btn;
             }
             return null;
-          
         }
-
         private void refreshFlowLayoutPVente()
         {
             produitVentes.Clear();
