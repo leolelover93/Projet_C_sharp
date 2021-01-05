@@ -706,7 +706,6 @@ namespace Project_ENSAF
             {
                 this.pictureBoxBasket.Image = Properties.Resources.cart;
                 produitVentes.Clear(); 
-                flowLayoutPanelVente.Controls.Clear();
                 button1_Click(BtnGestionVentes, e);
                 flowLayoutPanelVente.Refresh();
             }

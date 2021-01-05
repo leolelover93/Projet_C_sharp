@@ -37,11 +37,8 @@
             this.lblProdDescri = new System.Windows.Forms.Label();
             this.numericUpDownQauntite = new System.Windows.Forms.NumericUpDown();
             this.lblnbProduits = new System.Windows.Forms.Label();
-            this.panelHorsStock = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.prodImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQauntite)).BeginInit();
-            this.panelHorsStock.SuspendLayout();
             this.SuspendLayout();
             // 
             // prodImg
@@ -144,32 +141,11 @@
             this.lblnbProduits.TabIndex = 6;
             this.lblnbProduits.Text = "Stock: ";
             // 
-            // panelHorsStock
-            // 
-            this.panelHorsStock.BackColor = System.Drawing.Color.Transparent;
-            this.panelHorsStock.Controls.Add(this.label1);
-            this.panelHorsStock.Location = new System.Drawing.Point(3, 164);
-            this.panelHorsStock.Name = "panelHorsStock";
-            this.panelHorsStock.Size = new System.Drawing.Size(166, 48);
-            this.panelHorsStock.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            this.label1.Location = new System.Drawing.Point(3, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 33);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Hors Stock";
-            // 
             // produit_Vente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.panelHorsStock);
             this.Controls.Add(this.lblnbProduits);
             this.Controls.Add(this.numericUpDownQauntite);
             this.Controls.Add(this.lblProdDescri);
@@ -181,8 +157,6 @@
             this.Size = new System.Drawing.Size(172, 218);
             ((System.ComponentModel.ISupportInitialize)(this.prodImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQauntite)).EndInit();
-            this.panelHorsStock.ResumeLayout(false);
-            this.panelHorsStock.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,7 +176,6 @@
         private void InitializeComp(Produit p,  int quantite,bool testCommande)
         {
             InitializeComponent();
-            this.panelHorsStock.Visible = false;
             this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
             this.lblProdName.Text = p.libelle;
             if (this.DansPanelCommande)
@@ -221,9 +194,6 @@
             {
                 btnReadMore.Text = "Commander";
                 btnReadMore.BackColor = Color.FromArgb(236, 88, 88);
-            }else if(this.Quantite == 0)
-            {
-                this.panelHorsStock.Visible = true;
             }else
             {
                 this.numericUpDownQauntite.Maximum = quantite;
@@ -237,7 +207,5 @@
         private System.Windows.Forms.Label lblProdDescri;
         private System.Windows.Forms.NumericUpDown numericUpDownQauntite;
         public System.Windows.Forms.Label lblnbProduits;
-        private System.Windows.Forms.Panel panelHorsStock;
-        private System.Windows.Forms.Label label1;
     }
 }
