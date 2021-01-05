@@ -25,6 +25,7 @@ namespace Project_ENSAF
             {
                 StreamWriter writer = new StreamWriter(filePath, false);
                 writer.Write("");
+                writer.Close();
                 Properties.Settings.Default.DateDelteLog = DateTime.Now.ToString();
                 Properties.Settings.Default.Save();
 

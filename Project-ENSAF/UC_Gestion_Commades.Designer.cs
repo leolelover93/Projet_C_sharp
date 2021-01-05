@@ -333,16 +333,16 @@
                 dataGridView1.Rows[i].Cells[0].Value = item.NCommande;
                 dataGridView1.Rows[i].Cells[1].Value = item.dateDemande.ToShortDateString();
                 dataGridView1.Rows[i].Cells[2].Value = item.dateArriveSouhaite.ToShortDateString();
-                dataGridView1.Rows[i].Cells[3].Value = "Voir Détaille..";
+                dataGridView1.Rows[i].Cells[3].Value = "Voir...";
                 if (item.statut == true)
                {
                    dataGridView1.Rows[i].Cells[4].Style.BackColor = Color.Green;
-                    dataGridView1.Rows[i].Cells[4].Value = "arrivé";
+                    dataGridView1.Rows[i].Cells[4].Value = "Arrivé"; 
                 }
                 else
                 {
                     dataGridView1.Rows[i].Cells[4].Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(169)))), ((int)(((byte)(0)))));
-                    dataGridView1.Rows[i].Cells[4].Value = "approuver";
+                    dataGridView1.Rows[i].Cells[4].Value = "Valider";
                 }
                 i++;
             }
