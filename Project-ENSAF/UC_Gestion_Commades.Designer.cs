@@ -117,6 +117,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxFilterCommande.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.comboBoxFilterCommande.CausesValidation = false;
             this.comboBoxFilterCommande.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBoxFilterCommande.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFilterCommande.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

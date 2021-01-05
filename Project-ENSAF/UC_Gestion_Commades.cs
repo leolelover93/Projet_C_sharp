@@ -64,6 +64,7 @@ namespace Project_ENSAF
             ajouterCommande.Click += new System.EventHandler(this.affecterCommande);
             this.dateSouhaité = findDateSouhaité();
 
+
         }
         private void affecterCommande(object sender, EventArgs e)
         {
@@ -173,6 +174,7 @@ namespace Project_ENSAF
         {
             if (labelHiden.Text != "")
             {
+
                 nbCommandes++;
                 labelNbCommande.Text = nbCommandes + "";
                 int idProduit = int.Parse(labelHiden.Text.Split(' ')[0]); 
@@ -191,11 +193,11 @@ namespace Project_ENSAF
                 elmnt.Quantite = quantiteDemander;
                 elmnt.QuntiteProduit = quantiteDemander+"";
                 elmnt.PrixUnit = p.prixAchat;
-                elmnt.PrixTotal = p.prixVente * quantiteDemander + "";
+                elmnt.PrixTotal = p.prixAchat * quantiteDemander + "";
                 foreach (Control item in flowLayoutPagnierProduitCommandes.Controls)
                 {
                     ElementPagnierVentes epv = (ElementPagnierVentes)item;
-                    if (epv.Title == elmnt.Title)
+                    if (epv.Id == elmnt.Id)
                     {
                         epv.Quantite = quantiteDemander;
                         labelNbCommande.Text = --nbCommandes + "";

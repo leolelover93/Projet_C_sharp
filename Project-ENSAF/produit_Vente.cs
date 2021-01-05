@@ -56,6 +56,7 @@ namespace Project_ENSAF
 
             }else
             {
+
                 Control[] tabElment = this.Parent.Parent.Controls.Find("labelHiden", true);
                 Label label = (Label)tabElment[0];
                 if (label.Text == (this.idProduit.ToString() + " " + numericUpDownQauntite.Value)) label.Text = "";

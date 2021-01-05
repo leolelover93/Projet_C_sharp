@@ -11,7 +11,7 @@ namespace Project_ENSAF
     { 
         Button previousBtn,prvBtnFilter;
         FormPagnierVentes a;
-        FormAcheterProduits b;
+        FormAcheterProduits formAcheterProduits;
         UC_GestionFournisseur uc;
         int nbProduitInBasket = 0;
         UC_Gestion_Commades uc_Commandes;
@@ -155,15 +155,19 @@ namespace Project_ENSAF
             }
             if((sender as Button).Name == "buttonCommandes")
             {
-                if(b == null)
+                if(formAcheterProduits == null)
                 {
-                    b = new FormAcheterProduits(); 
+                    formAcheterProduits = new FormAcheterProduits(); 
                 }
                 panelGestionProduit.Visible = false;
                 panelGestionVentes.Visible = false;
                 panelSM_GV.Visible = false;
                 var db = new dbContext();
-                this.uc_Commandes = new UC_Gestion_Commades(db.Commandes.ToList<Commande>(),b);
+                if(this.uc_Commandes == null)
+                {
+                    this.uc_Commandes = new UC_Gestion_Commades(db.Commandes.ToList<Commande>(), formAcheterProduits);
+
+                }
                 panelCommandes.Controls.Clear();
                 panelCommandes.Controls.Add(uc_Commandes);
                 panelCommandes.Controls[0].Dock = System.Windows.Forms.DockStyle.Fill;
@@ -352,7 +356,7 @@ namespace Project_ENSAF
                 foreach (Control item in flowLayoutPagnierProduitVentes.Controls)
                 {
                     ElementPagnierVentes epv = (ElementPagnierVentes)item;
-                    if (epv.Title == elmnt.Title)
+                    if (epv.Id  == elmnt.Id)
                     {
                         epv.Quantite = int.Parse(listBoxItemProduct.Text.Split(' ')[1]);
                         labelBasket.Text = --nbProduitInBasket + "";

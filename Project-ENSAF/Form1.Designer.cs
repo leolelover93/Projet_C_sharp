@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,6 +37,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxLog = new System.Windows.Forms.PictureBox();
             this.buttonCommandes = new System.Windows.Forms.Button();
@@ -55,7 +55,6 @@
             this.btnViewAll = new System.Windows.Forms.Button();
             this.panelSearchBox = new System.Windows.Forms.Panel();
             this.buttonSearchGP = new System.Windows.Forms.Button();
-            this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnAjouterProduit = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelSM_GV = new System.Windows.Forms.Panel();
@@ -63,7 +62,6 @@
             this.panelGestionVentes = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonSearchPV = new System.Windows.Forms.Button();
             this.textBoxSearchProduitVentes = new System.Windows.Forms.TextBox();
             this.btnViderPanger = new System.Windows.Forms.Button();
             this.labelBasket = new System.Windows.Forms.Label();
@@ -105,6 +103,8 @@
             this.panelHeader_SM_GV_JV = new System.Windows.Forms.Panel();
             this.labelTitreJV = new System.Windows.Forms.Label();
             this.panelCommandes = new System.Windows.Forms.Panel();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLog)).BeginInit();
             this.LogoPanel.SuspendLayout();
@@ -268,9 +268,9 @@
             // panelContainer
             // 
             this.panelContainer.BackColor = System.Drawing.Color.Transparent;
-            this.panelContainer.Controls.Add(this.panelGestionProduit);
             this.panelContainer.Controls.Add(this.panelSM_GV);
             this.panelContainer.Controls.Add(this.panelCommandes);
+            this.panelContainer.Controls.Add(this.panelGestionProduit);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(201, 0);
             this.panelContainer.Name = "panelContainer";
@@ -369,19 +369,6 @@
             this.buttonSearchGP.UseVisualStyleBackColor = false;
             this.buttonSearchGP.Click += new System.EventHandler(this.tbSearch_TextChanged);
             // 
-            // tbSearch
-            // 
-            this.tbSearch.BackColor = System.Drawing.Color.White;
-            this.tbSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbSearch.Font = new System.Drawing.Font("Calibri", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSearch.Location = new System.Drawing.Point(9, 9);
-            this.tbSearch.MinimumSize = new System.Drawing.Size(0, 26);
-            this.tbSearch.Multiline = true;
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(216, 26);
-            this.tbSearch.TabIndex = 2;
-            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
-            // 
             // btnAjouterProduit
             // 
             this.btnAjouterProduit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -465,24 +452,12 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.buttonSearchPV);
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.textBoxSearchProduitVentes);
             this.panel3.Location = new System.Drawing.Point(0, 7);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(246, 45);
             this.panel3.TabIndex = 4;
-            // 
-            // buttonSearchPV
-            // 
-            this.buttonSearchPV.BackColor = System.Drawing.Color.White;
-            this.buttonSearchPV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSearchPV.FlatAppearance.BorderSize = 0;
-            this.buttonSearchPV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchPV.Location = new System.Drawing.Point(200, 12);
-            this.buttonSearchPV.Name = "buttonSearchPV";
-            this.buttonSearchPV.Size = new System.Drawing.Size(24, 20);
-            this.buttonSearchPV.TabIndex = 4;
-            this.buttonSearchPV.UseVisualStyleBackColor = false;
             // 
             // textBoxSearchProduitVentes
             // 
@@ -1011,6 +986,32 @@
             this.panelCommandes.Size = new System.Drawing.Size(750, 499);
             this.panelCommandes.TabIndex = 8;
             // 
+            // tbSearch
+            // 
+            this.tbSearch.BackColor = System.Drawing.Color.White;
+            this.tbSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbSearch.Font = new System.Drawing.Font("Calibri", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearch.Location = new System.Drawing.Point(9, 9);
+            this.tbSearch.MinimumSize = new System.Drawing.Size(0, 26);
+            this.tbSearch.Multiline = true;
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(216, 26);
+            this.tbSearch.TabIndex = 2;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(199, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 20);
+            this.button1.TabIndex = 4;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1082,7 +1083,6 @@
         private System.Windows.Forms.Button btnDisponible;
         private System.Windows.Forms.Button btnViewAll;
         private System.Windows.Forms.Panel panelSearchBox;
-        private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Button btnAjouterProduit;
         public System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button buttonSearchGP;
@@ -1093,7 +1093,6 @@
         private System.Windows.Forms.Panel panelGestionVentes;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button buttonSearchPV;
         private System.Windows.Forms.TextBox textBoxSearchProduitVentes;
         private System.Windows.Forms.Button btnViderPanger;
         private System.Windows.Forms.Label labelBasket;
@@ -1133,6 +1132,8 @@
         private System.Windows.Forms.Label labelErrorGraph;
         private System.Windows.Forms.Button buttonCommandes;
         private System.Windows.Forms.PictureBox pictureBoxLog;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.Button button1;
     }
     
 }

@@ -83,5 +83,13 @@ namespace Project_ENSAF
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 151, 255);
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
+
+        private void tbSearchFournisseur_TextChanged(object sender, EventArgs e)
+        {
+            string search = tbSearchFournisseur.Text;
+            var db = new dbContext();
+            List<Fournisseur> listToRender = db.Fournisseurs.Where(f => f.nomFournisseur.Contains(search) || f.prenomFournisseur.Contains(search)).ToList<Fournisseur>();
+            refrechDataGrid(listToRender);
+        }
     }
 }

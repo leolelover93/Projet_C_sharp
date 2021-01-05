@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_GestionFournisseur));
             this.panel1 = new System.Windows.Forms.Panel();
             this.bAjoutCommande = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -42,6 +43,8 @@
             this.Modifier = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Supprimer = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Produits = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.tbSearchFournisseur = new System.Windows.Forms.TextBox();
+            this.buttonSearchGP = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +52,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.panel1.Controls.Add(this.buttonSearchGP);
+            this.panel1.Controls.Add(this.tbSearchFournisseur);
             this.panel1.Controls.Add(this.bAjoutCommande);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -198,6 +203,32 @@
             this.Produits.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.Produits.Width = 85;
             // 
+            // tbSearchFournisseur
+            // 
+            this.tbSearchFournisseur.BackColor = System.Drawing.Color.White;
+            this.tbSearchFournisseur.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbSearchFournisseur.Font = new System.Drawing.Font("Calibri", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearchFournisseur.Location = new System.Drawing.Point(9, 16);
+            this.tbSearchFournisseur.MinimumSize = new System.Drawing.Size(0, 26);
+            this.tbSearchFournisseur.Multiline = true;
+            this.tbSearchFournisseur.Name = "tbSearchFournisseur";
+            this.tbSearchFournisseur.Size = new System.Drawing.Size(216, 26);
+            this.tbSearchFournisseur.TabIndex = 3;
+            this.tbSearchFournisseur.TextChanged += new System.EventHandler(this.tbSearchFournisseur_TextChanged);
+            // 
+            // buttonSearchGP
+            // 
+            this.buttonSearchGP.BackColor = System.Drawing.Color.White;
+            this.buttonSearchGP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSearchGP.BackgroundImage")));
+            this.buttonSearchGP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSearchGP.FlatAppearance.BorderSize = 0;
+            this.buttonSearchGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchGP.Location = new System.Drawing.Point(201, 18);
+            this.buttonSearchGP.Name = "buttonSearchGP";
+            this.buttonSearchGP.Size = new System.Drawing.Size(24, 20);
+            this.buttonSearchGP.TabIndex = 4;
+            this.buttonSearchGP.UseVisualStyleBackColor = false;
+            // 
             // UC_GestionFournisseur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,5 +284,7 @@
         private System.Windows.Forms.DataGridViewLinkColumn Modifier;
         private System.Windows.Forms.DataGridViewLinkColumn Supprimer;
         private System.Windows.Forms.DataGridViewLinkColumn Produits;
+        private System.Windows.Forms.TextBox tbSearchFournisseur;
+        private System.Windows.Forms.Button buttonSearchGP;
     }
 }
