@@ -203,7 +203,16 @@
             //  this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
             this.prodImg.Image = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
             this.lblProdDescri.Text = p.description;
-            this.lblprix.Text = p.prixVente.ToString() + "dh";
+            if (isDeatilleFournisseur)
+            {
+                this.lblprix.Text = p.prixAchat.ToString() + "dh";
+
+            }
+            else
+            {
+                this.lblprix.Text = p.prixVente.ToString() + "dh";
+
+            }
             this.lblnbProduits.Text = "Stock: " + nbProds;//nbProds.ToString(); 
 
         }

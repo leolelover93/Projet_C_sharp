@@ -50,20 +50,32 @@ namespace Project_ENSAF
         private void Ajouter_Click(object sender, EventArgs e)
         {
             var db = new dbContext();
+            if (tb_Prix_Achat.Text == "" || tb_Prix_Vente.Text == "" || tbLibelle.Text == "" || tbDescription.Text == "")
+            {
+                MessageBox.Show("Remplire tous les chapms", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (isDetailFournisseur)
             {
-                Decimal prix_Achat, prix_Vente;
+                Decimal prix_Achat , prix_Vente ;
                 try
                 {
-                    prix_Achat = Convert.ToDecimal(tb_Prix_Achat.Text);
-                    prix_Vente = Convert.ToDecimal(tb_Prix_Vente.Text);
-                    MessageBox.Show(prix_Achat + " " + prix_Achat); 
+                    string[] pat = tb_Prix_Achat.Text.Split('.');
+                    string[] pvt = tb_Prix_Vente.Text.Split('.');
+                    string pa = tb_Prix_Achat.Text;
+                    string pv = tb_Prix_Vente.Text;
+                    if (tb_Prix_Achat.Text.Split('.').Length > 1) pa =  pa.Replace(".", ",").Trim();
+                    if (tb_Prix_Vente.Text.Split('.').Length > 1) pv =  pv.Replace(".", ",").Trim();
+                    prix_Achat = Convert.ToDecimal(pa);
+                    prix_Vente = Convert.ToDecimal(pv);
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Le prix doit être un nombre decimal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+              
+
                 try
                 {
                     Produit prod = db.Produits.Where(p => p.codeProduit == this.prod2Edit.codeProduit).FirstOrDefault<Produit>();

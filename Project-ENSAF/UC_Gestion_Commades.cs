@@ -92,7 +92,7 @@ namespace Project_ENSAF
                
                  list = dbase.Commandes.ToList<Commande>();
                 Commande lastOneId = list[list.Count - 1];//chno had khra a Messlo7i wliti rj3ti hadi
-                Form1.SetMessageLog("Création de la commande N " + lastOneId.NCommande + " du fournisseur : " + p.Fournisseur.nomFournisseur +" "+ p.Fournisseur.prenomFournisseur);
+                Form1.SetMessageLog("Création de la commande N " + lastOneId.NCommande + " au fournisseur : " + p.Fournisseur.nomFournisseur +" "+ p.Fournisseur.prenomFournisseur);
 
                 if (a != null)
                 {
