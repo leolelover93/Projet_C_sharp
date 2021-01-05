@@ -108,6 +108,26 @@ namespace Project_ENSAF
           
         }
 
+        private void refreshFlowLayoutPVente()
+        {
+            produitVentes.Clear();
+            flowLayoutPanelVente.Controls.Clear();
+            var dbase = new dbContext();
+            var NonExpireStock = dbase.Stock_Magazin
+                    .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) > 0)
+                    .GroupBy(st => st.codeProduit, (key, g) => new { grp = g.ToList<Stock_Magazin>() });
+            int quantity = 0;
+            foreach (var st in NonExpireStock) //fetch non expired products from stock
+            {
+                Produit p = dbase.Produits.Find(st.grp.FirstOrDefault().codeProduit);
+                if (p == null) continue;
+                produitVentes.Add(p);
+                quantity = st.grp.Sum(stk => stk.quantite);
+                if (quantity > 0) this.flowLayoutPanelVente.Controls.Add(new produit_Vente(p, quantity));
+                quantity = 0;
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (previousBtn == (sender as Button)) return;
@@ -121,27 +141,14 @@ namespace Project_ENSAF
 
             }
             if ((sender as Button).Name == "BtnGestionVentes")
-            { 
+            {
+                refreshFlowLayoutPVente();
                 panelGestionProduit.Visible = false;
                 panelCommandes.Visible = false;
                 panelGestionVentes.Visible = true;
-                panelSM_GV.Visible = true; 
-                var dbase = new dbContext();
-                var NonExpireStock = dbase.Stock_Magazin
-                        .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) > 0)
-                        .GroupBy(st => st.codeProduit, (key, g) => new { grp = g.ToList<Stock_Magazin>() });
-                int quantity = 0;
-                produitVentes.Clear();
-                flowLayoutPanelVente.Controls.Clear();
-                foreach (var st in NonExpireStock) //fetch non expired products from stock
-                {
-                    Produit p = dbase.Produits.Find(st.grp.FirstOrDefault().codeProduit);
-                    if (p==null) continue;
-                    produitVentes.Add(p);
-                    quantity = st.grp.Sum(stk => stk.quantite);
-                    if(quantity>0) this.flowLayoutPanelVente.Controls.Add(new produit_Vente(p, quantity));
-                    quantity = 0;
-                } 
+                panelSM_GV.Visible = true;
+            
+
                 if (a == null)
                 {
                     a = new FormPagnierVentes();
@@ -706,8 +713,7 @@ namespace Project_ENSAF
             if (flowLayoutPagnierProduitVentes.Controls.Count == 0)
             {
                 this.pictureBoxBasket.Image = Properties.Resources.cart;
-                produitVentes.Clear(); 
-                button1_Click(BtnGestionVentes, e);
+                refreshFlowLayoutPVente();
                 flowLayoutPanelVente.Refresh();
             }
 
