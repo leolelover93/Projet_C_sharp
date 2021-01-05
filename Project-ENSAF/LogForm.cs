@@ -108,7 +108,32 @@ namespace Project_ENSAF
             a.Show();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult rs = MessageBox.Show("Toute la journalisation sera supprimé définitivement, Continue?","Effacer Log",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (rs == DialogResult.Yes)
+            {
+                listView1.Clear();
+                String Filepath = Path.Combine(Directory.GetCurrentDirectory(), "log.txt");
+                StreamWriter writer = new StreamWriter(Filepath, false);
+                writer.Write(DateTime.Now+" : Log Effacé\n");
+                writer.Close();
+            }
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            String Filepath = Path.Combine(Directory.GetCurrentDirectory(), "log.txt");
+            string[] lignes = File.ReadAllLines(Filepath);
+            listView1.Items.Clear();
+            /**/
+            foreach (string line in lignes)
+            { 
+               // Console.WriteLine(line);
+                listView1.Items.Add(line);  
+            }
+        }
     }
 }
 

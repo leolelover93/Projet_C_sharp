@@ -32,7 +32,7 @@
 
             this.lblProdName.Text = "Said";
 
-            MessageBox.Show("changed: " + this.lblProdName.Text);
+          //  MessageBox.Show("changed: " + this.lblProdName.Text);
 
         }
         private void InitializeComponent()

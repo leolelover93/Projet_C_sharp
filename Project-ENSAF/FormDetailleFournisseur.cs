@@ -50,5 +50,11 @@ namespace Project_ENSAF
             Form_Ajouter_Produit_Fournisseur a = new Form_Ajouter_Produit_Fournisseur(this,idFournisseur);
             a.Show();
         }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            Form_Ajouter_Produit_Fournisseur a = new Form_Ajouter_Produit_Fournisseur(this, idFournisseur);
+            a.Show();
+        }
     }
 }
