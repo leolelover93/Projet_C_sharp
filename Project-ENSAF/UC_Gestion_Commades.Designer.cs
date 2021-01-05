@@ -2,6 +2,8 @@
 {
     using System.Drawing;
     using System.Windows.Forms;
+    using System.Linq;
+    using System.Collections.Generic;
 
     partial class UC_Gestion_Commades
     {
@@ -31,9 +33,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.labelNbCommande = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
@@ -50,6 +52,7 @@
             this.dateDemandeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateArriveSouhaiteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produitcommandeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Montant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AprouveColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -224,26 +227,27 @@
             this.dateDemandeDataGridViewTextBoxColumn,
             this.dateArriveSouhaiteDataGridViewTextBoxColumn,
             this.produitcommandeDataGridViewTextBoxColumn,
+            this.Montant,
             this.AprouveColumn});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
             this.dataGridView1.Location = new System.Drawing.Point(22, 16);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
             this.dataGridView1.Size = new System.Drawing.Size(704, 425);
             this.dataGridView1.TabIndex = 2;
@@ -252,16 +256,19 @@
             // 
             // nCommandeDataGridViewTextBoxColumn
             // 
-            this.nCommandeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nCommandeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.nCommandeDataGridViewTextBoxColumn.DataPropertyName = "NCommande";
-            this.nCommandeDataGridViewTextBoxColumn.HeaderText = "N commande";
+            this.nCommandeDataGridViewTextBoxColumn.FillWeight = 203.0457F;
+            this.nCommandeDataGridViewTextBoxColumn.HeaderText = "n commande";
             this.nCommandeDataGridViewTextBoxColumn.Name = "nCommandeDataGridViewTextBoxColumn";
             this.nCommandeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nCommandeDataGridViewTextBoxColumn.Width = 75;
             // 
             // dateDemandeDataGridViewTextBoxColumn
             // 
             this.dateDemandeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dateDemandeDataGridViewTextBoxColumn.DataPropertyName = "dateDemande";
+            this.dateDemandeDataGridViewTextBoxColumn.FillWeight = 74.23858F;
             this.dateDemandeDataGridViewTextBoxColumn.HeaderText = "date de demande";
             this.dateDemandeDataGridViewTextBoxColumn.Name = "dateDemandeDataGridViewTextBoxColumn";
             this.dateDemandeDataGridViewTextBoxColumn.ReadOnly = true;
@@ -270,6 +277,7 @@
             // 
             this.dateArriveSouhaiteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dateArriveSouhaiteDataGridViewTextBoxColumn.DataPropertyName = "dateArriveSouhaite";
+            this.dateArriveSouhaiteDataGridViewTextBoxColumn.FillWeight = 74.23858F;
             this.dateArriveSouhaiteDataGridViewTextBoxColumn.HeaderText = "date d\'arrivé souhaité";
             this.dateArriveSouhaiteDataGridViewTextBoxColumn.Name = "dateArriveSouhaiteDataGridViewTextBoxColumn";
             this.dateArriveSouhaiteDataGridViewTextBoxColumn.ReadOnly = true;
@@ -278,18 +286,27 @@
             // 
             this.produitcommandeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.produitcommandeDataGridViewTextBoxColumn.DataPropertyName = "Produit_commande";
+            this.produitcommandeDataGridViewTextBoxColumn.FillWeight = 74.23858F;
             this.produitcommandeDataGridViewTextBoxColumn.HeaderText = "Produits commandés";
             this.produitcommandeDataGridViewTextBoxColumn.Name = "produitcommandeDataGridViewTextBoxColumn";
             this.produitcommandeDataGridViewTextBoxColumn.ReadOnly = true;
             this.produitcommandeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.produitcommandeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // Montant
+            // 
+            this.Montant.HeaderText = "Montant";
+            this.Montant.Name = "Montant";
+            this.Montant.ReadOnly = true;
+            this.Montant.Width = 80;
+            // 
             // AprouveColumn
             // 
             this.AprouveColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(169)))), ((int)(((byte)(0)))));
-            this.AprouveColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(169)))), ((int)(((byte)(0)))));
+            this.AprouveColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.AprouveColumn.FillWeight = 74.23858F;
             this.AprouveColumn.HeaderText = "";
             this.AprouveColumn.Name = "AprouveColumn";
             this.AprouveColumn.ReadOnly = true;
@@ -327,22 +344,29 @@
             dataGridView1.Rows.Clear();
             int i = 0;
             commandes.Reverse();
+            var db = new dbContext();
+            int nbprod = 0;
+            decimal montant=0;
             foreach (var item in commandes)
             {
+                var pcommandes = db.Produit_commande.Where(c => c.NCommande == item.NCommande).ToList<Produit_commande>();
+                montant = pcommandes.Sum(s => s.quantite*db.Produits.Find(s.codeProduit).prixAchat);
+                nbprod = pcommandes.Sum(s=>s.quantite);
                 if (i < commandes.Count - 1) dataGridView1.Rows.Add();
                 dataGridView1.Rows[i].Cells[0].Value = item.NCommande;
                 dataGridView1.Rows[i].Cells[1].Value = item.dateDemande.ToShortDateString();
                 dataGridView1.Rows[i].Cells[2].Value = item.dateArriveSouhaite.ToShortDateString();
-                dataGridView1.Rows[i].Cells[3].Value = "Voir...";
+                dataGridView1.Rows[i].Cells[3].Value =nbprod+ " produits...";
+                dataGridView1.Rows[i].Cells[4].Value = montant + " dh";
                 if (item.statut == true)
                {
-                   dataGridView1.Rows[i].Cells[4].Style.BackColor = Color.Green;
-                    dataGridView1.Rows[i].Cells[4].Value = "Arrivé"; 
+                   dataGridView1.Rows[i].Cells[5].Style.BackColor = Color.Green;
+                    dataGridView1.Rows[i].Cells[5].Value = "Arrivé"; 
                 }
                 else
                 {
-                    dataGridView1.Rows[i].Cells[4].Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(169)))), ((int)(((byte)(0)))));
-                    dataGridView1.Rows[i].Cells[4].Value = "Valider";
+                    dataGridView1.Rows[i].Cells[5].Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(169)))), ((int)(((byte)(0)))));
+                    dataGridView1.Rows[i].Cells[5].Value = "Valider";
                 }
                 i++;
             }
@@ -360,11 +384,12 @@
         private System.Windows.Forms.Panel panelSearchBox;
         private System.Windows.Forms.TextBox searchBar;
         private DataGridView dataGridView1;
+        private ComboBox comboBoxFilterCommande;
         private DataGridViewTextBoxColumn nCommandeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateDemandeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateArriveSouhaiteDataGridViewTextBoxColumn;
         private DataGridViewLinkColumn produitcommandeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Montant;
         private DataGridViewButtonColumn AprouveColumn;
-        private ComboBox comboBoxFilterCommande;
     }
 }

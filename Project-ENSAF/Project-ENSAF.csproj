@@ -304,6 +304,11 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\reset.png" />
+    <None Include="Resources\trash %282%29.png" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\printer.png" />
+    <None Include="Resources\128.ico" />
     <None Include="Resources\settings.png" />
     <None Include="Resources\printer-24.png" />
     <None Include="Resources\filled-box-24.png" />

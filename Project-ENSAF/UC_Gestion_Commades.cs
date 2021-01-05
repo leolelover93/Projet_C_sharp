@@ -331,11 +331,11 @@ namespace Project_ENSAF
                 if(commande != null && commande.statut == false)
                 {
                     Form1.SetMessageLog("La commande N " + commande.NCommande + " est arrivée");
-                    dataGridView1.Rows[e.RowIndex].Cells[4].Value = "arrivé";
+                    dataGridView1.Rows[e.RowIndex].Cells[5].Value = "Arrivé";
                     commande.statut = true;
                     db.SaveChanges();
-                    dataGridView1.Rows[e.RowIndex].Cells[4].Style.BackColor = Color.Green;
-                    dataGridView1.Rows[e.RowIndex].Cells[4].Style.SelectionBackColor = Color.Green;
+                    dataGridView1.Rows[e.RowIndex].Cells[5].Style.BackColor = Color.Green;
+                    dataGridView1.Rows[e.RowIndex].Cells[5].Style.SelectionBackColor = Color.Green;
                     dataGridView1.Rows[e.RowIndex].Selected = true;
                     var produits_commande = db.Produit_commande.Where(p => p.NCommande == id).ToList();
                     foreach (var item in produits_commande)
