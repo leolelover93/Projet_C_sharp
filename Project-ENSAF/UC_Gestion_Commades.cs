@@ -112,9 +112,10 @@ namespace Project_ENSAF
                 {
                    produitVentes.Clear();
                 }
-                //this.flowLayoutPanel1.Controls.Clear();
-                this.flowLayoutPagnierProduitCommandes.Controls.Clear();
-                //remplireListeProduit();
+            //this.flowLayoutPanel1.Controls.Clear();
+            //remplireListeProduit();
+
+            this.flowLayoutPagnierProduitCommandes.Controls.Clear();
                 a.Visible = false;
         }
         private void remplireListeProduit()
