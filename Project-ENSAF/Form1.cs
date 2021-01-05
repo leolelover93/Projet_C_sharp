@@ -216,7 +216,7 @@ namespace Project_ENSAF
             {
                 quantity = NonExpiredStock.FindAll(s => s.codeProduit.Equals(prd.codeProduit)).Sum(stk => stk.quantite);
                 Console.WriteLine("search vente-> produit: " + prd.libelle + "Quanti: " + quantity);
-                if(quantity!=0)
+                if (quantity != 0)
                     flowLayoutPanelVente.Controls.Add(new produit_Vente(prd, quantity));
                 quantity = 0;
             }
@@ -292,8 +292,9 @@ namespace Project_ENSAF
             foreach (var prod in produitVentes)
             { 
                 if (prod.libelle.ToLower().IndexOf(cle.ToLower()) == -1) continue;
-                quantity = stock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk => stk.quantite); 
-                this.flowLayoutPanel1.Controls.Add(new produit_Vente(prod, quantity));  
+                quantity = stock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk => stk.quantite);
+                if (quantity != 0)
+                    this.flowLayoutPanel1.Controls.Add(new produit_cardUC(prod,this, quantity));  
             }
         } 
         public void btnNonDisponible_Click(object sender, EventArgs e)

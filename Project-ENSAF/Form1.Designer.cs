@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxLog = new System.Windows.Forms.PictureBox();
             this.buttonCommandes = new System.Windows.Forms.Button();
@@ -48,20 +48,12 @@
             this.checkedLinePanel = new System.Windows.Forms.Panel();
             this.BtnGestionProduits = new System.Windows.Forms.Button();
             this.panelContainer = new System.Windows.Forms.Panel();
-            this.panelGestionProduit = new System.Windows.Forms.Panel();
-            this.panelHeader = new System.Windows.Forms.Panel();
-            this.btnNonDisponible = new System.Windows.Forms.Button();
-            this.btnDisponible = new System.Windows.Forms.Button();
-            this.btnViewAll = new System.Windows.Forms.Button();
-            this.panelSearchBox = new System.Windows.Forms.Panel();
-            this.buttonSearchGP = new System.Windows.Forms.Button();
-            this.btnAjouterProduit = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelSM_GV = new System.Windows.Forms.Panel();
             this.panelContainerSM_GV_V = new System.Windows.Forms.Panel();
             this.panelGestionVentes = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.textBoxSearchProduitVentes = new System.Windows.Forms.TextBox();
             this.btnViderPanger = new System.Windows.Forms.Button();
             this.labelBasket = new System.Windows.Forms.Label();
@@ -103,15 +95,20 @@
             this.panelHeader_SM_GV_JV = new System.Windows.Forms.Panel();
             this.labelTitreJV = new System.Windows.Forms.Label();
             this.panelCommandes = new System.Windows.Forms.Panel();
+            this.panelGestionProduit = new System.Windows.Forms.Panel();
+            this.panelHeader = new System.Windows.Forms.Panel();
+            this.btnNonDisponible = new System.Windows.Forms.Button();
+            this.btnDisponible = new System.Windows.Forms.Button();
+            this.btnViewAll = new System.Windows.Forms.Button();
+            this.panelSearchBox = new System.Windows.Forms.Panel();
+            this.buttonSearchGP = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAjouterProduit = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLog)).BeginInit();
             this.LogoPanel.SuspendLayout();
             this.panelContainer.SuspendLayout();
-            this.panelGestionProduit.SuspendLayout();
-            this.panelHeader.SuspendLayout();
-            this.panelSearchBox.SuspendLayout();
             this.panelSM_GV.SuspendLayout();
             this.panelContainerSM_GV_V.SuspendLayout();
             this.panelGestionVentes.SuspendLayout();
@@ -130,6 +127,9 @@
             this.groupBoxAffichageJV.SuspendLayout();
             this.groupBoxFilterSearchJV.SuspendLayout();
             this.panelHeader_SM_GV_JV.SuspendLayout();
+            this.panelGestionProduit.SuspendLayout();
+            this.panelHeader.SuspendLayout();
+            this.panelSearchBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -277,133 +277,6 @@
             this.panelContainer.Size = new System.Drawing.Size(750, 499);
             this.panelContainer.TabIndex = 1;
             // 
-            // panelGestionProduit
-            // 
-            this.panelGestionProduit.BackColor = System.Drawing.Color.White;
-            this.panelGestionProduit.Controls.Add(this.panelHeader);
-            this.panelGestionProduit.Controls.Add(this.flowLayoutPanel1);
-            this.panelGestionProduit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGestionProduit.Location = new System.Drawing.Point(0, 0);
-            this.panelGestionProduit.Name = "panelGestionProduit";
-            this.panelGestionProduit.Size = new System.Drawing.Size(750, 499);
-            this.panelGestionProduit.TabIndex = 0;
-            // 
-            // panelHeader
-            // 
-            this.panelHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.panelHeader.Controls.Add(this.btnNonDisponible);
-            this.panelHeader.Controls.Add(this.btnDisponible);
-            this.panelHeader.Controls.Add(this.btnViewAll);
-            this.panelHeader.Controls.Add(this.panelSearchBox);
-            this.panelHeader.Controls.Add(this.btnAjouterProduit);
-            this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(750, 55);
-            this.panelHeader.TabIndex = 7;
-            // 
-            // btnNonDisponible
-            // 
-            this.btnNonDisponible.BackColor = System.Drawing.Color.White;
-            this.btnNonDisponible.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNonDisponible.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.btnNonDisponible.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.btnNonDisponible.Location = new System.Drawing.Point(457, 16);
-            this.btnNonDisponible.Name = "btnNonDisponible";
-            this.btnNonDisponible.Size = new System.Drawing.Size(100, 29);
-            this.btnNonDisponible.TabIndex = 3;
-            this.btnNonDisponible.Text = "Non-Disponible";
-            this.btnNonDisponible.UseVisualStyleBackColor = false;
-            this.btnNonDisponible.Click += new System.EventHandler(this.btnNonDisponible_Click);
-            // 
-            // btnDisponible
-            // 
-            this.btnDisponible.BackColor = System.Drawing.Color.White;
-            this.btnDisponible.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDisponible.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.btnDisponible.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.btnDisponible.Location = new System.Drawing.Point(378, 16);
-            this.btnDisponible.Name = "btnDisponible";
-            this.btnDisponible.Size = new System.Drawing.Size(73, 29);
-            this.btnDisponible.TabIndex = 2;
-            this.btnDisponible.Text = "Disponible";
-            this.btnDisponible.UseVisualStyleBackColor = false;
-            this.btnDisponible.Click += new System.EventHandler(this.btnDisponible_Click);
-            // 
-            // btnViewAll
-            // 
-            this.btnViewAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.btnViewAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewAll.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.btnViewAll.ForeColor = System.Drawing.Color.White;
-            this.btnViewAll.Location = new System.Drawing.Point(297, 16);
-            this.btnViewAll.Name = "btnViewAll";
-            this.btnViewAll.Size = new System.Drawing.Size(75, 29);
-            this.btnViewAll.TabIndex = 0;
-            this.btnViewAll.Text = "All";
-            this.btnViewAll.UseVisualStyleBackColor = false;
-            this.btnViewAll.Click += new System.EventHandler(this.btnViewAll_Click);
-            // 
-            // panelSearchBox
-            // 
-            this.panelSearchBox.Controls.Add(this.buttonSearchGP);
-            this.panelSearchBox.Controls.Add(this.tbSearch);
-            this.panelSearchBox.Location = new System.Drawing.Point(0, 7);
-            this.panelSearchBox.Name = "panelSearchBox";
-            this.panelSearchBox.Size = new System.Drawing.Size(246, 45);
-            this.panelSearchBox.TabIndex = 1;
-            // 
-            // buttonSearchGP
-            // 
-            this.buttonSearchGP.BackColor = System.Drawing.Color.White;
-            this.buttonSearchGP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSearchGP.BackgroundImage")));
-            this.buttonSearchGP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSearchGP.FlatAppearance.BorderSize = 0;
-            this.buttonSearchGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchGP.Location = new System.Drawing.Point(199, 12);
-            this.buttonSearchGP.Name = "buttonSearchGP";
-            this.buttonSearchGP.Size = new System.Drawing.Size(24, 20);
-            this.buttonSearchGP.TabIndex = 3;
-            this.buttonSearchGP.UseVisualStyleBackColor = false;
-            this.buttonSearchGP.Click += new System.EventHandler(this.tbSearch_TextChanged);
-            // 
-            // btnAjouterProduit
-            // 
-            this.btnAjouterProduit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAjouterProduit.AutoSize = true;
-            this.btnAjouterProduit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.btnAjouterProduit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnAjouterProduit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAjouterProduit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAjouterProduit.ForeColor = System.Drawing.Color.White;
-            this.btnAjouterProduit.Location = new System.Drawing.Point(621, 16);
-            this.btnAjouterProduit.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAjouterProduit.MaximumSize = new System.Drawing.Size(0, 31);
-            this.btnAjouterProduit.Name = "btnAjouterProduit";
-            this.btnAjouterProduit.Size = new System.Drawing.Size(110, 29);
-            this.btnAjouterProduit.TabIndex = 0;
-            this.btnAjouterProduit.Text = " Ajouter Stock";
-            this.btnAjouterProduit.UseVisualStyleBackColor = false;
-            this.btnAjouterProduit.Click += new System.EventHandler(this.btnAjouterProduit_Click);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 55);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10, 2, 5, 10);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(750, 444);
-            this.flowLayoutPanel1.TabIndex = 6;
-            // 
             // panelSM_GV
             // 
             this.panelSM_GV.BackColor = System.Drawing.Color.Transparent;
@@ -458,6 +331,19 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(246, 45);
             this.panel3.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(199, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 20);
+            this.button1.TabIndex = 4;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // textBoxSearchProduitVentes
             // 
@@ -674,10 +560,10 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle1.NullValue = "0";
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.NullValue = "0";
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.Size = new System.Drawing.Size(342, 479);
             this.dataGridView2.TabIndex = 31;
             // 
@@ -708,25 +594,25 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
             this.dataGridView1.Location = new System.Drawing.Point(20, 411);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.NullValue = "0";
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.NullValue = "0";
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dataGridView1.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowTemplate.Height = 21;
@@ -758,41 +644,41 @@
             // 
             // chart2
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea3);
             this.chart2.Location = new System.Drawing.Point(370, 132);
             this.chart2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 4;
-            this.chart2.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            series3.Name = "Series1";
+            series3.YValuesPerPoint = 4;
+            this.chart2.Series.Add(series3);
             this.chart2.Size = new System.Drawing.Size(342, 264);
             this.chart2.TabIndex = 29;
             this.chart2.Text = "chart2";
-            title1.Name = "Title1";
-            this.chart2.Titles.Add(title1);
+            title3.Name = "Title1";
+            this.chart2.Titles.Add(title3);
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
             this.chart1.Location = new System.Drawing.Point(20, 132);
             this.chart1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series2.ChartArea = "ChartArea1";
-            series2.Name = "Series1";
-            series2.ToolTip = "DirectionDate-->";
-            series2.YValuesPerPoint = 4;
-            this.chart1.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.Name = "Series1";
+            series4.ToolTip = "DirectionDate-->";
+            series4.YValuesPerPoint = 4;
+            this.chart1.Series.Add(series4);
             this.chart1.Size = new System.Drawing.Size(333, 264);
             this.chart1.TabIndex = 28;
             this.chart1.Text = "chart1";
-            title2.Name = "Title1";
-            this.chart1.Titles.Add(title2);
+            title4.Name = "Title1";
+            this.chart1.Titles.Add(title4);
             // 
             // groupBoxAffichageJV
             // 
@@ -986,6 +872,98 @@
             this.panelCommandes.Size = new System.Drawing.Size(750, 499);
             this.panelCommandes.TabIndex = 8;
             // 
+            // panelGestionProduit
+            // 
+            this.panelGestionProduit.BackColor = System.Drawing.Color.White;
+            this.panelGestionProduit.Controls.Add(this.panelHeader);
+            this.panelGestionProduit.Controls.Add(this.flowLayoutPanel1);
+            this.panelGestionProduit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelGestionProduit.Location = new System.Drawing.Point(0, 0);
+            this.panelGestionProduit.Name = "panelGestionProduit";
+            this.panelGestionProduit.Size = new System.Drawing.Size(750, 499);
+            this.panelGestionProduit.TabIndex = 0;
+            // 
+            // panelHeader
+            // 
+            this.panelHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.panelHeader.Controls.Add(this.btnNonDisponible);
+            this.panelHeader.Controls.Add(this.btnDisponible);
+            this.panelHeader.Controls.Add(this.btnViewAll);
+            this.panelHeader.Controls.Add(this.panelSearchBox);
+            this.panelHeader.Controls.Add(this.btnAjouterProduit);
+            this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(750, 55);
+            this.panelHeader.TabIndex = 7;
+            // 
+            // btnNonDisponible
+            // 
+            this.btnNonDisponible.BackColor = System.Drawing.Color.White;
+            this.btnNonDisponible.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNonDisponible.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.btnNonDisponible.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.btnNonDisponible.Location = new System.Drawing.Point(457, 16);
+            this.btnNonDisponible.Name = "btnNonDisponible";
+            this.btnNonDisponible.Size = new System.Drawing.Size(100, 29);
+            this.btnNonDisponible.TabIndex = 3;
+            this.btnNonDisponible.Text = "Non-Disponible";
+            this.btnNonDisponible.UseVisualStyleBackColor = false;
+            this.btnNonDisponible.Click += new System.EventHandler(this.btnNonDisponible_Click);
+            // 
+            // btnDisponible
+            // 
+            this.btnDisponible.BackColor = System.Drawing.Color.White;
+            this.btnDisponible.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDisponible.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.btnDisponible.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.btnDisponible.Location = new System.Drawing.Point(378, 16);
+            this.btnDisponible.Name = "btnDisponible";
+            this.btnDisponible.Size = new System.Drawing.Size(73, 29);
+            this.btnDisponible.TabIndex = 2;
+            this.btnDisponible.Text = "Disponible";
+            this.btnDisponible.UseVisualStyleBackColor = false;
+            this.btnDisponible.Click += new System.EventHandler(this.btnDisponible_Click);
+            // 
+            // btnViewAll
+            // 
+            this.btnViewAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.btnViewAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewAll.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.btnViewAll.ForeColor = System.Drawing.Color.White;
+            this.btnViewAll.Location = new System.Drawing.Point(297, 16);
+            this.btnViewAll.Name = "btnViewAll";
+            this.btnViewAll.Size = new System.Drawing.Size(75, 29);
+            this.btnViewAll.TabIndex = 0;
+            this.btnViewAll.Text = "All";
+            this.btnViewAll.UseVisualStyleBackColor = false;
+            this.btnViewAll.Click += new System.EventHandler(this.btnViewAll_Click);
+            // 
+            // panelSearchBox
+            // 
+            this.panelSearchBox.Controls.Add(this.buttonSearchGP);
+            this.panelSearchBox.Controls.Add(this.tbSearch);
+            this.panelSearchBox.Location = new System.Drawing.Point(0, 7);
+            this.panelSearchBox.Name = "panelSearchBox";
+            this.panelSearchBox.Size = new System.Drawing.Size(246, 45);
+            this.panelSearchBox.TabIndex = 1;
+            // 
+            // buttonSearchGP
+            // 
+            this.buttonSearchGP.BackColor = System.Drawing.Color.White;
+            this.buttonSearchGP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSearchGP.BackgroundImage")));
+            this.buttonSearchGP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSearchGP.FlatAppearance.BorderSize = 0;
+            this.buttonSearchGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchGP.Location = new System.Drawing.Point(199, 12);
+            this.buttonSearchGP.Name = "buttonSearchGP";
+            this.buttonSearchGP.Size = new System.Drawing.Size(24, 20);
+            this.buttonSearchGP.TabIndex = 3;
+            this.buttonSearchGP.UseVisualStyleBackColor = false;
+            this.buttonSearchGP.Click += new System.EventHandler(this.tbSearch_TextChanged);
+            // 
             // tbSearch
             // 
             this.tbSearch.BackColor = System.Drawing.Color.White;
@@ -999,18 +977,40 @@
             this.tbSearch.TabIndex = 2;
             this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
-            // button1
+            // btnAjouterProduit
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(199, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 20);
-            this.button1.TabIndex = 4;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAjouterProduit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAjouterProduit.AutoSize = true;
+            this.btnAjouterProduit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.btnAjouterProduit.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAjouterProduit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAjouterProduit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAjouterProduit.ForeColor = System.Drawing.Color.White;
+            this.btnAjouterProduit.Location = new System.Drawing.Point(621, 16);
+            this.btnAjouterProduit.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAjouterProduit.MaximumSize = new System.Drawing.Size(0, 31);
+            this.btnAjouterProduit.Name = "btnAjouterProduit";
+            this.btnAjouterProduit.Size = new System.Drawing.Size(110, 29);
+            this.btnAjouterProduit.TabIndex = 0;
+            this.btnAjouterProduit.Text = " Ajouter Stock";
+            this.btnAjouterProduit.UseVisualStyleBackColor = false;
+            this.btnAjouterProduit.Click += new System.EventHandler(this.btnAjouterProduit_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 55);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10, 2, 5, 10);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(750, 444);
+            this.flowLayoutPanel1.TabIndex = 6;
             // 
             // Form1
             // 
@@ -1031,11 +1031,6 @@
             this.LogoPanel.ResumeLayout(false);
             this.LogoPanel.PerformLayout();
             this.panelContainer.ResumeLayout(false);
-            this.panelGestionProduit.ResumeLayout(false);
-            this.panelHeader.ResumeLayout(false);
-            this.panelHeader.PerformLayout();
-            this.panelSearchBox.ResumeLayout(false);
-            this.panelSearchBox.PerformLayout();
             this.panelSM_GV.ResumeLayout(false);
             this.panelContainerSM_GV_V.ResumeLayout(false);
             this.panelGestionVentes.ResumeLayout(false);
@@ -1061,6 +1056,11 @@
             this.groupBoxFilterSearchJV.PerformLayout();
             this.panelHeader_SM_GV_JV.ResumeLayout(false);
             this.panelHeader_SM_GV_JV.PerformLayout();
+            this.panelGestionProduit.ResumeLayout(false);
+            this.panelHeader.ResumeLayout(false);
+            this.panelHeader.PerformLayout();
+            this.panelSearchBox.ResumeLayout(false);
+            this.panelSearchBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
