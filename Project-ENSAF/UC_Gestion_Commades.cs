@@ -322,10 +322,10 @@ namespace Project_ENSAF
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 5)
+            if (e.RowIndex < 0) return;
+            if (e.ColumnIndex == 5)
             {
                 var db = new dbContext();
-                if (e.RowIndex < 0) return;
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 var commande = db.Commandes.Where(c => c.NCommande == id).FirstOrDefault(); 
                 if(commande != null && commande.statut == false)
@@ -353,6 +353,20 @@ namespace Project_ENSAF
                         db.Stock_Magazin.Add(stockNewProduit);
                         db.SaveChanges();
                     }
+                }
+            }
+            if (e.ColumnIndex == 6)
+            {
+                DialogResult rs = MessageBox.Show("La commande sera supprimer definitivement, Continue?","Supprimer",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                if (rs != DialogResult.Yes) return;
+                var db = new dbContext();
+                int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                var commande = db.Commandes.Where(c => c.NCommande == id).FirstOrDefault();
+                if (commande != null)
+                {
+                    db.Commandes.Remove(commande);
+                    db.SaveChanges();
+                    refrechDataGrid(db.Commandes.ToList<Commande>());
                 }
             }
         }
