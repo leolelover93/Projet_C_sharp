@@ -216,7 +216,8 @@ namespace Project_ENSAF
             {
                 quantity = NonExpiredStock.FindAll(s => s.codeProduit.Equals(prd.codeProduit)).Sum(stk => stk.quantite);
                 Console.WriteLine("search vente-> produit: " + prd.libelle + "Quanti: " + quantity);
-                flowLayoutPanelVente.Controls.Add(new produit_Vente(prd, quantity));
+                if(quantity!=0)
+                    flowLayoutPanelVente.Controls.Add(new produit_Vente(prd, quantity));
                 quantity = 0;
             }
         } 
