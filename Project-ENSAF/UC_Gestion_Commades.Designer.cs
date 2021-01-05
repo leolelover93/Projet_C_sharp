@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Gestion_Commades));
             this.panelHeader = new System.Windows.Forms.Panel();
             this.labelNbCommande = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
@@ -54,6 +55,7 @@
             this.produitcommandeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Montant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AprouveColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Supprimer = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.panelSearchBox.SuspendLayout();
@@ -229,7 +231,8 @@
             this.dateArriveSouhaiteDataGridViewTextBoxColumn,
             this.produitcommandeDataGridViewTextBoxColumn,
             this.Montant,
-            this.AprouveColumn});
+            this.AprouveColumn,
+            this.Supprimer});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -312,6 +315,15 @@
             this.AprouveColumn.Name = "AprouveColumn";
             this.AprouveColumn.ReadOnly = true;
             // 
+            // Supprimer
+            // 
+            this.Supprimer.HeaderText = " ";
+            this.Supprimer.Image = ((System.Drawing.Image)(resources.GetObject("Supprimer.Image")));
+            this.Supprimer.Name = "Supprimer";
+            this.Supprimer.ReadOnly = true;
+            this.Supprimer.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Supprimer.Width = 50;
+            // 
             // UC_Gestion_Commades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -358,7 +370,8 @@
                 dataGridView1.Rows[i].Cells[1].Value = item.dateDemande.ToShortDateString();
                 dataGridView1.Rows[i].Cells[2].Value = item.dateArriveSouhaite.ToShortDateString();
                 dataGridView1.Rows[i].Cells[3].Value =nbprod+ " produits...";
-                dataGridView1.Rows[i].Cells[4].Value = montant + " dh";
+                dataGridView1.Rows[i].Cells[4].Value = montant + " dh"; 
+                dataGridView1.Rows[i].Cells[6].Value = ((System.Drawing.Image)(Properties.Resources.clear));
                 if (item.statut == true)
                {
                    dataGridView1.Rows[i].Cells[5].Style.BackColor = Color.Green;
@@ -369,6 +382,7 @@
                     dataGridView1.Rows[i].Cells[5].Style.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(169)))), ((int)(((byte)(0)))));
                     dataGridView1.Rows[i].Cells[5].Value = "Valider";
                 }
+                 
                 i++;
             }
         }
@@ -392,5 +406,6 @@
         private DataGridViewLinkColumn produitcommandeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn Montant;
         private DataGridViewButtonColumn AprouveColumn;
+        private DataGridViewImageColumn Supprimer;
     }
 }
