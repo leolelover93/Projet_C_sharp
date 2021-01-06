@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea19 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title19 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea20 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title20 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxLog = new System.Windows.Forms.PictureBox();
             this.buttonCommandes = new System.Windows.Forms.Button();
@@ -70,8 +70,6 @@
             this.panelContainerLabelGraphe = new System.Windows.Forms.Panel();
             this.labelTotalPerte = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,6 +103,9 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnAjouterProduit = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QunatiteProduitsPerdu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLog)).BeginInit();
             this.LogoPanel.SuspendLayout();
@@ -525,10 +526,10 @@
             this.panelContainerLabelGraphe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelContainerLabelGraphe.BackColor = System.Drawing.Color.White;
             this.panelContainerLabelGraphe.Controls.Add(this.labelTotalPerte);
-            this.panelContainerLabelGraphe.Location = new System.Drawing.Point(457, 132);
-            this.panelContainerLabelGraphe.MaximumSize = new System.Drawing.Size(265, 39);
+            this.panelContainerLabelGraphe.Location = new System.Drawing.Point(378, 132);
+            this.panelContainerLabelGraphe.MaximumSize = new System.Drawing.Size(305, 39);
             this.panelContainerLabelGraphe.Name = "panelContainerLabelGraphe";
-            this.panelContainerLabelGraphe.Size = new System.Drawing.Size(205, 32);
+            this.panelContainerLabelGraphe.Size = new System.Drawing.Size(305, 32);
             this.panelContainerLabelGraphe.TabIndex = 38;
             // 
             // labelTotalPerte
@@ -554,32 +555,19 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column5,
+            this.QunatiteProduitsPerdu,
             this.Column6});
             this.dataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
             this.dataGridView2.Location = new System.Drawing.Point(370, 411);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle4.NullValue = "0";
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle28.NullValue = "0";
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle28;
             this.dataGridView2.Size = new System.Drawing.Size(342, 479);
             this.dataGridView2.TabIndex = 31;
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column5.HeaderText = "Produits ";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.HeaderText = "Perte (dhs)";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
             // 
             // dataGridView1
             // 
@@ -594,25 +582,25 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle29;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
             this.dataGridView1.Location = new System.Drawing.Point(20, 411);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.NullValue = "0";
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle30.NullValue = "0";
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle30;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dataGridView1.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowTemplate.Height = 21;
@@ -644,41 +632,41 @@
             // 
             // chart2
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea3);
+            chartArea19.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea19);
             this.chart2.Location = new System.Drawing.Point(370, 132);
             this.chart2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-            series3.Name = "Series1";
-            series3.YValuesPerPoint = 4;
-            this.chart2.Series.Add(series3);
+            series19.ChartArea = "ChartArea1";
+            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            series19.Name = "Series1";
+            series19.YValuesPerPoint = 4;
+            this.chart2.Series.Add(series19);
             this.chart2.Size = new System.Drawing.Size(342, 264);
             this.chart2.TabIndex = 29;
             this.chart2.Text = "chart2";
-            title3.Name = "Title1";
-            this.chart2.Titles.Add(title3);
+            title19.Name = "Title1";
+            this.chart2.Titles.Add(title19);
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
+            chartArea20.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea20);
             this.chart1.Location = new System.Drawing.Point(20, 132);
             this.chart1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series4.ChartArea = "ChartArea1";
-            series4.Name = "Series1";
-            series4.ToolTip = "DirectionDate-->";
-            series4.YValuesPerPoint = 4;
-            this.chart1.Series.Add(series4);
+            series20.ChartArea = "ChartArea1";
+            series20.Name = "Series1";
+            series20.ToolTip = "DirectionDate-->";
+            series20.YValuesPerPoint = 4;
+            this.chart1.Series.Add(series20);
             this.chart1.Size = new System.Drawing.Size(333, 264);
             this.chart1.TabIndex = 28;
             this.chart1.Text = "chart1";
-            title4.Name = "Title1";
-            this.chart1.Titles.Add(title4);
+            title20.Name = "Title1";
+            this.chart1.Titles.Add(title20);
             // 
             // groupBoxAffichageJV
             // 
@@ -852,9 +840,9 @@
             // 
             // labelTitreJV
             // 
-            this.labelTitreJV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.labelTitreJV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelTitreJV.AutoSize = true;
             this.labelTitreJV.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitreJV.ForeColor = System.Drawing.SystemColors.Control;
             this.labelTitreJV.Location = new System.Drawing.Point(240, 8);
@@ -1012,6 +1000,27 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(750, 444);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column5.HeaderText = "Produits ";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // QunatiteProduitsPerdu
+            // 
+            this.QunatiteProduitsPerdu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.QunatiteProduitsPerdu.HeaderText = "Quantite";
+            this.QunatiteProduitsPerdu.Name = "QunatiteProduitsPerdu";
+            this.QunatiteProduitsPerdu.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column6.HeaderText = "Perte (dhs)";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1055,7 +1064,6 @@
             this.groupBoxFilterSearchJV.ResumeLayout(false);
             this.groupBoxFilterSearchJV.PerformLayout();
             this.panelHeader_SM_GV_JV.ResumeLayout(false);
-            this.panelHeader_SM_GV_JV.PerformLayout();
             this.panelGestionProduit.ResumeLayout(false);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
@@ -1114,8 +1122,6 @@
         private System.Windows.Forms.Label labelDateDébut;
         private System.Windows.Forms.DateTimePicker dateTimePickerD;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label labelTotalPerte;
@@ -1134,6 +1140,9 @@
         private System.Windows.Forms.PictureBox pictureBoxLog;
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QunatiteProduitsPerdu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
     
 }

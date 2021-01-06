@@ -197,6 +197,7 @@ namespace Project_ENSAF
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Paramètres Log ";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.SettingsLog_Load);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownJour)).EndInit();

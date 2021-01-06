@@ -10,26 +10,17 @@ namespace Project_ENSAF
     public partial class LogForm : Form
     {
         string[] lines;
+
+        
         public LogForm()
         {
             //Set the intial settong to true
             InitializeComponent();
-            DateTime lastDate = DateTime.Now;
-            if (Properties.Settings.Default.DateDelteLog != "")
-            {
-                lastDate = DateTime.Parse(Properties.Settings.Default.DateDelteLog);
-            }
-            int nbDay = Convert.ToInt32(Properties.Settings.Default.NombreDayToDeleteLog.ToString());
-            String filePath = Path.Combine(Directory.GetCurrentDirectory(), "log.txt");
-            if ((DateTime.Now - lastDate).Days > nbDay)
-            {
-                StreamWriter writer = new StreamWriter(filePath, false);
-                writer.Write("");
-                writer.Close();
-                Properties.Settings.Default.DateDelteLog = DateTime.Now.ToString();
-                Properties.Settings.Default.Save();
 
-            }
+            automatingDeletingLog();
+
+
+            String filePath = Path.Combine(Directory.GetCurrentDirectory(), "log.txt");
             lines = File.ReadAllLines(filePath);
 
             foreach (string line in lines)
@@ -41,6 +32,25 @@ namespace Project_ENSAF
 
         }
 
+        public static void automatingDeletingLog()
+        {
+            DateTime lastDate = DateTime.Now;
+            if (Properties.Settings.Default.DateDelteLog != "")
+            {
+                lastDate = DateTime.Parse(Properties.Settings.Default.DateDelteLog);
+            }
+            String filePath = Path.Combine(Directory.GetCurrentDirectory(), "log.txt");
+            int nbDay = Convert.ToInt32(Properties.Settings.Default.NombreDayToDeleteLog.ToString());
+            if ((DateTime.Now - lastDate).TotalDays > nbDay)
+            {
+                StreamWriter writer = new StreamWriter(filePath, false);
+                writer.Write("");
+                writer.Close();
+                Properties.Settings.Default.DateDelteLog = DateTime.Now.ToString();
+                Properties.Settings.Default.Save();
+
+            }
+        }
         private void btnEnregister_Click(object sender, EventArgs e)
         {
             String Filepath = Path.Combine(Directory.GetCurrentDirectory(), "log.txt");

@@ -299,21 +299,22 @@
             // 
             // Montant
             // 
+            this.Montant.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Montant.HeaderText = "Montant";
             this.Montant.Name = "Montant";
             this.Montant.ReadOnly = true;
-            this.Montant.Width = 80;
             // 
             // AprouveColumn
             // 
-            this.AprouveColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(169)))), ((int)(((byte)(0)))));
             this.AprouveColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.AprouveColumn.FillWeight = 74.23858F;
             this.AprouveColumn.HeaderText = "";
+            this.AprouveColumn.MinimumWidth = 30;
             this.AprouveColumn.Name = "AprouveColumn";
             this.AprouveColumn.ReadOnly = true;
+            this.AprouveColumn.Width = 114;
             // 
             // Supprimer
             // 

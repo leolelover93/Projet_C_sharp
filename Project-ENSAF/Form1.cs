@@ -72,6 +72,9 @@ namespace Project_ENSAF
             tt.SetToolTip(this.pictureBoxLog,"Log");
 
             SetMessageLog("Connecté");
+
+            //Automating the delete Log 
+            LogForm.automatingDeletingLog();
         }
 
         public static void SetMessageLog(String msg)
@@ -616,7 +619,8 @@ namespace Project_ENSAF
                     }
                     totalQNonDispo++;
                     totalPerte += countInStock * item.prixAchat;
-                    row.Cells[1].Value = countInStock * item.prixAchat;
+                    row.Cells[1].Value = totalQNonDispo;
+                    row.Cells[2].Value = countInStock * item.prixAchat;
                     j++;
                         dataGridView2.Rows.Add(row);
                         
@@ -625,7 +629,7 @@ namespace Project_ENSAF
             }
             chart2.ChartAreas[0].AxisX.Title = "Pertes(dhs)";
             chart2.ChartAreas[0].AxisY.Title = "QuntiteChaqueProduitNonDisponible";
-            labelTotalPerte.Text = "Perts Totale :"+totalPerte + "---" + totalQNonDispo + " produits"; 
+            labelTotalPerte.Text = "Perts Totale :"+ totalPerte + "  Quantité Totale :" + totalQNonDispo + " produits"; 
         }
 
         private void Form1_Resize(object sender, EventArgs e)

@@ -255,6 +255,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="SettingsLog.resx">
+      <DependentUpon>SettingsLog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC_GestionFournisseur.resx">
       <DependentUpon>UC_GestionFournisseur.cs</DependentUpon>
     </EmbeddedResource>

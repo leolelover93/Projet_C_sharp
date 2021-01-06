@@ -48,5 +48,26 @@ namespace Project_ENSAF
             }
             numericUpDownJour.Enabled = checkBoxCustom.Checked;
         }
+
+        private void SettingsLog_Load(object sender, EventArgs e)
+        {
+            switch (Properties.Settings.Default.NombreDayToDeleteLog.ToString())
+            {
+                case "1":
+                    checkBoxJour.Checked = true;
+                    break;
+                case "31":
+                    checkBoxMois.Checked = true;
+                    break;
+                case "365":
+                    checkBoxAns.Checked = true;
+                    break;
+                default:
+                    checkBoxCustom.Checked = true;
+                    numericUpDownJour.Value = int.Parse(Properties.Settings.Default.NombreDayToDeleteLog.ToString());
+                    break; 
+
+            }
+        }
     }
 }
