@@ -17,7 +17,6 @@ namespace Project_ENSAF
         UC_Gestion_Commades uc_Commandes;
         FlowLayoutPanel flowLayoutPagnierProduitVentes;
         public List<Produit> produitVentes = new List<Produit>();
-        List<Produit> listeProduitsPagnier = new List<Produit>();
         dbContext db=new dbContext();
         public int filter = 0;
         public Form1()
@@ -124,7 +123,7 @@ namespace Project_ENSAF
                 if (p == null) continue;
                 produitVentes.Add(p);
                 quantity = st.grp.Sum(stk => stk.quantite);
-                if (quantity > 0) this.flowLayoutPanelVente.Controls.Add(new produit_Vente(p, quantity));
+                if (quantity > 0) this.flowLayoutPanelVente.Controls.Add(new produit_Vente(p, quantity,false, flowLayoutPagnierProduitVentes));
                 quantity = 0;
             }
         }
@@ -134,22 +133,15 @@ namespace Project_ENSAF
             if (previousBtn == (sender as Button)) return;
             if((sender as Button).Name == "BtnGestionProduits")
             {
+                btnViewAll_Click(null, null);
                 panelGestionVentes.Visible = false;
                 panelSM_GV.Visible =false; 
                 panelCommandes.Visible = false;
                 panelGestionProduit.Visible = true;
-                btnViewAll_Click(null, null);
 
             }
             if ((sender as Button).Name == "BtnGestionVentes")
             {
-                refreshFlowLayoutPVente();
-                panelGestionProduit.Visible = false;
-                panelCommandes.Visible = false;
-                panelGestionVentes.Visible = true;
-                panelSM_GV.Visible = true;
-            
-
                 if (a == null)
                 {
                     a = new FormPagnierVentes();
@@ -160,18 +152,23 @@ namespace Project_ENSAF
                     BtnaffecterFacture.Click += new System.EventHandler(this.writeFactureInlog);
 
                 }
+                refreshFlowLayoutPVente();
+                panelGestionProduit.Visible = false;
+                panelCommandes.Visible = false;
+                panelGestionVentes.Visible = true;
+                panelSM_GV.Visible = true;
+            
+               
             }
             if((sender as Button).Name == "buttonCommandes")
             {
-                if(formAcheterProduits == null)
+                var db = new dbContext();
+
+                if (formAcheterProduits == null)
                 {
                     formAcheterProduits = new FormAcheterProduits(); 
                 }
-                panelGestionProduit.Visible = false;
-                panelGestionVentes.Visible = false;
-                panelSM_GV.Visible = false;
-                var db = new dbContext();
-                if(this.uc_Commandes == null)
+                if (this.uc_Commandes == null)
                 {
                     this.uc_Commandes = new UC_Gestion_Commades(db.Commandes.ToList<Commande>(), formAcheterProduits);
 
@@ -179,18 +176,22 @@ namespace Project_ENSAF
                 panelCommandes.Controls.Clear();
                 panelCommandes.Controls.Add(uc_Commandes);
                 panelCommandes.Controls[0].Dock = System.Windows.Forms.DockStyle.Fill;
+                panelGestionProduit.Visible = false;
+                panelGestionVentes.Visible = false;
+                panelSM_GV.Visible = false;
                 panelCommandes.Visible = true;
             }
             if((sender as Button).Name == "buttonForunisseur")
             {
-                panelGestionProduit.Visible = false;
-                panelGestionVentes.Visible = false;
-                panelSM_GV.Visible = false;
+              
                 var db = new dbContext();
                 uc = new UC_GestionFournisseur(db.Fournisseurs.ToList<Fournisseur>());
                 panelCommandes.Controls.Clear();
                 panelCommandes.Controls.Add(uc);
                 panelCommandes.Controls[0].Dock = System.Windows.Forms.DockStyle.Fill;
+                panelGestionProduit.Visible = false;
+                panelGestionVentes.Visible = false;
+                panelSM_GV.Visible = false;
                 panelCommandes.Visible = true;
             }
            
@@ -225,7 +226,7 @@ namespace Project_ENSAF
                 quantity = NonExpiredStock.FindAll(s => s.codeProduit.Equals(prd.codeProduit)).Sum(stk => stk.quantite);
                 Console.WriteLine("search vente-> produit: " + prd.libelle + "Quanti: " + quantity);
                 if (quantity != 0)
-                    flowLayoutPanelVente.Controls.Add(new produit_Vente(prd, quantity));
+                    flowLayoutPanelVente.Controls.Add(new produit_Vente(prd, quantity,false, flowLayoutPagnierProduitVentes));
                 quantity = 0;
             }
         } 
@@ -340,7 +341,8 @@ namespace Project_ENSAF
         } 
         private void listBoxItemProduct_TextChanged(object sender, EventArgs e)
         {
-           if(listBoxItemProduct.Text != "")
+           
+            if (listBoxItemProduct.Text != "")
             {
                 var dbase = new dbContext();
                 this.pictureBoxBasket.Image = Properties.Resources.cart__full;
@@ -396,6 +398,7 @@ namespace Project_ENSAF
             {
                 MessageBox.Show("Le pagnier est vide !");
             }
+
 
         }
         private void btnAjouterProduit_Click(object sender, EventArgs e)
@@ -718,7 +721,7 @@ namespace Project_ENSAF
                 refreshFlowLayoutPVente();
                 flowLayoutPanelVente.Refresh();
             }
-
+            
 
         }
 

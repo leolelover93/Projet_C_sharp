@@ -159,9 +159,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormPagnierVentes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormPagnierVentes";
+            this.Text = "è";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPagnierVentes_FormClosing);
             this.Load += new System.EventHandler(this.FormPagnierVentes_Load);
+            this.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.FormPagnierVentes_ControlRemoved);
             this.panelInfoBottom.ResumeLayout(false);
             this.panelInfoBottom.PerformLayout();
             this.ResumeLayout(false);

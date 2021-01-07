@@ -47,6 +47,9 @@ namespace Project_ENSAF
 
 
 
+
+      
+
         #region Properties
 
         [Category("Custom Props")]
@@ -135,8 +138,10 @@ namespace Project_ENSAF
 
         #endregion
 
+        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+
             FlowLayoutPanel floawLayout = (FlowLayoutPanel) this.Parent.Parent.Controls[1];
             floawLayout.Controls.Remove(this);
         }

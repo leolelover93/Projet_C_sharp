@@ -128,7 +128,7 @@ namespace Project_ENSAF
                 foreach (var elm in db.Produits)
                 {
                     quantity = db.Stock_Magazin.ToList<Stock_Magazin>().FindAll(st => st.codeProduit.Equals(elm.codeProduit)).Sum(stk => stk.quantite);
-                    this.flowLayoutPanel1.Controls.Add(new produit_Vente(elm, quantity, true));
+                    this.flowLayoutPanel1.Controls.Add(new produit_Vente(elm, quantity, true,flowLayoutPagnierProduitCommandes));
                     quantity = 0;
                 }
             }
@@ -142,31 +142,29 @@ namespace Project_ENSAF
         {
             if((sender as Button).Text == "Ajouter commande")
             {
+                (sender as Button).Text = "Liste Commandes";
                 this.flowLayoutPanel1.Controls.Clear();
                 remplireListeProduit();
-               (sender as Button).Text = "Liste Commandes";
-                pictureBox.Visible = true;
-                labelNbCommande.Visible = true;
-                panelContainerAjouterCommande.Visible = true;
                 panelListeCommande.Visible = false;
                 this.isInListeCommande = false;
                 this.comboBoxFilterCommande.Visible = false;
+                panelContainerAjouterCommande.Visible = true;
+                pictureBox.Visible = true;
+                labelNbCommande.Visible = true;
             }
             else
             {
                 panelContainerAjouterCommande.Visible = false;
                 panelListeCommande.Visible = true;
-
                 (sender as Button).Text = "Ajouter commande";
             }
+
             if((sender as Button).Text == "Ajouter commande")
             {
-                this.comboBoxFilterCommande.Visible = true;
-
-                this.isInListeCommande = true ;
                 labelNbCommande.Visible = false;
                 pictureBox.Visible =false;
-
+                this.comboBoxFilterCommande.Visible = true;
+                this.isInListeCommande = true;
             }
 
         }
@@ -318,7 +316,7 @@ namespace Project_ENSAF
                 {
                     if (prod.libelle.ToLower().IndexOf(cle.ToLower()) == -1) continue;
                     quantity = stock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk => stk.quantite);
-                    this.flowLayoutPanel1.Controls.Add(new produit_Vente(prod, quantity,true));
+                    this.flowLayoutPanel1.Controls.Add(new produit_Vente(prod, quantity,true,flowLayoutPagnierProduitCommandes));
                 }
             }
         }

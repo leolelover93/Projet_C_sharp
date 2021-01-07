@@ -70,7 +70,7 @@
             // 
             this.btnReadMore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReadMore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(117)))), ((int)(((byte)(216)))));
-            this.btnReadMore.FlatAppearance.BorderColor = System.Drawing.Color.DarkCyan;
+            this.btnReadMore.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.btnReadMore.FlatAppearance.BorderSize = 0;
             this.btnReadMore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReadMore.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -198,7 +198,7 @@
             {
                 this.numericUpDownQauntite.Maximum = quantite;
             }
-
+        
         }
         private System.Windows.Forms.PictureBox prodImg;
         private System.Windows.Forms.Label lblProdName;

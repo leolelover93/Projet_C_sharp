@@ -15,12 +15,19 @@ namespace Project_ENSAF
 
         List<ElementPagnierVentes> listElementPagnier = new List<ElementPagnierVentes>();
         decimal total = 0;
+        FlowLayoutPanel panelProduits;
 
         public FormPagnierVentes()
         {
 
             InitializeComponent();
         }
+          public FormPagnierVentes(FlowLayoutPanel flowLayout)
+            {
+                this.panelProduits = flowLayout;
+                InitializeComponent();
+            }
+
 
 
 
@@ -181,6 +188,11 @@ namespace Project_ENSAF
             flowLayoutPanel1.Controls.Clear();
             this.Visible = false;
 
+
+        }
+
+        private void FormPagnierVentes_ControlRemoved(object sender, ControlEventArgs e)
+        {
 
         }
     }
