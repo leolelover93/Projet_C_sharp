@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Project_ENSAF
@@ -24,12 +22,14 @@ namespace Project_ENSAF
             set { quntite = value; }
         }
 
-        
 
-        public  bool  IsSelcted
+
+        public bool IsSelcted
         {
             get { return isSelected; }
-            set { isSelected = value;
+            set
+            {
+                isSelected = value;
                 if (isSelected)
                 {
                     this.btnReadMore.FlatAppearance.BorderSize = 2;
@@ -52,21 +52,21 @@ namespace Project_ENSAF
         {
             InitializeComponent();
         }
-        public produit_Vente(Produit p,FlowLayoutPanel flowLayout=null)
+        public produit_Vente(Produit p, FlowLayoutPanel flowLayout = null)
         {
 
-            this.IdProduit = p.codeProduit; 
+            this.IdProduit = p.codeProduit;
             InitializeComp2(p);
         }
-        public produit_Vente(Produit p,int quantite,bool test=false, FlowLayoutPanel formPagnierVentes = null)
+        public produit_Vente(Produit p, int quantite, bool test = false, FlowLayoutPanel formPagnierVentes = null)
         {
-          
+
             this.formPagnierVentes = formPagnierVentes;
             this.formPagnierVentes.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.setSelectionOption);
             this.DansPanelCommande = test;
             this.idProduit = p.codeProduit;
             this.Quantite = quantite;
-            InitializeComp(p,quantite,test);
+            InitializeComp(p, quantite, test);
         }
 
 
@@ -76,7 +76,7 @@ namespace Project_ENSAF
         }
         private void btnReadMore_Click(object sender, EventArgs e)
         {
-            if(this.Quantite > 0 && !this.DansPanelCommande)
+            if (this.Quantite > 0 && !this.DansPanelCommande)
             {
                 this.IsSelcted = true;
                 Control[] tabElment = this.Parent.Parent.Parent.Controls.Find("listBoxItemProduct", true);
@@ -84,8 +84,9 @@ namespace Project_ENSAF
                 //Just to fire the event of the hidden text in form1
                 if (label.Text == (this.idProduit.ToString() + " " + numericUpDownQauntite.Value)) label.Text = "";
                 label.Text = (this.idProduit.ToString() + " " + numericUpDownQauntite.Value);
-                
-            }else
+
+            }
+            else
             {
                 this.IsSelcted = true;
                 Control[] tabElment = this.Parent.Parent.Controls.Find("labelHiden", true);
@@ -97,8 +98,8 @@ namespace Project_ENSAF
 
         }
 
-      
-      
+
+
         private void setSelectionOption(object sender, ControlEventArgs e)
         {
             Control control = e.Control;
@@ -109,7 +110,7 @@ namespace Project_ENSAF
             }
         }
 
-     
+
 
 
 

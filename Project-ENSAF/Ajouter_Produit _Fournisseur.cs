@@ -1,8 +1,7 @@
-﻿using System; 
-using System.Windows.Forms;
-using System.IO; 
+﻿using System;
+using System.IO;
 using System.Linq;
-using System.Drawing;
+using System.Windows.Forms;
 
 namespace Project_ENSAF
 {
@@ -61,12 +60,12 @@ namespace Project_ENSAF
                 MessageBox.Show("Le prix doit être un nombre decimal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-          
+
             int dv = 1;
             try
             {
                 dv = Convert.ToInt32(textBoxDV.Text);
-              
+
             }
             catch (Exception)
             {
@@ -87,15 +86,16 @@ namespace Project_ENSAF
                     prod.dureeValidite_jour = dv;
                     using (MemoryStream mStream = new MemoryStream())
                     {
-                        if(pictureBox1.Image != null)
+                        if (pictureBox1.Image != null)
                         {
                             pictureBox1.Image.Save(mStream, pictureBox1.Image.RawFormat);
                             prod.img = mStream.ToArray();
-                        }else
+                        }
+                        else
                         {
                             prod.img = null;
                         }
-                       
+
 
                     }
                 }
@@ -131,17 +131,17 @@ namespace Project_ENSAF
         private void Form_Ajouter_Produit_Load(object sender, EventArgs e)
         {
 
-          
+
         }
 
-      
+
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-      
+
         }
     }
 
-     
-    
+
+
 }
