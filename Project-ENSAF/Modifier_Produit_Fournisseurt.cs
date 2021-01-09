@@ -1,20 +1,19 @@
-﻿using System; 
-using System.Windows.Forms;
-using System.IO; 
-using System.Linq;
+﻿using System;
 using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Project_ENSAF
 {
     public partial class Form_Ajouter_Produit_Adjust : Form
     {
         FormDetailleFournisseur formParent2;
-        string imgLocation = ""; 
+        string imgLocation = "";
         bool isDetailFournisseur = false;
         bool isAjouterProd = true;
         int idFournisseurAajouter;
         Produit prod2Edit;
-      public Form_Ajouter_Produit_Adjust(FormDetailleFournisseur formParent,int idFournisseur)
+        public Form_Ajouter_Produit_Adjust(FormDetailleFournisseur formParent, int idFournisseur)
         {
             this.isAjouterProd = true;
             this.idFournisseurAajouter = idFournisseur;
@@ -23,8 +22,8 @@ namespace Project_ENSAF
             this.Text = "Ajouter Produit";
             this.Titre.Text = "Ajouter Produit";
         }
-   
-        public Form_Ajouter_Produit_Adjust(Produit p, FormDetailleFournisseur formParent )
+
+        public Form_Ajouter_Produit_Adjust(Produit p, FormDetailleFournisseur formParent)
         {
             this.isAjouterProd = false;
             this.isDetailFournisseur = true;
@@ -33,8 +32,8 @@ namespace Project_ENSAF
             initCompo(p);
             this.Text = "Modfier Produit";
             this.Titre.Text = "Modfier Produit";
-        }    
-       private void Parcourir_Click(object sender, EventArgs e)
+        }
+        private void Parcourir_Click(object sender, EventArgs e)
         {
             if (isDetailFournisseur)
             {
@@ -57,15 +56,15 @@ namespace Project_ENSAF
             }
             if (isDetailFournisseur)
             {
-                Decimal prix_Achat , prix_Vente ;
+                Decimal prix_Achat, prix_Vente;
                 try
                 {
                     string[] pat = tb_Prix_Achat.Text.Split('.');
                     string[] pvt = tb_Prix_Vente.Text.Split('.');
                     string pa = tb_Prix_Achat.Text;
                     string pv = tb_Prix_Vente.Text;
-                    if (tb_Prix_Achat.Text.Split('.').Length > 1) pa =  pa.Replace(".", ",").Trim();
-                    if (tb_Prix_Vente.Text.Split('.').Length > 1) pv =  pv.Replace(".", ",").Trim();
+                    if (tb_Prix_Achat.Text.Split('.').Length > 1) pa = pa.Replace(".", ",").Trim();
+                    if (tb_Prix_Vente.Text.Split('.').Length > 1) pv = pv.Replace(".", ",").Trim();
                     prix_Achat = Convert.ToDecimal(pa);
                     prix_Vente = Convert.ToDecimal(pv);
                 }
@@ -74,7 +73,7 @@ namespace Project_ENSAF
                     MessageBox.Show("Le prix doit être un nombre decimal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-              
+
 
                 try
                 {
@@ -92,16 +91,16 @@ namespace Project_ENSAF
                     {
                         MessageBox.Show("Opération Non effectuer", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                        db.SaveChanges();
-                        formParent2.remplireLayout(db);
-                         this.Close(); 
+                    db.SaveChanges();
+                    formParent2.remplireLayout(db);
+                    this.Close();
                 }
                 catch (Exception exc)
                 {
-                 MessageBox.Show("Error! " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
+                    MessageBox.Show("Error! " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-          
+
         }
 
         private void Annuler_Click(object sender, EventArgs e)
@@ -116,12 +115,12 @@ namespace Project_ENSAF
 
         private void comboFornisseur_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-     
+
         }
     }
 }

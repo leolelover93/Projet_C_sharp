@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 using System.Windows.Forms;
 
 namespace Project_ENSAF
@@ -21,13 +15,13 @@ namespace Project_ENSAF
             this.closeIconVisbility = closeIconVisbility;
             InitializeComponent();
         }
-        public ElementPagnierVentes(int quantite , bool closeIconVisbility = true )
+        public ElementPagnierVentes(int quantite, bool closeIconVisbility = true)
         {
             this.closeIconVisbility = closeIconVisbility;
             InitializeComp(quantite);
         }
 
-     
+
 
         private string _title;
         private string _description;
@@ -48,7 +42,7 @@ namespace Project_ENSAF
 
 
 
-      
+
 
         #region Properties
 
@@ -94,7 +88,7 @@ namespace Project_ENSAF
         public decimal PrixUnit
         {
             get { return prixUnit; }
-            set { prixUnit = value; labelPrixUnite.Text = (value.ToString() +"DH"); }
+            set { prixUnit = value; labelPrixUnite.Text = (value.ToString() + "DH"); }
         }
 
         [Category("Custom Props")]
@@ -138,27 +132,27 @@ namespace Project_ENSAF
 
         #endregion
 
-        
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
-            FlowLayoutPanel floawLayout = (FlowLayoutPanel) this.Parent.Parent.Controls[1];
+            FlowLayoutPanel floawLayout = (FlowLayoutPanel)this.Parent.Parent.Controls[1];
             floawLayout.Controls.Remove(this);
         }
 
         private void numericUpDownQunatite_ValueChanged(object sender, EventArgs e)
         {
             decimal Qpr = numericUpDownQunatite.Value;
-          //decimal prix = decimal.Parse(this.PrixTotal.ToString());
+            //decimal prix = decimal.Parse(this.PrixTotal.ToString());
             labelNbProduit.Text = numericUpDownQunatite.Value + "";
-            labelPrixTotal.Text =  prixUnit*Qpr +"";
+            labelPrixTotal.Text = prixUnit * Qpr + "";
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             pictureBox1.Visible = this.closeIconVisbility;
             numericUpDownQunatite.Visible = this.closeIconVisbility;
-          
+
         }
     }
 }

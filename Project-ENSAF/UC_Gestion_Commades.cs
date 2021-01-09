@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -23,20 +22,20 @@ namespace Project_ENSAF
             InitializeComponent();
         }
 
-        public UC_Gestion_Commades(List<Commande> commandes, FormAcheterProduits a =null)
+        public UC_Gestion_Commades(List<Commande> commandes, FormAcheterProduits a = null)
         {
             this.a = a;
             initCompo(commandes);
 
         }
 
-        private  Button findAjouterCommandeBtn()
+        private Button findAjouterCommandeBtn()
         {
             Control[] ctrl = a.Controls.Find("panelInfoBottom", true);
             Panel panel = (Panel)ctrl[0];
             Control[] ctrl2 = panel.Controls.Find("buttonSumbitPagnier", true);
             Button btn = (Button)ctrl2[0];
-            return btn; 
+            return btn;
         }
         private DateTimePicker findDateSouhaité()
         {
@@ -71,7 +70,7 @@ namespace Project_ENSAF
             var dbase = new dbContext();
             List<Commande> list = dbase.Commandes.ToList<Commande>();
             List<int> idfournisseurDansLaCommande = new List<int>();
-            foreach (ElementPagnierVentes item in flowLayoutPagnierProduitCommandes.Controls) 
+            foreach (ElementPagnierVentes item in flowLayoutPagnierProduitCommandes.Controls)
             {
                 Produit p = dbase.Produits.
                              Where(s => s.codeProduit == item.Id).SingleOrDefault();
@@ -90,10 +89,10 @@ namespace Project_ENSAF
                     dbase.SaveChanges();
 
                 }
-               
-                 list = dbase.Commandes.ToList<Commande>();
+
+                list = dbase.Commandes.ToList<Commande>();
                 Commande lastOneId = list[list.Count - 1];//chno had khra a Messlo7i wliti rj3ti hadi
-                Form1.SetMessageLog("Création de la commande N " + lastOneId.NCommande + " au fournisseur : " + p.Fournisseur.nomFournisseur +" "+ p.Fournisseur.prenomFournisseur);
+                Form1.SetMessageLog("Création de la commande N " + lastOneId.NCommande + " au fournisseur : " + p.Fournisseur.nomFournisseur + " " + p.Fournisseur.prenomFournisseur);
 
                 if (a != null)
                 {
@@ -109,26 +108,26 @@ namespace Project_ENSAF
             }
             refrechDataGrid(list);
             if (produitVentes != null)
-                {
-                   produitVentes.Clear();
-                }
+            {
+                produitVentes.Clear();
+            }
             //this.flowLayoutPanel1.Controls.Clear();
             //remplireListeProduit();
 
             this.flowLayoutPagnierProduitCommandes.Controls.Clear();
-                a.Visible = false;
+            a.Visible = false;
         }
         private void remplireListeProduit()
         {
             try
             {
                 var db = new dbContext();
-                produitVentes = db.Produits.ToList<Produit>(); 
+                produitVentes = db.Produits.ToList<Produit>();
                 int quantity = 0;
                 foreach (var elm in db.Produits)
                 {
                     quantity = db.Stock_Magazin.ToList<Stock_Magazin>().FindAll(st => st.codeProduit.Equals(elm.codeProduit)).Sum(stk => stk.quantite);
-                    this.flowLayoutPanel1.Controls.Add(new produit_Vente(elm, quantity, true,flowLayoutPagnierProduitCommandes));
+                    this.flowLayoutPanel1.Controls.Add(new produit_Vente(elm, quantity, true, flowLayoutPagnierProduitCommandes));
                     quantity = 0;
                 }
             }
@@ -140,7 +139,7 @@ namespace Project_ENSAF
 
         private void bAjoutCommande_Click(object sender, EventArgs e)
         {
-            if((sender as Button).Text == "Ajouter commande")
+            if ((sender as Button).Text == "Ajouter commande")
             {
                 (sender as Button).Text = "Liste Commandes";
                 this.flowLayoutPanel1.Controls.Clear();
@@ -159,10 +158,10 @@ namespace Project_ENSAF
                 (sender as Button).Text = "Ajouter commande";
             }
 
-            if((sender as Button).Text == "Ajouter commande")
+            if ((sender as Button).Text == "Ajouter commande")
             {
                 labelNbCommande.Visible = false;
-                pictureBox.Visible =false;
+                pictureBox.Visible = false;
                 this.comboBoxFilterCommande.Visible = true;
                 this.isInListeCommande = true;
             }
@@ -176,7 +175,7 @@ namespace Project_ENSAF
 
                 nbCommandes++;
                 labelNbCommande.Text = nbCommandes + "";
-                int idProduit = int.Parse(labelHiden.Text.Split(' ')[0]); 
+                int idProduit = int.Parse(labelHiden.Text.Split(' ')[0]);
                 int quantiteDemander = int.Parse(labelHiden.Text.Split(' ')[1]);
                 pictureBox.Image = Properties.Resources.closed_box;
                 Produit p = produitVentes.Where(pa => pa.codeProduit == idProduit).FirstOrDefault<Produit>();
@@ -190,7 +189,7 @@ namespace Project_ENSAF
                 elmnt.Icon = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
                 elmnt.Description = p.description;
                 elmnt.Quantite = quantiteDemander;
-                elmnt.QuntiteProduit = quantiteDemander+"";
+                elmnt.QuntiteProduit = quantiteDemander + "";
                 elmnt.PrixUnit = p.prixAchat;
                 elmnt.PrixTotal = p.prixAchat * quantiteDemander + "";
                 foreach (Control item in flowLayoutPagnierProduitCommandes.Controls)
@@ -212,8 +211,8 @@ namespace Project_ENSAF
             }
             labelHiden.Text = "";
 
-            
-            
+
+
         }
         private void handel_AfterCloseForm(object sender, EventArgs e)
         {
@@ -222,7 +221,7 @@ namespace Project_ENSAF
             if (flowLayoutPagnierProduitCommandes.Controls.Count == 0)
             {
                 this.pictureBox.Image = Properties.Resources.open_box;
-                
+
             }
 
         }
@@ -304,7 +303,8 @@ namespace Project_ENSAF
                     queryCommande = db.Commandes.ToList();
                 }
                 refrechDataGrid(queryCommande);
-            }else
+            }
+            else
             {
 
                 string cle = searchBar.Text.ToLower();
@@ -316,7 +316,7 @@ namespace Project_ENSAF
                 {
                     if (prod.libelle.ToLower().IndexOf(cle.ToLower()) == -1) continue;
                     quantity = stock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk => stk.quantite);
-                    this.flowLayoutPanel1.Controls.Add(new produit_Vente(prod, quantity,true,flowLayoutPagnierProduitCommandes));
+                    this.flowLayoutPanel1.Controls.Add(new produit_Vente(prod, quantity, true, flowLayoutPagnierProduitCommandes));
                 }
             }
         }
@@ -328,8 +328,8 @@ namespace Project_ENSAF
             {
                 var db = new dbContext();
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-                var commande = db.Commandes.Where(c => c.NCommande == id).FirstOrDefault(); 
-                if(commande != null && commande.statut == false)
+                var commande = db.Commandes.Where(c => c.NCommande == id).FirstOrDefault();
+                if (commande != null && commande.statut == false)
                 {
                     Form1.SetMessageLog("La commande N " + commande.NCommande + " est arrivée");
                     dataGridView1.Rows[e.RowIndex].Cells[5].Value = "Arrivé";
@@ -342,14 +342,14 @@ namespace Project_ENSAF
                     foreach (var item in produits_commande)
                     {
 
-                        double addDate =(item.Produit.dureeValidite_jour==null)?10:(double)item.Produit.dureeValidite_jour;
-                        DateTime dateExpire = DateTime.Now.AddDays(addDate) ==null? Convert.ToDateTime("07/12/1999") : DateTime.Now.AddDays(addDate);
+                        double addDate = (item.Produit.dureeValidite_jour == null) ? 10 : (double)item.Produit.dureeValidite_jour;
+                        DateTime dateExpire = DateTime.Now.AddDays(addDate) == null ? Convert.ToDateTime("07/12/1999") : DateTime.Now.AddDays(addDate);
                         Stock_Magazin stockNewProduit = new Stock_Magazin()
                         {
                             codeMagazin = 1,
                             codeProduit = item.codeProduit,
                             quantite = item.quantite,
-                            dateExpiration= dateExpire
+                            dateExpiration = dateExpire
                         };
                         db.Stock_Magazin.Add(stockNewProduit);
                         db.SaveChanges();
@@ -358,7 +358,7 @@ namespace Project_ENSAF
             }
             if (e.ColumnIndex == 6)
             {
-                DialogResult rs = MessageBox.Show("La commande sera supprimer definitivement, Continue?","Supprimer",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                DialogResult rs = MessageBox.Show("La commande sera supprimer definitivement, Continue?", "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (rs != DialogResult.Yes) return;
                 var db = new dbContext();
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
@@ -374,13 +374,13 @@ namespace Project_ENSAF
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if(e.ColumnIndex == 3)
+            if (e.ColumnIndex == 3)
             {
                 if (e.RowIndex < 0) return;
                 var dbase = new dbContext();
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 List<Produit_commande> produits_commande2 = dbase.Produit_commande.Where(p => p.NCommande == id).ToList();
-                if(produits_commande2.Count == 0)
+                if (produits_commande2.Count == 0)
                 {
                     var result = MessageBox.Show("le fournisseur de ces produits est supprimé, rien a visionner. ", "Information",
                               MessageBoxButtons.OK,
@@ -392,7 +392,7 @@ namespace Project_ENSAF
             }
         }
 
-      
+
     }
 
 }

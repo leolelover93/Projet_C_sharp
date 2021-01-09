@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Project_ENSAF
@@ -28,14 +25,14 @@ namespace Project_ENSAF
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var db = new dbContext();
-            if(e.RowIndex != -1)
+            if (e.RowIndex != -1)
             {
                 if (e.ColumnIndex == 6)//delete fournisseur row
                 {
                     var result = MessageBox.Show("la suppression est en cascade .Tous les produits relative a ce fourniseur vont etre supprimer  y compris tous les records.Vous voulez Continuez ? ", "Attention",
                                  MessageBoxButtons.YesNo,
                                  MessageBoxIcon.Warning);
-                    if(result == DialogResult.Yes)
+                    if (result == DialogResult.Yes)
                     {
                         try
                         {
@@ -51,11 +48,12 @@ namespace Project_ENSAF
                         {
                             MessageBox.Show("Error! " + exc.Message);
                         }
-                    }else
+                    }
+                    else
                     {
                         return;
                     }
-                   
+
                 }
                 if (e.ColumnIndex == 5)//edit fournisseur row
                 {
@@ -71,7 +69,7 @@ namespace Project_ENSAF
                     a.Show();
                 }
             }
-          
+
         }
 
         private void UC_GestionFournisseur_Load(object sender, EventArgs e)

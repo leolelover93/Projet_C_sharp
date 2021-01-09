@@ -1,15 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
 using System.IO;
 using System.Linq;
-using System.Collections.Generic; 
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 namespace Project_ENSAF
 {
     public partial class Form1 : Form
-    { 
-        Button previousBtn,prvBtnFilter;
+    {
+        Button previousBtn, prvBtnFilter;
         FormPagnierVentes a;
         FormAcheterProduits formAcheterProduits;
         UC_GestionFournisseur uc;
@@ -17,7 +17,7 @@ namespace Project_ENSAF
         UC_Gestion_Commades uc_Commandes;
         FlowLayoutPanel flowLayoutPagnierProduitVentes;
         public List<Produit> produitVentes = new List<Produit>();
-        dbContext db=new dbContext();
+        dbContext db = new dbContext();
         public int filter = 0;
         public Form1()
         {
@@ -34,12 +34,12 @@ namespace Project_ENSAF
                 MessageBox.Show("Erreur de connection a la base de donnees! solutions proposés:\n-Verifier le server de db\n-verifier si la db existe deja\n " + ex.Message);
                 this.Close();
             }
-        }  
+        }
 
 
         private void Form1_Load(object sender, EventArgs e)
-        { 
-            panelGestionVentes.Visible = false; 
+        {
+            panelGestionVentes.Visible = false;
             panelGestionVentes.Visible = false;
             panelSM_GV.Visible = false;
             panelCommandes.Visible = false;
@@ -68,7 +68,7 @@ namespace Project_ENSAF
             dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
             ToolTip tt = new ToolTip();
-            tt.SetToolTip(this.pictureBoxLog,"Log");
+            tt.SetToolTip(this.pictureBoxLog, "Log");
 
             SetMessageLog("Connecté");
 
@@ -80,7 +80,7 @@ namespace Project_ENSAF
         {
             String filePath = Path.Combine(Directory.GetCurrentDirectory(), "log.txt");
             StreamWriter writer = new StreamWriter(filePath, true);
-            writer.WriteLine(DateTime.Now + " : "+msg);
+            writer.WriteLine(DateTime.Now + " : " + msg);
             writer.Close();
 
         }
@@ -89,12 +89,12 @@ namespace Project_ENSAF
             var dbase = new dbContext();
             List<Vente_magazin> factures = dbase.Vente_magazin.ToList<Vente_magazin>();
             Vente_magazin venteL = factures[factures.Count - 1];
-            if(venteL != null)
+            if (venteL != null)
             {
                 int quantite = int.Parse(venteL.quantiteVendus.Split(' ')[venteL.quantiteVendus.Split(' ').Length - 1]);
-                SetMessageLog("Vente de " + quantite + " produit(s) avec un gain de : " + venteL.gain+" Dh");
+                SetMessageLog("Vente de " + quantite + " produit(s) avec un gain de : " + venteL.gain + " Dh");
             }
-            
+
         }
         private Button findAjouterFactureBtn()
         {
@@ -123,7 +123,7 @@ namespace Project_ENSAF
                 if (p == null) continue;
                 produitVentes.Add(p);
                 quantity = st.grp.Sum(stk => stk.quantite);
-                if (quantity > 0) this.flowLayoutPanelVente.Controls.Add(new produit_Vente(p, quantity,false, flowLayoutPagnierProduitVentes));
+                if (quantity > 0) this.flowLayoutPanelVente.Controls.Add(new produit_Vente(p, quantity, false, flowLayoutPagnierProduitVentes));
                 quantity = 0;
             }
         }
@@ -131,11 +131,11 @@ namespace Project_ENSAF
         private void button1_Click(object sender, EventArgs e)
         {
             if (previousBtn == (sender as Button)) return;
-            if((sender as Button).Name == "BtnGestionProduits")
+            if ((sender as Button).Name == "BtnGestionProduits")
             {
                 btnViewAll_Click(null, null);
                 panelGestionVentes.Visible = false;
-                panelSM_GV.Visible =false; 
+                panelSM_GV.Visible = false;
                 panelCommandes.Visible = false;
                 panelGestionProduit.Visible = true;
 
@@ -157,16 +157,16 @@ namespace Project_ENSAF
                 panelCommandes.Visible = false;
                 panelGestionVentes.Visible = true;
                 panelSM_GV.Visible = true;
-            
-               
+
+
             }
-            if((sender as Button).Name == "buttonCommandes")
+            if ((sender as Button).Name == "buttonCommandes")
             {
                 var db = new dbContext();
 
                 if (formAcheterProduits == null)
                 {
-                    formAcheterProduits = new FormAcheterProduits(); 
+                    formAcheterProduits = new FormAcheterProduits();
                 }
                 if (this.uc_Commandes == null)
                 {
@@ -181,9 +181,9 @@ namespace Project_ENSAF
                 panelSM_GV.Visible = false;
                 panelCommandes.Visible = true;
             }
-            if((sender as Button).Name == "buttonForunisseur")
+            if ((sender as Button).Name == "buttonForunisseur")
             {
-              
+
                 var db = new dbContext();
                 uc = new UC_GestionFournisseur(db.Fournisseurs.ToList<Fournisseur>());
                 panelCommandes.Controls.Clear();
@@ -194,22 +194,22 @@ namespace Project_ENSAF
                 panelSM_GV.Visible = false;
                 panelCommandes.Visible = true;
             }
-           
+
             previousBtn.BackColor = Color.FromArgb(0, 53, 92);
             previousBtn = (sender as Button);
             checkedLinePanel.Height = (sender as Button).Height;
             checkedLinePanel.Top = (sender as Button).Top;
             (sender as Button).BackColor = Color.FromArgb(13, 72, 114);
-            
-        } 
+
+        }
         private void filter_style_click(object sender, EventArgs e)
-        { 
-                prvBtnFilter.BackColor = Color.White;
-                prvBtnFilter.ForeColor = Color.FromArgb(72, 152, 207);
-                prvBtnFilter = (sender as Button);
-                prvBtnFilter.BackColor = Color.FromArgb(72, 152, 207);
-                prvBtnFilter.ForeColor = Color.White; 
-        }   
+        {
+            prvBtnFilter.BackColor = Color.White;
+            prvBtnFilter.ForeColor = Color.FromArgb(72, 152, 207);
+            prvBtnFilter = (sender as Button);
+            prvBtnFilter.BackColor = Color.FromArgb(72, 152, 207);
+            prvBtnFilter.ForeColor = Color.White;
+        }
         private void textBoxSearchProduitVentes_TextChanged(object sender, EventArgs e)
         {
             string produitArech = textBoxSearchProduitVentes.Text;
@@ -226,23 +226,23 @@ namespace Project_ENSAF
                 quantity = NonExpiredStock.FindAll(s => s.codeProduit.Equals(prd.codeProduit)).Sum(stk => stk.quantite);
                 Console.WriteLine("search vente-> produit: " + prd.libelle + "Quanti: " + quantity);
                 if (quantity != 0)
-                    flowLayoutPanelVente.Controls.Add(new produit_Vente(prd, quantity,false, flowLayoutPagnierProduitVentes));
+                    flowLayoutPanelVente.Controls.Add(new produit_Vente(prd, quantity, false, flowLayoutPagnierProduitVentes));
                 quantity = 0;
             }
-        } 
+        }
         private void btnAjouterAuPagnier_Click(object sender, EventArgs e)
-        { 
-            this.pictureBoxBasket.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D; 
-        }   
+        {
+            this.pictureBoxBasket.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        }
         public void btnViewAll_Click(object sender, EventArgs e)
         {
-            if (sender !=null) filter_style_click( sender,  e);
+            if (sender != null) filter_style_click(sender, e);
             filter = 0; //display all
             var dbase = new dbContext();//fix alot of stuff
             int quantity = 0;
             produitVentes.Clear();
             produitVentes = dbase.Produits.ToList<Produit>();
-            flowLayoutPanel1.Controls.Clear(); 
+            flowLayoutPanel1.Controls.Clear();
             if (dbase.Produits.Count() > 0)
             {
                 foreach (var produit in dbase.Produits)
@@ -254,11 +254,11 @@ namespace Project_ENSAF
                         this.flowLayoutPanel1.Controls.Add(new produit_cardUC(produit, this, quantity));
                     quantity = 0;
                 }
-                
+
             }
         }
         public void btnDisponible_Click(object sender, EventArgs e)
-        { 
+        {
             if (sender != null) filter_style_click(sender, e);
             filter = 1; //display non expired products 
             var dbase = new dbContext();
@@ -277,35 +277,35 @@ namespace Project_ENSAF
                 if (quantity > 0) this.flowLayoutPanel1.Controls.Add(new produit_cardUC(p, this, quantity));
                 quantity = 0;
             }
-        } 
+        }
         private void tbSearch_TextChanged(object sender, EventArgs e)
-        { 
+        {
             string cle = tbSearch.Text;
-            Console.WriteLine("\nCherche: "+cle);
+            Console.WriteLine("\nCherche: " + cle);
             var dbase = new dbContext();
-            var stock=dbase.Stock_Magazin.ToList<Stock_Magazin>();
+            var stock = dbase.Stock_Magazin.ToList<Stock_Magazin>();
             switch (filter) //detemine ou on doit chercher
             {
                 case 1: //si on est dans btnDisponible_Click()
-                    stock = dbase.Stock_Magazin.Where(s=> DateTime.Compare(s.dateExpiration, DateTime.Now) > 0)
+                    stock = dbase.Stock_Magazin.Where(s => DateTime.Compare(s.dateExpiration, DateTime.Now) > 0)
                                                     .ToList<Stock_Magazin>();
-                        break;
+                    break;
                 case 2://si on est dans btnNonDisponible_Click()
                     stock = dbase.Stock_Magazin.Where(s => DateTime.Compare(s.dateExpiration, DateTime.Now) < 0)
                                             .ToList<Stock_Magazin>();
                     break;//si on est dans btnDViewAll_Click()
                 default: stock = dbase.Stock_Magazin.ToList<Stock_Magazin>(); break;
-            } 
+            }
             int quantity = 0;
             flowLayoutPanel1.Controls.Clear();
             foreach (var prod in produitVentes)
-            { 
+            {
                 if (prod.libelle.ToLower().IndexOf(cle.ToLower()) == -1) continue;
                 quantity = stock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk => stk.quantite);
                 if (quantity != 0)
-                    this.flowLayoutPanel1.Controls.Add(new produit_cardUC(prod,this, quantity));  
+                    this.flowLayoutPanel1.Controls.Add(new produit_cardUC(prod, this, quantity));
             }
-        } 
+        }
         public void btnNonDisponible_Click(object sender, EventArgs e)
         {
             if (sender != null) filter_style_click(sender, e);
@@ -326,8 +326,8 @@ namespace Project_ENSAF
                 quantity = ExpiredStock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk => stk.quantite);
                 this.flowLayoutPanel1.Controls.Add(new produit_cardUC(prod, this, quantity));
                 quantity = 0;
-            } 
-        }  
+            }
+        }
         private void btnViderPanger_Click(object sender, EventArgs e)
         {
             labelBasket.Text = "0";
@@ -338,10 +338,10 @@ namespace Project_ENSAF
             Control[] a = flowLayoutPagnierProduitVentes.Parent.Controls[0].Controls.Find("labelTFNb", true);
             Label labelPrixTotal = (Label)a[0];
             labelPrixTotal.Text = "0";
-        } 
+        }
         private void listBoxItemProduct_TextChanged(object sender, EventArgs e)
         {
-           
+
             if (listBoxItemProduct.Text != "")
             {
                 var dbase = new dbContext();
@@ -353,11 +353,11 @@ namespace Project_ENSAF
                 foreach (var elm in stock_produit_tables)
                 {
                     quantity += elm.quantite;
-                 }
-                 ElementPagnierVentes elmnt = new ElementPagnierVentes();
+                }
+                ElementPagnierVentes elmnt = new ElementPagnierVentes();
                 elmnt.Title = p.libelle;
                 elmnt.MaxQuantite = quantity;
-                elmnt.Gain = (p.prixVente - p.prixAchat)* int.Parse(listBoxItemProduct.Text.Split(' ')[1]); 
+                elmnt.Gain = (p.prixVente - p.prixAchat) * int.Parse(listBoxItemProduct.Text.Split(' ')[1]);
                 elmnt.Id = p.codeProduit;
                 elmnt.Icon = p.img != null ? Image.FromStream(new MemoryStream(p.img)) : Properties.Resources.loading_product;
                 elmnt.Description = p.description;
@@ -368,7 +368,7 @@ namespace Project_ENSAF
                 foreach (Control item in flowLayoutPagnierProduitVentes.Controls)
                 {
                     ElementPagnierVentes epv = (ElementPagnierVentes)item;
-                    if (epv.Id  == elmnt.Id)
+                    if (epv.Id == elmnt.Id)
                     {
                         epv.Quantite = int.Parse(listBoxItemProduct.Text.Split(' ')[1]);
                         labelBasket.Text = --nbProduitInBasket + "";
@@ -379,22 +379,23 @@ namespace Project_ENSAF
                 }
                 flowLayoutPagnierProduitVentes.Controls.Add(elmnt);
                 listBoxItemProduct.Text = "";
-                
+
             }
 
 
         }
         private void pictureBoxBasket_Click(object sender, EventArgs e)
         {
-            if (Object.Equals(a,null))
+            if (Object.Equals(a, null))
             {
                 a = new FormPagnierVentes();
                 flowLayoutPagnierProduitVentes = (FlowLayoutPanel)a.Controls[0];
             }
-            if(!Object.Equals(a, null) && flowLayoutPagnierProduitVentes.Controls.Count > 0)
+            if (!Object.Equals(a, null) && flowLayoutPagnierProduitVentes.Controls.Count > 0)
             {
-                a.Show(); 
-            }else
+                a.Show();
+            }
+            else
             {
                 MessageBox.Show("Le pagnier est vide !");
             }
@@ -403,21 +404,21 @@ namespace Project_ENSAF
         }
         private void btnAjouterProduit_Click(object sender, EventArgs e)
         {
-          Form_Ajouter_Produit formajout = new Form_Ajouter_Produit( this);
+            Form_Ajouter_Produit formajout = new Form_Ajouter_Produit(this);
             formajout.Show();
         }
 
         private void buttonSM_Ventes_Click(object sender, EventArgs e)
         {
             panelContainerSM_GV_V.Visible = true;
-            panelContainerSM_GV_JV.Visible = false; 
+            panelContainerSM_GV_JV.Visible = false;
             panelCommandes.Visible = false;
         }
 
         private void buttonSM_JVentes_Click(object sender, EventArgs e)
         {
             panelContainerSM_GV_V.Visible = false;
-            panelContainerSM_GV_JV.Visible = true;  
+            panelContainerSM_GV_JV.Visible = true;
             dataGridView1.Visible = false;
             dataGridView2.Visible = false;
             var db = new dbContext();
@@ -431,25 +432,25 @@ namespace Project_ENSAF
             }
             catch (Exception)
             {
-                MessageBox.Show("Erreur Connection base donné !","warning",MessageBoxButtons.OK,MessageBoxIcon.Error); 
+                MessageBox.Show("Erreur Connection base donné !", "warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-              
+
         }
 
         private void handel_AfterCloseForm(object sender, EventArgs e)
         {
-            labelBasket.Text  = flowLayoutPagnierProduitVentes.Controls.Count + "";
+            labelBasket.Text = flowLayoutPagnierProduitVentes.Controls.Count + "";
             nbProduitInBasket = flowLayoutPagnierProduitVentes.Controls.Count;
-            if(flowLayoutPagnierProduitVentes.Controls.Count == 0)
+            if (flowLayoutPagnierProduitVentes.Controls.Count == 0)
             {
                 this.pictureBoxBasket.Image = Properties.Resources.cart;
-                
+
             }
 
         }
 
         private void buttonJournalVentes_Click(object sender, EventArgs e)
-         {
+        {
             var db = new dbContext();
             if (!checkBoxTableu.Checked && !checkBoxGraphique.Checked && !radioButtonGain.Checked && !radioButtonPerte.Checked)
             {
@@ -458,7 +459,7 @@ namespace Project_ENSAF
             labelErrorGraph.Text = "";
             chart1.Series.Clear();
             chart2.Series["Series1"].Points.Clear();
-            chart2.Series["Series1"].Points.AddXY(0,0);
+            chart2.Series["Series1"].Points.AddXY(0, 0);
             dataGridView1.Rows.Clear();
             dataGridView2.Rows.Clear();
             dataGridView1.Visible = dataGridView2.Visible = checkBoxTableu.Checked;
@@ -466,13 +467,13 @@ namespace Project_ENSAF
             //For the responsivness of the dataGridView and the Charts---StartBloc#x1
             if (checkBoxGraphique.Checked)
             {
-                if(chart2.Width == panelContainerSM_GV_JV.Width -50)
+                if (chart2.Width == panelContainerSM_GV_JV.Width - 50)
                 {
                     chart1.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
                     chart2.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
                     chart2.Location = new Point(chart1.Width + chart1.Location.X + 15, chart2.Location.Y);
                 }
-                if(chart1.Width == panelContainerSM_GV_JV.Width - 50)
+                if (chart1.Width == panelContainerSM_GV_JV.Width - 50)
                 {
                     chart1.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
                     chart2.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
@@ -490,13 +491,13 @@ namespace Project_ENSAF
                 dataGridView1.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
                 dataGridView2.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
                 dataGridView1.Location = new Point(dataGridView1.Location.X, 132);
-                dataGridView2.Location = new Point(dataGridView1.Location.X+dataGridView1.Width+8,132);
+                dataGridView2.Location = new Point(dataGridView1.Location.X + dataGridView1.Width + 8, 132);
 
             }
-            else if(!checkBoxTableu.Checked && checkBoxGraphique.Checked)
+            else if (!checkBoxTableu.Checked && checkBoxGraphique.Checked)
             {
                 panelContainerLabelGraphe2.Visible = panelContainerLabelGraphe.Visible = true;
-                dataGridView1.Location = new Point(chart1.Location.X, chart1.Location.Y + chart1.Height +8);
+                dataGridView1.Location = new Point(chart1.Location.X, chart1.Location.Y + chart1.Height + 8);
                 dataGridView2.Location = new Point(chart2.Location.X, chart2.Location.Y + chart2.Height + 8);
             }
 
@@ -508,7 +509,7 @@ namespace Project_ENSAF
                 if (radioButtonGain.Checked)
                 {
                     chart1.Width = panelContainerSM_GV_JV.Width - 50;
-                    dataGridView1.Width = chart1.Width ;
+                    dataGridView1.Width = chart1.Width;
                     dataGridView1.Location = new Point(dataGridView1.Location.X, chart1.Location.Y + chart1.Height + 8);
 
 
@@ -522,7 +523,7 @@ namespace Project_ENSAF
                     dataGridView2.Location = new Point(chart2.Location.X, chart2.Location.Y + chart2.Height + 8);
                 }
             }
-            if(checkBoxTableu.Checked && checkBoxGraphique.Checked)
+            if (checkBoxTableu.Checked && checkBoxGraphique.Checked)
             {
                 panelContainerLabelGraphe2.Visible = panelContainerLabelGraphe.Visible = true;
                 dataGridView1.Width = chart1.Width;
@@ -532,39 +533,41 @@ namespace Project_ENSAF
             }
             //For the responsivness of the dataGridView and the Charts---EndBloc#x1 
             if (dateTimePickerD.Value.Date > dateTimePickerE.Value.Date)
-                {
-                    DateTime temp = dateTimePickerD.Value.Date;
-                    dateTimePickerD.Value = dateTimePickerE.Value.Date;
-                     dateTimePickerE.Value = temp; 
-                }
+            {
+                DateTime temp = dateTimePickerD.Value.Date;
+                dateTimePickerD.Value = dateTimePickerE.Value.Date;
+                dateTimePickerE.Value = temp;
+            }
             var ventes_liste = db.Vente_magazin.GroupBy(s => s.dateVente);
-                int i = 0;
+            int i = 0;
             foreach (var groupItem in ventes_liste)
-                {
+            {
 
-                    int quantite = 0;
-                    decimal? _gain = 0;
-                    DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[i].Clone();
-                    if (!checkBoxTous.Checked)
-                    {
-                        if (groupItem.Key.Value.Date >= dateTimePickerD.Value.Date && groupItem.Key.Value.Date <= dateTimePickerE.Value.Date)
-                        {
-                            row.Cells[2].Value = groupItem.Key.Value.Date.ToString("dd/MM/yyyy");
-                            i++;
-                        }else 
-                        {
-                            continue;
-                        }
-                    }else
+                int quantite = 0;
+                decimal? _gain = 0;
+                DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[i].Clone();
+                if (!checkBoxTous.Checked)
+                {
+                    if (groupItem.Key.Value.Date >= dateTimePickerD.Value.Date && groupItem.Key.Value.Date <= dateTimePickerE.Value.Date)
                     {
                         row.Cells[2].Value = groupItem.Key.Value.Date.ToString("dd/MM/yyyy");
                         i++;
                     }
-                    //---
+                    else
+                    {
+                        continue;
+                    }
+                }
+                else
+                {
+                    row.Cells[2].Value = groupItem.Key.Value.Date.ToString("dd/MM/yyyy");
+                    i++;
+                }
+                //---
                 System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
                 series2.ChartArea = "ChartArea1";
                 series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-                series2.Name = "Series" + i ;
+                series2.Name = "Series" + i;
                 series2.YValuesPerPoint = 1;
                 series2.ToolTip = groupItem.Key.Value.Date.ToString("dd/MM/yyyy");
                 chart1.Series.Add(series2);
@@ -572,26 +575,26 @@ namespace Project_ENSAF
                 axisX.MajorGrid.Enabled = false;
                 chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
                 foreach (var venteL in groupItem)
-                    {
+                {
                     quantite += int.Parse(venteL.quantiteVendus.Split(' ')[venteL.quantiteVendus.Split(' ').Length - 1]);
                     _gain += venteL.gain;
-                     }
-                    row.Cells[0].Value = quantite;
-                    row.Cells[1].Value = _gain;
-                    dataGridView1.Rows.Add(row);
-                     series2.IsValueShownAsLabel = false;
-                    series2.Label = _gain+"/"+quantite ;
-                    series2.Points.AddXY(i, _gain);
-                    chart1.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
-                    chart1.ChartAreas[0].AxisX.Title = "Quantite Produit vendu";
-                    chart1.ChartAreas[0].AxisY.Title = "Gain(dhs)";
-                    
+                }
+                row.Cells[0].Value = quantite;
+                row.Cells[1].Value = _gain;
+                dataGridView1.Rows.Add(row);
+                series2.IsValueShownAsLabel = false;
+                series2.Label = _gain + "/" + quantite;
+                series2.Points.AddXY(i, _gain);
+                chart1.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
+                chart1.ChartAreas[0].AxisX.Title = "Quantite Produit vendu";
+                chart1.ChartAreas[0].AxisY.Title = "Gain(dhs)";
+
             }
-            if(chart1.Series.Count == 0)
+            if (chart1.Series.Count == 0)
             {
-                MessageBox.Show("Aucaun donné à affciher de"+dateTimePickerD.Value.Date.ToString("dd/MM/yyyy")+"-"+dateTimePickerE.Value.Date.ToString("dd/MM/yyyy"), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Aucaun donné à affciher de" + dateTimePickerD.Value.Date.ToString("dd/MM/yyyy") + "-" + dateTimePickerE.Value.Date.ToString("dd/MM/yyyy"), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 labelErrorGraph.Text = "No Data To show";
-            }  
+            }
             var ExpiredStock = db.Stock_Magazin
                    .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) < 0).ToList<Stock_Magazin>();
             produitVentes.Clear();
@@ -599,7 +602,7 @@ namespace Project_ENSAF
             {
                 if (db.Produits.Find(st.codeProduit) != null)
                     produitVentes.Add(db.Produits.Find(st.codeProduit));
-            } 
+            }
             int j = 0, totalQNonDispo = 0;
             decimal totalPerte = 0;
             int fix = 1;
@@ -625,14 +628,14 @@ namespace Project_ENSAF
                     row.Cells[1].Value = totalQNonDispo;
                     row.Cells[2].Value = countInStock * item.prixAchat;
                     j++;
-                        dataGridView2.Rows.Add(row);
-                        
+                    dataGridView2.Rows.Add(row);
+
                     chart2.Series["Series1"].Points.AddXY(countInStock, countInStock * item.prixAchat);
                 }
             }
             chart2.ChartAreas[0].AxisX.Title = "Pertes(dhs)";
             chart2.ChartAreas[0].AxisY.Title = "QuntiteChaqueProduitNonDisponible";
-            labelTotalPerte.Text = "Perts Totale :"+ totalPerte + "  Quantité Totale :" + totalQNonDispo + " produits"; 
+            labelTotalPerte.Text = "Perts Totale :" + totalPerte + "  Quantité Totale :" + totalQNonDispo + " produits";
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -642,26 +645,26 @@ namespace Project_ENSAF
             dataGridView1.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
             dataGridView2.Width = (panelContainerSM_GV_JV.Width / 2) - 50;
             chart2.Location = new Point(chart1.Location.X + chart1.Width + 8, chart2.Location.Y);
-            if(checkBoxGraphique.Checked && checkBoxTableu.Checked)
+            if (checkBoxGraphique.Checked && checkBoxTableu.Checked)
             {
                 chart1.Visible = chart2.Visible = true;
                 dataGridView1.Width = chart1.Width;
                 dataGridView2.Width = chart2.Width;
-                dataGridView1.Location = new Point(chart1.Location.X, chart1.Location.Y + chart1.Height +8);
+                dataGridView1.Location = new Point(chart1.Location.X, chart1.Location.Y + chart1.Height + 8);
                 dataGridView2.Location = new Point(chart2.Location.X, chart2.Location.Y + chart2.Height + 8);
             }
-         
-           if(checkBoxGraphique.Checked == false && checkBoxTableu.Checked)
+
+            if (checkBoxGraphique.Checked == false && checkBoxTableu.Checked)
             {
                 dataGridView1.Location = new Point(dataGridView1.Location.X, 132);
                 dataGridView2.Location = new Point(dataGridView1.Location.X + dataGridView1.Width + 8, 132);
-                
+
             }
 
             if (radioButtonGain.Checked)
             {
                 chart1.Width = panelContainerSM_GV_JV.Width - 50;
-                dataGridView1.Width = chart1.Width ;
+                dataGridView1.Width = chart1.Width;
                 dataGridView1.Location = new Point(dataGridView1.Location.X, chart1.Location.Y + chart1.Height + 8);
 
 
@@ -674,15 +677,16 @@ namespace Project_ENSAF
                 dataGridView2.Width = chart2.Width;
                 dataGridView2.Location = new Point(chart2.Location.X, chart2.Location.Y + chart2.Height + 8);
             }
-        } 
+        }
         private void checkBoxGraphique_CheckedChanged(object sender, EventArgs e)
         {
-            if((sender as CheckBox).Name == "checkBoxTous")
+            if ((sender as CheckBox).Name == "checkBoxTous")
             {
-                if((sender as CheckBox).Checked)
+                if ((sender as CheckBox).Checked)
                 {
                     dateTimePickerD.Enabled = dateTimePickerE.Enabled = false;
-                }else
+                }
+                else
                 {
                     dateTimePickerD.Enabled = dateTimePickerE.Enabled = true;
 
@@ -721,13 +725,13 @@ namespace Project_ENSAF
                 refreshFlowLayoutPVente();
                 flowLayoutPanelVente.Refresh();
             }
-            
+
 
         }
 
         public void LogAll_click(object sender, EventArgs e)
         {
-         
+
             LogForm logform = new LogForm();
             logform.Show();
         }

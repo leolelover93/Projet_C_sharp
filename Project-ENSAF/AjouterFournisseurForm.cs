@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Project_ENSAF
@@ -22,7 +16,7 @@ namespace Project_ENSAF
         }
         public AjouterFournisseurForm(Fournisseur fournisseursToEdit, UC_GestionFournisseur theCaller)//used to edit fournisseur
         {
-            this.fournisseursToEdit = fournisseursToEdit; 
+            this.fournisseursToEdit = fournisseursToEdit;
             this.theCaller = theCaller;
             initCompo2EditFournisseur(fournisseursToEdit);
         }
@@ -47,7 +41,7 @@ namespace Project_ENSAF
                             prenomFournisseur = tbPrenom.Text,
                             adressFournisseur = tbadress.Text,
                             telFournisseur = tbtel.Text,
-                        }; 
+                        };
                         db.Fournisseurs.Add(f);
                         db.SaveChanges();
                         Form1.SetMessageLog($"L'ajout d'un nouveau fournisseur {tbNom.Text} {tbPrenom.Text} à la liste des fournisseurs");

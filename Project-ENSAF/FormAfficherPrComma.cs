@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Project_ENSAF
 {
     public partial class FormAfficherPrComma : Form
     {
-// List<ElementPagnierVentes> listElementPagnier = new List<ElementPagnierVentes>();
-       // decimal total = 0;
+        // List<ElementPagnierVentes> listElementPagnier = new List<ElementPagnierVentes>();
+        // decimal total = 0;
 
         public FormAfficherPrComma()
         {
@@ -38,5 +30,5 @@ namespace Project_ENSAF
               }
           }*/
     }
-      
+
 }

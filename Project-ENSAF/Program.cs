@@ -21,7 +21,7 @@ namespace Project_ENSAF
             {
                 MessageBox.Show("Error! The app cant be loaded:\n" + e.Message);
             }
-           
+
         }
     }
 }

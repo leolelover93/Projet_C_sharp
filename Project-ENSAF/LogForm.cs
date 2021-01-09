@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Project_ENSAF
@@ -11,7 +10,7 @@ namespace Project_ENSAF
     {
         string[] lines;
 
-        
+
         public LogForm()
         {
             //Set the intial settong to true
@@ -121,13 +120,13 @@ namespace Project_ENSAF
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult rs = MessageBox.Show("Toute la journalisation sera supprimé définitivement, Continue?","Effacer Log",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            DialogResult rs = MessageBox.Show("Toute la journalisation sera supprimé définitivement, Continue?", "Effacer Log", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (rs == DialogResult.Yes)
             {
                 listView1.Clear();
                 String Filepath = Path.Combine(Directory.GetCurrentDirectory(), "log.txt");
                 StreamWriter writer = new StreamWriter(Filepath, false);
-                writer.Write(DateTime.Now+" : Log Effacé\n");
+                writer.Write(DateTime.Now + " : Log Effacé\n");
                 writer.Close();
             }
         }
@@ -140,9 +139,9 @@ namespace Project_ENSAF
             listView1.Items.Clear();
             /**/
             foreach (string line in lignes)
-            { 
-               // Console.WriteLine(line);
-                listView1.Items.Add(line);  
+            {
+                // Console.WriteLine(line);
+                listView1.Items.Add(line);
             }
         }
     }
