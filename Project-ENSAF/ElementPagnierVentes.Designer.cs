@@ -117,7 +117,7 @@
             // 
             this.labelPrixUnite.AutoSize = true;
             this.labelPrixUnite.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.labelPrixUnite.Location = new System.Drawing.Point(193, 87);
+            this.labelPrixUnite.Location = new System.Drawing.Point(203, 87);
             this.labelPrixUnite.Name = "labelPrixUnite";
             this.labelPrixUnite.Size = new System.Drawing.Size(47, 17);
             this.labelPrixUnite.TabIndex = 8;
@@ -159,7 +159,7 @@
             // 
             this.labelNbProduit.AutoSize = true;
             this.labelNbProduit.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.labelNbProduit.Location = new System.Drawing.Point(193, 70);
+            this.labelNbProduit.Location = new System.Drawing.Point(203, 70);
             this.labelNbProduit.Name = "labelNbProduit";
             this.labelNbProduit.Size = new System.Drawing.Size(47, 17);
             this.labelNbProduit.TabIndex = 5;

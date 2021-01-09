@@ -193,6 +193,7 @@
             if (testCommande== true)
             {
                 btnReadMore.Text = "Commander";
+                numericUpDownQauntite.Maximum = 10000;
                 btnReadMore.BackColor = Color.FromArgb(236, 88, 88);
             }else
             {

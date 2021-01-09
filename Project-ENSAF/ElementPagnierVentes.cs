@@ -158,7 +158,7 @@ namespace Project_ENSAF
         {
             pictureBox1.Visible = this.closeIconVisbility;
             numericUpDownQunatite.Visible = this.closeIconVisbility;
-          
+            if (!this.closeIconVisbility) labelP.Text = "Prix d'achat:";
         }
     }
 }
