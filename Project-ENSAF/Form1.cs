@@ -311,22 +311,38 @@ namespace Project_ENSAF
             if (sender != null) filter_style_click(sender, e);
             filter = 2; //display expired products
             var dbase = new dbContext();
-            var ExpiredStock = dbase.Stock_Magazin
-                    .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) < 0).ToList<Stock_Magazin>();
+            var NonExpireStock = dbase.Stock_Magazin
+                   .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) < 0)
+                   .GroupBy(st => st.codeProduit, (key, g) => new { grp = g.ToList<Stock_Magazin>() });
             int quantity = 0;
             produitVentes.Clear();
-            foreach (var st in ExpiredStock) //fetch expired products from stock
-            {
-                if (dbase.Produits.Find(st.codeProduit) != null)
-                    produitVentes.Add(dbase.Produits.Find(st.codeProduit));
-            }
             flowLayoutPanel1.Controls.Clear();
-            foreach (var prod in produitVentes)//somme des quantités des stocks de chaque prod
+            foreach (var st in NonExpireStock) //fetch non expired products from stock
             {
-                quantity = ExpiredStock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk => stk.quantite);
-                this.flowLayoutPanel1.Controls.Add(new produit_cardUC(prod, this, quantity));
+                Produit p = dbase.Produits.Find(st.grp.FirstOrDefault().codeProduit);
+                if (p == null) continue;
+                produitVentes.Add(p);
+                quantity = st.grp.Sum(stk => stk.quantite);
+                if (quantity > 0) this.flowLayoutPanel1.Controls.Add(new produit_cardUC(p, this, quantity));
                 quantity = 0;
             }
+            /*  var dbase = new dbContext();
+              var ExpiredStock = dbase.Stock_Magazin
+                      .Where(stk => DateTime.Compare(stk.dateExpiration, DateTime.Now) < 0).ToList<Stock_Magazin>();
+              int quantity = 0;
+              produitVentes.Clear();
+              foreach (var st in ExpiredStock) //fetch expired products from stock
+              {
+                  if (dbase.Produits.Find(st.codeProduit) != null)
+                      produitVentes.Add(dbase.Produits.Find(st.codeProduit));
+              }
+              flowLayoutPanel1.Controls.Clear();
+              foreach (var prod in produitVentes)//somme des quantités des stocks de chaque prod
+              {
+                  quantity = ExpiredStock.FindAll(s => s.codeProduit.Equals(prod.codeProduit)).Sum(stk => stk.quantite);
+                  this.flowLayoutPanel1.Controls.Add(new produit_cardUC(prod, this, quantity));
+                  quantity = 0;
+              }*/
         }
         private void btnViderPanger_Click(object sender, EventArgs e)
         {
