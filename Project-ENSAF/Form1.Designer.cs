@@ -611,7 +611,7 @@
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "NombreDeVentes";
+            this.Column1.HeaderText = "Nombre de Ventes";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.ToolTipText = "Tous Les produits Vendu/Jour";
@@ -619,7 +619,7 @@
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "LeGain(dhs)";
+            this.Column2.HeaderText = "Gain(dhs)";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
@@ -818,7 +818,7 @@
             this.labelDateDébut.Name = "labelDateDébut";
             this.labelDateDébut.Size = new System.Drawing.Size(83, 17);
             this.labelDateDébut.TabIndex = 1;
-            this.labelDateDébut.Text = "Date  début:";
+            this.labelDateDébut.Text = "Date début:";
             // 
             // dateTimePickerD
             // 
@@ -849,7 +849,7 @@
             this.labelTitreJV.Name = "labelTitreJV";
             this.labelTitreJV.Size = new System.Drawing.Size(268, 36);
             this.labelTitreJV.TabIndex = 1;
-            this.labelTitreJV.Text = "Journal de ventes";
+            this.labelTitreJV.Text = "Journal des ventes";
             // 
             // panelCommandes
             // 
@@ -1010,7 +1010,7 @@
             // QunatiteProduitsPerdu
             // 
             this.QunatiteProduitsPerdu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.QunatiteProduitsPerdu.HeaderText = "Quantite";
+            this.QunatiteProduitsPerdu.HeaderText = "Quantité";
             this.QunatiteProduitsPerdu.Name = "QunatiteProduitsPerdu";
             this.QunatiteProduitsPerdu.ReadOnly = true;
             // 
